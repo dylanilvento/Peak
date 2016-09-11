@@ -48,7 +48,7 @@ public class CharacterMovement : MonoBehaviour {
 		if (grounded) {
 
 			anim.SetBool("Walk", true);
-			rb.velocity = new Vector2(2f, 0.1f);
+			rb.velocity = new Vector2(2f, 0.75f);
 
 			// rb.gravityScale = 1f;
 		}
@@ -106,7 +106,7 @@ public class CharacterMovement : MonoBehaviour {
 			//sr.sortingOrder = 0;
 		}
 
-		if (collidedWith.name.Contains("Boost Triangle")) {
+		if (collidedWith.name.Contains("Boost")) {
 			//print(collidedWith.name);
 			//print(collidedWith.name.Contains("Back"));
 			StartCoroutine("Jump");
@@ -148,7 +148,7 @@ public class CharacterMovement : MonoBehaviour {
 	void SwitchWorlds () {
 		if (!foreWorld) {
 			gameObject.layer = 8;
-			sr.sortingOrder = 3;
+			sr.sortingOrder = 4;
 			foreWorld = true;
 		}
 		else {
@@ -160,7 +160,7 @@ public class CharacterMovement : MonoBehaviour {
 
 	void SetForeWorld () {
 		gameObject.layer = 8;
-		sr.sortingOrder = 3;
+		sr.sortingOrder = 4;
 		foreWorld = true;
 		//sr.color = Color.white;
 	}

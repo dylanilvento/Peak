@@ -7,6 +7,8 @@ public class CharacterMovement : MonoBehaviour {
 	Rigidbody2D rb;
 	Animator anim;
 
+	public bool movementOff = false;
+
 	bool grounded = true;
 	bool jumped = false;
 	bool paused = false;
@@ -24,16 +26,19 @@ public class CharacterMovement : MonoBehaviour {
 		anim = GetComponent<Animator>();
 		sr = GetComponent<SpriteRenderer>();
 		
-		if (!started) {
-			Analytics.CustomEvent("report", new Dictionary<string, object>
-			{
-				{"operatingSystem", SystemInfo.operatingSystem}
-			});
-
-			started = true;
+		if (movementOff) {
+			rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY;
 		}
+		// if (!started) {
+		// 	Analytics.CustomEvent("report", new Dictionary<string, object>
+		// 	{
+		// 		{"operatingSystem", SystemInfo.operatingSystem}
+		// 	});
 
-		print("started");
+		// 	started = true;
+		// }
+
+		// print("started");
 
 		grounded = true;
 		jumped = false;
@@ -45,7 +50,7 @@ public class CharacterMovement : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () {
 		//if (Time.realtimeSinceStartup - lastTimeGrounded > 0.01f) {
-		if (grounded) {
+		if (grounded && !movementOff) {
 
 			anim.SetBool("Walk", true);
 			rb.velocity = new Vector2(2f, 0.75f);

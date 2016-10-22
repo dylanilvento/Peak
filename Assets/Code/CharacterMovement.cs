@@ -53,7 +53,7 @@ public class CharacterMovement : MonoBehaviour {
 		if (grounded && !movementOff) {
 
 			anim.SetBool("Walk", true);
-			rb.velocity = new Vector2(2f, 0.75f);
+			rb.velocity = new Vector2(2f, 1.5f);
 
 			// rb.gravityScale = 1f;
 		}

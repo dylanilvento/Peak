@@ -10,17 +10,19 @@ public class Finish : MonoBehaviour {
 
 	//Transform player;
 	//float relPos;
-	Image winScreen;
+	// Image winScreen;
+	bool winActive = false;
 	public int nextLevel;
 	//GameOverCollider goCollider;
 	//Camera camera;
-
+	public GameObject statusScreen;
+	public string statusText;
 	// Use this for initialization
 	void Start () {
 		//player = GameObject.Find("Scout").transform;
 		//relPos = player.position.x - transform.position.x;
 		//goCollider = GameObject.Find("Game Over Collider").GetComponent<GameOverCollider>();
-		winScreen = GameObject.Find("Win Screen").GetComponent<Image>();
+		// winScreen = GameObject.Find("Win Screen").GetComponent<Image>();
 		//camera = GameObject.Find("Main Camera").GetComponent<Camera>();
 	}
 	
@@ -30,10 +32,16 @@ public class Finish : MonoBehaviour {
 		
 		//StartCoroutine("MoveUp");
 
-		if (winScreen.enabled && (Input.GetKeyDown("space") || XCI.GetButton(XboxButton.A) || XCI.GetButton(XboxButton.Start))) {
-			Time.timeScale = 1f;
-			// Application.LoadLevel(Application.loadedLevel);
-			SceneManager.LoadScene(nextLevel);
+		if (winActive && (Input.GetKeyDown("space") || XCI.GetButton(XboxButton.A) || XCI.GetButton(XboxButton.Start))) {
+			if (nextLevel == 0) {
+				Application.Quit();
+			}
+			else {
+				Time.timeScale = 1f;
+				// Application.LoadLevel(Application.loadedLevel);
+				Application.LoadLevel(nextLevel);
+			}
+			
 		}
 	}
 
@@ -46,14 +54,19 @@ public class Finish : MonoBehaviour {
 
 	void OnTriggerEnter2D (Collider2D other) {
 		if (other.gameObject.name.Equals("Scout")) {
+			print("winning");
 			Time.timeScale = 0f;
-			winScreen.enabled = true;
+			// winScreen.enabled = true;
 			int deathCnt = GameOverCollider.deathCnt;
 			// Analytics.CustomEvent("winGame", new Dictionary<string, object>
 			// {
 			// 	{"winTime", Time.timeSinceLevelLoad},
 			// 	{"numDeaths", deathCnt}
 			// });
+
+			statusScreen.SetActive(true);
+			statusScreen.transform.GetChild(0).GetComponent<Text>().text = statusText;
+			winActive = true;
 
 		}
 	}

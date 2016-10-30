@@ -9,19 +9,23 @@ public class GameOverObjectCollider : MonoBehaviour {
 
 	Transform player;
 	float relPos;
-	Image goScreen;
+	// Image goScreen;
 	Camera camera;
 	CameraFollow cameraFollow;
 
+	bool goActive = false;
+
 	// public static int deathCnt = 0;
+	public GameObject statusScreen;
 
 	// Use this for initialization
 	void Start () {
 		player = GameObject.Find("Scout").transform;
 		// relPos = player.position.x - transform.position.x;
-		goScreen = GameObject.Find("Game Over Screen").GetComponent<Image>();
+		// goScreen = GameObject.Find("Game Over Screen").GetComponent<Image>();
 		camera = GameObject.Find("Main Camera").GetComponent<Camera>();
 		cameraFollow = camera.GetComponent<CameraFollow>();
+		// statusScreen = GameObject.Find("Status Screen");
 	}
 	
 	// Update is called once per frame
@@ -30,7 +34,7 @@ public class GameOverObjectCollider : MonoBehaviour {
 		
 		// StartCoroutine("MoveUp");
 
-		if (goScreen.enabled && (Input.GetKeyDown("space") || XCI.GetButton(XboxButton.A) || XCI.GetButton(XboxButton.Start))) {
+		if (goActive && (Input.GetKeyDown("space") || XCI.GetButton(XboxButton.A) || XCI.GetButton(XboxButton.Start))) {
 			Time.timeScale = 1f;
 			Application.LoadLevel(Application.loadedLevel);
 		}
@@ -39,10 +43,15 @@ public class GameOverObjectCollider : MonoBehaviour {
 	void OnCollisionEnter2D (Collision2D other) {
 		if (other.gameObject.name.Equals("Scout")) {
 			Time.timeScale = 0f;
-			goScreen.enabled = true;
+			// goScreen.enabled = true;
 			cameraFollow.canMove = false;
 			// deathCnt++;
 			// print(deathCnt);
+
+			statusScreen.SetActive(true);
+			statusScreen.transform.GetChild(0).GetComponent<Text>().text = "Press A to Restart";
+
+			goActive = true;
 
 		}
 	}

@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.Analytics;
 using System.Collections.Generic;
+using XboxCtrlrInput;
 
 public class GameOverCollider : MonoBehaviour {
 
@@ -10,6 +11,7 @@ public class GameOverCollider : MonoBehaviour {
 	float relPos;
 	Image goScreen;
 	Camera camera;
+	CameraFollow cameraFollow;
 
 	public static int deathCnt = 0;
 
@@ -19,6 +21,7 @@ public class GameOverCollider : MonoBehaviour {
 		relPos = player.position.x - transform.position.x;
 		goScreen = GameObject.Find("Game Over Screen").GetComponent<Image>();
 		camera = GameObject.Find("Main Camera").GetComponent<Camera>();
+		cameraFollow = camera.GetComponent<CameraFollow>();
 	}
 	
 	// Update is called once per frame
@@ -27,14 +30,14 @@ public class GameOverCollider : MonoBehaviour {
 		
 		StartCoroutine("MoveUp");
 
-		if (goScreen.enabled && Input.GetKeyDown("space")) {
+		if (goScreen.enabled && (Input.GetKeyDown("space") || XCI.GetButton(XboxButton.A) || XCI.GetButton(XboxButton.Start))) {
 			Time.timeScale = 1f;
 			Application.LoadLevel(Application.loadedLevel);
 		}
 	}
 
 	IEnumerator MoveUp () {
-		while (camera.WorldToScreenPoint(player.position).y > Screen.height / 1.5f) {
+		while (camera.WorldToScreenPoint(player.position).y > Screen.height / 0.75f) {
 			transform.position = new Vector3(transform.position.x, transform.position.y + 0.01f, transform.position.z);
 			yield return new WaitForSeconds(0.1f);
 		}
@@ -45,7 +48,8 @@ public class GameOverCollider : MonoBehaviour {
 			Time.timeScale = 0f;
 			goScreen.enabled = true;
 			deathCnt++;
-			print(deathCnt);
+			// print(deathCnt);
+			cameraFollow.canMove = false;
 
 		}
 	}

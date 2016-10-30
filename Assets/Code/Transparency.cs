@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class Transparency : MonoBehaviour {
 
@@ -40,7 +41,34 @@ public class Transparency : MonoBehaviour {
 		}
 	}
 
+	public static void SetTransparent (List<GameObject> goArray) {
+		foreach (GameObject item in goArray) {
+			if (item.GetComponent<Image>() != null) {
+				Image currGO = item.GetComponent<Image>();
+				currGO.color = new Color (currGO.color.r, currGO.color.g, currGO.color.b, 0);
+			}
+
+			else if (item.GetComponent<Text>() != null) {
+				Text currGO = item.GetComponent<Text>();
+				currGO.color = new Color (currGO.color.r, currGO.color.g, currGO.color.b, 0);
+			}
+		}
+	}
+
 	public static void UpFade (GameObject[] goArray) {
+		//instance = this;
+		//SetInstance();
+		if (instance == null) {
+			Debug.Log("Ain't working");
+		}
+
+		else {
+			instance.StartCoroutine("FadeUp", goArray);
+		}
+		
+	}
+
+	public static void UpFade (List<GameObject> goArray) {
 		//instance = this;
 		//SetInstance();
 		if (instance == null) {
@@ -63,6 +91,23 @@ public class Transparency : MonoBehaviour {
 	
 				else if (goArray[i].GetComponent<Text>() != null) {
 					Text currGO = goArray[i].GetComponent<Text>();
+					currGO.color = new Color (currGO.color.r, currGO.color.g, currGO.color.b, currGO.color.a + 0.1f);
+				}
+			}
+			yield return new WaitForSeconds(0.05f);
+		}
+	}
+
+	IEnumerator FadeUp (List<GameObject> goArray) {
+		while (goArray[0].GetComponent<Image>().color.a < 1.0f) {
+			foreach (GameObject item in goArray) {
+				if (item.GetComponent<Image>() != null) {
+					Image currGO = item.GetComponent<Image>();
+					currGO.color = new Color (currGO.color.r, currGO.color.g, currGO.color.b, currGO.color.a + 0.1f);
+				}
+	
+				else if (item.GetComponent<Text>() != null) {
+					Text currGO = item.GetComponent<Text>();
 					currGO.color = new Color (currGO.color.r, currGO.color.g, currGO.color.b, currGO.color.a + 0.1f);
 				}
 			}

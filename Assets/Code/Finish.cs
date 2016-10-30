@@ -3,12 +3,15 @@ using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.Analytics;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
+using XboxCtrlrInput;
 
 public class Finish : MonoBehaviour {
 
 	//Transform player;
 	//float relPos;
 	Image winScreen;
+	public int nextLevel;
 	//GameOverCollider goCollider;
 	//Camera camera;
 
@@ -27,9 +30,10 @@ public class Finish : MonoBehaviour {
 		
 		//StartCoroutine("MoveUp");
 
-		if (winScreen.enabled && Input.GetKeyDown("space")) {
+		if (winScreen.enabled && (Input.GetKeyDown("space") || XCI.GetButton(XboxButton.A) || XCI.GetButton(XboxButton.Start))) {
 			Time.timeScale = 1f;
-			Application.LoadLevel(Application.loadedLevel);
+			// Application.LoadLevel(Application.loadedLevel);
+			SceneManager.LoadScene(nextLevel);
 		}
 	}
 
@@ -45,11 +49,11 @@ public class Finish : MonoBehaviour {
 			Time.timeScale = 0f;
 			winScreen.enabled = true;
 			int deathCnt = GameOverCollider.deathCnt;
-			Analytics.CustomEvent("winGame", new Dictionary<string, object>
-			{
-				{"winTime", Time.timeSinceLevelLoad},
-				{"numDeaths", deathCnt}
-			});
+			// Analytics.CustomEvent("winGame", new Dictionary<string, object>
+			// {
+			// 	{"winTime", Time.timeSinceLevelLoad},
+			// 	{"numDeaths", deathCnt}
+			// });
 
 		}
 	}

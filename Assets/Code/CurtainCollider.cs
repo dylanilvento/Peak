@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using XboxCtrlrInput;
 
 public class CurtainCollider : MonoBehaviour {
 
@@ -29,7 +30,7 @@ public class CurtainCollider : MonoBehaviour {
 		}*/
 
 		if (!paused) {
-			if(Input.GetKey("a")) {
+			if(Input.GetKey("a") || Input.GetAxis("Horizontal") < 0f) {
 				// sizeChange += 0.1f;
 				// box.size.x = 1 + sizeChange;
 				box.size = new Vector2 (box.size.x + 0.1f, box.size.y);
@@ -41,7 +42,7 @@ public class CurtainCollider : MonoBehaviour {
 				transform.position = new Vector2 (transform.position.x - 0.05f, transform.position.y);
 			}
 			
-			if(Input.GetKey("s")) {
+			if(Input.GetKey("s") || Input.GetAxis("Horizontal") > 0f) {
 				if (box.size.x > initialSize && currDist > smallestDist) {
 					// sizeChange -= 0.1f;
 					// box.size.x = 1 + sizeChange;
@@ -54,7 +55,7 @@ public class CurtainCollider : MonoBehaviour {
 				}
 			}
 			
-			if(Input.GetKey("k")) {
+			if(Input.GetKey("k") || XCI.GetAxis(XboxAxis.RightStickX) < 0f) {
 				if (box.size.x > initialSize && currDist > smallestDist) {
 					// sizeChange -= 0.01f;
 					// box.size.x = 1 + sizeChange;
@@ -68,7 +69,7 @@ public class CurtainCollider : MonoBehaviour {
 				
 			}
 			
-			if(Input.GetKey("l")) {
+			if(Input.GetKey("l") || XCI.GetAxis(XboxAxis.RightStickX) > 0f) {
 				// sizeChange += 0.01f;
 				// box.size.x = 1 + sizeChange;
 				box.size = new Vector2 (box.size.x + 0.1f, box.size.y);

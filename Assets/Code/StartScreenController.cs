@@ -1,44 +1,51 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using XboxCtrlrInput;
+using System.Collections.Generic;
 
 public class StartScreenController : MonoBehaviour {
 
 	Animator wardAnim, peakAnim;
 	StartScreenButton a, s, k, l, space, esc;
-	GameObject[] escGroup = new GameObject[2];
-	GameObject[] spaceGroup = new GameObject[2];
-	GameObject[] asGroup = new GameObject[3];
-	GameObject[] klGroup = new GameObject[3];
+	
+	List<GameObject> escGroup = new List<GameObject>();
+	List<GameObject> spaceGroup = new List<GameObject>();
+	List<GameObject> asGroup = new List<GameObject>();
+	List<GameObject> klGroup = new List<GameObject>();
+	// GameObject[] escGroup;// = new GameObject[2];
+	// GameObject[] spaceGroup;// = new GameObject[2];
+	// GameObject[] asGroup;// = new GameObject[3];
+	// GameObject[] klGroup;// = new GameObject[3];
 	CharacterMovement charMov;
 	// Use this for initialization
 	void Start () {
 		wardAnim = GameObject.Find("Ward Logo").GetComponent<Animator>();
 		peakAnim = GameObject.Find("Peak Logo").GetComponent<Animator>();
-		a = GameObject.Find("A Button (Start Screen)").GetComponent<StartScreenButton>();
-		s = GameObject.Find("S Button (Start Screen)").GetComponent<StartScreenButton>();
-		k = GameObject.Find("K Button (Start Screen)").GetComponent<StartScreenButton>();
-		l = GameObject.Find("L Button (Start Screen)").GetComponent<StartScreenButton>();
-		space = GameObject.Find("Space Button").GetComponent<StartScreenButton>();
-		esc = GameObject.Find("Esc Button").GetComponent<StartScreenButton>();
+		// a = GameObject.Find("A Button (Start Screen)").GetComponent<StartScreenButton>();
+		// s = GameObject.Find("S Button (Start Screen)").GetComponent<StartScreenButton>();
+		// k = GameObject.Find("K Button (Start Screen)").GetComponent<StartScreenButton>();
+		// l = GameObject.Find("L Button (Start Screen)").GetComponent<StartScreenButton>();
+		// space = GameObject.Find("Space Button").GetComponent<StartScreenButton>();
+		// esc = GameObject.Find("Esc Button").GetComponent<StartScreenButton>();
 		//charMov = GameObject.Find("Scout").GetComponent<CharacterMovement>();
 		//charMov.SetPaused(true);
 
 		for (int i = 0; i < GameObject.Find("Esc Button Group").transform.childCount; i++) {
 			//print(GameObject.Find("Esc Button Group").transform.childCount);
-		    escGroup[i] = GameObject.Find("Esc Button Group").transform.GetChild(i).gameObject;
+		    escGroup.Add(GameObject.Find("Esc Button Group").transform.GetChild(i).gameObject);
 		    //print(escGroup[i].name);
 		}
 		for (int i = 0; i < GameObject.Find("Space Button Group").transform.childCount; i++) {
-		    spaceGroup[i] = GameObject.Find("Space Button Group").transform.GetChild(i).gameObject;
+		    spaceGroup.Add(GameObject.Find("Space Button Group").transform.GetChild(i).gameObject);
 		}
 
 		for (int i = 0; i < GameObject.Find("A & S Buttons").transform.childCount; i++) {
-		    asGroup[i] = GameObject.Find("A & S Buttons").transform.GetChild(i).gameObject;
+		    asGroup.Add(GameObject.Find("A & S Buttons").transform.GetChild(i).gameObject);
 		}
 
 		for (int i = 0; i < GameObject.Find("K & L Buttons").transform.childCount; i++) {
-		    klGroup[i] = GameObject.Find("K & L Buttons").transform.GetChild(i).gameObject;
+		    klGroup.Add(GameObject.Find("K & L Buttons").transform.GetChild(i).gameObject);
 		}
 
 		Transparency.SetTransparent(escGroup);
@@ -47,12 +54,12 @@ public class StartScreenController : MonoBehaviour {
 		Transparency.SetTransparent(klGroup);
 
 		StartCoroutine("StartScreen");
-		StartCoroutine("SwitchButtons");
+		// StartCoroutine("SwitchButtons");
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKey("space")) {
+		if (Input.GetKey("space") || XCI.GetButton(XboxButton.Start)) {
 			/*GameObject.Find("Start Screen Camera").SetActive(false);
 			charMov.SetPaused(false);
 			SetTransparent(escGroup);

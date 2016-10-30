@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using XboxCtrlrInput;
 
 public class PauseScreen : MonoBehaviour {
 
@@ -25,27 +26,27 @@ public class PauseScreen : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		if (Input.GetKeyDown("escape")) {
+		if (Input.GetKeyDown("escape") || XCI.GetButtonDown(XboxButton.Start)) {
 			SetPausedGame();
 			curtain.SwitchPausedGame();
 		}
 
 		if (paused) {
-			if (Input.GetKeyDown("down") && !onQuit) {
+			if ((Input.GetKeyDown("down") || Input.GetAxis("Vertical") < 0f || XCI.GetDPad(XboxDPad.Down)) && !onQuit) {
 				onQuit = true;
 				arrow.transform.localPosition = new Vector2(arrow.transform.localPosition.x, arrow.transform.localPosition.y - 18f);
 			}
-			if (Input.GetKeyDown("up") && onQuit) {
+			if ((Input.GetKeyDown("up") || Input.GetAxis("Vertical") > 0f || XCI.GetDPad(XboxDPad.Up)) && onQuit) {
 				onQuit = false;
 				arrow.transform.localPosition = new Vector2(arrow.transform.localPosition.x, arrow.transform.localPosition.y + 18f);
 			}
 
-			if (Input.GetKeyDown("space") && !onQuit) {
+			if ((Input.GetKeyDown("space") || XCI.GetButton(XboxButton.A)) && !onQuit) {
 				SetPausedGame();
 				curtain.SwitchPausedGame();
 			}
 
-			if (Input.GetKeyDown("space") && onQuit) {
+			if ((Input.GetKeyDown("space") || XCI.GetButton(XboxButton.A)) && onQuit) {
 				Application.Quit();
 			}
 		}

@@ -10,6 +10,8 @@ public class CurtainCollider : MonoBehaviour {
 	GameObject rightCurtain, leftCurtain, renderCurtain;
 	bool paused = false;
 
+	public Camera camera;
+
 
 	// Use this for initialization
 	void Start () {
@@ -29,6 +31,10 @@ public class CurtainCollider : MonoBehaviour {
 			paused = !paused;
 		}*/
 
+		if (camera.WorldToScreenPoint(leftCurtain.transform.position).x < 0) {
+			// leftCurtain.transform.position = 
+		}
+
 		if (!paused) {
 			if(Input.GetKey("a") || Input.GetAxis("Horizontal") < 0f) {
 				// sizeChange += 0.1f;
@@ -42,7 +48,7 @@ public class CurtainCollider : MonoBehaviour {
 				transform.position = new Vector2 (transform.position.x - 0.05f, transform.position.y);
 			}
 			
-			if(Input.GetKey("s") || Input.GetAxis("Horizontal") > 0f) {
+			if(Input.GetKey("s") || Input.GetAxis("Horizontal") > 0f || camera.WorldToScreenPoint(leftCurtain.transform.position).x < -10) {
 				if (box.size.x > initialSize && currDist > smallestDist) {
 					// sizeChange -= 0.1f;
 					// box.size.x = 1 + sizeChange;
@@ -55,7 +61,7 @@ public class CurtainCollider : MonoBehaviour {
 				}
 			}
 			
-			if(Input.GetKey("k") || XCI.GetAxis(XboxAxis.RightStickX) < 0f) {
+			if(Input.GetKey("k") || XCI.GetAxis(XboxAxis.RightStickX) < 0f || camera.WorldToScreenPoint(rightCurtain.transform.position).x > Screen.width + 10) {
 				if (box.size.x > initialSize && currDist > smallestDist) {
 					// sizeChange -= 0.01f;
 					// box.size.x = 1 + sizeChange;

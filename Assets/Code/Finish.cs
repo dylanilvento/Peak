@@ -24,7 +24,7 @@ public class Finish : MonoBehaviour {
 	public string statusText;
 	// Use this for initialization
 	void Start () {
-		// statusScreen.SetActive(false);
+		//statusScreen.SetActive(false);
 		//player = GameObject.Find("Scout").transform;
 		//relPos = player.position.x - transform.position.x;
 		//goCollider = GameObject.Find("Game Over Collider").GetComponent<GameOverCollider>();

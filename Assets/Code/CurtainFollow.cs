@@ -4,6 +4,7 @@ using System.Collections;
 public class CurtainFollow : MonoBehaviour {
 	public GameObject target;
 	Transform player;
+	public Camera camera;
 	// Vector2 relPos;
 	float yDist;
 	// Camera camera;
@@ -25,6 +26,11 @@ public class CurtainFollow : MonoBehaviour {
 	void Update () {
 		transform.position = new Vector3(transform.position.x, player.position.y + yDist, transform.position.z);
 		// StartCoroutine("MoveUp");
+	}
+
+	void FixedUpdate () {
+		// Vector2 screenPos = camera.WorldToScreenPoint(transform.position);
+		// print (screenPos);
 	}
 
 	// IEnumerator MoveUp () {

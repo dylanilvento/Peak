@@ -5,12 +5,17 @@ using UnityEngine.Analytics;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using XboxCtrlrInput;
+using System.Diagnostics;
+using System;
 
 public class Finish : MonoBehaviour {
 
 	//Transform player;
 	//float relPos;
 	// Image winScreen;
+
+	public Animator flagAnim;
+
 	bool winActive = false;
 	public int nextLevel;
 	//GameOverCollider goCollider;
@@ -19,6 +24,7 @@ public class Finish : MonoBehaviour {
 	public string statusText;
 	// Use this for initialization
 	void Start () {
+		// statusScreen.SetActive(false);
 		//player = GameObject.Find("Scout").transform;
 		//relPos = player.position.x - transform.position.x;
 		//goCollider = GameObject.Find("Game Over Collider").GetComponent<GameOverCollider>();
@@ -34,6 +40,18 @@ public class Finish : MonoBehaviour {
 
 		if (winActive && (Input.GetKeyDown("space") || XCI.GetButton(XboxButton.A) || XCI.GetButton(XboxButton.Start))) {
 			if (nextLevel == 0) {
+				try {
+					Process myProcess = new Process();
+			        myProcess.StartInfo.WindowStyle = ProcessWindowStyle.Normal;
+			        myProcess.StartInfo.CreateNoWindow = false;
+			        // myProcess.StartInfo.UseShellExecute = false;
+			        myProcess.StartInfo.FileName = "C:\\Users\\Dylan\\Desktop\\BnP\\Launcher\\Launcher.exe";
+			        myProcess.Start();
+			    }
+			    catch (Exception e) {
+		            Console.WriteLine(e.Message);
+		        }
+
 				Application.Quit();
 			}
 			else {
@@ -53,9 +71,15 @@ public class Finish : MonoBehaviour {
 	}*/
 
 	void OnTriggerEnter2D (Collider2D other) {
-		if (other.gameObject.name.Equals("Scout")) {
+		
+
+		if (other.gameObject.name.Equals("Scout Group")) {
 			print("winning");
-			Time.timeScale = 0f;
+
+			other.gameObject.GetComponent<CharacterMovement2>().SetMovementOff(true);
+
+			flagAnim.SetTrigger("Raise");
+			// Time.timeScale = 0f;
 			// winScreen.enabled = true;
 			int deathCnt = GameOverCollider.deathCnt;
 			// Analytics.CustomEvent("winGame", new Dictionary<string, object>
@@ -67,6 +91,8 @@ public class Finish : MonoBehaviour {
 			statusScreen.SetActive(true);
 			statusScreen.transform.GetChild(0).GetComponent<Text>().text = statusText;
 			winActive = true;
+
+
 
 		}
 	}

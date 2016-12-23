@@ -2,13 +2,15 @@
 using System.Collections;
 
 public class CameraFollow : MonoBehaviour {
+	public GameObject target;
+
 	Transform player;
 	Vector2 relPos;
 	Camera camera;
 	public bool canMove = true;
 	// Use this for initialization
 	void Start () {
-		player = GameObject.Find("Scout").transform;
+		player = target.transform;
 		camera = GetComponent<Camera>();
 		relPos = player.position - transform.position;
 	

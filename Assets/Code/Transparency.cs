@@ -27,6 +27,32 @@ public class Transparency : MonoBehaviour {
 		//instance = this;
 	}
 
+	public static void SetOpacity (GameObject[] goArray, float opacity) {
+		for (int i = 0; i < goArray.Length; i++) {
+			if (goArray[i].GetComponent<Image>() != null) {
+				Image currGO = goArray[i].GetComponent<Image>();
+				currGO.color = new Color (currGO.color.r, currGO.color.g, currGO.color.b, opacity);
+			}
+
+			else if (goArray[i].GetComponent<Text>() != null) {
+				Text currGO = goArray[i].GetComponent<Text>();
+				currGO.color = new Color (currGO.color.r, currGO.color.g, currGO.color.b, opacity);
+			}
+
+			else if (goArray[i].GetComponent<SpriteRenderer>() != null) {
+				SpriteRenderer currGO = goArray[i].GetComponent<SpriteRenderer>();
+				currGO.color = new Color (currGO.color.r, currGO.color.g, currGO.color.b, opacity);
+			}
+		}
+	}
+
+	public static void SetOpacity (SpriteRenderer[] srArray, float opacity) {
+		for (int i = 0; i < srArray.Length; i++) {
+			SpriteRenderer currSR = srArray[i];
+			currSR.color = new Color (currSR.color.r, currSR.color.g, currSR.color.b, opacity);
+		}
+	}
+
 	public static void SetTransparent (GameObject[] goArray) {
 		for (int i = 0; i < goArray.Length; i++) {
 			if (goArray[i].GetComponent<Image>() != null) {

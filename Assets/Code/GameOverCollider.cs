@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using XboxCtrlrInput;
 
 public class GameOverCollider : MonoBehaviour {
-
+	public GameObject target;
 	Transform player;
 	float relPos;
 	Image goScreen;
@@ -21,7 +21,10 @@ public class GameOverCollider : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		player = GameObject.Find("Scout").transform;
+		// player = GameObject.Find("Scout").transform;
+
+		player = target.transform;
+
 		relPos = player.position.x - transform.position.x;
 		// goScreen = GameObject.Find("Game Over Screen").GetComponent<Image>();
 		camera = GameObject.Find("Main Camera").GetComponent<Camera>();
@@ -48,7 +51,7 @@ public class GameOverCollider : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D (Collider2D other) {
-		if (other.gameObject.name.Equals("Scout")) {
+		if (other.gameObject.name.Equals("Scout Group")) {
 			Time.timeScale = 0f;
 			// goScreen.enabled = true;
 			deathCnt++;

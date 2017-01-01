@@ -10,7 +10,7 @@ public class CameraFollow : MonoBehaviour {
 	public bool canMove = true;
 
 
-	float upVal = 3f;
+	float upVal = 2f;
 	float downVal = 4f;
 	// Use this for initialization
 	void Start () {

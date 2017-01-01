@@ -36,7 +36,7 @@ public class CurtainCollider : MonoBehaviour {
 		}
 
 		if (!paused) {
-			if(Input.GetKey("a") || Input.GetAxis("Horizontal") < 0f) {
+			if(Input.GetKey("a") || Input.GetAxis("Horizontal") < 0f || camera.WorldToScreenPoint(leftCurtain.transform.position).x > Screen.width + 10) {
 				// sizeChange += 0.1f;
 				// box.size.x = 1 + sizeChange;
 				box.size = new Vector2 (box.size.x + 0.1f, box.size.y);
@@ -75,7 +75,7 @@ public class CurtainCollider : MonoBehaviour {
 				
 			}
 			
-			if(Input.GetKey("l") || XCI.GetAxis(XboxAxis.RightStickX) > 0f) {
+			if(Input.GetKey("l") || XCI.GetAxis(XboxAxis.RightStickX) > 0f || camera.WorldToScreenPoint(rightCurtain.transform.position).x < -10) {
 				// sizeChange += 0.01f;
 				// box.size.x = 1 + sizeChange;
 				box.size = new Vector2 (box.size.x + 0.1f, box.size.y);

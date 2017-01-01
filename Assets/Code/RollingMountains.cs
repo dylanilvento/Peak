@@ -6,17 +6,22 @@ public class RollingMountains : MonoBehaviour {
 	GameObject camera;
 	float relPosY;
 	public float moveSpeed;
+	Finish finish;
 	// Use this for initialization
 	void Start () {
 		// QualitySettings.vSyncCount = 0;
 		camera = GameObject.Find("Main Camera");
 		relPosY = camera.transform.position.y - transform.position.y;
+		finish = GameObject.Find("Flag Group").GetComponent<Finish>();
 	}
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-		transform.position = new Vector2 (transform.position.x + moveSpeed, transform.position.y);
-		if (transform.position.y < camera.transform.position.y - relPosY) StartCoroutine("MoveUp");
+		
+		if (!finish.winActive) {
+			transform.position = new Vector2 (transform.position.x + moveSpeed, transform.position.y);
+			if (transform.position.y < camera.transform.position.y - relPosY) StartCoroutine("MoveUp");	
+		}
 
 	}
 

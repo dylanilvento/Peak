@@ -16,7 +16,7 @@ public class Finish : MonoBehaviour {
 
 	public Animator flagAnim;
 
-	bool winActive = false;
+	public bool winActive = false;
 	public int nextLevel;
 	//GameOverCollider goCollider;
 	//Camera camera;
@@ -74,7 +74,7 @@ public class Finish : MonoBehaviour {
 		
 
 		if (other.gameObject.name.Equals("Scout Group")) {
-			print("winning");
+			// print("winning");
 
 			other.gameObject.GetComponent<CharacterMovement2>().SetMovementOff(true);
 

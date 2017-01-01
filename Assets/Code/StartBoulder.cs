@@ -17,7 +17,7 @@ public class StartBoulder : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D (Collider2D other) {
-		if (other.gameObject.name.Equals("Scout")) {
+		if (other.gameObject.name.Equals("Scout Group")) {
 			boulderRB.gravityScale = 1f;
 			boulderRB.velocity = new Vector2(velocityX, velocityY);
 		}

@@ -20,7 +20,11 @@ public class RollingMountains : MonoBehaviour {
 		
 		if (!finish.winActive) {
 			transform.position = new Vector2 (transform.position.x + moveSpeed, transform.position.y);
-			if (transform.position.y < camera.transform.position.y - relPosY) StartCoroutine("MoveUp");	
+			// transform.position = new Vector3 (transform.position.x, camera.transform.position.y - relPosY, transform.position.z);
+			if (transform.position.y < camera.transform.position.y - relPosY) StartCoroutine("MoveUp");
+			// if (Mathf.Abs(camera.transform.position.y - transform.position.y) > relPosY) StartCoroutine("MoveUp");
+			else if (transform.position.y > camera.transform.position.y - relPosY) StartCoroutine("MoveDown");
+			// else if (Mathf.Abs(camera.transform.position.y - transform.position.y) < relPosY) StartCoroutine("MoveDown");
 		}
 
 	}
@@ -28,6 +32,13 @@ public class RollingMountains : MonoBehaviour {
 	IEnumerator MoveUp () {
 		// while (transform.position.y < camera.transform.position.y - relPosY) {
 			transform.position = new Vector2(transform.position.x, transform.position.y + 0.01f);
+			yield return new WaitForSeconds(0.001f);
+		// }
+	}
+
+	IEnumerator MoveDown () {
+		// while (transform.position.y < camera.transform.position.y - relPosY) {
+			transform.position = new Vector2(transform.position.x, transform.position.y - 0.01f);
 			yield return new WaitForSeconds(0.001f);
 		// }
 	}

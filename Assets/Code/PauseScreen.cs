@@ -10,13 +10,15 @@ public class PauseScreen : MonoBehaviour {
 	bool paused = false;
 	GameObject arrow;
 	bool onQuit = false;
-	GameObject[] pauseGroup = new GameObject[4];
+	GameObject[] pauseGroup = new GameObject[10];
 	CurtainCollider curtain;
+
+	public bool demoMode = false;
 	// Use this for initialization
 	void Start () {
 		arrow = GameObject.Find("Pause Arrow");
 		curtain = GameObject.Find("Curtain Collider").GetComponent<CurtainCollider>();
-		for (int i = 0; i < 4; i++) {
+		for (int i = 0; i < pauseGroup.Length; i++) {
 			//print(GameObject.Find("Esc Button Group").transform.childCount);
 		    pauseGroup[i] = gameObject.transform.GetChild(i).gameObject;
 		    //print(escGroup[i].name); 
@@ -33,7 +35,7 @@ public class PauseScreen : MonoBehaviour {
 			curtain.SwitchPausedGame();
 		}
 
-		if (paused) {
+		if (paused && !demoMode) {
 			if ((Input.GetKeyDown("down") || Input.GetAxis("Vertical") < 0f || XCI.GetDPad(XboxDPad.Down)) && !onQuit) {
 				onQuit = true;
 				arrow.transform.localPosition = new Vector2(arrow.transform.localPosition.x, arrow.transform.localPosition.y - 18f);
@@ -49,19 +51,36 @@ public class PauseScreen : MonoBehaviour {
 			}
 
 			if ((Input.GetKeyDown("space") || XCI.GetButton(XboxButton.A)) && onQuit) {
-				try {
-					Process myProcess = new Process();
-			        myProcess.StartInfo.WindowStyle = ProcessWindowStyle.Normal;
-			        myProcess.StartInfo.CreateNoWindow = false;
-			        // myProcess.StartInfo.UseShellExecute = false;
-			        myProcess.StartInfo.FileName = "C:\\Users\\Dylan\\Desktop\\BnP\\Launcher\\Launcher.exe";
-			        myProcess.Start();
-			    }
-			    catch (Exception e) {
-		            Console.WriteLine(e.Message);
-		        }
+				//USED FOR WARD GAMES LAUNCHER
+
+				// try {
+				// 	Process myProcess = new Process();
+			 //        myProcess.StartInfo.WindowStyle = ProcessWindowStyle.Normal;
+			 //        myProcess.StartInfo.CreateNoWindow = false;
+			 //        // myProcess.StartInfo.UseShellExecute = false;
+			 //        myProcess.StartInfo.FileName = "C:\\Users\\Dylan\\Desktop\\BnP\\Launcher\\Launcher.exe";
+			 //        myProcess.Start();
+			 //    }
+			 //    catch (Exception e) {
+		  //           Console.WriteLine(e.Message);
+		  //       }
 
 				Application.Quit();
+			}
+		}
+
+		else if (paused && demoMode) {
+			if (XCI.GetButtonDown(XboxButton.Start) || XCI.GetButton(XboxButton.A) || XCI.GetButton(XboxButton.B)) {
+				SetPausedGame();
+				curtain.SwitchPausedGame();
+			}
+			//reload level
+			else if (XCI.GetButton(XboxButton.X)) {
+				Application.LoadLevel(Application.loadedLevel);
+			}
+
+			else if (XCI.GetButton(XboxButton.Y)) {
+				Application.LoadLevel(0);
 			}
 		}
 	
@@ -81,6 +100,15 @@ public class PauseScreen : MonoBehaviour {
 
 	void SetTransparency (float val) {
 		for (int i = 0; i < pauseGroup.Length; i++) {
+			print(i + ": " + pauseGroup[i].name);
+			if (val == 1 && demoMode && pauseGroup[i].name.Equals("Quit")) {
+				continue;
+			}
+
+			else if (val == 1 && !demoMode && (i >= 4)) {
+				continue;
+			}
+
 			if (pauseGroup[i].GetComponent<Image>() != null) {
 				Image currGO = pauseGroup[i].GetComponent<Image>();
 				currGO.color = new Color (currGO.color.r, currGO.color.g, currGO.color.b, val);

@@ -11,8 +11,8 @@ public class CharacterMovement2 : MonoBehaviour {
 
 	public SpriteRenderer[] scoutSR = new SpriteRenderer[6];
 
-	bool grounded = true;
-	bool jumped = false;
+	public bool grounded = true;
+	public bool jumped = false;
 	bool paused = false;
 	static bool started = false;
 	bool foreWorld = true;

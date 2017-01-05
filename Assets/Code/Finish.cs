@@ -40,19 +40,20 @@ public class Finish : MonoBehaviour {
 
 		if (winActive && (Input.GetKeyDown("space") || XCI.GetButton(XboxButton.A) || XCI.GetButton(XboxButton.Start))) {
 			if (nextLevel == 0) {
-				try {
-					Process myProcess = new Process();
-			        myProcess.StartInfo.WindowStyle = ProcessWindowStyle.Normal;
-			        myProcess.StartInfo.CreateNoWindow = false;
-			        // myProcess.StartInfo.UseShellExecute = false;
-			        myProcess.StartInfo.FileName = "C:\\Users\\Dylan\\Desktop\\BnP\\Launcher\\Launcher.exe";
-			        myProcess.Start();
-			    }
-			    catch (Exception e) {
-		            Console.WriteLine(e.Message);
-		        }
+				// try {
+				// 	Process myProcess = new Process();
+			 //        myProcess.StartInfo.WindowStyle = ProcessWindowStyle.Normal;
+			 //        myProcess.StartInfo.CreateNoWindow = false;
+			 //        // myProcess.StartInfo.UseShellExecute = false;
+			 //        myProcess.StartInfo.FileName = "C:\\Users\\Dylan\\Desktop\\BnP\\Launcher\\Launcher.exe";
+			 //        myProcess.Start();
+			 //    }
+			 //    catch (Exception e) {
+		  //           Console.WriteLine(e.Message);
+		  //       }
 
-				Application.Quit();
+				// Application.Quit();
+				Application.LoadLevel(0);
 			}
 			else {
 				Time.timeScale = 1f;

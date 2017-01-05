@@ -9,6 +9,7 @@ public class StartBoulder : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		boulderRB = boulder.GetComponent<Rigidbody2D>();
+		boulderRB.gravityScale = 0f;
 	}
 	
 	// Update is called once per frame

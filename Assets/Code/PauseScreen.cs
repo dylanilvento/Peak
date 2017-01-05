@@ -30,6 +30,10 @@ public class PauseScreen : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+		if (XCI.GetButtonUp(XboxButton.Start)) {
+			print("YES");
+		}
+
 		if (Input.GetKeyDown("escape") || XCI.GetButtonDown(XboxButton.Start)) {
 			SetPausedGame();
 			curtain.SwitchPausedGame();
@@ -70,16 +74,18 @@ public class PauseScreen : MonoBehaviour {
 		}
 
 		else if (paused && demoMode) {
-			if (XCI.GetButtonDown(XboxButton.Start) || XCI.GetButton(XboxButton.A) || XCI.GetButton(XboxButton.B)) {
+			if (XCI.GetButtonUp(XboxButton.A) || XCI.GetButtonUp(XboxButton.B)) {
 				SetPausedGame();
 				curtain.SwitchPausedGame();
 			}
 			//reload level
-			else if (XCI.GetButton(XboxButton.X)) {
+			else if (XCI.GetButtonUp(XboxButton.X)) {
+				Time.timeScale = 1f;
 				Application.LoadLevel(Application.loadedLevel);
 			}
 
-			else if (XCI.GetButton(XboxButton.Y)) {
+			else if (XCI.GetButtonUp(XboxButton.Y)) {
+				Time.timeScale = 1f;
 				Application.LoadLevel(0);
 			}
 		}

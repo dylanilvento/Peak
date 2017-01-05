@@ -42,7 +42,7 @@ public class GameOverCollider : MonoBehaviour {
 		
 		StartCoroutine("Move");
 
-		if (goActive && (Input.GetKeyDown("space") || XCI.GetButton(XboxButton.A) || XCI.GetButton(XboxButton.Start))) {
+		if (goActive && (Input.GetKeyDown("space") || XCI.GetButtonUp(XboxButton.A) || XCI.GetButtonUp(XboxButton.Start))) {
 			Time.timeScale = 1f;
 			Application.LoadLevel(Application.loadedLevel);
 		}

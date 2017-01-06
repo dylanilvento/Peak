@@ -88,6 +88,10 @@ public class PauseScreen : MonoBehaviour {
 				Time.timeScale = 1f;
 				Application.LoadLevel(0);
 			}
+
+			else if (XCI.GetButtonUp(XboxButton.LeftBumper)) {
+				Application.LoadLevel(4);
+			}
 		}
 	
 	}

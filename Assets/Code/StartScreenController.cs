@@ -59,7 +59,7 @@ public class StartScreenController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKey("space") || XCI.GetButton(XboxButton.Start)) {
+		if (Input.GetKey("space") || XCI.GetButtonDown(XboxButton.Start)) {
 			/*GameObject.Find("Start Screen Camera").SetActive(false);
 			charMov.SetPaused(false);
 			SetTransparent(escGroup);
@@ -67,6 +67,7 @@ public class StartScreenController : MonoBehaviour {
 			SetTransparent(asGroup);
 			SetTransparent(klGroup);
 			Destroy (gameObject);*/
+			Time.timeScale = 1f;
 			Application.LoadLevel(1);
 		}
 		

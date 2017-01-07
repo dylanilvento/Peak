@@ -16,7 +16,7 @@ public class PlayDemoReel : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (XCI.GetButtonDown(XboxButton.Start)) {
-			// Time.timeScale = 1f;
+			Time.timeScale = 1f;
 			Application.LoadLevel(0);
 		}
 	}

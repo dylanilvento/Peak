@@ -21,9 +21,14 @@ public class Finish : MonoBehaviour {
 	//GameOverCollider goCollider;
 	//Camera camera;
 	public GameObject statusScreen;
-	public string statusText;
+	public string statusTextKeyboard;
+	public string statusTextCtrlr;
+
+	int ctrlNum;
 	// Use this for initialization
 	void Start () {
+
+		ctrlNum = XCI.GetNumPluggedCtrlrs();
 		//statusScreen.SetActive(false);
 		//player = GameObject.Find("Scout").transform;
 		//relPos = player.position.x - transform.position.x;
@@ -90,7 +95,10 @@ public class Finish : MonoBehaviour {
 			// });
 
 			statusScreen.SetActive(true);
-			statusScreen.transform.GetChild(0).GetComponent<Text>().text = statusText;
+
+			if (ctrlNum > 0) statusScreen.transform.GetChild(0).GetComponent<Text>().text = statusTextCtrlr;
+			else statusScreen.transform.GetChild(0).GetComponent<Text>().text = statusTextKeyboard;
+			// statusScreen.transform.GetChild(0).GetComponent<Text>().text = statusText;
 			winActive = true;
 
 

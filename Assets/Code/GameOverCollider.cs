@@ -14,6 +14,10 @@ public class GameOverCollider : MonoBehaviour {
 	Camera camera;
 	CameraFollow cameraFollow;
 
+	int ctrlNum;
+
+	string goText;
+
 	CharacterMovement2 scoutMvmt;
 
 	bool goActive = false;
@@ -25,6 +29,7 @@ public class GameOverCollider : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		// player = GameObject.Find("Scout").transform;
+		ctrlNum = XCI.GetNumPluggedCtrlrs();
 
 		player = target.transform;
 
@@ -34,6 +39,9 @@ public class GameOverCollider : MonoBehaviour {
 		camera = GameObject.Find("Main Camera").GetComponent<Camera>();
 		cameraFollow = camera.GetComponent<CameraFollow>();
 		scoutMvmt = target.GetComponent<CharacterMovement2>();
+
+		if (ctrlNum > 0) goText = "Press A to Restart";
+		else goText = "Press Space to Restart";
 	}
 	
 	// Update is called once per frame

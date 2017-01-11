@@ -78,7 +78,7 @@ public class GameOverCollider : MonoBehaviour {
 			cameraFollow.canMove = false;
 
 			statusScreen.SetActive(true);
-			statusScreen.transform.GetChild(0).GetComponent<Text>().text = "Press A to Restart";
+			statusScreen.transform.GetChild(0).GetComponent<Text>().text = goText;
 
 			goActive = true;
 

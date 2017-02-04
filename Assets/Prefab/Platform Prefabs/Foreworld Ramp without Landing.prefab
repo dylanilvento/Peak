@@ -27,6 +27,7 @@ GameObject:
   - component: {fileID: 21253926}
   - component: {fileID: 11409914}
   - component: {fileID: 6878672}
+  - component: {fileID: 114180126234800618}
   m_Layer: 8
   m_Name: Foreworld Ramp without Landing
   m_TagString: Untagged
@@ -41,7 +42,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 116860}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.2000003, y: -37.2, z: 0}
+  m_LocalPosition: {x: 8.300001, y: -16.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 461626}
@@ -173,3 +174,15 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 116860}
   m_IsPrefabParent: 1
+--- !u!114 &114180126234800618
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 116860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fceb9ec18fe2045c69717e46dae85002, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundType: 1

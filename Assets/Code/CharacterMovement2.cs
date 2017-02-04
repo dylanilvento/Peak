@@ -17,6 +17,8 @@ public class CharacterMovement2 : MonoBehaviour {
 	static bool started = false;
 	bool foreWorld = true;
 
+	float walkVelX = 2f, walkVelY = 0f;
+
 	float lastTimeGrounded;
 
 	GameObject collidedWith;
@@ -46,7 +48,7 @@ public class CharacterMovement2 : MonoBehaviour {
 			//WILL NEED TO LOOK AT THIS
 			//anim.SetBool("Walk", true);
 			
-			rb.velocity = new Vector2(2f, 1.25f);
+			rb.velocity = new Vector2(walkVelX, walkVelY);
 
 			// rb.gravityScale = 1f;
 		}
@@ -66,7 +68,17 @@ public class CharacterMovement2 : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D (Collision2D other) {
+		if (other.gameObject.GetComponent<GroundTypeContainer>() != null) {
+			GroundType groundType = other.gameObject.GetComponent<GroundTypeContainer>().groundType;
+			if ((groundType == GroundType.Flat) || (groundType == GroundType.Ramp && other.gameObject.transform.localScale.x < 0)) {
+				walkVelX = 2f; walkVelY = 0f;
+			}
 
+			else if (groundType == GroundType.Ramp && other.gameObject.transform.localScale.x > 0) {
+				print("this is working");
+				walkVelX = 2f; walkVelY = 1.75f;
+			}
+		}
 		grounded = true;
 	
 

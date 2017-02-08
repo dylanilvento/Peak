@@ -70,7 +70,7 @@ public class GameOverCollider : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D (Collider2D other) {
-		if (other.gameObject.name.Equals("Scout Group")) {
+		if (other.gameObject == target) {
 			Time.timeScale = 0f;
 			// goScreen.enabled = true;
 			deathCnt++;

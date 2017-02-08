@@ -68,7 +68,9 @@ public class CharacterMovement2 : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D (Collision2D other) {
-		if (other.gameObject.GetComponent<GroundTypeContainer>() != null) {
+
+		if (other.gameObject.GetComponent<GroundTypeContainer>() != null && !jumped) {
+
 			GroundType groundType = other.gameObject.GetComponent<GroundTypeContainer>().groundType;
 			if ((groundType == GroundType.Flat) || (groundType == GroundType.Ramp && other.gameObject.transform.localScale.x < 0)) {
 				walkVelX = 2f; walkVelY = 0f;
@@ -76,7 +78,7 @@ public class CharacterMovement2 : MonoBehaviour {
 
 			else if (groundType == GroundType.Ramp && other.gameObject.transform.localScale.x > 0) {
 				print("this is working");
-				walkVelX = 2f; walkVelY = 1.75f;
+				walkVelX = 2f; walkVelY = 1.4f;
 			}
 		}
 		grounded = true;
@@ -149,13 +151,13 @@ public class CharacterMovement2 : MonoBehaviour {
 			gameObject.layer = 8;
 			// sr.sortingOrder = 4;
 
-			SetSortingOrder(4);
+			// SetSortingOrder(4);
 
 			foreWorld = true;
 		}
 		else {
 			gameObject.layer = 9;
-			SetSortingOrder(-4);
+			// SetSortingOrder(-4);
 			// sr.sortingOrder = 0;
 			foreWorld = false;
 		}
@@ -164,7 +166,7 @@ public class CharacterMovement2 : MonoBehaviour {
 	void SetForeWorld () {
 		gameObject.layer = 8;
 		// sr.sortingOrder = 4;
-		SetSortingOrder(4);
+		// SetSortingOrder(4);
 		foreWorld = true;
 		//sr.color = Color.white;
 	}
@@ -172,7 +174,7 @@ public class CharacterMovement2 : MonoBehaviour {
 	void SetBackWorld () {
 		gameObject.layer = 9;
 		// sr.sortingOrder = 0;
-		SetSortingOrder(-4);
+		// SetSortingOrder(-4);
 		foreWorld = false;
 		//sr.color = Color.red;
 	}

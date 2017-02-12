@@ -20,7 +20,7 @@ public class Finish : MonoBehaviour {
 	public int nextLevel;
 	//GameOverCollider goCollider;
 	//Camera camera;
-	public GameObject statusScreen;
+	public GameObject statusScreen, target;
 	public string statusTextKeyboard;
 	public string statusTextCtrlr;
 
@@ -79,7 +79,7 @@ public class Finish : MonoBehaviour {
 	void OnTriggerEnter2D (Collider2D other) {
 		
 
-		if (other.gameObject.name.Equals("Scout Group")) {
+		if (other.gameObject == target) {
 			// print("winning");
 
 			other.gameObject.GetComponent<CharacterMovement2>().SetMovementOff(true);

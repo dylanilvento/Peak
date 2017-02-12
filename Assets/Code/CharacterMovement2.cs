@@ -2,12 +2,15 @@
 using System.Collections;
 using UnityEngine.Analytics;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class CharacterMovement2 : MonoBehaviour {
 	Rigidbody2D rb;
 	Animator anim;
 
 	public bool movementOff = false;
+
+	public GameObject xSpeedText, ySpeedText, groundedText, jumpedText;
 
 	public SpriteRenderer[] scoutSR = new SpriteRenderer[6];
 
@@ -17,9 +20,13 @@ public class CharacterMovement2 : MonoBehaviour {
 	static bool started = false;
 	bool foreWorld = true;
 
+	float lastXPos;
+
 	float walkVelX = 2f, walkVelY = 0f;
 
 	float lastTimeGrounded;
+
+	bool rollingBack = false;
 
 	GameObject collidedWith;
 	SpriteRenderer sr;
@@ -37,12 +44,38 @@ public class CharacterMovement2 : MonoBehaviour {
 		grounded = true;
 		jumped = false;
 		paused = false;
+
+		lastXPos = transform.position.x;
 	
+	}
+
+	void Update () {
+		if (lastXPos > transform.position.x) {
+			walkVelY += 0.5f;
+			walkVelX += 0.5f;
+			// print("increasing y velocity");
+			// rollingBack = true;
+
+			rb.velocity = new Vector2(walkVelX, walkVelY);
+		}
+
+		lastXPos = transform.position.x;
+
+		// xSpeedText.GetComponent<Text>().text = "x vel: " + walkVelX;
+		// ySpeedText.GetComponent<Text>().text = "y vel: " + walkVelY;
+
+		// if (grounded) groundedText.GetComponent<Text>().text = "Grounded? Yes";
+		// else groundedText.GetComponent<Text>().text = "Grounded? No";
+
+		// if (jumped) jumpedText.GetComponent<Text>().text = "Jumped? Yes";
+		// else jumpedText.GetComponent<Text>().text = "Jumped? No";
 	}
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-		//if (Time.realtimeSinceStartup - lastTimeGrounded > 0.01f) {
+
+
+
 		if (grounded && !movementOff) {
 
 			//WILL NEED TO LOOK AT THIS
@@ -50,20 +83,16 @@ public class CharacterMovement2 : MonoBehaviour {
 			
 			rb.velocity = new Vector2(walkVelX, walkVelY);
 
-			// rb.gravityScale = 1f;
 		}
+
+		// else if (!grounded && rollingBack) {
+		// 	rb.velocity = new Vector2(walkVelX, walkVelY);
+		// 	rollingBack = false;
+		// }
 
 		else if (movementOff) {
 			rb.velocity = new Vector2(0f, 0f);
 		}
-		
-		// else {
-		// 	//rb.velocity = new Vector2(0f, 0f);
-			
-		// 	//rb.gravityScale = 2f;
-			
-		// 	//anim.SetBool("Walk", false);
-		// }
 	
 	}
 
@@ -86,11 +115,24 @@ public class CharacterMovement2 : MonoBehaviour {
 
 	}
 
+	void OnCollisionStay2D (Collision2D other) {
+		if (other.gameObject.GetComponent<GroundTypeContainer>() != null && !jumped) {
+			grounded = true;
+		}
+	}
+
 	void OnCollisionExit2D (Collision2D other) {
 		//print(other.gameObject.name);
 		
 		//if (other.gameObject.name.Contains("Fore Rock") || other.gameObject.name.Contains("Back Rock")) {
+			
+			//LET'S SEE IF THIS WORKS
 			grounded = false;
+
+
+
+
+
 		//}
 	}
 
@@ -201,7 +243,7 @@ public class CharacterMovement2 : MonoBehaviour {
 
 		//collidedWith = null;
 
-		yield return new WaitForSeconds(0.5f); //not this
+		yield return new WaitForSeconds(1f); //not this
 		jumped = false;
 
 		if (collidedWith.name.Contains("Back")) {

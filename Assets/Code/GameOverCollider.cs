@@ -57,7 +57,7 @@ public class GameOverCollider : MonoBehaviour {
 	}
 
 	IEnumerator Move () {
-		while ((camera.WorldToScreenPoint(player.position).y > Screen.height / 2f) || ((Mathf.Abs(player.position.y - transform.position.y) > relPosY) && scoutMvmt.grounded)) {
+		while ((camera.WorldToScreenPoint(player.position).y > Screen.height / 1.5f) || ((Mathf.Abs(player.position.y - transform.position.y) > relPosY) && scoutMvmt.grounded)) {
 		// while ((camera.WorldToScreenPoint(player.position).y > Screen.height / 2f) || ((Mathf.Abs(player.position.y - transform.position.y) > relPosY) && !(scoutMvmt.jumped))) {
 			transform.position = new Vector3(transform.position.x, transform.position.y + 0.01f, transform.position.z);
 			yield return new WaitForSeconds(0.1f);

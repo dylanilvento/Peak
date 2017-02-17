@@ -275,6 +275,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementOff: 0
+  xSpeedText: {fileID: 0}
+  ySpeedText: {fileID: 0}
+  groundedText: {fileID: 0}
+  jumpedText: {fileID: 0}
   scoutSR:
   - {fileID: 21265510}
   - {fileID: 21204404}

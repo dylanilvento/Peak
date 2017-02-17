@@ -16,7 +16,7 @@ public class GameOverColliderMover : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D (Collider2D other) {
-		if (other.gameObject.name.Equals("Scout Group")) {
+		if (other.gameObject.name.Equals("Scout Mega Group")) {
 			goCollider.transform.position = new Vector2 (goCollider.transform.position.x, goCollider.transform.position.y + dist);
 
 		}

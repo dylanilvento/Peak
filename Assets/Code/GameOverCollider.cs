@@ -16,6 +16,9 @@ public class GameOverCollider : MonoBehaviour {
 
 	int ctrlNum;
 
+	float upVal = 1.4f;
+	float downVal = 4f;
+
 	string goText;
 
 	CharacterMovement2 scoutMvmt;
@@ -57,14 +60,14 @@ public class GameOverCollider : MonoBehaviour {
 	}
 
 	IEnumerator Move () {
-		while ((camera.WorldToScreenPoint(player.position).y > Screen.height / 1.5f) || ((Mathf.Abs(player.position.y - transform.position.y) > relPosY) && scoutMvmt.grounded)) {
+		while ((camera.WorldToScreenPoint(player.position).y > Screen.height / upVal) || ((Mathf.Abs(player.position.y - transform.position.y) > relPosY) && scoutMvmt.grounded)) {
 		// while ((camera.WorldToScreenPoint(player.position).y > Screen.height / 2f) || ((Mathf.Abs(player.position.y - transform.position.y) > relPosY) && !(scoutMvmt.jumped))) {
-			transform.position = new Vector3(transform.position.x, transform.position.y + 0.01f, transform.position.z);
+			transform.position = new Vector3(transform.position.x, transform.position.y + 0.005f, transform.position.z);
 			yield return new WaitForSeconds(0.1f);
 		}
 
-		while (((camera.WorldToScreenPoint(player.position).y < Screen.height / 4f)) && !(scoutMvmt.grounded)) {
-			transform.position = new Vector3(transform.position.x, transform.position.y - 0.01f, transform.position.z);
+		while (((camera.WorldToScreenPoint(player.position).y < Screen.height / downVal)) && !(scoutMvmt.grounded)) {
+			transform.position = new Vector3(transform.position.x, transform.position.y - 0.005f, transform.position.z);
 			yield return new WaitForSeconds(0.1f);
 		}
 	}

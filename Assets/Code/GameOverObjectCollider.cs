@@ -13,6 +13,8 @@ public class GameOverObjectCollider : MonoBehaviour {
 	Camera camera;
 	CameraFollow cameraFollow;
 
+	public GameObject target;
+
 	bool goActive = false;
 
 	// public static int deathCnt = 0;
@@ -20,7 +22,7 @@ public class GameOverObjectCollider : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		player = GameObject.Find("Scout Group").transform;
+		// player = GameObject.Find("Scout Group").transform;
 		// relPos = player.position.x - transform.position.x;
 		// goScreen = GameObject.Find("Game Over Screen").GetComponent<Image>();
 		camera = GameObject.Find("Main Camera").GetComponent<Camera>();
@@ -41,7 +43,7 @@ public class GameOverObjectCollider : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D (Collision2D other) {
-		if (other.gameObject.name.Equals("Scout Group")) {
+		if (other.gameObject == target) {
 			Time.timeScale = 0f;
 			// goScreen.enabled = true;
 			cameraFollow.canMove = false;

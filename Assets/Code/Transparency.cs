@@ -46,6 +46,25 @@ public class Transparency : MonoBehaviour {
 		}
 	}
 
+	public static void SetOpacity (GameObject go, float opacity) {
+		// for (int i = 0; i < goArray.Length; i++) {
+			if (go.GetComponent<Image>() != null) {
+				Image currGO = go.GetComponent<Image>();
+				currGO.color = new Color (currGO.color.r, currGO.color.g, currGO.color.b, opacity);
+			}
+
+			else if (go.GetComponent<Text>() != null) {
+				Text currGO = go.GetComponent<Text>();
+				currGO.color = new Color (currGO.color.r, currGO.color.g, currGO.color.b, opacity);
+			}
+
+			else if (go.GetComponent<SpriteRenderer>() != null) {
+				SpriteRenderer currGO = go.GetComponent<SpriteRenderer>();
+				currGO.color = new Color (currGO.color.r, currGO.color.g, currGO.color.b, opacity);
+			}
+		// }
+	}
+
 	public static void SetOpacity (SpriteRenderer[] srArray, float opacity) {
 		for (int i = 0; i < srArray.Length; i++) {
 			SpriteRenderer currSR = srArray[i];

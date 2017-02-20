@@ -6,6 +6,7 @@ public class StartBoulder : MonoBehaviour {
 	public float velocityX;
 	public float velocityY;
 	Rigidbody2D boulderRB;
+
 	// Use this for initialization
 	void Start () {
 		boulderRB = boulder.GetComponent<Rigidbody2D>();
@@ -21,6 +22,8 @@ public class StartBoulder : MonoBehaviour {
 		if (other.gameObject.name.Equals("Scout Mega Group")) {
 			boulderRB.gravityScale = 1f;
 			boulderRB.velocity = new Vector2(velocityX, velocityY);
+
+			
 		}
 	}
 }

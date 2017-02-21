@@ -11,6 +11,7 @@ public class CurtainCollider : MonoBehaviour {
 	bool paused = false;
 
 	public Camera camera;
+	LevelControl levelControl;
 
 
 	// Use this for initialization
@@ -20,6 +21,7 @@ public class CurtainCollider : MonoBehaviour {
 		initialSize = box.size.x;
 		rightCurtain = GameObject.Find("Right Curtain");
 		leftCurtain = GameObject.Find("Left Curtain");
+		levelControl = GameObject.Find("Game Controller").GetComponent<LevelControl>();
 		smallestDist = Mathf.Abs(rightCurtain.transform.position.x) - Mathf.Abs(leftCurtain.transform.position.x);
 	}
 	
@@ -35,7 +37,7 @@ public class CurtainCollider : MonoBehaviour {
 			// leftCurtain.transform.position = 
 		}
 
-		if (!paused) {
+		if (!paused && levelControl.GetFollow()) {
 			if(Input.GetKey("a") || Input.GetAxis("Horizontal") < 0f || camera.WorldToScreenPoint(leftCurtain.transform.position).x > Screen.width + 10) {
 				// sizeChange += 0.1f;
 				// box.size.x = 1 + sizeChange;

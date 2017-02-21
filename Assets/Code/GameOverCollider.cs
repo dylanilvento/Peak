@@ -14,6 +14,10 @@ public class GameOverCollider : MonoBehaviour {
 	Camera camera;
 	CameraFollow cameraFollow;
 
+	LevelControl levelControl;
+
+
+
 	int ctrlNum;
 
 	float upVal = 1.4f;
@@ -43,16 +47,20 @@ public class GameOverCollider : MonoBehaviour {
 		cameraFollow = camera.GetComponent<CameraFollow>();
 		scoutMvmt = target.GetComponent<CharacterMovement2>();
 
+		levelControl = GameObject.Find("Game Controller").GetComponent<LevelControl>();
+
 		if (ctrlNum > 0) goText = "Press A to Restart";
 		else goText = "Press Space to Restart";
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		transform.position = new Vector3 (player.position.x - relPos, transform.position.y, transform.position.z);
-		
-		StartCoroutine("Move");
-
+		if (levelControl.GetFollow()) {
+			transform.position = new Vector3 (player.position.x - relPos, transform.position.y, transform.position.z);
+			
+			StartCoroutine("Move");
+		}
+			
 		if (goActive && (Input.GetKeyDown("space") || XCI.GetButtonUp(XboxButton.A) || XCI.GetButtonUp(XboxButton.Start))) {
 			Time.timeScale = 1f;
 			Application.LoadLevel(Application.loadedLevel);
@@ -74,18 +82,32 @@ public class GameOverCollider : MonoBehaviour {
 
 	void OnTriggerEnter2D (Collider2D other) {
 		if (other.gameObject == target) {
-			Time.timeScale = 0f;
+			// Time.timeScale = 0f;
 			// goScreen.enabled = true;
 			deathCnt++;
+			levelControl.SetFollow(false);
 			// print(deathCnt);
-			cameraFollow.canMove = false;
+			// cameraFollow.canMove = false;
 
-			statusScreen.SetActive(true);
-			statusScreen.transform.GetChild(0).GetComponent<Text>().text = goText;
+			// statusScreen.SetActive(true);
+			// statusScreen.transform.GetChild(0).GetComponent<Text>().text = goText;
 
-			goActive = true;
+			// goActive = true;
 
 		}
+	}
+
+	void OnTriggerExit2D (Collider2D other) {
+		if (other.gameObject == target) {
+			StartCoroutine("RestartLevel");
+		}
+	}
+
+	IEnumerator RestartLevel() {
+		// print("restarting level");
+		yield return new WaitForSeconds(0.2f);
+		Time.timeScale = 1f;
+		Application.LoadLevel(Application.loadedLevel);
 	}
 
 	public static int GetDeathCnt () {

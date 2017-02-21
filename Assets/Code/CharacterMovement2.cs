@@ -38,7 +38,7 @@ public class CharacterMovement2 : MonoBehaviour {
 		sr = GetComponent<SpriteRenderer>();
 		
 		if (movementOff) {
-			rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY;
+			rb.velocity = new Vector2(0f, 0f);
 		}
 
 		grounded = true;
@@ -80,6 +80,7 @@ public class CharacterMovement2 : MonoBehaviour {
 
 			//WILL NEED TO LOOK AT THIS
 			//anim.SetBool("Walk", true);
+			print("test");
 			
 			rb.velocity = new Vector2(walkVelX, walkVelY);
 

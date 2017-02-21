@@ -16,7 +16,7 @@ public class GameOverObjectCollider : MonoBehaviour {
 	public GameObject target;
 
 	bool goActive = false;
-
+	// LevelControl levelControl;
 	// public static int deathCnt = 0;
 	public GameObject statusScreen;
 
@@ -27,6 +27,7 @@ public class GameOverObjectCollider : MonoBehaviour {
 		// goScreen = GameObject.Find("Game Over Screen").GetComponent<Image>();
 		camera = GameObject.Find("Main Camera").GetComponent<Camera>();
 		cameraFollow = camera.GetComponent<CameraFollow>();
+		// levelControl = GameObject.Find("Game Controller").GetComponent<LevelControl>();
 		// statusScreen = GameObject.Find("Status Screen");
 	}
 	
@@ -44,17 +45,26 @@ public class GameOverObjectCollider : MonoBehaviour {
 
 	void OnCollisionEnter2D (Collision2D other) {
 		if (other.gameObject == target) {
-			Time.timeScale = 0f;
+			Time.timeScale = 0.0001f;
+
+			StartCoroutine("RestartLevel");
 			// goScreen.enabled = true;
-			cameraFollow.canMove = false;
-			// deathCnt++;
-			// print(deathCnt);
+			// cameraFollow.canMove = false;
+			// // deathCnt++;
+			// // print(deathCnt);
 
-			statusScreen.SetActive(true);
-			statusScreen.transform.GetChild(0).GetComponent<Text>().text = "Press A to Restart";
+			// statusScreen.SetActive(true);
+			// statusScreen.transform.GetChild(0).GetComponent<Text>().text = "Press A to Restart";
 
-			goActive = true;
+			// goActive = true;
 
 		}
+	}
+
+	IEnumerator RestartLevel() {
+		// print("restarting level");
+		yield return new WaitForSeconds(0.0001f);
+		Time.timeScale = 1f;
+		Application.LoadLevel(Application.loadedLevel);
 	}
 }

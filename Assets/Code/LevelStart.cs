@@ -5,11 +5,16 @@ using UnityEngine;
 public class LevelStart : MonoBehaviour {
 
 	public GameObject[] numbers = new GameObject[3];
+	CharacterMovement2 charMove;
+	LevelControl levelControl;
 
 	// Use this for initialization
 	void Start () {
 
+		charMove = GameObject.Find("Scout Mega Group").GetComponent<CharacterMovement2>();
 		// Time.timeScale = 0f;
+		levelControl = GetComponent<LevelControl>();
+		// levelControl.SetFollow(false);
 		StartCoroutine("StartLevel");
 		
 	}
@@ -20,6 +25,8 @@ public class LevelStart : MonoBehaviour {
 	}
 
 	IEnumerator StartLevel () {
+		yield return new WaitForSeconds(0.1f);
+		levelControl.SetFollow(false);
 		yield return new WaitForSeconds(1f);
 		Camera camera = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();;
 
@@ -31,6 +38,8 @@ public class LevelStart : MonoBehaviour {
 			Destroy(currNum);
 		}
 
-		Time.timeScale = 1f;
+		charMove.movementOff = false;
+		levelControl.SetFollow(true);
+		// Time.timeScale = 1f;
 	}
 }

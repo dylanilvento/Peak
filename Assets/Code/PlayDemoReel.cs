@@ -17,7 +17,7 @@ public class PlayDemoReel : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		// if (XCI.GetButtonDown(XboxButton.Start)) {
-		if (Input.GetKeyDown(KeyCode.JoystickButton9)) {
+		if (Input.GetButtonDown("Start Button")) {
 			Time.timeScale = 1f;
 			Application.LoadLevel(0);
 		}

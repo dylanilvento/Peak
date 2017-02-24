@@ -39,7 +39,7 @@ public class PauseScreen : MonoBehaviour {
 		// if (Input.GetKeyDown("escape") || XCI.GetButtonDown(XboxButton.Start)) {
 
 		//*********************************
-		if (Input.GetKeyDown("escape") || Input.GetKeyDown(KeyCode.JoystickButton0)) {
+		if (Input.GetKeyDown("escape") || Input.GetButtonDown("Start Button")) {
 			SetPausedGame();
 			curtain.SwitchPausedGame();
 		}
@@ -85,25 +85,25 @@ public class PauseScreen : MonoBehaviour {
 
 		else if (paused && demoMode) {
 			// if (XCI.GetButtonUp(XboxButton.A) || XCI.GetButtonUp(XboxButton.B)) {
-			if (Input.GetKeyDown(KeyCode.JoystickButton0) || Input.GetKeyDown(KeyCode.JoystickButton1)) {
+			if (Input.GetButtonDown("A Button") || Input.GetButtonDown("B Button")) {
 				SetPausedGame();
 				curtain.SwitchPausedGame();
 			}
 			//reload level
 			// else if (XCI.GetButtonUp(XboxButton.X)) {
-			else if (Input.GetKeyDown(KeyCode.JoystickButton2)) {
+			else if (Input.GetButtonDown("X Button")) {
 				Time.timeScale = 1f;
 				Application.LoadLevel(Application.loadedLevel);
 			}
 
 			// else if (XCI.GetButtonUp(XboxButton.Y)) {
-			else if (Input.GetKeyDown(KeyCode.JoystickButton3)) {
+			else if (Input.GetButtonDown("Y Button")) {
 				Time.timeScale = 1f;
 				Application.LoadLevel(0);
 			}
 
 			// else if (XCI.GetButtonUp(XboxButton.LeftBumper)) {
-			else if (Input.GetKeyDown(KeyCode.JoystickButton4)) {
+			else if (Input.GetButtonDown("Left Bumper")) {
 				Application.LoadLevel(4);
 			}
 		}

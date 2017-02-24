@@ -51,7 +51,7 @@ public class StartScreenController : MonoBehaviour {
 	void Update () {
 		// if (Input.GetKey("space") || XCI.GetButtonDown(XboxButton.Start)) {
 		
-		if (Input.GetKey("space") || Input.GetKeyDown(KeyCode.JoystickButton9)) {
+		if (Input.GetKey("space") || Input.GetButtonDown("Start Button")) {
 			Time.timeScale = 1f;
 			Application.LoadLevel(1);
 		}
@@ -67,7 +67,7 @@ public class StartScreenController : MonoBehaviour {
 		
 		yield return new WaitForSeconds(4f);
 
-		if (ctrlNum > 0) {
+		// if (ctrlNum > 0) {
 			print(ctrlNum);
 			Transparency.UpFade(leftStickGroup);
 			
@@ -79,20 +79,20 @@ public class StartScreenController : MonoBehaviour {
 			
 			yield return new WaitForSeconds(1f);
 			Transparency.UpFade(startGroup);
-		}
+		// }
 
-		else {
-			Transparency.UpFade(asGroup);
+		// else {
+		// 	Transparency.UpFade(asGroup);
 			
-			yield return new WaitForSeconds(1f);
-			Transparency.UpFade(klGroup);
+		// 	yield return new WaitForSeconds(1f);
+		// 	Transparency.UpFade(klGroup);
 			
-			yield return new WaitForSeconds(1f);
-			Transparency.UpFade(escGroup);
+		// 	yield return new WaitForSeconds(1f);
+		// 	Transparency.UpFade(escGroup);
 			
-			yield return new WaitForSeconds(1f);
-			Transparency.UpFade(spaceGroup);
-		}
+		// 	yield return new WaitForSeconds(1f);
+		// 	Transparency.UpFade(spaceGroup);
+		// }
 
 	}
 

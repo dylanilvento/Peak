@@ -47,7 +47,7 @@ public class Finish : MonoBehaviour {
 		//StartCoroutine("MoveUp");
 
 		// if (winActive && (Input.GetKeyDown("space") || XCI.GetButton(XboxButton.A) || XCI.GetButton(XboxButton.Start))) {
-		if (winActive && (Input.GetKeyDown("space") || Input.GetKeyDown(KeyCode.JoystickButton0) || Input.GetKeyDown(KeyCode.JoystickButton9))) {
+		if (winActive && (Input.GetKeyDown("space") || Input.GetButtonDown("A Button") || Input.GetButtonDown("Start Button"))) {
 			if (nextLevel == 0) {
 				// try {
 				// 	Process myProcess = new Process();

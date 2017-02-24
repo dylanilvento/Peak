@@ -50,7 +50,7 @@ public class CurtainCollider : MonoBehaviour {
 				transform.position = new Vector2 (transform.position.x - 0.05f, transform.position.y);
 			}
 			
-			if(Input.GetKey("s") || Input.GetAxis("Horizontal") > 0f || camera.WorldToScreenPoint(leftCurtain.transform.position).x < -10) {
+			if(Input.GetKey("s") || Input.GetAxis("Horizontal") > 0f || camera.WorldToScreenPoint(leftCurtain.transform.position).x < -15f) {
 				if (box.size.x > initialSize && currDist > smallestDist) {
 					// sizeChange -= 0.1f;
 					// box.size.x = 1 + sizeChange;
@@ -82,7 +82,7 @@ public class CurtainCollider : MonoBehaviour {
 			//************ COMMENTED OUT DUE TO CTRLR ERROR
 			// if(Input.GetKey("k") || XCI.GetAxis(XboxAxis.RightStickX) < 0f || camera.WorldToScreenPoint(rightCurtain.transform.position).x > Screen.width + 10) {
 			
-			if(Input.GetKey("l") || Input.GetAxis("Mouse X") > 0f || camera.WorldToScreenPoint(rightCurtain.transform.position).x < -10) {
+			if(Input.GetKey("l") || Input.GetAxis("Mouse X") > 0f || camera.WorldToScreenPoint(rightCurtain.transform.position).x < -15f) {
 				// sizeChange += 0.01f;
 				// box.size.x = 1 + sizeChange;
 				box.size = new Vector2 (box.size.x + 0.1f, box.size.y);

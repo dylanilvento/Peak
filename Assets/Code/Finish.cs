@@ -4,7 +4,7 @@ using UnityEngine.UI;
 using UnityEngine.Analytics;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
-using XboxCtrlrInput;
+// using XboxCtrlrInput;
 using System.Diagnostics;
 using System;
 
@@ -28,7 +28,10 @@ public class Finish : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-		ctrlNum = XCI.GetNumPluggedCtrlrs();
+		//************ COMMENTED OUT DUE TO CTRLR ERROR
+		// ctrlNum = XCI.GetNumPluggedCtrlrs();
+		//***************************
+
 		//statusScreen.SetActive(false);
 		//player = GameObject.Find("Scout").transform;
 		//relPos = player.position.x - transform.position.x;
@@ -43,7 +46,8 @@ public class Finish : MonoBehaviour {
 		
 		//StartCoroutine("MoveUp");
 
-		if (winActive && (Input.GetKeyDown("space") || XCI.GetButton(XboxButton.A) || XCI.GetButton(XboxButton.Start))) {
+		// if (winActive && (Input.GetKeyDown("space") || XCI.GetButton(XboxButton.A) || XCI.GetButton(XboxButton.Start))) {
+		if (winActive && (Input.GetKeyDown("space") || Input.GetKeyDown(KeyCode.JoystickButton0) || Input.GetKeyDown(KeyCode.JoystickButton9))) {
 			if (nextLevel == 0) {
 				// try {
 				// 	Process myProcess = new Process();
@@ -96,8 +100,11 @@ public class Finish : MonoBehaviour {
 
 			statusScreen.SetActive(true);
 
-			if (ctrlNum > 0) statusScreen.transform.GetChild(0).GetComponent<Text>().text = statusTextCtrlr;
-			else statusScreen.transform.GetChild(0).GetComponent<Text>().text = statusTextKeyboard;
+			// ********** COMMENTED OUT DUE TO CTRLR ERROR
+			/*if (ctrlNum > 0)*/ statusScreen.transform.GetChild(0).GetComponent<Text>().text = statusTextCtrlr;
+			// else statusScreen.transform.GetChild(0).GetComponent<Text>().text = statusTextKeyboard;
+			//********************************
+
 			// statusScreen.transform.GetChild(0).GetComponent<Text>().text = statusText;
 			winActive = true;
 

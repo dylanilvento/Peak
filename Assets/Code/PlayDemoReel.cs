@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using XboxCtrlrInput;
+// using XboxCtrlrInput;
 
 public class PlayDemoReel : MonoBehaviour {
 
@@ -16,7 +16,8 @@ public class PlayDemoReel : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (XCI.GetButtonDown(XboxButton.Start)) {
+		// if (XCI.GetButtonDown(XboxButton.Start)) {
+		if (Input.GetKeyDown(KeyCode.JoystickButton9)) {
 			Time.timeScale = 1f;
 			Application.LoadLevel(0);
 		}

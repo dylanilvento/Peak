@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.Analytics;
 using System.Collections.Generic;
-using XboxCtrlrInput;
+// using XboxCtrlrInput;
 
 public class GameOverCollider : MonoBehaviour {
 	public GameObject target;
@@ -36,7 +36,7 @@ public class GameOverCollider : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		// player = GameObject.Find("Scout").transform;
-		ctrlNum = XCI.GetNumPluggedCtrlrs();
+		// ctrlNum = XCI.GetNumPluggedCtrlrs();
 
 		player = target.transform;
 
@@ -49,8 +49,9 @@ public class GameOverCollider : MonoBehaviour {
 
 		levelControl = GameObject.Find("Game Controller").GetComponent<LevelControl>();
 
-		if (ctrlNum > 0) goText = "Press A to Restart";
-		else goText = "Press Space to Restart";
+		//************ COMMENTED OUT DUE TO CTRLR ERROR
+		/*if (ctrlNum > 0)*/ goText = "Press A to Restart";
+		// else goText = "Press Space to Restart";
 	}
 	
 	// Update is called once per frame
@@ -60,8 +61,13 @@ public class GameOverCollider : MonoBehaviour {
 			
 			StartCoroutine("Move");
 		}
-			
-		if (goActive && (Input.GetKeyDown("space") || XCI.GetButtonUp(XboxButton.A) || XCI.GetButtonUp(XboxButton.Start))) {
+		
+		//************ COMMENTED OUT DUE TO CTRLR ERROR
+
+		// if (goActive && (Input.GetKeyDown("space") || XCI.GetButtonUp(XboxButton.A) || XCI.GetButtonUp(XboxButton.Start))) {
+
+		//***********************
+		if (goActive && (Input.GetKeyDown("space") || Input.GetKeyDown(KeyCode.JoystickButton0) || Input.GetKeyDown(KeyCode.JoystickButton9))) {
 			Time.timeScale = 1f;
 			Application.LoadLevel(Application.loadedLevel);
 		}

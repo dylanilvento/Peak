@@ -42,6 +42,8 @@ public class StartScreenController : MonoBehaviour {
 		Transparency.SetTransparent(klGroup);
 
 		StartCoroutine("StartScreen");
+
+		Screen.SetResolution(1920, 1080, true);
 		// StartCoroutine("SwitchButtons");
 	}
 	
@@ -58,36 +60,36 @@ public class StartScreenController : MonoBehaviour {
 	IEnumerator StartScreen () {
 		yield return new WaitForSeconds(1f);
 		wardAnim.SetBool("Transition", true);
-		yield return new WaitForSeconds(4f);
+		yield return new WaitForSeconds(3f);
 		Destroy (GameObject.Find("Ward Logo"));
 		peakAnim.SetBool("Transition", true);
 		
-		yield return new WaitForSeconds(5f);
+		yield return new WaitForSeconds(4f);
 
 		if (ctrlNum > 0) {
 			print(ctrlNum);
 			Transparency.UpFade(leftStickGroup);
 			
-			yield return new WaitForSeconds(2f);
+			yield return new WaitForSeconds(1f);
 			Transparency.UpFade(rightStickGroup);
 			
-			yield return new WaitForSeconds(2f);
+			yield return new WaitForSeconds(1f);
 			Transparency.UpFade(pauseGroup);
 			
-			yield return new WaitForSeconds(2f);
+			yield return new WaitForSeconds(1f);
 			Transparency.UpFade(startGroup);
 		}
 
 		else {
 			Transparency.UpFade(asGroup);
 			
-			yield return new WaitForSeconds(2f);
+			yield return new WaitForSeconds(1f);
 			Transparency.UpFade(klGroup);
 			
-			yield return new WaitForSeconds(2f);
+			yield return new WaitForSeconds(1f);
 			Transparency.UpFade(escGroup);
 			
-			yield return new WaitForSeconds(2f);
+			yield return new WaitForSeconds(1f);
 			Transparency.UpFade(spaceGroup);
 		}
 

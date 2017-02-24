@@ -28,7 +28,14 @@ public class CameraFollow : MonoBehaviour {
 			transform.position = new Vector3(player.position.x - relPos.x, transform.position.y, transform.position.z);
 			if (camera.WorldToScreenPoint(player.position).y > Screen.height / upVal) StartCoroutine("MoveUp");
 			else if (camera.WorldToScreenPoint(player.position).y < Screen.height / downVal) StartCoroutine("MoveDown");
+
 		}
+
+		// else {
+		// 	transform.position = new Vector3(player.position.x - relPos.x, transform.position.y, transform.position.z);
+		// }
+
+		
 	}
 
 	IEnumerator MoveUp () {

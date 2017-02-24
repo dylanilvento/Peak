@@ -11,6 +11,7 @@ public class PlayDemoReel : MonoBehaviour {
         MovieTexture movie = (MovieTexture)r.material.mainTexture;
         movie.loop = true;
         movie.Play();
+        Screen.SetResolution(1920, 1080, true);
 	}
 	
 	// Update is called once per frame

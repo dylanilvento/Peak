@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.Analytics;
 using System.Collections.Generic;
-// using XboxCtrlrInput;
+using XboxCtrlrInput;
 
 public class GameOverCollider : MonoBehaviour {
 	public GameObject target;
@@ -114,6 +114,11 @@ public class GameOverCollider : MonoBehaviour {
 		yield return new WaitForSeconds(0.2f);
 		Time.timeScale = 1f;
 		Application.LoadLevel(Application.loadedLevel);
+	}
+
+	public void SetGOVals (float up, float down) {
+		upVal = up;
+		downVal = down;
 	}
 
 	public static int GetDeathCnt () {

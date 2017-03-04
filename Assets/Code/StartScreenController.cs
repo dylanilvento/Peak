@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
-// using XboxCtrlrInput;
+using XboxCtrlrInput;
 using System.Collections.Generic;
 
 public class StartScreenController : MonoBehaviour {
@@ -29,7 +29,7 @@ public class StartScreenController : MonoBehaviour {
 		wardAnim = GameObject.Find("Ward Logo").GetComponent<Animator>();
 		peakAnim = GameObject.Find("Peak Logo").GetComponent<Animator>();
 
-		// ctrlNum = XCI.GetNumPluggedCtrlrs();
+		ctrlNum = XCI.GetNumPluggedCtrlrs();
 
 		Transparency.SetTransparent(leftStickGroup);
 		Transparency.SetTransparent(rightStickGroup);
@@ -49,9 +49,9 @@ public class StartScreenController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		// if (Input.GetKey("space") || XCI.GetButtonDown(XboxButton.Start)) {
+		if (Input.GetKey("space") || XCI.GetButtonDown(XboxButton.Start)) {
 		
-		if (Input.GetKey("space") || Input.GetButtonDown("Start Button")) {
+		// if (Input.GetKey("space") || Input.GetButtonDown("Start Button")) {
 			Time.timeScale = 1f;
 			Application.LoadLevel(1);
 		}
@@ -67,7 +67,7 @@ public class StartScreenController : MonoBehaviour {
 		
 		yield return new WaitForSeconds(4f);
 
-		// if (ctrlNum > 0) {
+		if (ctrlNum > 0) {
 			print(ctrlNum);
 			Transparency.UpFade(leftStickGroup);
 			
@@ -79,20 +79,20 @@ public class StartScreenController : MonoBehaviour {
 			
 			yield return new WaitForSeconds(1f);
 			Transparency.UpFade(startGroup);
-		// }
+		}
 
-		// else {
-		// 	Transparency.UpFade(asGroup);
+		else {
+			Transparency.UpFade(asGroup);
 			
-		// 	yield return new WaitForSeconds(1f);
-		// 	Transparency.UpFade(klGroup);
+			yield return new WaitForSeconds(1f);
+			Transparency.UpFade(klGroup);
 			
-		// 	yield return new WaitForSeconds(1f);
-		// 	Transparency.UpFade(escGroup);
+			yield return new WaitForSeconds(1f);
+			Transparency.UpFade(escGroup);
 			
-		// 	yield return new WaitForSeconds(1f);
-		// 	Transparency.UpFade(spaceGroup);
-		// }
+			yield return new WaitForSeconds(1f);
+			Transparency.UpFade(spaceGroup);
+		}
 
 	}
 

@@ -31,7 +31,7 @@ public class LevelStart : MonoBehaviour {
 		Camera camera = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();;
 
 		foreach (GameObject num in numbers) {
-			print("working");
+			// print("working");
 			GameObject currNum = Instantiate(num, camera.ScreenToWorldPoint(new Vector3(camera.pixelWidth/2, camera.pixelHeight/1.1f, 0)), Quaternion.identity);
 			currNum.transform.SetParent(GameObject.Find("Canvas").transform, false);
 			yield return new WaitForSeconds(0.5f);

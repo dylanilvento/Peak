@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.Analytics;
 using System.Collections.Generic;
-// using XboxCtrlrInput;
+using XboxCtrlrInput;
 
 public class GameOverObjectCollider : MonoBehaviour {
 
@@ -38,9 +38,9 @@ public class GameOverObjectCollider : MonoBehaviour {
 		// StartCoroutine("MoveUp");
 
 		//************ COMMENTED OUT DUE TO CTRLR ERROR
-		// if (goActive && (Input.GetKeyDown("space") || XCI.GetButton(XboxButton.A) || XCI.GetButton(XboxButton.Start))) {
+		if (goActive && (Input.GetKeyDown("space") || XCI.GetButton(XboxButton.A) || XCI.GetButton(XboxButton.Start))) {
 		//*************
-		if (goActive && (Input.GetKeyDown("space") || Input.GetButtonDown("A Button") || Input.GetButtonDown("Start Button"))) {
+		// if (goActive && (Input.GetKeyDown("space") || Input.GetButtonDown("A Button") || Input.GetButtonDown("Start Button"))) {
 			Time.timeScale = 1f;
 			Application.LoadLevel(Application.loadedLevel);
 		}

@@ -51,4 +51,9 @@ public class CameraFollow : MonoBehaviour {
 			yield return new WaitForSeconds(0.1f);
 		}
 	}
+
+	public void SetCameraVals (float up, float down) {
+		upVal = up;
+		downVal = down;
+	}
 }

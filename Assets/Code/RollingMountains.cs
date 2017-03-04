@@ -27,11 +27,12 @@ public class RollingMountains : MonoBehaviour {
 		
 		if (!finish.winActive && levelControl.GetFollow()) {
 			transform.position = new Vector2 ((player.transform.position.x - relPos.x) * moveMultiplier, transform.position.y);
-			// transform.position = new Vector3 (transform.position.x, camera.transform.position.y - relPosY, transform.position.z);
+			
+			// transform.position = new Vector3 (transform.position.x, camera.transform.position.y - relPos.y, transform.position.z);
+			
 			if (transform.position.y < camera.transform.position.y - relPosY) StartCoroutine("MoveUp");
-			// if (Mathf.Abs(camera.transform.position.y - transform.position.y) > relPosY) StartCoroutine("MoveUp");
 			else if (transform.position.y > camera.transform.position.y - relPosY) StartCoroutine("MoveDown");
-			// else if (Mathf.Abs(camera.transform.position.y - transform.position.y) < relPosY) StartCoroutine("MoveDown");
+			
 		}
 
 	}

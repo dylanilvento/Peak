@@ -4,7 +4,7 @@ using UnityEngine.UI;
 using UnityEngine.Analytics;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
-// using XboxCtrlrInput;
+using XboxCtrlrInput;
 using System.Diagnostics;
 using System;
 
@@ -29,7 +29,7 @@ public class Finish : MonoBehaviour {
 	void Start () {
 
 		//************ COMMENTED OUT DUE TO CTRLR ERROR
-		// ctrlNum = XCI.GetNumPluggedCtrlrs();
+		ctrlNum = XCI.GetNumPluggedCtrlrs();
 		//***************************
 
 		//statusScreen.SetActive(false);
@@ -46,8 +46,8 @@ public class Finish : MonoBehaviour {
 		
 		//StartCoroutine("MoveUp");
 
-		// if (winActive && (Input.GetKeyDown("space") || XCI.GetButton(XboxButton.A) || XCI.GetButton(XboxButton.Start))) {
-		if (winActive && (Input.GetKeyDown("space") || Input.GetButtonDown("A Button") || Input.GetButtonDown("Start Button"))) {
+		if (winActive && (Input.GetKeyDown("space") || XCI.GetButton(XboxButton.A) || XCI.GetButton(XboxButton.Start))) {
+		// if (winActive && (Input.GetKeyDown("space") || Input.GetButtonDown("A Button") || Input.GetButtonDown("Start Button"))) {
 			if (nextLevel == 0) {
 				// try {
 				// 	Process myProcess = new Process();
@@ -101,11 +101,10 @@ public class Finish : MonoBehaviour {
 			statusScreen.SetActive(true);
 
 			// ********** COMMENTED OUT DUE TO CTRLR ERROR
-			/*if (ctrlNum > 0)*/ statusScreen.transform.GetChild(0).GetComponent<Text>().text = statusTextCtrlr;
-			// else statusScreen.transform.GetChild(0).GetComponent<Text>().text = statusTextKeyboard;
+			if (ctrlNum > 0) statusScreen.transform.GetChild(0).GetComponent<Text>().text = statusTextCtrlr;
+			else statusScreen.transform.GetChild(0).GetComponent<Text>().text = statusTextKeyboard;
 			//********************************
 
-			// statusScreen.transform.GetChild(0).GetComponent<Text>().text = statusText;
 			winActive = true;
 
 

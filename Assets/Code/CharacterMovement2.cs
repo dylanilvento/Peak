@@ -61,14 +61,14 @@ public class CharacterMovement2 : MonoBehaviour {
 
 		lastXPos = transform.position.x;
 
-		// xSpeedText.GetComponent<Text>().text = "x vel: " + walkVelX;
-		// ySpeedText.GetComponent<Text>().text = "y vel: " + walkVelY;
+		xSpeedText.GetComponent<Text>().text = "x vel: " + walkVelX;
+		ySpeedText.GetComponent<Text>().text = "y vel: " + walkVelY;
 
-		// if (grounded) groundedText.GetComponent<Text>().text = "Grounded? Yes";
-		// else groundedText.GetComponent<Text>().text = "Grounded? No";
+		if (grounded) groundedText.GetComponent<Text>().text = "Grounded? Yes";
+		else groundedText.GetComponent<Text>().text = "Grounded? No";
 
-		// if (jumped) jumpedText.GetComponent<Text>().text = "Jumped? Yes";
-		// else jumpedText.GetComponent<Text>().text = "Jumped? No";
+		if (jumped) jumpedText.GetComponent<Text>().text = "Jumped? Yes";
+		else jumpedText.GetComponent<Text>().text = "Jumped? No";
 	}
 	
 	// Update is called once per frame
@@ -80,7 +80,7 @@ public class CharacterMovement2 : MonoBehaviour {
 
 			//WILL NEED TO LOOK AT THIS
 			//anim.SetBool("Walk", true);
-			print("test");
+			// print("test");
 			
 			rb.velocity = new Vector2(walkVelX, walkVelY);
 
@@ -107,7 +107,7 @@ public class CharacterMovement2 : MonoBehaviour {
 			}
 
 			else if (groundType == GroundType.Ramp && other.gameObject.transform.localScale.x > 0) {
-				print("this is working");
+				// print("this is working");
 				walkVelX = 2f; walkVelY = 1.4f;
 			}
 		}

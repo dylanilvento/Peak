@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
-// using XboxCtrlrInput;
+using XboxCtrlrInput;
 using System.Diagnostics;
 using System;
 
@@ -13,7 +13,7 @@ public class PauseScreen : MonoBehaviour {
 	GameObject[] pauseGroup = new GameObject[10];
 	CurtainCollider curtain;
 
-	public bool demoMode = false;
+	public static bool demoMode = false;
 	// Use this for initialization
 	void Start () {
 		arrow = GameObject.Find("Pause Arrow");
@@ -36,35 +36,35 @@ public class PauseScreen : MonoBehaviour {
 
 		//************ COMMENTED OUT DUE TO CTRLR ERROR
 
-		// if (Input.GetKeyDown("escape") || XCI.GetButtonDown(XboxButton.Start)) {
+		if (Input.GetKeyDown("escape") || XCI.GetButtonDown(XboxButton.Start)) {
 
 		//*********************************
-		if (Input.GetKeyDown("escape") || Input.GetButtonDown("Start Button")) {
+		// if (Input.GetKeyDown("escape") || Input.GetButtonDown("Start Button")) {
 			SetPausedGame();
 			curtain.SwitchPausedGame();
 		}
 
 		if (paused && !demoMode) {
-			if ((Input.GetKeyDown("down") || Input.GetAxis("Vertical") < 0f /*|| XCI.GetDPad(XboxDPad.Down)*/) && !onQuit) {
+			if ((Input.GetKeyDown("down") || Input.GetAxis("Vertical") < 0f || XCI.GetDPad(XboxDPad.Down)) && !onQuit) {
 				onQuit = true;
 				arrow.transform.localPosition = new Vector2(arrow.transform.localPosition.x, arrow.transform.localPosition.y - 18f);
 			}
-			if ((Input.GetKeyDown("up") || Input.GetAxis("Vertical") > 0f /*|| XCI.GetDPad(XboxDPad.Up)*/) && onQuit) {
+			if ((Input.GetKeyDown("up") || Input.GetAxis("Vertical") > 0f || XCI.GetDPad(XboxDPad.Up)) && onQuit) {
 				onQuit = false;
 				arrow.transform.localPosition = new Vector2(arrow.transform.localPosition.x, arrow.transform.localPosition.y + 18f);
 			}
 			
 			//************ COMMENTED OUT DUE TO CTRLR ERROR
-			// if ((Input.GetKeyDown("space") || XCI.GetButton(XboxButton.A)) && !onQuit) {
-			if ((Input.GetKeyDown("space") || Input.GetKeyDown(KeyCode.JoystickButton0)) && onQuit) {
+			if ((Input.GetKeyDown("space") || XCI.GetButton(XboxButton.A)) && !onQuit) {
+			// if ((Input.GetKeyDown("space") || Input.GetKeyDown(KeyCode.JoystickButton0)) && onQuit) {
 				SetPausedGame();
 				curtain.SwitchPausedGame();
 			}
 
 				//************ COMMENTED OUT DUE TO CTRLR ERROR
-			// if ((Input.GetKeyDown("space") || XCI.GetButton(XboxButton.A)) && onQuit) {
+			if ((Input.GetKeyDown("space") || XCI.GetButton(XboxButton.A)) && onQuit) {
 			
-			if ((Input.GetKeyDown("space") || Input.GetKeyDown(KeyCode.JoystickButton0)) && onQuit) {
+			// if ((Input.GetKeyDown("space") || Input.GetKeyDown(KeyCode.JoystickButton0)) && onQuit) {
 				//USED FOR WARD GAMES LAUNCHER
 
 				// try {
@@ -84,26 +84,26 @@ public class PauseScreen : MonoBehaviour {
 		}
 
 		else if (paused && demoMode) {
-			// if (XCI.GetButtonUp(XboxButton.A) || XCI.GetButtonUp(XboxButton.B)) {
-			if (Input.GetButtonDown("A Button") || Input.GetButtonDown("B Button")) {
+			if (XCI.GetButtonUp(XboxButton.A) || XCI.GetButtonUp(XboxButton.B)) {
+			// if (Input.GetButtonDown("A Button") || Input.GetButtonDown("B Button")) {
 				SetPausedGame();
 				curtain.SwitchPausedGame();
 			}
 			//reload level
-			// else if (XCI.GetButtonUp(XboxButton.X)) {
-			else if (Input.GetButtonDown("X Button")) {
+			else if (XCI.GetButtonUp(XboxButton.X)) {
+			// else if (Input.GetButtonDown("X Button")) {
 				Time.timeScale = 1f;
 				Application.LoadLevel(Application.loadedLevel);
 			}
 
-			// else if (XCI.GetButtonUp(XboxButton.Y)) {
-			else if (Input.GetButtonDown("Y Button")) {
+			else if (XCI.GetButtonUp(XboxButton.Y)) {
+			// else if (Input.GetButtonDown("Y Button")) {
 				Time.timeScale = 1f;
 				Application.LoadLevel(0);
 			}
 
-			// else if (XCI.GetButtonUp(XboxButton.LeftBumper)) {
-			else if (Input.GetButtonDown("Left Bumper")) {
+			else if (XCI.GetButtonUp(XboxButton.LeftBumper)) {
+			// else if (Input.GetButtonDown("Left Bumper")) {
 				Application.LoadLevel(4);
 			}
 		}
@@ -124,7 +124,7 @@ public class PauseScreen : MonoBehaviour {
 
 	void SetTransparency (float val) {
 		for (int i = 0; i < pauseGroup.Length; i++) {
-			print(i + ": " + pauseGroup[i].name);
+			// print(i + ": " + pauseGroup[i].name);
 			if (val == 1 && demoMode && pauseGroup[i].name.Equals("Quit")) {
 				continue;
 			}

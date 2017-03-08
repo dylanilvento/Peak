@@ -29,6 +29,8 @@ public class StartScreenController : MonoBehaviour {
 		wardAnim = GameObject.Find("Ward Logo").GetComponent<Animator>();
 		peakAnim = GameObject.Find("Peak Logo").GetComponent<Animator>();
 
+		Time.timeScale = 1f;
+
 		ctrlNum = XCI.GetNumPluggedCtrlrs();
 
 		Transparency.SetTransparent(leftStickGroup);

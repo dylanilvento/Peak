@@ -13,7 +13,7 @@ public class PauseScreen : MonoBehaviour {
 	GameObject[] pauseGroup = new GameObject[10];
 	CurtainCollider curtain;
 
-	public static bool demoMode = false;
+	static bool demoMode = false;
 	// Use this for initialization
 	void Start () {
 		arrow = GameObject.Find("Pause Arrow");

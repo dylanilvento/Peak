@@ -45,7 +45,9 @@ public class StartScreenController : MonoBehaviour {
 
 		StartCoroutine("StartScreen");
 
-		Screen.SetResolution(1920, 1080, true);
+		Cursor.visible = false;
+
+		// Screen.SetResolution(1920, 1080, true);
 		// StartCoroutine("SwitchButtons");
 	}
 	

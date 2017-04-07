@@ -6,13 +6,17 @@ using UnityEngine.UI;
 
 public class CharacterMovement2 : MonoBehaviour {
 	Rigidbody2D rb;
-	Animator anim;
+	// Animator anim;
+	CircleCollider2D coll;
+
+	CameraFollow camera;
 
 	public bool movementOff = false;
 
-	public GameObject xSpeedText, ySpeedText, groundedText, jumpedText;
+	GameObject xSpeedText, ySpeedText, groundedText, jumpedText;
 
-	public SpriteRenderer[] scoutSR = new SpriteRenderer[6];
+	public SpriteRenderer[] scoutForeSprites = new SpriteRenderer[6];
+	public SpriteRenderer[] scoutBackSprites = new SpriteRenderer[6];
 
 	public bool grounded = true;
 	public bool jumped = false;
@@ -34,7 +38,8 @@ public class CharacterMovement2 : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		rb = gameObject.GetComponent<Rigidbody2D>();
-		anim = GetComponent<Animator>();
+		// anim = GetComponent<Animator>();
+		coll = gameObject.GetComponent<CircleCollider2D>();
 		sr = GetComponent<SpriteRenderer>();
 		
 		if (movementOff) {
@@ -46,6 +51,13 @@ public class CharacterMovement2 : MonoBehaviour {
 		paused = false;
 
 		lastXPos = transform.position.x;
+
+		camera = GameObject.Find("Main Camera").GetComponent<CameraFollow>();
+
+		xSpeedText = GameObject.Find("X");
+		ySpeedText = GameObject.Find("Y");
+		groundedText = GameObject.Find("Grounded Text");
+		jumpedText = GameObject.Find("Jumped Text");
 	
 	}
 
@@ -79,7 +91,7 @@ public class CharacterMovement2 : MonoBehaviour {
 		if (grounded && !movementOff) {
 
 			//WILL NEED TO LOOK AT THIS
-			//anim.SetBool("Walk", true);
+			// anim.SetBool("Walk", true);
 			// print("test");
 			
 			rb.velocity = new Vector2(walkVelX, walkVelY);
@@ -110,8 +122,23 @@ public class CharacterMovement2 : MonoBehaviour {
 				// print("this is working");
 				walkVelX = 2f; walkVelY = 1.4f;
 			}
+
+			grounded = true;
 		}
-		grounded = true;
+
+		
+		else if (other.gameObject.GetComponent<GameOverObjectCollider>() != null) {
+			print("working");
+			coll.enabled = false;
+			Explode();
+			camera.CallCameraShake();
+
+		}
+
+		// else {
+		// 	grounded = true;
+		// }
+		
 	
 
 	}
@@ -187,6 +214,19 @@ public class CharacterMovement2 : MonoBehaviour {
 
 	}
 
+	void Explode() {
+		Destroy(scoutForeSprites[0].gameObject.transform.parent.GetComponent<Animator>());
+		Destroy(scoutBackSprites[0].gameObject.transform.parent.GetComponent<Animator>());
+		movementOff = true;
+
+		for (int ii = 0; ii < scoutForeSprites.Length; ii++) {
+			print("Exploding");
+			float xVel = Random.Range(-15f, 15f), yVel = Random.Range(0f, 15f);
+			scoutForeSprites[ii].gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(xVel, yVel);
+			scoutBackSprites[ii].gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(xVel, yVel);
+		}
+	}
+
 	//void SwitchWorlds and SetFore/Backworld do the same thing. Simplify.
 
 	void SwitchWorlds () {
@@ -223,9 +263,9 @@ public class CharacterMovement2 : MonoBehaviour {
 	}
 
 	void SetSortingOrder (int layerDiff) {
-		foreach (SpriteRenderer scoutSprite in scoutSR) {
-			scoutSprite.sortingOrder += layerDiff;
-		}
+		// foreach (SpriteRenderer scoutSprite in scoutSR) {
+		// 	scoutSprite.sortingOrder += layerDiff;
+		// }
 	}
 
 	public void SetMovementOff (bool val) {

@@ -24,20 +24,17 @@ public class Finish : MonoBehaviour {
 	public string statusTextKeyboard;
 	public string statusTextCtrlr;
 
+	LevelControl lvlControl;
+
 	int ctrlNum;
 	// Use this for initialization
 	void Start () {
-
+		
 		//************ COMMENTED OUT DUE TO CTRLR ERROR
 		ctrlNum = XCI.GetNumPluggedCtrlrs();
 		//***************************
-
-		//statusScreen.SetActive(false);
-		//player = GameObject.Find("Scout").transform;
-		//relPos = player.position.x - transform.position.x;
-		//goCollider = GameObject.Find("Game Over Collider").GetComponent<GameOverCollider>();
-		// winScreen = GameObject.Find("Win Screen").GetComponent<Image>();
-		//camera = GameObject.Find("Main Camera").GetComponent<Camera>();
+		lvlControl = GameObject.Find("Game Controller").GetComponent<LevelControl>();
+		
 	}
 	
 	// Update is called once per frame
@@ -106,6 +103,8 @@ public class Finish : MonoBehaviour {
 			//********************************
 
 			winActive = true;
+
+			lvlControl.SetLevelOver(true);
 
 
 

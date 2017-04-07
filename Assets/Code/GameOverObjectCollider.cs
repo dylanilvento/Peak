@@ -12,6 +12,9 @@ public class GameOverObjectCollider : MonoBehaviour {
 	// Image goScreen;
 	Camera camera;
 	CameraFollow cameraFollow;
+	
+
+	Rigidbody2D rb;
 
 	public GameObject target;
 
@@ -29,6 +32,8 @@ public class GameOverObjectCollider : MonoBehaviour {
 		cameraFollow = camera.GetComponent<CameraFollow>();
 		// levelControl = GameObject.Find("Game Controller").GetComponent<LevelControl>();
 		// statusScreen = GameObject.Find("Status Screen");
+
+		rb = GetComponent<Rigidbody2D>();
 	}
 	
 	// Update is called once per frame
@@ -44,11 +49,16 @@ public class GameOverObjectCollider : MonoBehaviour {
 			Time.timeScale = 1f;
 			Application.LoadLevel(Application.loadedLevel);
 		}
+
+		if (gameObject.name.Contains("Boulder") && GameObject.Find("Game Controller").GetComponent<LevelControl>().GetLevelOver()) {
+			rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY;
+			
+		}
 	}
 
 	void OnCollisionEnter2D (Collision2D other) {
 		if (other.gameObject == target) {
-			Time.timeScale = 0.0001f;
+			// Time.timeScale = 0.0001f;
 
 			StartCoroutine("RestartLevel");
 			// goScreen.enabled = true;
@@ -66,8 +76,8 @@ public class GameOverObjectCollider : MonoBehaviour {
 
 	IEnumerator RestartLevel() {
 		// print("restarting level");
-		yield return new WaitForSeconds(0.0001f);
-		Time.timeScale = 1f;
+		yield return new WaitForSeconds(2f);
+		// Time.timeScale = 1f;
 		Application.LoadLevel(Application.loadedLevel);
 	}
 }

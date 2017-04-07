@@ -5,6 +5,7 @@ using UnityEngine;
 public class LevelControl : MonoBehaviour {
 
 	bool follow = true;
+	bool levelOver = false;
 	// Use this for initialization
 	void Start () {
 		
@@ -13,6 +14,14 @@ public class LevelControl : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		
+	}
+
+	public void SetLevelOver (bool val) {
+		levelOver = val;
+	}
+
+	public bool GetLevelOver () {
+		return levelOver;
 	}
 
 	public void SetFollow (bool val) {

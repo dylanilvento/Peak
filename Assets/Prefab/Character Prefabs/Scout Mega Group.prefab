@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 114161851743720396}
   m_Layer: 8
   m_Name: Scout Mega Group
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -262,7 +262,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1482202302470636}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.59891665, y: -31.735498, z: 0}
+  m_LocalPosition: {x: 0.268, y: -31.78, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4107982321283434}
@@ -571,19 +571,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0012db422b48a45bd82b6bb5c9fb2b62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementOff: 0
+  movementOff: 1
   xSpeedText: {fileID: 0}
   ySpeedText: {fileID: 0}
   groundedText: {fileID: 0}
   jumpedText: {fileID: 0}
-  scoutSR:
+  scoutForeSprites:
+  - {fileID: 212436709677683938}
+  - {fileID: 212853380062164940}
+  - {fileID: 212470741873836214}
+  - {fileID: 212978826398508436}
+  - {fileID: 212147621506041410}
+  - {fileID: 212402944580654732}
+  scoutBackSprites:
   - {fileID: 212500577306492586}
   - {fileID: 212779811381086756}
   - {fileID: 212977155130171632}
   - {fileID: 212849079869141166}
   - {fileID: 212269570195465406}
   - {fileID: 212668172559488192}
-  grounded: 1
+  grounded: 0
   jumped: 0
 --- !u!212 &212147621506041410
 SpriteRenderer:

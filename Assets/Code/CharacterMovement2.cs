@@ -54,8 +54,8 @@ public class CharacterMovement2 : MonoBehaviour {
 
 		camera = GameObject.Find("Main Camera").GetComponent<CameraFollow>();
 
-		xSpeedText = GameObject.Find("X");
-		ySpeedText = GameObject.Find("Y");
+		xSpeedText = GameObject.Find("X Debug");
+		ySpeedText = GameObject.Find("Y Debug");
 		groundedText = GameObject.Find("Grounded Text");
 		jumpedText = GameObject.Find("Jumped Text");
 	

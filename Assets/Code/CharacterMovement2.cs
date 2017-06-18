@@ -166,6 +166,7 @@ public class CharacterMovement2 : MonoBehaviour {
 
 	void OnTriggerEnter2D (Collider2D other) {
 		collidedWith = other.gameObject;
+		print("Entered trigger");
 
 		if (collidedWith.name.Equals("Right Curtain") || collidedWith.name.Equals("Left Curtain")) {
 			print("Entered curtain");

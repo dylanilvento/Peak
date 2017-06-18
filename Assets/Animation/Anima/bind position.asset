@@ -1,0 +1,110 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae0543fe805424df99fe08ce744cbe49, type: 3}
+  m_Name: bind position
+  m_EditorClassIdentifier: 
+  m_PoseEntries:
+  - path: Spine
+    localPosition: {x: -0.0016517714, y: -0.21802622, z: 0}
+    localRotation: {x: -0, y: -0, z: 0.70521545, w: 0.70899314}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: Spine/Left Hip
+    localPosition: {x: -0.0006432883, y: 0.003184397, z: 0}
+    localRotation: {x: 0, y: 0, z: -0.7393527, w: -0.67331845}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: Spine/Left Hip/Left Leg
+    localPosition: {x: 0.12000003, y: -0.000000029802322, z: 0}
+    localRotation: {x: 0, y: 0, z: 0.82579184, w: 0.56397516}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: Spine/Left Hip/Left Leg/Left Foot
+    localPosition: {x: 0.100000046, y: -0.000000059604645, z: 0}
+    localRotation: {x: 0, y: 0, z: -0.22038034, w: 0.97541404}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: Spine/Left Arm
+    localPosition: {x: 0.1900001, y: 0, z: 0}
+    localRotation: {x: 0, y: 0, z: 0.863341, w: 0.5046211}
+    localScale: {x: 1.0000007, y: 1.0000007, z: 1}
+  - path: Spine/Right Arm
+    localPosition: {x: 0.19, y: 0, z: 0}
+    localRotation: {x: 0, y: 0, z: 0.8507653, w: -0.52554595}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: Spine/Right Hip
+    localPosition: {x: -0.0004688798, y: -0.0018254721, z: 0}
+    localRotation: {x: 0, y: 0, z: -0.7536575, w: 0.65726745}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: Spine/Right Hip/Right Leg
+    localPosition: {x: 0.108035505, y: 0.000000022351742, z: 0}
+    localRotation: {x: 0, y: 0, z: -0.56976026, w: 0.821811}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: Spine/Right Hip/Right Leg/Right Foot
+    localPosition: {x: 0.08874281, y: 0.000000052154064, z: 0}
+    localRotation: {x: 0, y: 0, z: -0.09851214, w: 0.9951359}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: Neckerchief Bone 1
+    localPosition: {x: -0.17935675, y: 0.05169207, z: 0}
+    localRotation: {x: 0, y: 0, z: -0.31949982, w: 0.9475864}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: Neckerchief Bone 1/Neckerchief Bone 2
+    localPosition: {x: 0.08873691, y: 0.0000000018626451, z: 0}
+    localRotation: {x: 0, y: 0, z: 0.12460026, w: 0.99220705}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: Neckerchief Bone 1/Neckerchief Bone 2/Neckerchief Bone 3
+    localPosition: {x: 0.091062, y: -3.4924597e-10, z: 0}
+    localRotation: {x: 0, y: 0, z: 0.14246568, w: 0.9897998}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: Neckerchief Bone 1/Neckerchief Bone 2/Neckerchief Bone 3/Neckerchief Bone
+      4
+    localPosition: {x: 0.07, y: -0.000000018451829, z: 0}
+    localRotation: {x: 0, y: 0, z: 0.09243432, w: 0.99571884}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: Neckerchief Bone 1/Neckerchief Bone 2/Neckerchief Bone 3/Neckerchief Bone
+      4/Neckerchief Bone 5
+    localPosition: {x: 0.07000002, y: 0.000000023268512, z: 0}
+    localRotation: {x: 0, y: 0, z: 0.09207048, w: 0.9957525}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: Neckerchief Bone 1/Neckerchief Bone 2/Neckerchief Bone 3/Neckerchief Bone
+      4/Neckerchief Bone 5/Neckerchief Bone 6
+    localPosition: {x: 0.039999995, y: 0.0000000013969839, z: 0}
+    localRotation: {x: 0, y: 0, z: 0.21968293, w: 0.97557133}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: Neckerchief Bone 1/Neckerchief Bone 2/Neckerchief Bone 3/Neckerchief Bone
+      4/Neckerchief Bone 5/Neckerchief Bone 6/Neckerchief Bone 7
+    localPosition: {x: 0.031213311, y: -0.00000002561137, z: 0}
+    localRotation: {x: 0, y: 0, z: 0.28946248, w: 0.9571894}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: Sash Bone 1
+    localPosition: {x: -0.16696632, y: -0.0054787397, z: 0}
+    localRotation: {x: 0, y: 0, z: -0.13307104, w: 0.99110657}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: Sash Bone 1/Sash Bone 2
+    localPosition: {x: 0.07, y: -0.0000000069267116, z: 0}
+    localRotation: {x: 0, y: 0, z: -0.034089703, w: 0.9994188}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: Sash Bone 1/Sash Bone 2/Sash Bone 3
+    localPosition: {x: 0.07, y: -0.000000010404619, z: 0}
+    localRotation: {x: 0, y: 0, z: -0.094853565, w: 0.99549127}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: Sash Bone 1/Sash Bone 2/Sash Bone 3/Sash Bone 4
+    localPosition: {x: 0.09000003, y: 3.2014214e-10, z: 0}
+    localRotation: {x: 0, y: 0, z: -0.06666743, w: 0.99777526}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: Sash Bone 1/Sash Bone 2/Sash Bone 3/Sash Bone 4/Sash Bone 5
+    localPosition: {x: 0.07999999, y: -0.000000039137376, z: 0}
+    localRotation: {x: 0, y: 0, z: -0.089526385, w: 0.9959845}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: Neckerchief Tassle Bone 1
+    localPosition: {x: 0.10545329, y: -0.042982757, z: 0}
+    localRotation: {x: 0, y: 0, z: -0.85153913, w: 0.52429116}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: Neckerchief Tassle Bone 2
+    localPosition: {x: 0.10591658, y: -0.043446064, z: 0}
+    localRotation: {x: 0, y: 0, z: -0.5121356, w: 0.8589046}
+    localScale: {x: 1, y: 1, z: 1}

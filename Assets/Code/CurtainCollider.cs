@@ -13,7 +13,6 @@ public class CurtainCollider : MonoBehaviour {
 	public Camera camera;
 	LevelControl levelControl;
 
-
 	// Use this for initialization
 	void Start () {
 		renderCurtain = GameObject.Find("Curtain Renderer");

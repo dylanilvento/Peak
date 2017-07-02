@@ -2,8 +2,9 @@
 using System.Collections;
 
 public class CurtainFollow : MonoBehaviour {
-	public GameObject target;
+	// public GameObject target;
 	Transform player;
+	LevelControl levelControl;
 	public Camera camera;
 	// Vector2 relPos;
 	float yDist;
@@ -12,9 +13,9 @@ public class CurtainFollow : MonoBehaviour {
 	void Start () {
 		//old
 		// player = GameObject.Find("Scout").transform;
-		
+		levelControl = GameObject.Find("Game Controller").GetComponent<LevelControl>();
 		//new
-		player = target.transform;
+		player = levelControl.GetPlayer().transform;
 
 		// camera = GameObject.Find("Main Camera").GetComponent<Camera>();
 		// relPos = player.position - transform.position;

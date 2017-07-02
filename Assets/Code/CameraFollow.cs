@@ -2,8 +2,7 @@
 using System.Collections;
 
 public class CameraFollow : MonoBehaviour {
-	public GameObject target;
-
+	// public GameObject target;
 	Transform player;
 	Vector2 relPos;
 	Camera camera;
@@ -15,10 +14,11 @@ public class CameraFollow : MonoBehaviour {
 	float downVal = 4f;
 	// Use this for initialization
 	void Start () {
-		player = target.transform;
+		levelControl = GameObject.Find("Game Controller").GetComponent<LevelControl>();
+		player = levelControl.GetPlayer().transform;
 		camera = GetComponent<Camera>();
 		relPos = player.position - transform.position;
-		levelControl = GameObject.Find("Game Controller").GetComponent<LevelControl>();
+		
 	
 	}
 	

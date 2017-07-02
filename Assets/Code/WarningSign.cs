@@ -6,11 +6,13 @@ public class WarningSign : MonoBehaviour {
 
 	public GameObject warningSign;
 	// SpriteRenderer sign;
-
+	GameObject player;
+	LevelControl levelControl;
 	// Use this for initialization
 	void Start () {
 		// sign = warningSign.GetComponent<SpriteRenderer>();
-		
+		levelControl = GameObject.Find("Game Controller").GetComponent<LevelControl>();
+		player = levelControl.GetPlayer();
 	}
 	
 	// Update is called once per frame
@@ -19,7 +21,9 @@ public class WarningSign : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D (Collider2D other) {
-		if (other.gameObject.name.Equals("Scout Mega Group")) {
+		print("hit warning");
+		if (other.gameObject == player) {
+			print("hit warning 2");
 			// boulderRB.gravityScale = 1f;
 			// boulderRB.velocity = new Vector2(velocityX, velocityY);
 

@@ -14,11 +14,12 @@ public class RollingMountains : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		// QualitySettings.vSyncCount = 0;
-		player = GameObject.Find("Scout Mega Group");
+		levelControl = GameObject.Find("Game Controller").GetComponent<LevelControl>();
+		player = levelControl.GetPlayer();
 		camera = GameObject.Find("Main Camera");
 		relPosY = camera.transform.position.y - transform.position.y;
 		finish = GameObject.Find("Flag Group").GetComponent<Finish>();
-		levelControl = GameObject.Find("Game Controller").GetComponent<LevelControl>();
+		
 		relPos = player.transform.position - transform.position;
 	}
 	

@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using XboxCtrlrInput;
 
 public class GameOverCollider : MonoBehaviour {
-	public GameObject target;
+	GameObject target;
 	Transform player;
 	float relPos;
 	public float relPosY;
@@ -37,7 +37,8 @@ public class GameOverCollider : MonoBehaviour {
 	void Start () {
 		// player = GameObject.Find("Scout").transform;
 		// ctrlNum = XCI.GetNumPluggedCtrlrs();
-
+		levelControl = GameObject.Find("Game Controller").GetComponent<LevelControl>();
+		target = levelControl.GetPlayer();
 		player = target.transform;
 
 		relPos = player.position.x - transform.position.x;
@@ -47,7 +48,7 @@ public class GameOverCollider : MonoBehaviour {
 		cameraFollow = camera.GetComponent<CameraFollow>();
 		scoutMvmt = target.GetComponent<CharacterMovement2>();
 
-		levelControl = GameObject.Find("Game Controller").GetComponent<LevelControl>();
+		
 
 		//************ COMMENTED OUT DUE TO CTRLR ERROR
 		/*if (ctrlNum > 0)*/ goText = "Press A to Restart";

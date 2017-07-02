@@ -16,15 +16,19 @@ public class GameOverObjectCollider : MonoBehaviour {
 
 	Rigidbody2D rb;
 
-	public GameObject target;
+	GameObject target;
 
 	bool goActive = false;
 	// LevelControl levelControl;
 	// public static int deathCnt = 0;
 	public GameObject statusScreen;
 
+	LevelControl levelControl;
+
 	// Use this for initialization
 	void Start () {
+		levelControl = GameObject.Find("Game Controller").GetComponent<LevelControl>();
+		target = levelControl.GetPlayer();
 		// player = GameObject.Find("Scout Group").transform;
 		// relPos = player.position.x - transform.position.x;
 		// goScreen = GameObject.Find("Game Over Screen").GetComponent<Image>();

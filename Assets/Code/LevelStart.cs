@@ -11,9 +11,11 @@ public class LevelStart : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-		charMove = GameObject.Find("Scout Mega Group").GetComponent<CharacterMovement2>();
+		
 		// Time.timeScale = 0f;
 		levelControl = GetComponent<LevelControl>();
+
+		charMove = levelControl.GetPlayer().GetComponent<CharacterMovement2>();
 		// levelControl.SetFollow(false);
 		StartCoroutine("StartLevel");
 		

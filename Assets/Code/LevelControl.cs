@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class LevelControl : MonoBehaviour {
 
+	public GameObject player;
 	bool follow = true;
 	bool levelOver = false;
 	// Use this for initialization
@@ -30,5 +31,10 @@ public class LevelControl : MonoBehaviour {
 
 	public bool GetFollow () {
 		return follow;
+	}
+
+
+	public GameObject GetPlayer () {
+		return player;
 	}
 }

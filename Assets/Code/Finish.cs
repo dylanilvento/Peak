@@ -20,7 +20,8 @@ public class Finish : MonoBehaviour {
 	public int nextLevel;
 	//GameOverCollider goCollider;
 	//Camera camera;
-	public GameObject statusScreen, target;
+	public GameObject statusScreen;
+	GameObject target;
 	public string statusTextKeyboard;
 	public string statusTextCtrlr;
 
@@ -34,14 +35,12 @@ public class Finish : MonoBehaviour {
 		ctrlNum = XCI.GetNumPluggedCtrlrs();
 		//***************************
 		lvlControl = GameObject.Find("Game Controller").GetComponent<LevelControl>();
+		target = lvlControl.GetPlayer();
 		
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		//transform.position = new Vector3 (player.position.x - relPos, transform.position.y, transform.position.z);
-		
-		//StartCoroutine("MoveUp");
 
 		if (winActive && (Input.GetKeyDown("space") || XCI.GetButton(XboxButton.A) || XCI.GetButton(XboxButton.Start))) {
 		// if (winActive && (Input.GetKeyDown("space") || Input.GetButtonDown("A Button") || Input.GetButtonDown("Start Button"))) {
@@ -69,13 +68,6 @@ public class Finish : MonoBehaviour {
 			
 		}
 	}
-
-	/*IEnumerator MoveUp () {
-		while (camera.WorldToScreenPoint(player.position).y > Screen.height / 1.5f) {
-			transform.position = new Vector3(transform.position.x, transform.position.y + 0.01f, transform.position.z);
-			yield return new WaitForSeconds(0.1f);
-		}
-	}*/
 
 	void OnTriggerEnter2D (Collider2D other) {
 		

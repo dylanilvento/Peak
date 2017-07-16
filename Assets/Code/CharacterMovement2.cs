@@ -15,8 +15,9 @@ public class CharacterMovement2 : MonoBehaviour {
 
 	GameObject xSpeedText, ySpeedText, groundedText, jumpedText;
 
-	public SpriteRenderer[] scoutForeSprites = new SpriteRenderer[6];
-	public SpriteRenderer[] scoutBackSprites = new SpriteRenderer[6];
+	public GameObject scoutForeObject, scoutBackObject;
+	public GameObject[] scoutSprites = new GameObject[6];
+	// public SpriteRenderer[] scoutBackSprites = new SpriteRenderer[6];
 
 	public bool grounded = true;
 	public bool jumped = false;
@@ -50,7 +51,7 @@ public class CharacterMovement2 : MonoBehaviour {
 		jumped = false;
 		paused = false;
 
-		lastXPos = transform.position.x;
+		lastXPos = transform.position.x - 0.5f; //Prevents Scout from launching in the air
 
 		camera = GameObject.Find("Main Camera").GetComponent<CameraFollow>();
 
@@ -62,16 +63,18 @@ public class CharacterMovement2 : MonoBehaviour {
 	}
 
 	void Update () {
-		if (lastXPos > transform.position.x) {
+		if (lastXPos > transform.position.x + 0.08f) {
 			walkVelY += 0.5f;
 			walkVelX += 0.5f;
-			// print("increasing y velocity");
+			print("lastXPos:" + lastXPos);
+			print("current pos:" + transform.position.x);
 			// rollingBack = true;
 
 			rb.velocity = new Vector2(walkVelX, walkVelY);
 		}
 
 		lastXPos = transform.position.x;
+
 
 		xSpeedText.GetComponent<Text>().text = "x vel: " + walkVelX;
 		ySpeedText.GetComponent<Text>().text = "y vel: " + walkVelY;
@@ -120,7 +123,8 @@ public class CharacterMovement2 : MonoBehaviour {
 
 			else if (groundType == GroundType.Ramp && other.gameObject.transform.localScale.x > 0) {
 				// print("this is working");
-				walkVelX = 2f; walkVelY = 1.4f;
+				//THIS MAKES HIM HOP WHEN HE GOES UP
+				walkVelX = 2f; walkVelY = 0f; //walkVelY = 1.4f;
 			}
 
 			grounded = true;
@@ -216,15 +220,25 @@ public class CharacterMovement2 : MonoBehaviour {
 	}
 
 	void Explode() {
-		Destroy(scoutForeSprites[0].gameObject.transform.parent.GetComponent<Animator>());
-		Destroy(scoutBackSprites[0].gameObject.transform.parent.GetComponent<Animator>());
+		// Destroy(scoutForeSprites[0].gameObject.transform.parent.GetComponent<Animator>());
+		// Destroy(scoutBackSprites[0].gameObject.transform.parent.GetComponent<Animator>());
+
+		Destroy(scoutForeObject);
+		Destroy(scoutBackObject);
 		movementOff = true;
 
-		for (int ii = 0; ii < scoutForeSprites.Length; ii++) {
+		for (int ii = 0; ii < scoutSprites.Length; ii++) {
 			print("Exploding");
 			float xVel = Random.Range(-15f, 15f), yVel = Random.Range(0f, 15f);
-			scoutForeSprites[ii].gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(xVel, yVel);
-			scoutBackSprites[ii].gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(xVel, yVel);
+			GameObject bodyPartFore = Instantiate (scoutSprites[ii], transform.position, Quaternion.identity);
+			GameObject bodyPartBack = Instantiate (scoutSprites[ii], transform.position, Quaternion.identity);
+
+			bodyPartFore.GetComponent<SpriteRenderer>().sortingOrder = 5;
+			bodyPartBack.GetComponent<SpriteRenderer>().sortingOrder = -5;
+
+			bodyPartFore.GetComponent<Rigidbody2D>().velocity = new Vector2(xVel, yVel);
+			bodyPartBack.GetComponent<Rigidbody2D>().velocity = new Vector2(xVel, yVel);
+			// scoutBackSprites[ii].gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(xVel, yVel);
 		}
 	}
 

@@ -7,6 +7,7 @@ public class MovementDebug : MonoBehaviour {
 	public GameObject[] windowObjs = new GameObject[5];
 
 	// public bool visiblePub;
+
 	static bool visible = false;
 
 	// Use this for initialization

@@ -6,13 +6,13 @@ public class LevelSelectMove : MonoBehaviour {
 
 	// Use this for initialization
 
-	public GameObject path;
+	public GameObject path, circle, worldText;
 	public Vector3[] pathVertices;
 
 	bool startMovement = false;
 	float startTime;
 	float journeyLength;
-	float speed = 3f;
+	float speed = 6f;
 
 	int currIndex = 0;
 
@@ -59,6 +59,19 @@ public class LevelSelectMove : MonoBehaviour {
 			float fracJourney = distCovered / journeyLength;
 			transform.position = Vector3.Lerp(startPos, endPos, fracJourney);
 			if (transform.position == endPos) startMovement = false;
+		}
+
+		else if (!startMovement && Input.GetKeyDown(KeyCode.Space)) {
+			StartCoroutine("Shrink");
+		}
+	}
+
+	IEnumerator Shrink () {
+		float scaleDiff = 1f;
+		Destroy(worldText);
+		while (circle.transform.localScale.x > 0) {
+			circle.transform.localScale = new Vector3(circle.transform.localScale.x - scaleDiff, circle.transform.localScale.y - scaleDiff, circle.transform.localScale.z);
+			yield return new WaitForSeconds(0.01f);
 		}
 	}
 }

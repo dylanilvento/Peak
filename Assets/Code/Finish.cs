@@ -20,7 +20,7 @@ public class Finish : MonoBehaviour {
 	public int nextLevel;
 	//GameOverCollider goCollider;
 	//Camera camera;
-	public GameObject statusScreen;
+	public GameObject statusScreen, levelClearBox, continueBox, mainCamera;
 	GameObject target;
 	public string statusTextKeyboard;
 	public string statusTextCtrlr;
@@ -76,6 +76,7 @@ public class Finish : MonoBehaviour {
 			// print("winning");
 
 			other.gameObject.GetComponent<CharacterMovement2>().SetMovementOff(true);
+			other.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY;
 
 			flagAnim.SetTrigger("Raise");
 			// Time.timeScale = 0f;
@@ -87,19 +88,54 @@ public class Finish : MonoBehaviour {
 			// 	{"numDeaths", deathCnt}
 			// });
 
-			statusScreen.SetActive(true);
+			// statusScreen.SetActive(true);
 
 			// ********** COMMENTED OUT DUE TO CTRLR ERROR
-			if (ctrlNum > 0) statusScreen.transform.GetChild(0).GetComponent<Text>().text = statusTextCtrlr;
-			else statusScreen.transform.GetChild(0).GetComponent<Text>().text = statusTextKeyboard;
+			// if (ctrlNum > 0) statusScreen.transform.GetChild(0).GetComponent<Text>().text = statusTextCtrlr;
+			// else statusScreen.transform.GetChild(0).GetComponent<Text>().text = statusTextKeyboard;
 			//********************************
 
-			winActive = true;
+			StartCoroutine("ShowLevelClear");
 
-			lvlControl.SetLevelOver(true);
+			StartCoroutine("MoveCamera");
 
 
 
 		}
 	}
+
+	IEnumerator ShowLevelClear() {
+		float dist = 1100f;
+
+		while(dist > 0) {
+			levelClearBox.transform.position = new Vector2(levelClearBox.transform.position.x - 15f, levelClearBox.transform.position.y);
+			yield return new WaitForSeconds(0.01f);
+			dist-=15f;
+		}
+
+		dist = 1100f;
+
+		while(dist > 0) {
+			continueBox.transform.position = new Vector2(continueBox.transform.position.x - 15f, continueBox.transform.position.y);
+			yield return new WaitForSeconds(0.01f);
+			dist-=15f;
+		}
+
+		winActive = true;
+		lvlControl.SetLevelOver(true);
+	}
+
+	IEnumerator MoveCamera() {
+		float dist = 1f;
+
+		while(dist > 0) {
+			print("moving");
+			mainCamera.GetComponent<CameraFollow>().enabled = false;
+			mainCamera.transform.position = new Vector3(mainCamera.transform.position.x + 0.05f, mainCamera.transform.position.y, mainCamera.transform.position.z);
+			yield return new WaitForSeconds(0.01f);
+			dist-=0.05f;
+		}
+	}
+
+
 }

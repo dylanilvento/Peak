@@ -72,6 +72,10 @@ public class Transparency : MonoBehaviour {
 		}
 	}
 
+	public static void SetOpacity (Color color, float opacity) {
+		color = new Color (color.r, color.g, color.b, opacity);
+	}
+
 	public static void SetTransparent (GameObject[] goArray) {
 		for (int i = 0; i < goArray.Length; i++) {
 			if (goArray[i].GetComponent<Image>() != null) {
@@ -124,6 +128,43 @@ public class Transparency : MonoBehaviour {
 			instance.StartCoroutine("FadeUp", goArray);
 		}
 		
+	}
+
+	public static void DownFade (Image img) {
+		if (instance == null) {
+			Debug.Log("error");
+		}
+
+		else {
+			instance.StartCoroutine("FadeDown", img);
+		}
+	}
+
+	// public static void DownFade (Color color) {
+	// 	// if (instance == null) {
+	// 	// 	Debug.Log("error");
+	// 	// }
+
+	// 	// else {
+	// 		print("color works");
+	// 		StartCoroutine("FadeDown", color);
+	// 	// }
+	// }
+
+	IEnumerator FadeDown (Image img) {
+		while(img.color.a > 0f) {
+			img.color = new Color (img.color.r, img.color.g, img.color.b, img.color.a - 0.1f);
+			yield return new WaitForSeconds(0.05f);
+		}
+	}
+
+	static IEnumerator FadeDown (Color color) {
+		
+		while(color.a > 0f) {
+			print("fade test");
+			color = new Color (color.r, color.g, color.b, color.a - 0.1f);
+			yield return new WaitForSeconds(0.05f);
+		}
 	}
 
 	IEnumerator FadeUp (GameObject[] goArray) {

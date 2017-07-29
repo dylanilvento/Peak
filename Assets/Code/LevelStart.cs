@@ -36,7 +36,7 @@ public class LevelStart : MonoBehaviour {
 			// print("working");
 			GameObject currNum = Instantiate(num, camera.ScreenToWorldPoint(new Vector3(camera.pixelWidth/2, camera.pixelHeight/1.1f, 0)), Quaternion.identity);
 			currNum.transform.SetParent(GameObject.Find("Canvas").transform, false);
-			yield return new WaitForSeconds(0.5f);
+			yield return new WaitForSeconds(0.45f);
 			Destroy(currNum);
 		}
 

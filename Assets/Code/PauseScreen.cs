@@ -4,27 +4,31 @@ using UnityEngine.UI;
 using XboxCtrlrInput;
 using System.Diagnostics;
 using System;
+using System.Collections.Generic;
 
 public class PauseScreen : MonoBehaviour {
 
 	bool paused = false;
 	GameObject arrow;
 	bool onQuit = false;
-	GameObject[] pauseGroup = new GameObject[10];
+	// GameObject[] pauseGroup = new GameObject[10];
+	List<GameObject> pauseGroup = new List<GameObject>();
+
 	CurtainCollider curtain;
 
-	static bool demoMode = true;
+	static bool demoMode = false;
 	// Use this for initialization
 	void Start () {
 		arrow = GameObject.Find("Pause Arrow");
 		curtain = GameObject.Find("Curtain Collider").GetComponent<CurtainCollider>();
-		for (int i = 0; i < pauseGroup.Length; i++) {
+		for (int i = 0; i < gameObject.transform.childCount; i++) {
 			//print(GameObject.Find("Esc Button Group").transform.childCount);
-		    pauseGroup[i] = gameObject.transform.GetChild(i).gameObject;
+		    pauseGroup.Add(gameObject.transform.GetChild(i).gameObject);
 		    //print(escGroup[i].name); 
 		}
 
-		SetTransparency(0f);
+		// SetTransparency(0f, pauseGroup);
+		SetPauseScreen(false);
 	}
 	
 	// Update is called once per frame
@@ -114,18 +118,20 @@ public class PauseScreen : MonoBehaviour {
 		paused = !paused;
 		if (paused) {
 			Time.timeScale = 0f;
-			SetTransparency(1f);
+			// SetTransparency(1f, pauseGroup);
+			SetPauseScreen(true);
 		}
 		else {
 			Time.timeScale = 1f;
-			SetTransparency(0f);
+			// SetTransparency(0f, pauseGroup);
+			SetPauseScreen(false);
 		}
 	}
 
-	void SetTransparency (float val) {
-		for (int i = 0; i < pauseGroup.Length; i++) {
+	void SetTransparency (float val, GameObject[] goArray) {
+		for (int i = 0; i < goArray.Length; i++) {
 			// print(i + ": " + pauseGroup[i].name);
-			if (val == 1 && demoMode && pauseGroup[i].name.Equals("Quit")) {
+			if (val == 1 && demoMode && goArray[i].name.Equals("Quit")) {
 				continue;
 			}
 
@@ -133,15 +139,40 @@ public class PauseScreen : MonoBehaviour {
 				continue;
 			}
 
-			if (pauseGroup[i].GetComponent<Image>() != null) {
-				Image currGO = pauseGroup[i].GetComponent<Image>();
+			if (goArray[i].GetComponent<Image>() != null) {
+				Image currGO = goArray[i].GetComponent<Image>();
 				currGO.color = new Color (currGO.color.r, currGO.color.g, currGO.color.b, val);
 			}
 
-			else if (pauseGroup[i].GetComponent<Text>() != null) {
+			else if (goArray[i].GetComponent<Text>() != null) {
 				Text currGO = pauseGroup[i].GetComponent<Text>();
 				currGO.color = new Color (currGO.color.r, currGO.color.g, currGO.color.b, val);
 			}
+
+			else if (goArray[i].gameObject.transform.childCount > 0) {
+				 List<GameObject> children = new List<GameObject>();
+				 for (int ii = 0; ii < goArray[i].gameObject.transform.childCount; ii++) {
+					 children.Add(goArray[i].gameObject.transform.GetChild(ii).gameObject);
+					//  SetTransparency(0f, children);
+				 }
+
+			}
+		}
+	}
+
+	void SetPauseScreen (bool val) {
+		foreach(GameObject obj in pauseGroup) {
+			if (val && demoMode && obj.name.Equals("Quit")) {
+				continue;
+			}
+
+			else if (val && !demoMode && obj.name.Contains("Restart")) {
+				continue;
+			}
+			else {
+				obj.SetActive(val);
+			}
+			
 		}
 	}
 }

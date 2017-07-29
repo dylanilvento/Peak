@@ -30,7 +30,7 @@ public class LevelSelectMove : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKeyDown(KeyCode.RightArrow) && !startMovement && currIndex < pathVertices.Length) {
+		if ((Input.GetKeyDown(KeyCode.RightArrow) || Input.GetAxis("Horizontal") > 0) && !startMovement && currIndex < pathVertices.Length) {
 			// print("test");
 			startTime = Time.time;
 			startPos = new Vector3 (pathVertices[currIndex].x, pathVertices[currIndex].y + 0.5f, pathVertices[currIndex].z);
@@ -42,7 +42,7 @@ public class LevelSelectMove : MonoBehaviour {
 			
 		}
 
-		if (Input.GetKeyDown(KeyCode.LeftArrow) && !startMovement && currIndex > 0) {
+		if ((Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetAxis("Horizontal") < 0 ) && !startMovement && currIndex > 0) {
 			// print("test");
 			startTime = Time.time;
 			startPos = new Vector3 (pathVertices[currIndex].x, pathVertices[currIndex].y + 0.5f, pathVertices[currIndex].z);

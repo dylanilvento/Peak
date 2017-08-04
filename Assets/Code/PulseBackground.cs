@@ -38,7 +38,7 @@ public class PulseBackground : MonoBehaviour {
 			// rect.sizeDelta = new Vector2(rect.sizeDelta.x + 1f, rect.sizeDelta.y + 1f);
 			transform.localScale = new Vector3(transform.localScale.x + 0.05f, transform.localScale.y + 0.05f, transform.localScale.z + 0.05f);
 			Transparency.SetOpacity(gameObject, img.color.a - 0.05f);
-			print(img.color.a);
+			// print(img.color.a);
 			yield return new WaitForSeconds(0.07f);
 
 			// if (new Vector2(rect.rect.width, rect.rect.height) == new Vector2(endWidth, endHeight)) {

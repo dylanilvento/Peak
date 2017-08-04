@@ -5923,6 +5923,10 @@ Prefab:
       propertyPath: levelClearBox
       value: 
       objectReference: {fileID: 926097480}
+    - target: {fileID: 11496924, guid: 07304e24c808442759f4f18a64fb9e13, type: 2}
+      propertyPath: levelCompleteScreenDist
+      value: 400
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 07304e24c808442759f4f18a64fb9e13, type: 2}
   m_IsPrefabParent: 0

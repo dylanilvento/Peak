@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using XboxCtrlrInput;
 using System.Collections.Generic;
 
@@ -11,17 +12,20 @@ public class StartScreenController : MonoBehaviour {
 
 	int ctrlNum;
 	
-	//for xbox controller
-	public List<GameObject> leftStickGroup = new List<GameObject>();
-	public List<GameObject> rightStickGroup = new List<GameObject>();
-	public List<GameObject> pauseGroup = new List<GameObject>();
-	public List<GameObject> startGroup = new List<GameObject>();
+	// public List<GameObject> leftStickGroup = new List<GameObject>();
+	// public List<GameObject> rightStickGroup = new List<GameObject>();
+	// public List<GameObject> pauseGroup = new List<GameObject>();
+	// public List<GameObject> startGroup = new List<GameObject>();
 
-	//for keyboard
-	public List<GameObject> escGroup = new List<GameObject>();
-	public List<GameObject> spaceGroup = new List<GameObject>();
-	public List<GameObject> asGroup = new List<GameObject>();
-	public List<GameObject> klGroup = new List<GameObject>();
+	// public List<GameObject> escGroup = new List<GameObject>();
+	// public List<GameObject> spaceGroup = new List<GameObject>();
+	// public List<GameObject> asGroup = new List<GameObject>();
+	// public List<GameObject> klGroup = new List<GameObject>();
+
+	//for xbox controller
+	public List<GameObject> pauseButtonGroup = new List<GameObject>();
+
+	public List<GameObject> pauseKeyboardGroup = new List<GameObject>();
 
 	CharacterMovement charMov;
 	// Use this for initialization
@@ -33,15 +37,18 @@ public class StartScreenController : MonoBehaviour {
 
 		ctrlNum = XCI.GetNumPluggedCtrlrs();
 
-		Transparency.SetTransparent(leftStickGroup);
-		Transparency.SetTransparent(rightStickGroup);
-		Transparency.SetTransparent(pauseGroup);
-		Transparency.SetTransparent(startGroup);
+		// Transparency.SetTransparent(leftStickGroup);
+		// Transparency.SetTransparent(rightStickGroup);
+		// Transparency.SetTransparent(pauseGroup);
+		// Transparency.SetTransparent(startGroup);
 
-		Transparency.SetTransparent(escGroup);
-		Transparency.SetTransparent(spaceGroup);
-		Transparency.SetTransparent(asGroup);
-		Transparency.SetTransparent(klGroup);
+		// Transparency.SetTransparent(escGroup);
+		// Transparency.SetTransparent(spaceGroup);
+		// Transparency.SetTransparent(asGroup);
+		// Transparency.SetTransparent(klGroup);
+
+		Transparency.SetTransparent(pauseButtonGroup);
+		Transparency.SetTransparent(pauseKeyboardGroup);
 
 		StartCoroutine("StartScreen");
 
@@ -57,7 +64,8 @@ public class StartScreenController : MonoBehaviour {
 		
 		// if (Input.GetKey("space") || Input.GetButtonDown("Start Button")) {
 			Time.timeScale = 1f;
-			Application.LoadLevel(1);
+			// Application.LoadLevel(1);
+			SceneManager.LoadScene("Level Select");
 		}
 	
 	}
@@ -69,34 +77,51 @@ public class StartScreenController : MonoBehaviour {
 		Destroy (GameObject.Find("Ward Logo"));
 		peakAnim.SetBool("Transition", true);
 		
-		yield return new WaitForSeconds(4f);
+		yield return new WaitForSeconds(2f);
 
 		if (ctrlNum > 0) {
-			print(ctrlNum);
-			Transparency.UpFade(leftStickGroup);
-			
-			yield return new WaitForSeconds(1f);
-			Transparency.UpFade(rightStickGroup);
-			
-			yield return new WaitForSeconds(1f);
-			Transparency.UpFade(pauseGroup);
-			
-			yield return new WaitForSeconds(1f);
-			Transparency.UpFade(startGroup);
+			while (pauseButtonGroup[0].GetComponent<Text>().color.a < 1f) {
+				Transparency.SetOpacity(pauseButtonGroup, pauseButtonGroup[0].GetComponent<Text>().color.a + 0.1f);
+				yield return new WaitForSeconds(0.05f);
+			}
 		}
 
 		else {
-			Transparency.UpFade(asGroup);
-			
-			yield return new WaitForSeconds(1f);
-			Transparency.UpFade(klGroup);
-			
-			yield return new WaitForSeconds(1f);
-			Transparency.UpFade(escGroup);
-			
-			yield return new WaitForSeconds(1f);
-			Transparency.UpFade(spaceGroup);
+			while (pauseKeyboardGroup[0].GetComponent<Text>().color.a < 1f) {
+				Transparency.SetOpacity(pauseKeyboardGroup, pauseKeyboardGroup[0].GetComponent<Text>().color.a + 0.1f);
+				yield return new WaitForSeconds(0.05f);
+			}
 		}
+
+		
+		// Transparency.UpFade(pauseButtonGroup);
+
+		// if (ctrlNum > 0) {
+		// 	print(ctrlNum);
+		// 	Transparency.UpFade(leftStickGroup);
+			
+		// 	yield return new WaitForSeconds(1f);
+		// 	Transparency.UpFade(rightStickGroup);
+			
+		// 	yield return new WaitForSeconds(1f);
+		// 	Transparency.UpFade(pauseGroup);
+			
+		// 	yield return new WaitForSeconds(1f);
+		// 	Transparency.UpFade(startGroup);
+		// }
+
+		// else {
+		// 	Transparency.UpFade(asGroup);
+			
+		// 	yield return new WaitForSeconds(1f);
+		// 	Transparency.UpFade(klGroup);
+			
+		// 	yield return new WaitForSeconds(1f);
+		// 	Transparency.UpFade(escGroup);
+			
+		// 	yield return new WaitForSeconds(1f);
+		// 	Transparency.UpFade(spaceGroup);
+		// }
 
 	}
 

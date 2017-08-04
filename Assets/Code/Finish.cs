@@ -25,6 +25,8 @@ public class Finish : MonoBehaviour {
 	public string statusTextKeyboard;
 	public string statusTextCtrlr;
 
+	public int levelCompleteScreenDist;
+
 	LevelControl lvlControl;
 
 	int ctrlNum;
@@ -44,7 +46,7 @@ public class Finish : MonoBehaviour {
 
 		if (winActive && (Input.GetKeyDown("space") || XCI.GetButton(XboxButton.A) || XCI.GetButton(XboxButton.Start))) {
 		// if (winActive && (Input.GetKeyDown("space") || Input.GetButtonDown("A Button") || Input.GetButtonDown("Start Button"))) {
-			if (nextLevel == 0) {
+			// if (nextLevel == 0) {
 				// try {
 				// 	Process myProcess = new Process();
 			 //        myProcess.StartInfo.WindowStyle = ProcessWindowStyle.Normal;
@@ -58,13 +60,14 @@ public class Finish : MonoBehaviour {
 		  //       }
 
 				// Application.Quit();
-				Application.LoadLevel(0);
-			}
-			else {
-				Time.timeScale = 1f;
+			// 	Application.LoadLevel(0);
+			// }
+			// else {
+			// 	Time.timeScale = 1f;
 				// Application.LoadLevel(Application.loadedLevel);
-				Application.LoadLevel(nextLevel);
-			}
+				// Application.LoadLevel(nextLevel);
+				SceneManager.LoadScene("Level Select");
+			// }
 			
 		}
 	}
@@ -105,7 +108,7 @@ public class Finish : MonoBehaviour {
 	}
 
 	IEnumerator ShowLevelClear() {
-		float dist = 1100f;
+		float dist = (float) levelCompleteScreenDist;
 
 		while(dist > 0) {
 			levelClearBox.transform.position = new Vector2(levelClearBox.transform.position.x - 15f, levelClearBox.transform.position.y);
@@ -113,7 +116,7 @@ public class Finish : MonoBehaviour {
 			dist-=15f;
 		}
 
-		dist = 1100f;
+		dist = (float) levelCompleteScreenDist;
 
 		while(dist > 0) {
 			continueBox.transform.position = new Vector2(continueBox.transform.position.x - 15f, continueBox.transform.position.y);

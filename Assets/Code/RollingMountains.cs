@@ -29,6 +29,8 @@ public class RollingMountains : MonoBehaviour {
 		if (!finish.winActive && levelControl.GetFollow()) {
 			transform.position = new Vector2 ((player.transform.position.x - relPos.x) * moveMultiplier, transform.position.y);
 			
+			// transform.position = new Vector2 ((player.transform.position.x - relPos.x) * moveMultiplier, camera.transform.position.y - relPos.y);
+
 			// transform.position = new Vector3 (transform.position.x, camera.transform.position.y - relPos.y, transform.position.z);
 			
 			if (transform.position.y < camera.transform.position.y - relPosY) StartCoroutine("MoveUp");
@@ -41,14 +43,14 @@ public class RollingMountains : MonoBehaviour {
 	IEnumerator MoveUp () {
 		// while (transform.position.y < camera.transform.position.y - relPosY) {
 			transform.position = new Vector2(transform.position.x, transform.position.y + 0.01f);
-			yield return new WaitForSeconds(0.001f);
+			yield return new WaitForSeconds(0.0001f);
 		// }
 	}
 
 	IEnumerator MoveDown () {
 		// while (transform.position.y < camera.transform.position.y - relPosY) {
 			transform.position = new Vector2(transform.position.x, transform.position.y - 0.01f);
-			yield return new WaitForSeconds(0.001f);
+			yield return new WaitForSeconds(0.0001f);
 		// }
 	}
 }

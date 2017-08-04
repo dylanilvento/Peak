@@ -3,14 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class LevelSelectCloudFloat : MonoBehaviour {
-	Vector3 startPos, endPos, nextEndPos, leftSide, rightSide;
+	Vector3 startPos, endPos, nextEndPos;
+
+	public Vector3 leftSide, rightSide;
 	bool startMovement = false;
 
 	float startTime, journeyLength, speed;
 	// Use this for initialization
 	void Start () {
-		leftSide = new Vector3(-8.95f, transform.position.y, 0f);
-		rightSide = new Vector3(8.95f, transform.position.y, 0f);
+		leftSide = new Vector3(leftSide.x, transform.position.y, leftSide.z);
+		rightSide = new Vector3(rightSide.x, transform.position.y, rightSide.z);
+		// leftSide = new Vector3(-8.95f, transform.position.y, 0f);
+		// rightSide = new Vector3(8.95f, transform.position.y, 0f);
 		startPos = transform.position;
 		endPos = Random.Range(0f, 1f) > 0.5f ? leftSide: rightSide;
 		nextEndPos = endPos == leftSide ? rightSide: leftSide;

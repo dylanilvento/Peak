@@ -25872,12 +25872,12 @@ Transform:
   m_PrefabInternal: {fileID: 926097477}
 --- !u!1 &926097479 stripped
 GameObject:
-  m_PrefabParentObject: {fileID: 1462079846073750, guid: 8a202c355dbd54cab8347275e57bf9c2,
+  m_PrefabParentObject: {fileID: 1459503287390928, guid: 8a202c355dbd54cab8347275e57bf9c2,
     type: 2}
   m_PrefabInternal: {fileID: 926097477}
 --- !u!1 &926097480 stripped
 GameObject:
-  m_PrefabParentObject: {fileID: 1368303513622220, guid: 8a202c355dbd54cab8347275e57bf9c2,
+  m_PrefabParentObject: {fileID: 1383353791807568, guid: 8a202c355dbd54cab8347275e57bf9c2,
     type: 2}
   m_PrefabInternal: {fileID: 926097477}
 --- !u!1001 &926621943

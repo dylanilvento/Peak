@@ -66,8 +66,8 @@ public class CharacterMovement2 : MonoBehaviour {
 		if (lastXPos > transform.position.x + 0.08f) {
 			walkVelY += 0.5f;
 			walkVelX += 0.5f;
-			print("lastXPos:" + lastXPos);
-			print("current pos:" + transform.position.x);
+			// print("lastXPos:" + lastXPos);
+			// print("current pos:" + transform.position.x);
 			// rollingBack = true;
 
 			rb.velocity = new Vector2(walkVelX, walkVelY);
@@ -132,7 +132,7 @@ public class CharacterMovement2 : MonoBehaviour {
 
 		
 		else if (other.gameObject.GetComponent<GameOverObjectCollider>() != null) {
-			print("working");
+			// print("working");
 			coll.enabled = false;
 			Explode();
 			camera.CallCameraShake();
@@ -170,10 +170,10 @@ public class CharacterMovement2 : MonoBehaviour {
 
 	void OnTriggerEnter2D (Collider2D other) {
 		collidedWith = other.gameObject;
-		print("Entered trigger");
+		// print("Entered trigger");
 
 		if (collidedWith.name.Equals("Right Curtain") || collidedWith.name.Equals("Left Curtain")) {
-			print("Entered curtain");
+			// print("Entered curtain");
 			SwitchWorlds();
 			// sr.color = new Color(1f, 1f, 1f, 0f);
 			//gameObject.layer = 9;
@@ -228,7 +228,7 @@ public class CharacterMovement2 : MonoBehaviour {
 		movementOff = true;
 
 		for (int ii = 0; ii < scoutSprites.Length; ii++) {
-			print("Exploding");
+			// print("Exploding");
 			float xVel = Random.Range(-15f, 15f), yVel = Random.Range(0f, 15f);
 			GameObject bodyPartFore = Instantiate (scoutSprites[ii], transform.position, Quaternion.identity);
 			GameObject bodyPartBack = Instantiate (scoutSprites[ii], transform.position, Quaternion.identity);
@@ -284,7 +284,7 @@ public class CharacterMovement2 : MonoBehaviour {
 	}
 
 	public void SetMovementOff (bool val) {
-		print("setting movement");
+		// print("setting movement");
 		movementOff = val;
 
 	}

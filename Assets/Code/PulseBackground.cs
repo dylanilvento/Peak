@@ -37,7 +37,7 @@ public class PulseBackground : MonoBehaviour {
 			// rect.rect = new Vector2(rect.sizeDelta.x + 5f, rect.sizeDelta.y);
 			// rect.sizeDelta = new Vector2(rect.sizeDelta.x + 1f, rect.sizeDelta.y + 1f);
 			transform.localScale = new Vector3(transform.localScale.x + 0.05f, transform.localScale.y + 0.05f, transform.localScale.z + 0.05f);
-			Transparency.SetOpacity(gameObject, img.color.a - 0.05f);
+			Transparency.SetOpacity(gameObject, img.color.a - 0.04f);
 			// print(img.color.a);
 			yield return new WaitForSeconds(0.07f);
 
@@ -45,7 +45,7 @@ public class PulseBackground : MonoBehaviour {
 			if (transform.localScale.x >= endWidth) {	
 				// rect.sizeDelta = new Vector2(startWidth, startHeight);
 				transform.localScale = new Vector3(startWidth, startHeight, startHeight);
-				Transparency.SetOpacity(gameObject, 0.5f);
+				Transparency.SetOpacity(gameObject, 0.75f);
 				// fadeStarted = false;
 			}
 		}

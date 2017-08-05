@@ -11,6 +11,7 @@ public class PauseScreen : MonoBehaviour {
 	bool paused = false;
 	GameObject arrow;
 	bool onQuit = false;
+	public bool playableLevel = true;
 	// GameObject[] pauseGroup = new GameObject[10];
 	List<GameObject> pauseGroup = new List<GameObject>();
 
@@ -20,7 +21,7 @@ public class PauseScreen : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		arrow = GameObject.Find("Pause Arrow");
-		curtain = GameObject.Find("Curtain Collider").GetComponent<CurtainCollider>();
+		if (playableLevel) curtain = GameObject.Find("Curtain Collider").GetComponent<CurtainCollider>();
 		for (int i = 0; i < gameObject.transform.childCount; i++) {
 			//print(GameObject.Find("Esc Button Group").transform.childCount);
 		    pauseGroup.Add(gameObject.transform.GetChild(i).gameObject);
@@ -45,7 +46,7 @@ public class PauseScreen : MonoBehaviour {
 		//*********************************
 		// if (Input.GetKeyDown("escape") || Input.GetButtonDown("Start Button")) {
 			SetPausedGame();
-			curtain.SwitchPausedGame();
+			if (playableLevel) curtain.SwitchPausedGame();
 		}
 
 		if (paused && !demoMode) {
@@ -62,7 +63,8 @@ public class PauseScreen : MonoBehaviour {
 			if ((Input.GetKeyDown("space") || XCI.GetButton(XboxButton.A)) && !onQuit) {
 			// if ((Input.GetKeyDown("space") || Input.GetKeyDown(KeyCode.JoystickButton0)) && onQuit) {
 				SetPausedGame();
-				curtain.SwitchPausedGame();
+
+				if (playableLevel) curtain.SwitchPausedGame();
 			}
 
 				//************ COMMENTED OUT DUE TO CTRLR ERROR
@@ -91,7 +93,7 @@ public class PauseScreen : MonoBehaviour {
 			if (XCI.GetButtonUp(XboxButton.A) || XCI.GetButtonUp(XboxButton.B)) {
 			// if (Input.GetButtonDown("A Button") || Input.GetButtonDown("B Button")) {
 				SetPausedGame();
-				curtain.SwitchPausedGame();
+				if (playableLevel) curtain.SwitchPausedGame();
 			}
 			//reload level
 			else if (XCI.GetButtonUp(XboxButton.X)) {

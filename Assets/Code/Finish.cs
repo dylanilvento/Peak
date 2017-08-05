@@ -21,18 +21,26 @@ public class Finish : MonoBehaviour {
 	//GameOverCollider goCollider;
 	//Camera camera;
 	public GameObject statusScreen, levelClearBox, continueBox, mainCamera;
-	GameObject target;
-	public string statusTextKeyboard;
-	public string statusTextCtrlr;
+	GameObject target, levelClearText;
+	// public string statusTextKeyboard;
+	// public string statusTextCtrlr;
 
-	public int levelCompleteScreenDist;
+	float levelCompleteScreenDist, globalReduction;
 
 	LevelControl lvlControl;
 
 	int ctrlNum;
 	// Use this for initialization
 	void Start () {
-		
+		// print("canvas width: " + GameObject.Find("Canvas").GetComponent<RectTransform>().rect.width);
+		// print(levelClearBox.GetComponent<RectTransform>().rect.center - GameObject.Find("Canvas").GetComponent<RectTransform>().rect.center);
+
+		float differenceCanvasAndLevelComplete = levelClearBox.transform.position.x - GameObject.Find("Canvas").transform.position.x;
+		levelClearText = levelClearBox.transform.GetChild(0).gameObject;
+		print("difference = " + differenceCanvasAndLevelComplete);
+
+		levelCompleteScreenDist = (2f / 3f) * differenceCanvasAndLevelComplete;
+
 		//************ COMMENTED OUT DUE TO CTRLR ERROR
 		ctrlNum = XCI.GetNumPluggedCtrlrs();
 		//***************************
@@ -45,31 +53,30 @@ public class Finish : MonoBehaviour {
 	void Update () {
 
 		if (winActive && (Input.GetKeyDown("space") || XCI.GetButton(XboxButton.A) || XCI.GetButton(XboxButton.Start))) {
-		// if (winActive && (Input.GetKeyDown("space") || Input.GetButtonDown("A Button") || Input.GetButtonDown("Start Button"))) {
-			// if (nextLevel == 0) {
-				// try {
-				// 	Process myProcess = new Process();
-			 //        myProcess.StartInfo.WindowStyle = ProcessWindowStyle.Normal;
-			 //        myProcess.StartInfo.CreateNoWindow = false;
-			 //        // myProcess.StartInfo.UseShellExecute = false;
-			 //        myProcess.StartInfo.FileName = "C:\\Users\\Dylan\\Desktop\\BnP\\Launcher\\Launcher.exe";
-			 //        myProcess.Start();
-			 //    }
-			 //    catch (Exception e) {
-		  //           Console.WriteLine(e.Message);
-		  //       }
+			StartCoroutine("TransitionToLevelSelect");
+			
 
-				// Application.Quit();
-			// 	Application.LoadLevel(0);
-			// }
-			// else {
-			// 	Time.timeScale = 1f;
-				// Application.LoadLevel(Application.loadedLevel);
-				// Application.LoadLevel(nextLevel);
-				SceneManager.LoadScene("Level Select");
-			// }
+
 			
 		}
+	}
+
+	IEnumerator TransitionToLevelSelect () {
+		for (int ii = 0; ii < 60; ii++) {
+			levelClearText.transform.position = new Vector2(levelClearText.transform.position.x + globalReduction, levelClearText.transform.position.y);
+			continueBox.transform.position = new Vector2(continueBox.transform.position.x - globalReduction, continueBox.transform.position.y);
+			yield return new WaitForSeconds(0.01f);
+		}
+		yield return new WaitForSeconds(0.15f);
+
+		for (int ii = 0; ii < 5; ii++) {
+			levelClearBox.transform.position = new Vector2(levelClearBox.transform.position.x - globalReduction, levelClearBox.transform.position.y);
+			// continueBox.transform.position = new Vector2(continueBox.transform.position.x + globalReduction, continueBox.transform.position.y);
+			yield return new WaitForSeconds(0.01f);
+		}
+		IntersceneDataHandler.levelToLevelSelectTransition = true;
+		SceneManager.LoadScene("Level Select");
+		
 	}
 
 	void OnTriggerEnter2D (Collider2D other) {
@@ -108,23 +115,31 @@ public class Finish : MonoBehaviour {
 	}
 
 	IEnumerator ShowLevelClear() {
-		float dist = (float) levelCompleteScreenDist;
+		
+		float dist = levelCompleteScreenDist;
+		float reduction = levelCompleteScreenDist / 26.7f;
+
+		print("started end, dist = " + dist);
+		print(reduction);
 
 		while(dist > 0) {
-			levelClearBox.transform.position = new Vector2(levelClearBox.transform.position.x - 15f, levelClearBox.transform.position.y);
+			levelClearBox.transform.position = new Vector2(levelClearBox.transform.position.x - reduction, levelClearBox.transform.position.y);
 			yield return new WaitForSeconds(0.01f);
-			dist-=15f;
+			dist -= reduction;
 		}
 
-		dist = (float) levelCompleteScreenDist;
+		dist = levelCompleteScreenDist;
 
 		while(dist > 0) {
-			continueBox.transform.position = new Vector2(continueBox.transform.position.x - 15f, continueBox.transform.position.y);
+			continueBox.transform.position = new Vector2(continueBox.transform.position.x - reduction, continueBox.transform.position.y);
 			yield return new WaitForSeconds(0.01f);
-			dist-=15f;
+			dist -= reduction;
 		}
 
 		winActive = true;
+
+		globalReduction = reduction;
+		IntersceneDataHandler.globalLevelClearMovmentRate = reduction;
 		lvlControl.SetLevelOver(true);
 	}
 
@@ -132,7 +147,7 @@ public class Finish : MonoBehaviour {
 		float dist = 1f;
 
 		while(dist > 0) {
-			print("moving");
+			// print("moving");
 			mainCamera.GetComponent<CameraFollow>().enabled = false;
 			mainCamera.transform.position = new Vector3(mainCamera.transform.position.x + 0.05f, mainCamera.transform.position.y, mainCamera.transform.position.z);
 			yield return new WaitForSeconds(0.01f);

@@ -9,6 +9,8 @@ public class IntersceneDataHandler : MonoBehaviour {
 	static public float globalLevelClearMovmentRate;
 
 	static public bool levelToLevelSelectTransition = false;
+
+	static public int currentLevel = 0;
 	void Awake () {
 		instance = this;
 	}

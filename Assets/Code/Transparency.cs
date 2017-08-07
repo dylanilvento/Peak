@@ -67,6 +67,12 @@ public class Transparency : MonoBehaviour {
 
 	public static void SetOpacity (GameObject go, float opacity) {
 		// for (int i = 0; i < goArray.Length; i++) {
+			if (go.transform.childCount > 0) {
+				for (int ii = 0; ii < go.transform.childCount; ii++) {
+					SetOpacity(go.transform.GetChild(ii).gameObject, opacity);
+				}
+			}
+
 			if (go.GetComponent<Image>() != null) {
 				Image currGO = go.GetComponent<Image>();
 				currGO.color = new Color (currGO.color.r, currGO.color.g, currGO.color.b, opacity);
@@ -118,6 +124,26 @@ public class Transparency : MonoBehaviour {
 
 			else if (item.GetComponent<Text>() != null) {
 				Text currGO = item.GetComponent<Text>();
+				currGO.color = new Color (currGO.color.r, currGO.color.g, currGO.color.b, 0);
+			}
+		}
+	}
+
+	public static void SetTransparent (GameObject go) {
+		if (go.transform.childCount > 0) {
+			for (int ii = 0; ii < go.transform.childCount; ii++) {
+				SetTransparent(go.transform.GetChild(ii).gameObject);
+			}
+		}
+
+		else {
+			if (go.GetComponent<Image>() != null) {
+				Image currGO = go.GetComponent<Image>();
+				currGO.color = new Color (currGO.color.r, currGO.color.g, currGO.color.b, 0);
+			}
+
+			else if (go.GetComponent<Text>() != null) {
+				Text currGO = go.GetComponent<Text>();
 				currGO.color = new Color (currGO.color.r, currGO.color.g, currGO.color.b, 0);
 			}
 		}

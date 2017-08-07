@@ -76,14 +76,19 @@ public class CharacterMovement2 : MonoBehaviour {
 		lastXPos = transform.position.x;
 
 
-		xSpeedText.GetComponent<Text>().text = "x vel: " + walkVelX;
-		ySpeedText.GetComponent<Text>().text = "y vel: " + walkVelY;
+		if (xSpeedText != null) xSpeedText.GetComponent<Text>().text = "x vel: " + walkVelX;
+		if (ySpeedText != null) ySpeedText.GetComponent<Text>().text = "y vel: " + walkVelY;
 
-		if (grounded) groundedText.GetComponent<Text>().text = "Grounded? Yes";
-		else groundedText.GetComponent<Text>().text = "Grounded? No";
-
-		if (jumped) jumpedText.GetComponent<Text>().text = "Jumped? Yes";
-		else jumpedText.GetComponent<Text>().text = "Jumped? No";
+		if (groundedText != null) {
+			if (grounded) groundedText.GetComponent<Text>().text = "Grounded? Yes";
+			else groundedText.GetComponent<Text>().text = "Grounded? No";
+		}
+		
+		if (jumpedText != null) {
+			if (jumped) jumpedText.GetComponent<Text>().text = "Jumped? Yes";
+			else jumpedText.GetComponent<Text>().text = "Jumped? No";
+		}
+		
 	}
 	
 	// Update is called once per frame
@@ -222,7 +227,7 @@ public class CharacterMovement2 : MonoBehaviour {
 	void Explode() {
 		// Destroy(scoutForeSprites[0].gameObject.transform.parent.GetComponent<Animator>());
 		// Destroy(scoutBackSprites[0].gameObject.transform.parent.GetComponent<Animator>());
-
+		// Handheld.Vibrate();
 		Destroy(scoutForeObject);
 		Destroy(scoutBackObject);
 		movementOff = true;

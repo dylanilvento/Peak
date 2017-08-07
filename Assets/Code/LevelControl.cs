@@ -7,6 +7,8 @@ public class LevelControl : MonoBehaviour {
 	public GameObject player;
 	bool follow = true;
 	bool levelOver = false;
+
+	public bool canPulse = true;
 	// Use this for initialization
 	void Start () {
 		
@@ -33,8 +35,17 @@ public class LevelControl : MonoBehaviour {
 		return follow;
 	}
 
-
 	public GameObject GetPlayer () {
 		return player;
 	}
-}
+
+
+	public bool GetCanPulse () {
+		return canPulse;
+	}
+
+	public void SetCanPulse (bool val) {
+		canPulse = val;
+	}
+}	
+

@@ -8,17 +8,18 @@ public class PulseBackground : MonoBehaviour {
 
 	public float startHeight, startWidth, endHeight, endWidth;
 	RectTransform rect;
-
+	LevelControl levelControl;
 	// Use this for initialization
 	void Start () {
 
 		rect = GetComponent<RectTransform>();
-		StartCoroutine("Pulse");
+		levelControl = GameObject.Find("Game Controller").GetComponent<LevelControl>();
+		
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if (gameObject.GetComponent<Image>().color.a > 0f) StartCoroutine("Pulse");
 	}
 
 	IEnumerator Pulse () {
@@ -34,9 +35,11 @@ public class PulseBackground : MonoBehaviour {
 			// 	// print("fade started");
 			// }
 
+			float rate = (endWidth - startWidth) / 20f;
+
 			// rect.rect = new Vector2(rect.sizeDelta.x + 5f, rect.sizeDelta.y);
 			// rect.sizeDelta = new Vector2(rect.sizeDelta.x + 1f, rect.sizeDelta.y + 1f);
-			transform.localScale = new Vector3(transform.localScale.x + 0.05f, transform.localScale.y + 0.05f, transform.localScale.z + 0.05f);
+			transform.localScale = new Vector3(transform.localScale.x + rate, transform.localScale.y + rate, transform.localScale.z + rate);
 			Transparency.SetOpacity(gameObject, img.color.a - 0.04f);
 			// print(img.color.a);
 			yield return new WaitForSeconds(0.07f);

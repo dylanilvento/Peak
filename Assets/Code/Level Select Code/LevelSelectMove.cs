@@ -31,9 +31,10 @@ public class LevelSelectMove : MonoBehaviour {
 		// print(path.GetComponent<LineRenderer>().positionCount);
 
 		path.GetComponent<LineRenderer>().GetPositions(pathVertices); //pass the array that you want to put the positions into as a parameter
-		transform.position = new Vector3 (pathVertices[0].x, pathVertices[0].y + 0.5f, pathVertices[0].z);
+		transform.position = new Vector3 (pathVertices[IntersceneDataHandler.currentLevel].x, pathVertices[IntersceneDataHandler.currentLevel].y + 0.5f, pathVertices[IntersceneDataHandler.currentLevel].z);
 
-		SetRelativeNodes(1);
+		SetRelativeNodes(IntersceneDataHandler.currentLevel + 1);
+		SetRelativeNodes(IntersceneDataHandler.currentLevel - 1);
 	}
 	
 	// Update is called once per frame
@@ -155,6 +156,7 @@ public class LevelSelectMove : MonoBehaviour {
 		}
 
 		else if (!startMovement && (Input.GetKeyDown(KeyCode.Space) || XCI.GetButtonDown(XboxButton.A))) {
+			
 			StartCoroutine("Shrink");
 		}
 	}
@@ -175,7 +177,7 @@ public class LevelSelectMove : MonoBehaviour {
 			circle.transform.localScale = new Vector3(circle.transform.localScale.x - scaleDiff, circle.transform.localScale.y - scaleDiff, circle.transform.localScale.z);
 			yield return new WaitForSeconds(0.01f);
 		}
-
+		IntersceneDataHandler.currentLevel = currIndex;
 		SceneManager.LoadScene(levels[currIndex]);
 	}
 

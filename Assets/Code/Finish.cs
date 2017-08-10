@@ -15,7 +15,7 @@ public class Finish : MonoBehaviour {
 	// Image winScreen;
 
 	public Animator flagAnim;
-
+	public bool endOfDemo = false;
 	public bool winActive = false;
 	public int nextLevel;
 	//GameOverCollider goCollider;
@@ -74,8 +74,13 @@ public class Finish : MonoBehaviour {
 			// continueBox.transform.position = new Vector2(continueBox.transform.position.x + globalReduction, continueBox.transform.position.y);
 			yield return new WaitForSeconds(0.01f);
 		}
-		IntersceneDataHandler.levelToLevelSelectTransition = true;
-		SceneManager.LoadScene("Level Select");
+		
+		if (!endOfDemo) {
+			
+			IntersceneDataHandler.levelToLevelSelectTransition = true;
+			SceneManager.LoadScene("Level Select");
+		}
+		else SceneManager.LoadScene("End Demo");
 		
 	}
 

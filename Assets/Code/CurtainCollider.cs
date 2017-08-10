@@ -48,7 +48,7 @@ public class CurtainCollider : MonoBehaviour {
 				leftCurtain.transform.position = new Vector2 (leftCurtain.transform.position.x - 0.1f, leftCurtain.transform.position.y);
 				transform.position = new Vector2 (transform.position.x - 0.05f, transform.position.y);
 			}
-			
+			// print(camera.WorldToScreenPoint(leftCurtain.transform.position).x < -15f);
 			if(Input.GetKey("s") || Input.GetAxis("Horizontal") > 0f || camera.WorldToScreenPoint(leftCurtain.transform.position).x < -15f) {
 				if (box.size.x > initialSize && currDist > smallestDist) {
 					// sizeChange -= 0.1f;

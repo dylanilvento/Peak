@@ -60,12 +60,12 @@ public class StartScreenController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKey("space") || XCI.GetButtonDown(XboxButton.Start)) {
+		if (Input.GetKeyDown(KeyCode.Return) || XCI.GetButtonDown(XboxButton.Start)) {
 		
 		// if (Input.GetKey("space") || Input.GetButtonDown("Start Button")) {
 			Time.timeScale = 1f;
 			// Application.LoadLevel(1);
-			SceneManager.LoadScene("Level Select");
+			SceneManager.LoadScene("Tutorial");
 		}
 	
 	}

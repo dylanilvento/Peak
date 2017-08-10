@@ -377,7 +377,17 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1742133761895350, guid: badb8b6db473942eb92d5410246c7ee9, type: 2}
       propertyPath: m_Name
-      value: Press Space Group
+      value: Press Enter Group
+      objectReference: {fileID: 0}
+    - target: {fileID: 114530548281889982, guid: badb8b6db473942eb92d5410246c7ee9,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ada66eaf512524577a819b57cd290e69,
+        type: 3}
+    - target: {fileID: 1975964519591068, guid: badb8b6db473942eb92d5410246c7ee9, type: 2}
+      propertyPath: m_Name
+      value: Enter Button
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: badb8b6db473942eb92d5410246c7ee9, type: 2}

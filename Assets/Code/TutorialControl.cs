@@ -3,11 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using XboxCtrlrInput;
+using UnityEngine.SceneManagement;
 
 public class TutorialControl : MonoBehaviour {
 
 	public List<GameObject> textWindows = new List<GameObject>();
+	public List<GameObject> tutorialEndTextWindows = new List<GameObject>();
 	int textBoxCount = 0;
+
+	public CharacterMovement2 scout;
+
+	bool[] createdBridge = new bool[2];
 
 	public CurtainCollider curtain;
 
@@ -20,21 +26,38 @@ public class TutorialControl : MonoBehaviour {
 			Transparency.SetTransparent(item);
 		}
 
-		StartCoroutine("StartTutorial");
+		foreach (GameObject item in tutorialEndTextWindows) {
+			Transparency.SetTransparent(item);
+		}
+
+		if (!IntersceneDataHandler.startedTutorial) StartCoroutine("StartTutorial");
+		else textBoxCount = 2;
+
+		// print(tutorialEndTextWindows[0].name);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if ((XCI.GetButtonDown(XboxButton.A) || Input.GetKeyDown(KeyCode.Space)) && canNext) {
+		if ((XCI.GetButtonDown(XboxButton.A) || Input.GetKeyDown(KeyCode.Space)) && canNext && !IntersceneDataHandler.startedTutorial ) {
+			print(textBoxCount);
 			if (textBoxCount < 2) StartCoroutine("NextScreen", textBoxCount);//NextScreen(textBoxCount);
-			else ActivateTutorial();
+			else if (textBoxCount == 2) ActivateTutorial();
+		}
+
+		else if (IntersceneDataHandler.startedTutorial && textBoxCount <= 2) {
+			textBoxCount++;
+			ActivateTutorial();
 		}
 
 		if (((Mathf.Abs(Input.GetAxis("Horizontal")) > 0f) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.K) || Input.GetKeyDown(KeyCode.L)) && textBoxCount > 2) {
-			print("text box count: "+ textBoxCount);
-			print("Test 2");
+			// print("text box count: "+ textBoxCount);
+			// print("Test 2");
 			Transparency.SetTransparent(textWindows[2]);
 			// ActivateTutorial();
+		}
+
+		if ((XCI.GetButtonDown(XboxButton.Start) || Input.GetKeyDown(KeyCode.Return))) {
+			SceneManager.LoadScene("Level Select");
 		}
 	}
 
@@ -49,7 +72,7 @@ public class TutorialControl : MonoBehaviour {
 	}
 
 	void ActivateTutorial () {
-		print("test");
+		print("this one");
 		StartCoroutine("NextScreen", 2);
 		curtain.SwitchPausedGame();
 	}
@@ -58,6 +81,47 @@ public class TutorialControl : MonoBehaviour {
 		Transparency.SetTransparent(textWindows[index - 1]);
 		yield return new WaitForSeconds(0.5f);
 		StartCoroutine("FadeUpWindow", index);
+	}
+
+	//left = 0, right = 1;
+	public void SetCreatedBridge (int index, bool val) {
+		createdBridge[index] = val;
+
+		if (createdBridge[0] && createdBridge[1]) {
+			curtain.SwitchPausedGame();
+			scout.SetMovementOff(false);
+		}
+	}
+
+	public void TransitionToTutorialEnd () {
+		StartCoroutine("EndTutorial");
+	}
+
+	IEnumerator EndTutorial () {
+		yield return new WaitForSeconds(1f);
+
+		StartCoroutine("FadeUp", tutorialEndTextWindows[0]);
+		StartCoroutine("FadeUp", tutorialEndTextWindows[1]);
+	}
+
+	IEnumerator FadeUp (GameObject go) {
+		float alpha = 0f;
+
+		// if (index >= textWindows.Count) yield break;
+
+		while (alpha < 1f) {
+			// print("TEST");
+			// print(textWindows[0].transform.GetChild(0).GetComponent<Image>().color.a);
+			if (go.transform.childCount > 0) Transparency.SetOpacity(go, go.transform.GetChild(0).GetComponent<Text>().color.a + 0.1f);
+			else Transparency.SetOpacity(go, go.GetComponent<Text>().color.a + 0.1f);
+			alpha += 0.1f;
+			yield return new WaitForSeconds(0.01f);
+		}
+
+		// textBoxCount++;
+		
+		// print(textBoxCount);
+		// canNext = true;
 	}
 
 	IEnumerator FadeUpWindow (int index) {
@@ -72,7 +136,9 @@ public class TutorialControl : MonoBehaviour {
 			alpha += 0.1f;
 			yield return new WaitForSeconds(0.01f);
 		}
+
 		textBoxCount++;
+		
 		print(textBoxCount);
 		canNext = true;
 

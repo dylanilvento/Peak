@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using XboxCtrlrInput;
 using UnityEngine.SceneManagement;
 
-public class PlayDemoReel : MonoBehaviour {
+public class DemoEnd : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
@@ -17,11 +17,11 @@ public class PlayDemoReel : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (XCI.GetButtonDown(XboxButton.Start)) {
+		if (XCI.GetButtonDown(XboxButton.Start) || XCI.GetButtonDown(XboxButton.A)) {
 		// if (Input.GetButtonDown("Start Button")) {
-			Time.timeScale = 1f;
+			// Time.timeScale = 1f;
 			// Application.LoadLevel(0);
-			SceneManager.LoadScene("Tutorial");
+			SceneManager.LoadScene("Start");
 		}
 	}
 }

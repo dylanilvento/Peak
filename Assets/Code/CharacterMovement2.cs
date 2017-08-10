@@ -180,6 +180,10 @@ public class CharacterMovement2 : MonoBehaviour {
 		if (collidedWith.name.Equals("Right Curtain") || collidedWith.name.Equals("Left Curtain")) {
 			// print("Entered curtain");
 			SwitchWorlds();
+
+			if (movementOff) {
+				movementOff = false;
+			}
 			// sr.color = new Color(1f, 1f, 1f, 0f);
 			//gameObject.layer = 9;
 			//sr.sortingOrder = 0;

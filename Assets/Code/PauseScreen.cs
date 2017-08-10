@@ -17,7 +17,7 @@ public class PauseScreen : MonoBehaviour {
 
 	CurtainCollider curtain;
 
-	static bool demoMode = false;
+	static bool demoMode = true;
 	// Use this for initialization
 	void Start () {
 		arrow = GameObject.Find("Pause Arrow");

@@ -57,7 +57,8 @@ public class TutorialControl : MonoBehaviour {
 		}
 
 		if ((XCI.GetButtonDown(XboxButton.Start) || Input.GetKeyDown(KeyCode.Return))) {
-			SceneManager.LoadScene("Level Select");
+			IntersceneDataHandler.startedTutorial = false;
+			SceneManager.LoadScene("Level 1");
 		}
 	}
 

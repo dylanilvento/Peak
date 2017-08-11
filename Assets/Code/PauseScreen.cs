@@ -5,6 +5,7 @@ using XboxCtrlrInput;
 using System.Diagnostics;
 using System;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class PauseScreen : MonoBehaviour {
 
@@ -99,6 +100,8 @@ public class PauseScreen : MonoBehaviour {
 			else if (XCI.GetButtonUp(XboxButton.X)) {
 			// else if (Input.GetButtonDown("X Button")) {
 				Time.timeScale = 1f;
+				IntersceneDataHandler.startedTutorial = false;
+				IntersceneDataHandler.currentLevel = 0;
 				Application.LoadLevel(Application.loadedLevel);
 			}
 
@@ -111,6 +114,10 @@ public class PauseScreen : MonoBehaviour {
 			else if (XCI.GetButtonUp(XboxButton.LeftBumper)) {
 			// else if (Input.GetButtonDown("Left Bumper")) {
 				Application.LoadLevel(4);
+			}
+
+			else if (XCI.GetButtonUp(XboxButton.RightBumper)) {
+				SceneManager.LoadScene("Level Select");
 			}
 		}
 	

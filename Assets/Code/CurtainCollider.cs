@@ -97,4 +97,8 @@ public class CurtainCollider : MonoBehaviour {
 	public void SwitchPausedGame () {
 		paused = !paused;
 	}
+
+	public void SetPausedGame (bool val) {
+		paused = val;
+	}
 }

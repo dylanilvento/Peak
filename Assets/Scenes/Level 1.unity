@@ -11540,6 +11540,12 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9b54c65a127bc4adb9bb2a1d2a0f28c2, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &263448494 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11422840, guid: 9b54c65a127bc4adb9bb2a1d2a0f28c2,
+    type: 2}
+  m_PrefabInternal: {fileID: 263448493}
+  m_Script: {fileID: 11500000, guid: b3773baf564a445feb9473f9a0d6de45, type: 3}
 --- !u!1001 &264222144
 Prefab:
   m_ObjectHideFlags: 0
@@ -55407,6 +55413,10 @@ Prefab:
       propertyPath: levelCompleteScreenDist
       value: 400
       objectReference: {fileID: 0}
+    - target: {fileID: 11496924, guid: 07304e24c808442759f4f18a64fb9e13, type: 2}
+      propertyPath: curtain
+      value: 
+      objectReference: {fileID: 263448494}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 07304e24c808442759f4f18a64fb9e13, type: 2}
   m_IsPrefabParent: 0

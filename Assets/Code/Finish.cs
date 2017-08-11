@@ -20,6 +20,7 @@ public class Finish : MonoBehaviour {
 	public int nextLevel;
 	//GameOverCollider goCollider;
 	//Camera camera;
+	public CurtainCollider curtain;
 	public GameObject statusScreen, levelClearBox, continueBox, mainCamera;
 	GameObject target, levelClearText;
 	// public string statusTextKeyboard;
@@ -80,7 +81,10 @@ public class Finish : MonoBehaviour {
 			IntersceneDataHandler.levelToLevelSelectTransition = true;
 			SceneManager.LoadScene("Level Select");
 		}
-		else SceneManager.LoadScene("End Demo");
+		else {
+			SceneManager.LoadScene("End Demo");
+			IntersceneDataHandler.currentLevel = 0;
+		}
 		
 	}
 
@@ -89,7 +93,8 @@ public class Finish : MonoBehaviour {
 
 		if (other.gameObject == target) {
 			// print("winning");
-
+			// curtain.SwitchPausedGame();
+			curtain.SetPausedGame(false);
 			other.gameObject.GetComponent<CharacterMovement2>().SetMovementOff(true);
 			other.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY;
 

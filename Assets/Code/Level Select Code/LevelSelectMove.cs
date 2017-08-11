@@ -29,10 +29,10 @@ public class LevelSelectMove : MonoBehaviour {
 
 		pathVertices = new Vector3[path.GetComponent<LineRenderer>().positionCount];
 		// print(path.GetComponent<LineRenderer>().positionCount);
-
+		ClearRelativeNodes();
 		path.GetComponent<LineRenderer>().GetPositions(pathVertices); //pass the array that you want to put the positions into as a parameter
 		transform.position = new Vector3 (pathVertices[IntersceneDataHandler.currentLevel].x, pathVertices[IntersceneDataHandler.currentLevel].y + 0.5f, pathVertices[IntersceneDataHandler.currentLevel].z);
-
+		currIndex = IntersceneDataHandler.currentLevel;
 		SetRelativeNodes(IntersceneDataHandler.currentLevel + 1);
 		SetRelativeNodes(IntersceneDataHandler.currentLevel - 1);
 	}

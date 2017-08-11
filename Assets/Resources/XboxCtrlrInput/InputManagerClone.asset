@@ -20,7 +20,7 @@ MonoBehaviour:
     altNegativeButton: a
     altPositiveButton: d
     gravity: 3
-    dead: .00100000005
+    dead: 0.001
     sensitivity: 3
     snap: 1
     invert: 0
@@ -35,7 +35,7 @@ MonoBehaviour:
     altNegativeButton: s
     altPositiveButton: w
     gravity: 3
-    dead: .00100000005
+    dead: 0.001
     sensitivity: 3
     snap: 1
     invert: 0
@@ -50,7 +50,7 @@ MonoBehaviour:
     altNegativeButton: 
     altPositiveButton: mouse 0
     gravity: 1000
-    dead: .00100000005
+    dead: 0.001
     sensitivity: 1000
     snap: 0
     invert: 0
@@ -65,7 +65,7 @@ MonoBehaviour:
     altNegativeButton: 
     altPositiveButton: mouse 1
     gravity: 1000
-    dead: .00100000005
+    dead: 0.001
     sensitivity: 1000
     snap: 0
     invert: 0
@@ -80,7 +80,7 @@ MonoBehaviour:
     altNegativeButton: 
     altPositiveButton: mouse 2
     gravity: 1000
-    dead: .00100000005
+    dead: 0.001
     sensitivity: 1000
     snap: 0
     invert: 0
@@ -95,7 +95,7 @@ MonoBehaviour:
     altNegativeButton: 
     altPositiveButton: 
     gravity: 1000
-    dead: .00100000005
+    dead: 0.001
     sensitivity: 1000
     snap: 0
     invert: 0
@@ -111,7 +111,7 @@ MonoBehaviour:
     altPositiveButton: 
     gravity: 0
     dead: 0
-    sensitivity: .100000001
+    sensitivity: 0.1
     snap: 0
     invert: 0
     type: 1
@@ -126,7 +126,7 @@ MonoBehaviour:
     altPositiveButton: 
     gravity: 0
     dead: 0
-    sensitivity: .100000001
+    sensitivity: 0.1
     snap: 0
     invert: 0
     type: 1
@@ -141,7 +141,7 @@ MonoBehaviour:
     altPositiveButton: 
     gravity: 0
     dead: 0
-    sensitivity: .100000001
+    sensitivity: 0.1
     snap: 0
     invert: 0
     type: 1
@@ -156,7 +156,7 @@ MonoBehaviour:
     altPositiveButton: 
     gravity: 0
     dead: 0
-    sensitivity: .100000001
+    sensitivity: 0.1
     snap: 0
     invert: 0
     type: 3
@@ -171,7 +171,7 @@ MonoBehaviour:
     altPositiveButton: 
     gravity: 0
     dead: 0
-    sensitivity: .100000001
+    sensitivity: 0.1
     snap: 0
     invert: 0
     type: 3
@@ -185,7 +185,7 @@ MonoBehaviour:
     altNegativeButton: 
     altPositiveButton: 
     gravity: 0
-    dead: .189999998
+    dead: 0.19
     sensitivity: 1
     snap: 0
     invert: 0
@@ -200,7 +200,7 @@ MonoBehaviour:
     altNegativeButton: 
     altPositiveButton: 
     gravity: 0
-    dead: .189999998
+    dead: 0.19
     sensitivity: 1
     snap: 0
     invert: 1
@@ -215,7 +215,7 @@ MonoBehaviour:
     altNegativeButton: 
     altPositiveButton: 
     gravity: 1000
-    dead: .00100000005
+    dead: 0.001
     sensitivity: 1000
     snap: 0
     invert: 0
@@ -230,7 +230,7 @@ MonoBehaviour:
     altNegativeButton: 
     altPositiveButton: 
     gravity: 1000
-    dead: .00100000005
+    dead: 0.001
     sensitivity: 1000
     snap: 0
     invert: 0
@@ -245,7 +245,7 @@ MonoBehaviour:
     altNegativeButton: 
     altPositiveButton: 
     gravity: 1000
-    dead: .00100000005
+    dead: 0.001
     sensitivity: 1000
     snap: 0
     invert: 0
@@ -260,7 +260,7 @@ MonoBehaviour:
     altNegativeButton: 
     altPositiveButton: 
     gravity: 1000
-    dead: .00100000005
+    dead: 0.001
     sensitivity: 1000
     snap: 0
     invert: 0
@@ -275,7 +275,7 @@ MonoBehaviour:
     altNegativeButton: 
     altPositiveButton: 
     gravity: 0
-    dead: .189999998
+    dead: 0.19
     sensitivity: 1
     snap: 0
     invert: 0
@@ -290,7 +290,7 @@ MonoBehaviour:
     altNegativeButton: 
     altPositiveButton: 
     gravity: 0
-    dead: .189999998
+    dead: 0.19
     sensitivity: 1
     snap: 0
     invert: 1
@@ -305,7 +305,7 @@ MonoBehaviour:
     altNegativeButton: 
     altPositiveButton: 
     gravity: 0
-    dead: .189999998
+    dead: 0.19
     sensitivity: 1
     snap: 0
     invert: 0
@@ -320,7 +320,7 @@ MonoBehaviour:
     altNegativeButton: 
     altPositiveButton: 
     gravity: 0
-    dead: .189999998
+    dead: 0.19
     sensitivity: 1
     snap: 0
     invert: 0
@@ -335,7 +335,7 @@ MonoBehaviour:
     altNegativeButton: 
     altPositiveButton: 
     gravity: 0
-    dead: .189999998
+    dead: 0.19
     sensitivity: 1
     snap: 0
     invert: 1
@@ -350,7 +350,7 @@ MonoBehaviour:
     altNegativeButton: 
     altPositiveButton: 
     gravity: 0
-    dead: .189999998
+    dead: 0.19
     sensitivity: 1
     snap: 0
     invert: 0
@@ -365,7 +365,7 @@ MonoBehaviour:
     altNegativeButton: 
     altPositiveButton: 
     gravity: 0
-    dead: .189999998
+    dead: 0.19
     sensitivity: 1
     snap: 0
     invert: 0
@@ -380,7 +380,7 @@ MonoBehaviour:
     altNegativeButton: 
     altPositiveButton: 
     gravity: 0
-    dead: .189999998
+    dead: 0.19
     sensitivity: 1
     snap: 0
     invert: 0
@@ -395,7 +395,7 @@ MonoBehaviour:
     altNegativeButton: 
     altPositiveButton: 
     gravity: 0
-    dead: .189999998
+    dead: 0.19
     sensitivity: 1
     snap: 0
     invert: 1
@@ -410,7 +410,7 @@ MonoBehaviour:
     altNegativeButton: 
     altPositiveButton: 
     gravity: 0
-    dead: .189999998
+    dead: 0.19
     sensitivity: 1
     snap: 0
     invert: 0
@@ -425,7 +425,7 @@ MonoBehaviour:
     altNegativeButton: 
     altPositiveButton: 
     gravity: 0
-    dead: .189999998
+    dead: 0.19
     sensitivity: 1
     snap: 0
     invert: 0
@@ -440,7 +440,7 @@ MonoBehaviour:
     altNegativeButton: 
     altPositiveButton: 
     gravity: 0
-    dead: .189999998
+    dead: 0.19
     sensitivity: 1
     snap: 0
     invert: 1
@@ -455,7 +455,7 @@ MonoBehaviour:
     altNegativeButton: 
     altPositiveButton: 
     gravity: 0
-    dead: .189999998
+    dead: 0.19
     sensitivity: 1
     snap: 0
     invert: 0
@@ -470,7 +470,7 @@ MonoBehaviour:
     altNegativeButton: 
     altPositiveButton: 
     gravity: 0
-    dead: .189999998
+    dead: 0.19
     sensitivity: 1
     snap: 0
     invert: 0
@@ -485,7 +485,7 @@ MonoBehaviour:
     altNegativeButton: 
     altPositiveButton: 
     gravity: 0
-    dead: .189999998
+    dead: 0.19
     sensitivity: 1
     snap: 0
     invert: 0
@@ -500,7 +500,7 @@ MonoBehaviour:
     altNegativeButton: 
     altPositiveButton: 
     gravity: 0
-    dead: .189999998
+    dead: 0.19
     sensitivity: 1
     snap: 0
     invert: 1
@@ -515,7 +515,7 @@ MonoBehaviour:
     altNegativeButton: 
     altPositiveButton: 
     gravity: 0
-    dead: .189999998
+    dead: 0.19
     sensitivity: 1
     snap: 0
     invert: 0
@@ -530,7 +530,7 @@ MonoBehaviour:
     altNegativeButton: 
     altPositiveButton: 
     gravity: 0
-    dead: .189999998
+    dead: 0.19
     sensitivity: 1
     snap: 0
     invert: 0
@@ -545,7 +545,7 @@ MonoBehaviour:
     altNegativeButton: 
     altPositiveButton: 
     gravity: 0
-    dead: .189999998
+    dead: 0.19
     sensitivity: 1
     snap: 0
     invert: 1
@@ -560,7 +560,7 @@ MonoBehaviour:
     altNegativeButton: 
     altPositiveButton: 
     gravity: 0
-    dead: .189999998
+    dead: 0.19
     sensitivity: 1
     snap: 0
     invert: 0
@@ -575,7 +575,7 @@ MonoBehaviour:
     altNegativeButton: 
     altPositiveButton: 
     gravity: 0
-    dead: .189999998
+    dead: 0.19
     sensitivity: 1
     snap: 0
     invert: 0
@@ -590,7 +590,7 @@ MonoBehaviour:
     altNegativeButton: 
     altPositiveButton: 
     gravity: 0
-    dead: .189999998
+    dead: 0.19
     sensitivity: 1
     snap: 0
     invert: 0
@@ -605,7 +605,7 @@ MonoBehaviour:
     altNegativeButton: 
     altPositiveButton: 
     gravity: 0
-    dead: .189999998
+    dead: 0.19
     sensitivity: 1
     snap: 0
     invert: 1
@@ -620,7 +620,7 @@ MonoBehaviour:
     altNegativeButton: 
     altPositiveButton: 
     gravity: 0
-    dead: .189999998
+    dead: 0.19
     sensitivity: 1
     snap: 0
     invert: 0
@@ -635,7 +635,7 @@ MonoBehaviour:
     altNegativeButton: 
     altPositiveButton: 
     gravity: 0
-    dead: .189999998
+    dead: 0.19
     sensitivity: 1
     snap: 0
     invert: 0
@@ -650,7 +650,7 @@ MonoBehaviour:
     altNegativeButton: 
     altPositiveButton: 
     gravity: 0
-    dead: .189999998
+    dead: 0.19
     sensitivity: 1
     snap: 0
     invert: 1
@@ -665,7 +665,7 @@ MonoBehaviour:
     altNegativeButton: 
     altPositiveButton: 
     gravity: 0
-    dead: .189999998
+    dead: 0.19
     sensitivity: 1
     snap: 0
     invert: 0
@@ -680,7 +680,7 @@ MonoBehaviour:
     altNegativeButton: 
     altPositiveButton: 
     gravity: 0
-    dead: .189999998
+    dead: 0.19
     sensitivity: 1
     snap: 0
     invert: 0
@@ -695,7 +695,7 @@ MonoBehaviour:
     altNegativeButton: 
     altPositiveButton: 
     gravity: 0
-    dead: .189999998
+    dead: 0.19
     sensitivity: 1
     snap: 0
     invert: 0
@@ -710,7 +710,7 @@ MonoBehaviour:
     altNegativeButton: 
     altPositiveButton: 
     gravity: 0
-    dead: .189999998
+    dead: 0.19
     sensitivity: 1
     snap: 0
     invert: 1
@@ -725,7 +725,7 @@ MonoBehaviour:
     altNegativeButton: 
     altPositiveButton: 
     gravity: 0
-    dead: .189999998
+    dead: 0.19
     sensitivity: 1
     snap: 0
     invert: 0
@@ -740,7 +740,7 @@ MonoBehaviour:
     altNegativeButton: 
     altPositiveButton: 
     gravity: 0
-    dead: .189999998
+    dead: 0.19
     sensitivity: 1
     snap: 0
     invert: 0
@@ -755,7 +755,7 @@ MonoBehaviour:
     altNegativeButton: 
     altPositiveButton: 
     gravity: 0
-    dead: .189999998
+    dead: 0.19
     sensitivity: 1
     snap: 0
     invert: 1
@@ -770,7 +770,7 @@ MonoBehaviour:
     altNegativeButton: 
     altPositiveButton: 
     gravity: 0
-    dead: .189999998
+    dead: 0.19
     sensitivity: 1
     snap: 0
     invert: 0
@@ -785,7 +785,7 @@ MonoBehaviour:
     altNegativeButton: 
     altPositiveButton: 
     gravity: 0
-    dead: .189999998
+    dead: 0.19
     sensitivity: 1
     snap: 0
     invert: 0
@@ -800,7 +800,7 @@ MonoBehaviour:
     altNegativeButton: 
     altPositiveButton: 
     gravity: 0
-    dead: .189999998
+    dead: 0.19
     sensitivity: 1
     snap: 0
     invert: 0
@@ -815,7 +815,7 @@ MonoBehaviour:
     altNegativeButton: 
     altPositiveButton: 
     gravity: 0
-    dead: .189999998
+    dead: 0.19
     sensitivity: 1
     snap: 0
     invert: 0
@@ -830,7 +830,7 @@ MonoBehaviour:
     altNegativeButton: 
     altPositiveButton: 
     gravity: 0
-    dead: .189999998
+    dead: 0.19
     sensitivity: 1
     snap: 0
     invert: 0
@@ -845,7 +845,7 @@ MonoBehaviour:
     altNegativeButton: 
     altPositiveButton: 
     gravity: 0
-    dead: .189999998
+    dead: 0.19
     sensitivity: 1
     snap: 0
     invert: 0
@@ -860,7 +860,7 @@ MonoBehaviour:
     altNegativeButton: 
     altPositiveButton: 
     gravity: 0
-    dead: .189999998
+    dead: 0.19
     sensitivity: 1
     snap: 0
     invert: 0
@@ -875,7 +875,7 @@ MonoBehaviour:
     altNegativeButton: 
     altPositiveButton: 
     gravity: 0
-    dead: .189999998
+    dead: 0.19
     sensitivity: 1
     snap: 0
     invert: 0
@@ -890,7 +890,7 @@ MonoBehaviour:
     altNegativeButton: 
     altPositiveButton: 
     gravity: 0
-    dead: .189999998
+    dead: 0.19
     sensitivity: 1
     snap: 0
     invert: 0
@@ -905,7 +905,7 @@ MonoBehaviour:
     altNegativeButton: 
     altPositiveButton: 
     gravity: 0
-    dead: .189999998
+    dead: 0.19
     sensitivity: 1
     snap: 0
     invert: 0
@@ -920,7 +920,7 @@ MonoBehaviour:
     altNegativeButton: 
     altPositiveButton: 
     gravity: 0
-    dead: .189999998
+    dead: 0.19
     sensitivity: 1
     snap: 0
     invert: 0
@@ -935,7 +935,7 @@ MonoBehaviour:
     altNegativeButton: 
     altPositiveButton: 
     gravity: 0
-    dead: .189999998
+    dead: 0.19
     sensitivity: 1
     snap: 0
     invert: 0
@@ -950,7 +950,7 @@ MonoBehaviour:
     altNegativeButton: 
     altPositiveButton: 
     gravity: 0
-    dead: .189999998
+    dead: 0.19
     sensitivity: 1
     snap: 0
     invert: 1
@@ -965,7 +965,7 @@ MonoBehaviour:
     altNegativeButton: 
     altPositiveButton: 
     gravity: 0
-    dead: .189999998
+    dead: 0.19
     sensitivity: 1
     snap: 0
     invert: 1
@@ -980,7 +980,7 @@ MonoBehaviour:
     altNegativeButton: 
     altPositiveButton: 
     gravity: 0
-    dead: .189999998
+    dead: 0.19
     sensitivity: 1
     snap: 0
     invert: 1
@@ -995,7 +995,7 @@ MonoBehaviour:
     altNegativeButton: 
     altPositiveButton: 
     gravity: 0
-    dead: .189999998
+    dead: 0.19
     sensitivity: 1
     snap: 0
     invert: 1
@@ -1010,7 +1010,7 @@ MonoBehaviour:
     altNegativeButton: 
     altPositiveButton: 
     gravity: 0
-    dead: .189999998
+    dead: 0.19
     sensitivity: 1
     snap: 0
     invert: 1
@@ -1025,7 +1025,7 @@ MonoBehaviour:
     altNegativeButton: 
     altPositiveButton: joystick button 0
     gravity: 1000
-    dead: .00100000005
+    dead: 0.001
     sensitivity: 1000
     snap: 0
     invert: 0
@@ -1040,7 +1040,7 @@ MonoBehaviour:
     altNegativeButton: 
     altPositiveButton: space
     gravity: 1000
-    dead: .00100000005
+    dead: 0.001
     sensitivity: 1000
     snap: 0
     invert: 0
@@ -1055,7 +1055,7 @@ MonoBehaviour:
     altNegativeButton: 
     altPositiveButton: joystick button 1
     gravity: 1000
-    dead: .00100000005
+    dead: 0.001
     sensitivity: 1000
     snap: 0
     invert: 0

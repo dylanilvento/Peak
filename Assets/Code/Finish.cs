@@ -18,6 +18,8 @@ public class Finish : MonoBehaviour {
 	public bool endOfDemo = false;
 	public bool winActive = false;
 	public int nextLevel;
+
+	BoxCollider2D boxCollider;
 	//GameOverCollider goCollider;
 	//Camera camera;
 	public CurtainCollider curtain;
@@ -35,7 +37,7 @@ public class Finish : MonoBehaviour {
 	void Start () {
 		// print("canvas width: " + GameObject.Find("Canvas").GetComponent<RectTransform>().rect.width);
 		// print(levelClearBox.GetComponent<RectTransform>().rect.center - GameObject.Find("Canvas").GetComponent<RectTransform>().rect.center);
-
+		boxCollider = GetComponent<BoxCollider2D>();
 		float differenceCanvasAndLevelComplete = levelClearBox.transform.position.x - GameObject.Find("Canvas").transform.position.x;
 		levelClearText = levelClearBox.transform.GetChild(0).gameObject;
 		print("difference = " + differenceCanvasAndLevelComplete);
@@ -94,7 +96,8 @@ public class Finish : MonoBehaviour {
 		if (other.gameObject == target) {
 			// print("winning");
 			// curtain.SwitchPausedGame();
-			curtain.SetPausedGame(false);
+			curtain.SetPausedGame(true);
+			boxCollider.enabled = false;
 			other.gameObject.GetComponent<CharacterMovement2>().SetMovementOff(true);
 			other.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY;
 

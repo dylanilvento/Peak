@@ -18,7 +18,9 @@ public class PauseScreen : MonoBehaviour {
 
 	CurtainCollider curtain;
 
-	static bool demoMode = true;
+	float menuDist = 23f;
+
+	static bool demoMode = false;
 	// Use this for initialization
 	void Start () {
 		arrow = GameObject.Find("Pause Arrow");
@@ -42,7 +44,7 @@ public class PauseScreen : MonoBehaviour {
 
 		//************ COMMENTED OUT DUE TO CTRLR ERROR
 
-		if (Input.GetKeyDown("escape") || XCI.GetButtonDown(XboxButton.Start)) {
+		if (Input.GetKeyDown(KeyCode.Escape) || XCI.GetButtonDown(XboxButton.Start)) {
 
 		//*********************************
 		// if (Input.GetKeyDown("escape") || Input.GetButtonDown("Start Button")) {
@@ -51,13 +53,13 @@ public class PauseScreen : MonoBehaviour {
 		}
 
 		if (paused && !demoMode) {
-			if ((Input.GetKeyDown("down") || Input.GetAxis("Vertical") < 0f || XCI.GetDPad(XboxDPad.Down)) && !onQuit) {
+			if ((Input.GetKeyDown(KeyCode.DownArrow) || Input.GetAxis("Vertical") < 0f || XCI.GetDPad(XboxDPad.Down)) && !onQuit) {
 				onQuit = true;
-				arrow.transform.localPosition = new Vector2(arrow.transform.localPosition.x, arrow.transform.localPosition.y - 18f);
+				arrow.transform.localPosition = new Vector2(arrow.transform.localPosition.x, arrow.transform.localPosition.y - menuDist);
 			}
-			if ((Input.GetKeyDown("up") || Input.GetAxis("Vertical") > 0f || XCI.GetDPad(XboxDPad.Up)) && onQuit) {
+			if ((Input.GetKeyDown(KeyCode.UpArrow) || Input.GetAxis("Vertical") > 0f || XCI.GetDPad(XboxDPad.Up)) && onQuit) {
 				onQuit = false;
-				arrow.transform.localPosition = new Vector2(arrow.transform.localPosition.x, arrow.transform.localPosition.y + 18f);
+				arrow.transform.localPosition = new Vector2(arrow.transform.localPosition.x, arrow.transform.localPosition.y + menuDist);
 			}
 			
 			//************ COMMENTED OUT DUE TO CTRLR ERROR
@@ -111,12 +113,14 @@ public class PauseScreen : MonoBehaviour {
 				Application.LoadLevel(0);
 			}
 
-			else if (XCI.GetButtonUp(XboxButton.LeftBumper)) {
-			// else if (Input.GetButtonDown("Left Bumper")) {
-				Application.LoadLevel(4);
-			}
+			// else if (XCI.GetButtonUp(XboxButton.LeftBumper)) {
+			// // else if (Input.GetButtonDown("Left Bumper")) {
+			// 	Time.timeScale = 1f;
+			// 	Application.LoadLevel(4);
+			// }
 
 			else if (XCI.GetButtonUp(XboxButton.RightBumper)) {
+				Time.timeScale = 1f;
 				SceneManager.LoadScene("Level Select");
 			}
 		}
@@ -176,6 +180,10 @@ public class PauseScreen : MonoBehaviour {
 			}
 
 			else if (val && !demoMode && obj.name.Contains("Restart")) {
+				continue;
+			}
+
+			else if (val && !demoMode && obj.name.Contains("Background2")) {
 				continue;
 			}
 			else {

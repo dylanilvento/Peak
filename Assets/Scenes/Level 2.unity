@@ -17101,10 +17101,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 140744, guid: 3fe3cdeb64da2431b8915724c99f719d, type: 2}
-      propertyPath: m_Name
-      value: Pause Screen
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3fe3cdeb64da2431b8915724c99f719d, type: 2}
   m_IsPrefabParent: 0

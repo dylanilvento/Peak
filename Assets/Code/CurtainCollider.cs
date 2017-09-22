@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-using XboxCtrlrInput;
+// using XboxCtrlrInput;
 
 public class CurtainCollider : MonoBehaviour {
 
@@ -63,7 +63,7 @@ public class CurtainCollider : MonoBehaviour {
 			}
 
 			//************ COMMENTED OUT DUE TO CTRLR ERROR
-			if(Input.GetKey("k") || XCI.GetAxis(XboxAxis.RightStickX) < 0f || camera.WorldToScreenPoint(rightCurtain.transform.position).x > Screen.width + 10) {
+			if(Input.GetKey("k") /*|| XCI.GetAxis(XboxAxis.RightStickX) < 0f*/ || camera.WorldToScreenPoint(rightCurtain.transform.position).x > Screen.width + 10) {
 			// if(Input.GetKey("k") || Input.GetAxis("Mouse X") < 0f || camera.WorldToScreenPoint(rightCurtain.transform.position).x > Screen.width + 10) {
 				if (box.size.x > initialSize && currDist > smallestDist) {
 					// sizeChange -= 0.01f;
@@ -79,7 +79,7 @@ public class CurtainCollider : MonoBehaviour {
 			}
 
 			//************ COMMENTED OUT DUE TO CTRLR ERROR
-			if(Input.GetKey("l") || XCI.GetAxis(XboxAxis.RightStickX) > 0f || camera.WorldToScreenPoint(rightCurtain.transform.position).x < -15f) {
+			if(Input.GetKey("l") /*|| XCI.GetAxis(XboxAxis.RightStickX) > 0f*/ || camera.WorldToScreenPoint(rightCurtain.transform.position).x < -15f) {
 			
 			// if(Input.GetKey("l") || Input.GetAxis("Mouse X") > 0f || camera.WorldToScreenPoint(rightCurtain.transform.position).x < -15f) {
 				// sizeChange += 0.01f;

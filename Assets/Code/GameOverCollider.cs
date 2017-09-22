@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.Analytics;
 using System.Collections.Generic;
-using XboxCtrlrInput;
+// using XboxCtrlrInput;
 
 public class GameOverCollider : MonoBehaviour {
 	GameObject target;

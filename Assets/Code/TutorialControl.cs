@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using XboxCtrlrInput;
+// using XboxCtrlrInput;
 using UnityEngine.SceneManagement;
 
 public class TutorialControl : MonoBehaviour {
@@ -38,7 +38,7 @@ public class TutorialControl : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if ((XCI.GetButtonDown(XboxButton.A) || Input.GetKeyDown(KeyCode.Space)) && canNext && !IntersceneDataHandler.startedTutorial ) {
+		if ((/*XCI.GetButtonDown(XboxButton.A) ||*/ Input.GetKeyDown(KeyCode.Space)) && canNext && !IntersceneDataHandler.startedTutorial ) {
 			print(textBoxCount);
 			if (textBoxCount < 2) StartCoroutine("NextScreen", textBoxCount);//NextScreen(textBoxCount);
 			else if (textBoxCount == 2) ActivateTutorial();
@@ -56,7 +56,7 @@ public class TutorialControl : MonoBehaviour {
 			// ActivateTutorial();
 		}
 
-		if ((XCI.GetButtonDown(XboxButton.Start) || Input.GetKeyDown(KeyCode.Return))) {
+		if ((/*XCI.GetButtonDown(XboxButton.Start) ||*/ Input.GetKeyDown(KeyCode.Return))) {
 			IntersceneDataHandler.startedTutorial = false;
 			SceneManager.LoadScene("Level 1");
 		}

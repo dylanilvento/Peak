@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using XboxCtrlrInput;
+// using XboxCtrlrInput;
 using System.Collections.Generic;
 
 public class StartScreenController : MonoBehaviour {
@@ -35,17 +35,9 @@ public class StartScreenController : MonoBehaviour {
 
 		Time.timeScale = 1f;
 
-		ctrlNum = XCI.GetNumPluggedCtrlrs();
+		// ctrlNum = XCI.GetNumPluggedCtrlrs();
 
-		// Transparency.SetTransparent(leftStickGroup);
-		// Transparency.SetTransparent(rightStickGroup);
-		// Transparency.SetTransparent(pauseGroup);
-		// Transparency.SetTransparent(startGroup);
 
-		// Transparency.SetTransparent(escGroup);
-		// Transparency.SetTransparent(spaceGroup);
-		// Transparency.SetTransparent(asGroup);
-		// Transparency.SetTransparent(klGroup);
 
 		Transparency.SetTransparent(pauseButtonGroup);
 		Transparency.SetTransparent(pauseKeyboardGroup);
@@ -60,7 +52,7 @@ public class StartScreenController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKeyDown(KeyCode.Return) || XCI.GetButtonDown(XboxButton.Start)) {
+		if (Input.GetKeyDown(KeyCode.Return) /*|| XCI.GetButtonDown(XboxButton.Start)*/) {
 		
 		// if (Input.GetKey("space") || Input.GetButtonDown("Start Button")) {
 			Time.timeScale = 1f;

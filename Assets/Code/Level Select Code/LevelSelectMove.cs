@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using XboxCtrlrInput;
+// using XboxCtrlrInput;
 
 public class LevelSelectMove : MonoBehaviour {
 
@@ -40,48 +40,11 @@ public class LevelSelectMove : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		// float axisX = XCI.GetAxis(XboxAxis.LeftStickX);
-        // float axisY = XCI.GetAxis(XboxAxis.LeftStickY);
-
-		// if ((Input.GetKeyDown(KeyCode.RightArrow) || axisX > 0) && !startMovement && currIndex < pathVertices.Length) {
-		// 	// print("test");
-		// 	startTime = Time.time;
-		// 	startPos = new Vector3 (pathVertices[currIndex].x, pathVertices[currIndex].y + 0.5f, pathVertices[currIndex].z);
-		// 	endPos = new Vector3 (pathVertices[currIndex + 1].x, pathVertices[currIndex + 1].y + 0.5f, pathVertices[currIndex + 1].z);
-        // 	journeyLength = Vector3.Distance(startPos, endPos);
-		// 	startMovement = true;
-		// 	currIndex++;
-    
-			
-		// }
-
-		// if ((Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetAxis("Horizontal") < 0 ) && !startMovement && currIndex > 0) {
-		// 	// print("test");
-		// 	startTime = Time.time;
-		// 	startPos = new Vector3 (pathVertices[currIndex].x, pathVertices[currIndex].y + 0.5f, pathVertices[currIndex].z);
-		// 	endPos = new Vector3 (pathVertices[currIndex - 1].x, pathVertices[currIndex - 1].y + 0.5f, pathVertices[currIndex - 1].z);
-        // 	journeyLength = Vector3.Distance(startPos, endPos);
-		// 	startMovement = true;
-		// 	currIndex--;
-    
-			
-		// }
-
-		// if (Input.GetAxis("Vertical") > 0 ) {
-		// 	print("test");
-		// }
-
 		if ((Input.GetAxis("Horizontal") > 0) && !startMovement) {
 			if (Input.GetAxis("Vertical") >= 0 && upRight != -1) {
-					// startTime = Time.time;
-					// startPos = new Vector3 (pathVertices[currIndex].x, pathVertices[currIndex].y + 0.5f, pathVertices[currIndex].z);
-					// endPos = new Vector3 (pathVertices[upRight].x, pathVertices[upRight].y + 0.5f, pathVertices[upRight].z);
-					// journeyLength = Vector3.Distance(startPos, endPos);
-					// startMovement = true;
-					// currIndex = upRight;
 
 				SetUpJourney(upRight);
-					// currIndex--;
+
 			}
 
 			else if (Input.GetAxis("Vertical") <= 0 && downRight != -1) {
@@ -91,15 +54,9 @@ public class LevelSelectMove : MonoBehaviour {
 
 		else if ((Input.GetAxis("Horizontal") < 0) && !startMovement) {
 			if (Input.GetAxis("Vertical") >= 0 && upLeft != -1) {
-					// startTime = Time.time;
-					// startPos = new Vector3 (pathVertices[currIndex].x, pathVertices[currIndex].y + 0.5f, pathVertices[currIndex].z);
-					// endPos = new Vector3 (pathVertices[upRight].x, pathVertices[upRight].y + 0.5f, pathVertices[upRight].z);
-					// journeyLength = Vector3.Distance(startPos, endPos);
-					// startMovement = true;
-					// currIndex = upRight;
 
 				SetUpJourney(upLeft);
-					// currIndex--;
+
 			}
 
 			else if (Input.GetAxis("Vertical") <= 0 && downLeft != -1) {
@@ -109,15 +66,9 @@ public class LevelSelectMove : MonoBehaviour {
 
 		else if ((Input.GetAxis("Vertical") > 0) && !startMovement) {
 			if (Input.GetAxis("Horizontal") >= 0 && upRight != -1) {
-					// startTime = Time.time;
-					// startPos = new Vector3 (pathVertices[currIndex].x, pathVertices[currIndex].y + 0.5f, pathVertices[currIndex].z);
-					// endPos = new Vector3 (pathVertices[upRight].x, pathVertices[upRight].y + 0.5f, pathVertices[upRight].z);
-					// journeyLength = Vector3.Distance(startPos, endPos);
-					// startMovement = true;
-					// currIndex = upRight;
 
 				SetUpJourney(upRight);
-					// currIndex--;
+
 			}
 
 			else if (Input.GetAxis("Horizontal") <= 0 && upLeft != -1) {
@@ -127,15 +78,9 @@ public class LevelSelectMove : MonoBehaviour {
 
 		else if ((Input.GetAxis("Vertical") < 0) && !startMovement) {
 			if (Input.GetAxis("Horizontal") >= 0 && downRight != -1) {
-					// startTime = Time.time;
-					// startPos = new Vector3 (pathVertices[currIndex].x, pathVertices[currIndex].y + 0.5f, pathVertices[currIndex].z);
-					// endPos = new Vector3 (pathVertices[upRight].x, pathVertices[upRight].y + 0.5f, pathVertices[upRight].z);
-					// journeyLength = Vector3.Distance(startPos, endPos);
-					// startMovement = true;
-					// currIndex = upRight;
 
 				SetUpJourney(downRight);
-					// currIndex--;
+
 			}
 
 			else if (Input.GetAxis("Horizontal") <= 0 && downLeft != -1) {
@@ -155,7 +100,7 @@ public class LevelSelectMove : MonoBehaviour {
 			SetRelativeNodes(currIndex - 1);
 		}
 
-		else if (!startMovement && (Input.GetKeyDown(KeyCode.Space) || XCI.GetButtonDown(XboxButton.A))) {
+		else if (!startMovement && (Input.GetKeyDown(KeyCode.Space) /*|| XCI.GetButtonDown(XboxButton.A)*/)) {
 			
 			StartCoroutine("Shrink");
 		}

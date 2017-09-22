@@ -4,7 +4,7 @@ using UnityEngine.UI;
 using UnityEngine.Analytics;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
-using XboxCtrlrInput;
+// using XboxCtrlrInput;
 using System.Diagnostics;
 using System;
 

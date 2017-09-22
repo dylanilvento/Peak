@@ -4,7 +4,7 @@ using UnityEngine.UI;
 using UnityEngine.Analytics;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
-using XboxCtrlrInput;
+// using XboxCtrlrInput;
 using System.Diagnostics;
 using System;
 
@@ -45,7 +45,7 @@ public class Finish : MonoBehaviour {
 		levelCompleteScreenDist = (2f / 3f) * differenceCanvasAndLevelComplete;
 
 		//************ COMMENTED OUT DUE TO CTRLR ERROR
-		ctrlNum = XCI.GetNumPluggedCtrlrs();
+		// ctrlNum = XCI.GetNumPluggedCtrlrs();
 		//***************************
 		lvlControl = GameObject.Find("Game Controller").GetComponent<LevelControl>();
 		target = lvlControl.GetPlayer();
@@ -55,7 +55,7 @@ public class Finish : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		if (winActive && (Input.GetKeyDown("space") || XCI.GetButton(XboxButton.A) || XCI.GetButton(XboxButton.Start))) {
+		if (winActive && (Input.GetKeyDown("space") /*|| XCI.GetButton(XboxButton.A) || XCI.GetButton(XboxButton.Start)*/)) {
 			StartCoroutine("TransitionToLevelSelect");
 			
 

@@ -8,6 +8,8 @@ public class LevelControl : MonoBehaviour {
 	bool follow = true;
 	bool levelOver = false;
 
+	// public static bool demoMode;
+
 	public bool canPulse = true;
 	// Use this for initialization
 	void Start () {

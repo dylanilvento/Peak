@@ -14,9 +14,9 @@ public class ShowGamepadOrKeyBoardUI : MonoBehaviour {
 			gameObject.SetActive(false);
 		}
 
-		else if (/*XCI.GetNumPluggedCtrlrs() > 0 &&*/ isKeyboardUI) {
-			gameObject.SetActive(false);
-		}
+		// else if (/*XCI.GetNumPluggedCtrlrs() > 0 &&*/ isKeyboardUI) {
+		// 	gameObject.SetActive(false);
+		// }
 	}
 	
 	// Update is called once per frame

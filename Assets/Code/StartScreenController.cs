@@ -4,38 +4,56 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 // using XboxCtrlrInput;
 using System.Collections.Generic;
-
+using Rewired;
 public class StartScreenController : MonoBehaviour {
 
 	Animator wardAnim, peakAnim;
 	StartScreenButton a, s, k, l, space, esc;
 
-	int ctrlNum;
+	// int ctrlNum;
 	
-	// public List<GameObject> leftStickGroup = new List<GameObject>();
-	// public List<GameObject> rightStickGroup = new List<GameObject>();
-	// public List<GameObject> pauseGroup = new List<GameObject>();
-	// public List<GameObject> startGroup = new List<GameObject>();
-
-	// public List<GameObject> escGroup = new List<GameObject>();
-	// public List<GameObject> spaceGroup = new List<GameObject>();
-	// public List<GameObject> asGroup = new List<GameObject>();
-	// public List<GameObject> klGroup = new List<GameObject>();
+    // private bool start;
 
 	//for xbox controller
 	public List<GameObject> pauseButtonGroup = new List<GameObject>();
-
+	//for keyboard
 	public List<GameObject> pauseKeyboardGroup = new List<GameObject>();
 
 	CharacterMovement charMov;
 	// Use this for initialization
+	bool hasController;
+
+	public int playerId = 0; // The Rewired player id of this character
+
+    private Player player; // The Rewired Player
+
+	void Awake () {
+		player = ReInput.players.GetPlayer(playerId);
+		
+		
+        // Subscribe to events
+        ReInput.ControllerConnectedEvent += OnControllerConnected;
+
+		
+        // ReInput.ControllerDisconnectedEvent += OnControllerDisconnected;
+        // ReInput.ControllerPreDisconnectEvent += OnControllerPreDisconnect;
+    }
+
+	void OnControllerConnected(ControllerStatusChangedEventArgs args) {
+        // print("A controller was connected! Name = " + args.name + " Id = " + args.controllerId + " Type = " + args.controllerType);
+		hasController = player.controllers.ContainsController<Joystick>(args.controllerId);
+		IntersceneDataHandler.hasController = hasController;
+		// print(hasController);
+    }
 	void Start () {
 		wardAnim = GameObject.Find("Ward Logo").GetComponent<Animator>();
 		peakAnim = GameObject.Find("Peak Logo").GetComponent<Animator>();
 
 		Time.timeScale = 1f;
-
+		// print(ReInput.controllers.joystickCount);
 		// ctrlNum = XCI.GetNumPluggedCtrlrs();
+
+		
 
 
 
@@ -46,13 +64,15 @@ public class StartScreenController : MonoBehaviour {
 
 		Cursor.visible = false;
 
-		// Screen.SetResolution(1920, 1080, true);
+		Screen.SetResolution(1920, 1080, true);
 		// StartCoroutine("SwitchButtons");
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKeyDown(KeyCode.Return) /*|| XCI.GetButtonDown(XboxButton.Start)*/) {
+		// if (Input.GetKeyDown(KeyCode.Return) /*|| XCI.GetButtonDown(XboxButton.Start)*/) {
+		
+		if (player.GetButtonDown("Start")) {
 		
 		// if (Input.GetKey("space") || Input.GetButtonDown("Start Button")) {
 			Time.timeScale = 1f;
@@ -71,7 +91,7 @@ public class StartScreenController : MonoBehaviour {
 		
 		yield return new WaitForSeconds(2f);
 
-		if (ctrlNum > 0) {
+		if (hasController) {
 			while (pauseButtonGroup[0].GetComponent<Text>().color.a < 1f) {
 				Transparency.SetOpacity(pauseButtonGroup, pauseButtonGroup[0].GetComponent<Text>().color.a + 0.1f);
 				yield return new WaitForSeconds(0.05f);

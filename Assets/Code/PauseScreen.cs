@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
+using Rewired;
 
 public class PauseScreen : MonoBehaviour {
 
@@ -20,7 +21,32 @@ public class PauseScreen : MonoBehaviour {
 
 	float menuDist = 23f;
 
-	static bool demoMode = false;
+	static bool demoMode = true;
+
+	bool hasController;
+
+	public int playerId = 0; // The Rewired player id of this character
+
+    private Player player; // The Rewired Player
+	
+	void Awake () {
+		player = ReInput.players.GetPlayer(playerId);
+		
+		
+        // Subscribe to events
+        ReInput.ControllerConnectedEvent += OnControllerConnected;
+
+		
+        // ReInput.ControllerDisconnectedEvent += OnControllerDisconnected;
+        // ReInput.ControllerPreDisconnectEvent += OnControllerPreDisconnect;
+    }
+
+	void OnControllerConnected(ControllerStatusChangedEventArgs args) {
+        // print("A controller was connected! Name = " + args.name + " Id = " + args.controllerId + " Type = " + args.controllerType);
+		hasController = player.controllers.ContainsController<Joystick>(args.controllerId);
+		// print(hasController);
+    }
+
 	// Use this for initialization
 	void Start () {
 		arrow = GameObject.Find("Pause Arrow");
@@ -40,24 +66,26 @@ public class PauseScreen : MonoBehaviour {
 
 		//************ COMMENTED OUT DUE TO CTRLR ERROR
 
-		if (Input.GetKeyDown(KeyCode.Escape) /*|| XCI.GetButtonDown(XboxButton.Start)*/) {
+		if (player.GetButtonDown("Pause")) {
 
 			SetPausedGame();
 			if (playableLevel) curtain.SwitchPausedGame();
 		}
 
 		if (paused && !demoMode) {
-			if ((Input.GetKeyDown(KeyCode.DownArrow) || Input.GetAxis("Vertical") < 0f /*|| XCI.GetDPad(XboxDPad.Down)*/) && !onQuit) {
+			// if ((Input.GetKeyDown(KeyCode.DownArrow) || Input.GetAxis("Vertical") < 0f /*|| XCI.GetDPad(XboxDPad.Down)*/) && !onQuit) {
+			if ((player.GetAxis("Vertical Movement") < 0f) && !onQuit) {
 				onQuit = true;
 				arrow.transform.localPosition = new Vector2(arrow.transform.localPosition.x, arrow.transform.localPosition.y - menuDist);
 			}
-			if ((Input.GetKeyDown(KeyCode.UpArrow) || Input.GetAxis("Vertical") > 0f /*|| XCI.GetDPad(XboxDPad.Up)*/) && onQuit) {
+			// if ((Input.GetKeyDown(KeyCode.UpArrow) || Input.GetAxis("Vertical") > 0f /*|| XCI.GetDPad(XboxDPad.Up)*/) && onQuit) {
+			if ((player.GetAxis("Vertical Movement") > 0f) && onQuit) {
 				onQuit = false;
 				arrow.transform.localPosition = new Vector2(arrow.transform.localPosition.x, arrow.transform.localPosition.y + menuDist);
 			}
 			
 			//************ COMMENTED OUT DUE TO CTRLR ERROR
-			if ((Input.GetKeyDown("space") /*|| XCI.GetButton(XboxButton.A)*/) && !onQuit) {
+			if ((player.GetButtonDown("Continue")) && !onQuit) {
 
 				SetPausedGame();
 
@@ -65,7 +93,7 @@ public class PauseScreen : MonoBehaviour {
 			}
 
 				//************ COMMENTED OUT DUE TO CTRLR ERROR
-			if ((Input.GetKeyDown("space") /*|| XCI.GetButton(XboxButton.A)*/) && onQuit) {
+			if (player.GetButtonDown("Continue") && onQuit) {
 			
 			// if ((Input.GetKeyDown("space") || Input.GetKeyDown(KeyCode.JoystickButton0)) && onQuit) {
 				//USED FOR WARD GAMES LAUNCHER
@@ -88,29 +116,29 @@ public class PauseScreen : MonoBehaviour {
 
 		//**** COMMENTED OUT UNTIL NEW CONTROLLER SOLUTION IS MADE */
 
-		// else if (paused && demoMode) {
-		// 	if (XCI.GetButtonUp(XboxButton.A) || XCI.GetButtonUp(XboxButton.B)) {
-		// 		SetPausedGame();
-		// 		if (playableLevel) curtain.SwitchPausedGame();
-		// 	}
-		// 	//reload level
-		// 	else if (XCI.GetButtonUp(XboxButton.X)) {
-		// 		Time.timeScale = 1f;
-		// 		IntersceneDataHandler.startedTutorial = false;
-		// 		IntersceneDataHandler.currentLevel = 0;
-		// 		Application.LoadLevel(Application.loadedLevel);
-		// 	}
+		else if (paused && demoMode) {
+			if (player.GetButtonDown("Continue") || player.GetButtonDown("B")) {
+				SetPausedGame();
+				if (playableLevel) curtain.SwitchPausedGame();
+			}
+			//reload level
+			else if (player.GetButtonDown("X")) {
+				Time.timeScale = 1f;
+				IntersceneDataHandler.startedTutorial = false;
+				IntersceneDataHandler.currentLevel = 0;
+				Application.LoadLevel(Application.loadedLevel);
+			}
 
-		// 	else if (XCI.GetButtonUp(XboxButton.Y)) {
-		// 		Time.timeScale = 1f;
-		// 		Application.LoadLevel(0);
-		// 	}
+			else if (player.GetButtonDown("Y")) {
+				Time.timeScale = 1f;
+				Application.LoadLevel(0);
+			}
 
-		// 	else if (XCI.GetButtonUp(XboxButton.RightBumper)) {
-		// 		Time.timeScale = 1f;
-		// 		SceneManager.LoadScene("Level Select");
-		// 	}
-		// }
+			else if (player.GetButtonDown("Right Bumper")) {
+				Time.timeScale = 1f;
+				SceneManager.LoadScene("Level Select");
+			}
+		}
 	
 	}
 

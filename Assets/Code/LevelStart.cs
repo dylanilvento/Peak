@@ -5,7 +5,7 @@ using UnityEngine;
 public class LevelStart : MonoBehaviour {
 
 	public GameObject[] numbers = new GameObject[3];
-	CharacterMovement2 charMove;
+	CharacterMovement charMove;
 	LevelControl levelControl;
 
 	// Use this for initialization
@@ -15,7 +15,7 @@ public class LevelStart : MonoBehaviour {
 		// Time.timeScale = 0f;
 		levelControl = GetComponent<LevelControl>();
 
-		charMove = levelControl.GetPlayer().GetComponent<CharacterMovement2>();
+		charMove = levelControl.GetPlayer().GetComponent<CharacterMovement>();
 		// levelControl.SetFollow(false);
 		StartCoroutine("StartLevel");
 		

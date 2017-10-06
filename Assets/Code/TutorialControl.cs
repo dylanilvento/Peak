@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 // using XboxCtrlrInput;
 using UnityEngine.SceneManagement;
+using Rewired;
 
 public class TutorialControl : MonoBehaviour {
 
@@ -11,14 +12,31 @@ public class TutorialControl : MonoBehaviour {
 	public List<GameObject> tutorialEndTextWindows = new List<GameObject>();
 	int textBoxCount = 0;
 
-	public CharacterMovement2 scout;
+	public CharacterMovement scout;
 
 	bool[] createdBridge = new bool[2];
 
 	public CurtainCollider curtain;
 
+	public int playerId = 0; // The Rewired player id of this character
+
+    private Player player; // The Rewired Player
+
 	bool canNext = false;
 	// Use this for initialization
+	
+	void Awake () {
+		player = ReInput.players.GetPlayer(playerId);
+		
+		
+        // Subscribe to events
+        // ReInput.ControllerConnectedEvent += OnControllerConnected;
+
+		
+        // ReInput.ControllerDisconnectedEvent += OnControllerDisconnected;
+        // ReInput.ControllerPreDisconnectEvent += OnControllerPreDisconnect;
+    }
+	
 	void Start () {
 		
 		curtain.SwitchPausedGame();
@@ -38,7 +56,7 @@ public class TutorialControl : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if ((/*XCI.GetButtonDown(XboxButton.A) ||*/ Input.GetKeyDown(KeyCode.Space)) && canNext && !IntersceneDataHandler.startedTutorial ) {
+		if ((player.GetButtonDown("Continue")) && canNext && !IntersceneDataHandler.startedTutorial ) {
 			print(textBoxCount);
 			if (textBoxCount < 2) StartCoroutine("NextScreen", textBoxCount);//NextScreen(textBoxCount);
 			else if (textBoxCount == 2) ActivateTutorial();
@@ -56,7 +74,7 @@ public class TutorialControl : MonoBehaviour {
 			// ActivateTutorial();
 		}
 
-		if ((/*XCI.GetButtonDown(XboxButton.Start) ||*/ Input.GetKeyDown(KeyCode.Return))) {
+		if ((player.GetButtonDown("Start"))) {
 			IntersceneDataHandler.startedTutorial = false;
 			SceneManager.LoadScene("Level 1");
 		}

@@ -86,7 +86,7 @@ public class TutorialFinish : MonoBehaviour {
 		if (other.gameObject == target) {
 			// print("winning");
 
-			other.gameObject.GetComponent<CharacterMovement2>().SetMovementOff(true);
+			other.gameObject.GetComponent<CharacterMovement>().SetMovementOff(true);
 			other.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY;
 
 			flagAnim.SetTrigger("Raise");

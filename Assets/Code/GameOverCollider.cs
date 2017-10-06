@@ -25,7 +25,7 @@ public class GameOverCollider : MonoBehaviour {
 
 	string goText;
 
-	CharacterMovement2 scoutMvmt;
+	CharacterMovement scoutMvmt;
 
 	bool goActive = false;
 
@@ -46,7 +46,7 @@ public class GameOverCollider : MonoBehaviour {
 		// goScreen = GameObject.Find("Game Over Screen").GetComponent<Image>();
 		camera = GameObject.Find("Main Camera").GetComponent<Camera>();
 		cameraFollow = camera.GetComponent<CameraFollow>();
-		scoutMvmt = target.GetComponent<CharacterMovement2>();
+		scoutMvmt = target.GetComponent<CharacterMovement>();
 
 		
 

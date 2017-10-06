@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-// using XboxCtrlrInput;
+using Rewired;
 
 public class LevelSelectMove : MonoBehaviour {
 
@@ -23,7 +23,29 @@ public class LevelSelectMove : MonoBehaviour {
 	Vector3 startPos, endPos;
 
 	int upLeft = -1, upRight = -1, downLeft = -1, downRight = -1;
+	bool hasController;
 
+	public int playerId = 0; // The Rewired player id of this character
+
+    private Player player; // The Rewired Player
+	
+	void Awake () {
+		player = ReInput.players.GetPlayer(playerId);
+		
+		
+        // Subscribe to events
+        ReInput.ControllerConnectedEvent += OnControllerConnected;
+
+		
+        // ReInput.ControllerDisconnectedEvent += OnControllerDisconnected;
+        // ReInput.ControllerPreDisconnectEvent += OnControllerPreDisconnect;
+    }
+
+	void OnControllerConnected(ControllerStatusChangedEventArgs args) {
+        // print("A controller was connected! Name = " + args.name + " Id = " + args.controllerId + " Type = " + args.controllerType);
+		hasController = player.controllers.ContainsController<Joystick>(args.controllerId);
+		// print(hasController);
+    }
 	void Start () {
 		// pathVertices = new Vector2[path.GetComponent<LineRenderer>().GetPositions().Length;];
 
@@ -40,50 +62,50 @@ public class LevelSelectMove : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		if ((Input.GetAxis("Horizontal") > 0) && !startMovement) {
-			if (Input.GetAxis("Vertical") >= 0 && upRight != -1) {
+		if ((player.GetAxis("Horizontal Movement") > 0) && !startMovement) {
+			if (player.GetAxis("Vertical Movement") >= 0 && upRight != -1) {
 
 				SetUpJourney(upRight);
 
 			}
 
-			else if (Input.GetAxis("Vertical") <= 0 && downRight != -1) {
+			else if (player.GetAxis("Vertical Movement") <= 0 && downRight != -1) {
 				SetUpJourney(downRight);
 			}
 		}
 
-		else if ((Input.GetAxis("Horizontal") < 0) && !startMovement) {
-			if (Input.GetAxis("Vertical") >= 0 && upLeft != -1) {
+		else if ((player.GetAxis("Horizontal Movement") < 0) && !startMovement) {
+			if (player.GetAxis("Vertical Movement") >= 0 && upLeft != -1) {
 
 				SetUpJourney(upLeft);
 
 			}
 
-			else if (Input.GetAxis("Vertical") <= 0 && downLeft != -1) {
+			else if (player.GetAxis("Vertical Movement") <= 0 && downLeft != -1) {
 				SetUpJourney(downLeft);
 			}
 		}
 
-		else if ((Input.GetAxis("Vertical") > 0) && !startMovement) {
-			if (Input.GetAxis("Horizontal") >= 0 && upRight != -1) {
+		else if ((player.GetAxis("Vertical Movement") > 0) && !startMovement) {
+			if (player.GetAxis("Horizontal Movement") >= 0 && upRight != -1) {
 
 				SetUpJourney(upRight);
 
 			}
 
-			else if (Input.GetAxis("Horizontal") <= 0 && upLeft != -1) {
+			else if (player.GetAxis("Horizontal Movement") <= 0 && upLeft != -1) {
 				SetUpJourney(upLeft);
 			}
 		}
 
-		else if ((Input.GetAxis("Vertical") < 0) && !startMovement) {
-			if (Input.GetAxis("Horizontal") >= 0 && downRight != -1) {
+		else if ((player.GetAxis("Vertical Movement") < 0) && !startMovement) {
+			if (player.GetAxis("Horizontal Movement") >= 0 && downRight != -1) {
 
 				SetUpJourney(downRight);
 
 			}
 
-			else if (Input.GetAxis("Horizontal") <= 0 && downLeft != -1) {
+			else if (player.GetAxis("Horizontal Movement") <= 0 && downLeft != -1) {
 				SetUpJourney(downLeft);
 			}
 		}
@@ -100,7 +122,7 @@ public class LevelSelectMove : MonoBehaviour {
 			SetRelativeNodes(currIndex - 1);
 		}
 
-		else if (!startMovement && (Input.GetKeyDown(KeyCode.Space) /*|| XCI.GetButtonDown(XboxButton.A)*/)) {
+		else if (!startMovement && (player.GetButtonDown("Continue"))) {
 			
 			StartCoroutine("Shrink");
 		}

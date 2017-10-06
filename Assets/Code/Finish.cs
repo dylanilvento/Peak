@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 // using XboxCtrlrInput;
 using System.Diagnostics;
 using System;
+using Rewired;
 
 public class Finish : MonoBehaviour {
 
@@ -33,6 +34,30 @@ public class Finish : MonoBehaviour {
 	LevelControl lvlControl;
 
 	int ctrlNum;
+
+	bool hasController;
+
+	public int playerId = 0; // The Rewired player id of this character
+
+    private Player player; // The Rewired Player
+	
+	void Awake () {
+		player = ReInput.players.GetPlayer(playerId);
+		
+		
+        // Subscribe to events
+        ReInput.ControllerConnectedEvent += OnControllerConnected;
+
+		
+        // ReInput.ControllerDisconnectedEvent += OnControllerDisconnected;
+        // ReInput.ControllerPreDisconnectEvent += OnControllerPreDisconnect;
+    }
+
+	void OnControllerConnected(ControllerStatusChangedEventArgs args) {
+        // print("A controller was connected! Name = " + args.name + " Id = " + args.controllerId + " Type = " + args.controllerType);
+		hasController = player.controllers.ContainsController<Joystick>(args.controllerId);
+		// print(hasController);
+    }
 	// Use this for initialization
 	void Start () {
 		// print("canvas width: " + GameObject.Find("Canvas").GetComponent<RectTransform>().rect.width);
@@ -55,7 +80,7 @@ public class Finish : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		if (winActive && (Input.GetKeyDown("space") /*|| XCI.GetButton(XboxButton.A) || XCI.GetButton(XboxButton.Start)*/)) {
+		if (winActive && (player.GetButton("Continue") || player.GetButtonDown("Start"))) {
 			StartCoroutine("TransitionToLevelSelect");
 			
 
@@ -98,7 +123,7 @@ public class Finish : MonoBehaviour {
 			// curtain.SwitchPausedGame();
 			curtain.SetPausedGame(true);
 			boxCollider.enabled = false;
-			other.gameObject.GetComponent<CharacterMovement2>().SetMovementOff(true);
+			other.gameObject.GetComponent<CharacterMovement>().SetMovementOff(true);
 			other.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY;
 
 			flagAnim.SetTrigger("Raise");

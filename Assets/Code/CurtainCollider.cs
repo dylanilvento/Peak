@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 // using XboxCtrlrInput;
+using Rewired;
 
 public class CurtainCollider : MonoBehaviour {
 
@@ -12,7 +13,29 @@ public class CurtainCollider : MonoBehaviour {
 
 	public Camera camera;
 	LevelControl levelControl;
+	bool hasController;
 
+	public int playerId = 0; // The Rewired player id of this character
+
+    private Player player; // The Rewired Player
+	
+	void Awake () {
+		player = ReInput.players.GetPlayer(playerId);
+		
+		
+        // Subscribe to events
+        ReInput.ControllerConnectedEvent += OnControllerConnected;
+
+		
+        // ReInput.ControllerDisconnectedEvent += OnControllerDisconnected;
+        // ReInput.ControllerPreDisconnectEvent += OnControllerPreDisconnect;
+    }
+
+	void OnControllerConnected(ControllerStatusChangedEventArgs args) {
+        // print("A controller was connected! Name = " + args.name + " Id = " + args.controllerId + " Type = " + args.controllerType);
+		hasController = player.controllers.ContainsController<Joystick>(args.controllerId);
+		// print(hasController);
+    }
 	// Use this for initialization
 	void Start () {
 		renderCurtain = GameObject.Find("Curtain Renderer");
@@ -37,7 +60,8 @@ public class CurtainCollider : MonoBehaviour {
 		}
 
 		if (!paused && levelControl.GetFollow()) {
-			if(Input.GetKey("a") || Input.GetAxis("Horizontal") < 0f || camera.WorldToScreenPoint(leftCurtain.transform.position).x > Screen.width + 10) {
+			// if(Input.GetKey("a") || Input.GetAxis("Horizontal") < 0f || camera.WorldToScreenPoint(leftCurtain.transform.position).x > Screen.width + 10) {
+			if(player.GetAxis("Left Curtain Movement") < 0f || camera.WorldToScreenPoint(leftCurtain.transform.position).x > Screen.width + 10) {
 				// sizeChange += 0.1f;
 				// box.size.x = 1 + sizeChange;
 				box.size = new Vector2 (box.size.x + 0.1f, box.size.y);
@@ -49,7 +73,8 @@ public class CurtainCollider : MonoBehaviour {
 				transform.position = new Vector2 (transform.position.x - 0.05f, transform.position.y);
 			}
 			// print(camera.WorldToScreenPoint(leftCurtain.transform.position).x < -15f);
-			if(Input.GetKey("s") || Input.GetAxis("Horizontal") > 0f || camera.WorldToScreenPoint(leftCurtain.transform.position).x < -15f) {
+			// if(Input.GetKey("s") || Input.GetAxis("Horizontal") > 0f || camera.WorldToScreenPoint(leftCurtain.transform.position).x < -15f) {
+			if(player.GetAxis("Left Curtain Movement") > 0f || camera.WorldToScreenPoint(leftCurtain.transform.position).x < -15f) {
 				if (box.size.x > initialSize && currDist > smallestDist) {
 					// sizeChange -= 0.1f;
 					// box.size.x = 1 + sizeChange;
@@ -63,8 +88,8 @@ public class CurtainCollider : MonoBehaviour {
 			}
 
 			//************ COMMENTED OUT DUE TO CTRLR ERROR
-			if(Input.GetKey("k") /*|| XCI.GetAxis(XboxAxis.RightStickX) < 0f*/ || camera.WorldToScreenPoint(rightCurtain.transform.position).x > Screen.width + 10) {
-			// if(Input.GetKey("k") || Input.GetAxis("Mouse X") < 0f || camera.WorldToScreenPoint(rightCurtain.transform.position).x > Screen.width + 10) {
+			// if(Input.GetKey("k") /*|| XCI.GetAxis(XboxAxis.RightStickX) < 0f*/ || camera.WorldToScreenPoint(rightCurtain.transform.position).x > Screen.width + 10) {
+			if(player.GetAxis("Right Curtain Movement") < 0f || camera.WorldToScreenPoint(rightCurtain.transform.position).x > Screen.width + 10) {
 				if (box.size.x > initialSize && currDist > smallestDist) {
 					// sizeChange -= 0.01f;
 					// box.size.x = 1 + sizeChange;
@@ -79,7 +104,7 @@ public class CurtainCollider : MonoBehaviour {
 			}
 
 			//************ COMMENTED OUT DUE TO CTRLR ERROR
-			if(Input.GetKey("l") /*|| XCI.GetAxis(XboxAxis.RightStickX) > 0f*/ || camera.WorldToScreenPoint(rightCurtain.transform.position).x < -15f) {
+			if(player.GetAxis("Right Curtain Movement") > 0f || camera.WorldToScreenPoint(rightCurtain.transform.position).x < -15f) {
 			
 			// if(Input.GetKey("l") || Input.GetAxis("Mouse X") > 0f || camera.WorldToScreenPoint(rightCurtain.transform.position).x < -15f) {
 				// sizeChange += 0.01f;

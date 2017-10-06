@@ -285,12 +285,12 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: a0c1b5cd478904c8f9cacaa2fa313be9, type: 3}
+    m_Font: {fileID: 12800000, guid: a4de1229df972456baadc5a6ff15d81d, type: 3}
     m_FontSize: 74
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 10
-    m_MaxSize: 74
+    m_MaxSize: 77
     m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -417,12 +417,12 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: a0c1b5cd478904c8f9cacaa2fa313be9, type: 3}
+    m_Font: {fileID: 12800000, guid: a4de1229df972456baadc5a6ff15d81d, type: 3}
     m_FontSize: 74
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 10
-    m_MaxSize: 74
+    m_MaxSize: 77
     m_Alignment: 5
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -842,6 +842,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isGamepadUI: 1
   isKeyboardUI: 0
+  playerId: 0
 --- !u!1001 &120345762
 Prefab:
   m_ObjectHideFlags: 0
@@ -1132,6 +1133,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isGamepadUI: 0
   isKeyboardUI: 1
+  playerId: 0
 --- !u!1001 &193279561
 Prefab:
   m_ObjectHideFlags: 0
@@ -1232,6 +1234,48 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 474958, guid: aed9d525aef4a4c00823d73a62b965f3, type: 2}
   m_PrefabInternal: {fileID: 193863153}
+--- !u!1001 &209314612
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4784151613721936, guid: d359dd2529d7b4bf79657690d227eec8, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4784151613721936, guid: d359dd2529d7b4bf79657690d227eec8, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4784151613721936, guid: d359dd2529d7b4bf79657690d227eec8, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4784151613721936, guid: d359dd2529d7b4bf79657690d227eec8, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4784151613721936, guid: d359dd2529d7b4bf79657690d227eec8, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4784151613721936, guid: d359dd2529d7b4bf79657690d227eec8, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4784151613721936, guid: d359dd2529d7b4bf79657690d227eec8, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4784151613721936, guid: d359dd2529d7b4bf79657690d227eec8, type: 2}
+      propertyPath: m_RootOrder
+      value: 13
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: d359dd2529d7b4bf79657690d227eec8, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &214567016
 Prefab:
   m_ObjectHideFlags: 0
@@ -1809,11 +1853,11 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: a0c1b5cd478904c8f9cacaa2fa313be9, type: 3}
+    m_Font: {fileID: 12800000, guid: a4de1229df972456baadc5a6ff15d81d, type: 3}
     m_FontSize: 74
     m_FontStyle: 1
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 7
     m_MaxSize: 74
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -1842,6 +1886,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isGamepadUI: 1
   isKeyboardUI: 0
+  playerId: 0
 --- !u!1001 &334726680
 Prefab:
   m_ObjectHideFlags: 0
@@ -2390,6 +2435,38 @@ Prefab:
     - target: {fileID: 1809891014620672, guid: 0b8efada5815d4a4ab2265646d7a5c6f, type: 2}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114729209464153452, guid: 0b8efada5815d4a4ab2265646d7a5c6f,
+        type: 2}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: a4de1229df972456baadc5a6ff15d81d,
+        type: 3}
+    - target: {fileID: 114729209464153452, guid: 0b8efada5815d4a4ab2265646d7a5c6f,
+        type: 2}
+      propertyPath: m_FontData.m_FontSize
+      value: 33
+      objectReference: {fileID: 0}
+    - target: {fileID: 114729209464153452, guid: 0b8efada5815d4a4ab2265646d7a5c6f,
+        type: 2}
+      propertyPath: m_FontData.m_MinSize
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114070283247582354, guid: 0b8efada5815d4a4ab2265646d7a5c6f,
+        type: 2}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: a4de1229df972456baadc5a6ff15d81d,
+        type: 3}
+    - target: {fileID: 114070283247582354, guid: 0b8efada5815d4a4ab2265646d7a5c6f,
+        type: 2}
+      propertyPath: m_FontData.m_FontSize
+      value: 33
+      objectReference: {fileID: 0}
+    - target: {fileID: 114070283247582354, guid: 0b8efada5815d4a4ab2265646d7a5c6f,
+        type: 2}
+      propertyPath: m_FontData.m_MinSize
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0b8efada5815d4a4ab2265646d7a5c6f, type: 2}
@@ -3809,6 +3886,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isGamepadUI: 0
   isKeyboardUI: 1
+  playerId: 0
 --- !u!1 &787091604
 GameObject:
   m_ObjectHideFlags: 0
@@ -4227,6 +4305,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isGamepadUI: 0
   isKeyboardUI: 1
+  playerId: 0
 --- !u!1 &891736217
 GameObject:
   m_ObjectHideFlags: 0
@@ -4735,6 +4814,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isGamepadUI: 1
   isKeyboardUI: 0
+  playerId: 0
 --- !u!1001 &988714193
 Prefab:
   m_ObjectHideFlags: 0
@@ -5418,6 +5498,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isGamepadUI: 1
   isKeyboardUI: 0
+  playerId: 0
 --- !u!1 &1124858015
 GameObject:
   m_ObjectHideFlags: 0
@@ -5670,11 +5751,11 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: a0c1b5cd478904c8f9cacaa2fa313be9, type: 3}
+    m_Font: {fileID: 12800000, guid: a4de1229df972456baadc5a6ff15d81d, type: 3}
     m_FontSize: 74
     m_FontStyle: 1
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 7
     m_MaxSize: 74
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -6287,6 +6368,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isGamepadUI: 1
   isKeyboardUI: 0
+  playerId: 0
 --- !u!1001 &1282921571
 Prefab:
   m_ObjectHideFlags: 0
@@ -6559,6 +6641,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isGamepadUI: 1
   isKeyboardUI: 0
+  playerId: 0
 --- !u!1001 &1306035262
 Prefab:
   m_ObjectHideFlags: 0
@@ -7190,6 +7273,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isGamepadUI: 1
   isKeyboardUI: 0
+  playerId: 0
 --- !u!1001 &1414493494
 Prefab:
   m_ObjectHideFlags: 0
@@ -7247,6 +7331,22 @@ Prefab:
         type: 2}
       propertyPath: m_AnchoredPosition.y
       value: 2.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114227438709138416, guid: f5346471b04f04d2e9683216726a4fc8,
+        type: 2}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: a4de1229df972456baadc5a6ff15d81d,
+        type: 3}
+    - target: {fileID: 114227438709138416, guid: f5346471b04f04d2e9683216726a4fc8,
+        type: 2}
+      propertyPath: m_FontData.m_FontSize
+      value: 33
+      objectReference: {fileID: 0}
+    - target: {fileID: 114227438709138416, guid: f5346471b04f04d2e9683216726a4fc8,
+        type: 2}
+      propertyPath: m_FontData.m_MinSize
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f5346471b04f04d2e9683216726a4fc8, type: 2}
@@ -7475,6 +7575,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isGamepadUI: 0
   isKeyboardUI: 1
+  playerId: 0
 --- !u!1001 &1509197009
 Prefab:
   m_ObjectHideFlags: 0
@@ -7853,6 +7954,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isGamepadUI: 0
   isKeyboardUI: 1
+  playerId: 0
 --- !u!1 &1579675877
 GameObject:
   m_ObjectHideFlags: 0
@@ -7912,12 +8014,12 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: a0c1b5cd478904c8f9cacaa2fa313be9, type: 3}
+    m_Font: {fileID: 12800000, guid: a4de1229df972456baadc5a6ff15d81d, type: 3}
     m_FontSize: 74
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 10
-    m_MaxSize: 74
+    m_MaxSize: 79
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -7945,6 +8047,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isGamepadUI: 0
   isKeyboardUI: 1
+  playerId: 0
 --- !u!1 &1591247687
 GameObject:
   m_ObjectHideFlags: 0
@@ -8679,6 +8782,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isGamepadUI: 0
   isKeyboardUI: 1
+  playerId: 0
 --- !u!114 &1717887057
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8918,6 +9022,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isGamepadUI: 1
   isKeyboardUI: 0
+  playerId: 0
 --- !u!1001 &1785303531
 Prefab:
   m_ObjectHideFlags: 0
@@ -10384,6 +10489,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isGamepadUI: 0
   isKeyboardUI: 1
+  playerId: 0
 --- !u!114 &2003601340
 MonoBehaviour:
   m_ObjectHideFlags: 0

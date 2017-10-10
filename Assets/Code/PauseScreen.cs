@@ -74,12 +74,12 @@ public class PauseScreen : MonoBehaviour {
 
 		if (paused && !demoMode) {
 			// if ((Input.GetKeyDown(KeyCode.DownArrow) || Input.GetAxis("Vertical") < 0f /*|| XCI.GetDPad(XboxDPad.Down)*/) && !onQuit) {
-			if ((player.GetAxis("Vertical Movement") < 0f) && !onQuit) {
+			if ((player.GetButtonDown("Down")) && !onQuit) {
 				onQuit = true;
 				arrow.transform.localPosition = new Vector2(arrow.transform.localPosition.x, arrow.transform.localPosition.y - menuDist);
 			}
 			// if ((Input.GetKeyDown(KeyCode.UpArrow) || Input.GetAxis("Vertical") > 0f /*|| XCI.GetDPad(XboxDPad.Up)*/) && onQuit) {
-			if ((player.GetAxis("Vertical Movement") > 0f) && onQuit) {
+			if ((player.GetButtonDown("Up")) && onQuit) {
 				onQuit = false;
 				arrow.transform.localPosition = new Vector2(arrow.transform.localPosition.x, arrow.transform.localPosition.y + menuDist);
 			}

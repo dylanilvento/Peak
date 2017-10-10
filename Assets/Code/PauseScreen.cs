@@ -21,7 +21,7 @@ public class PauseScreen : MonoBehaviour {
 
 	float menuDist = 23f;
 
-	static bool demoMode = true;
+	static bool demoMode = false;
 
 	bool hasController;
 
@@ -113,8 +113,6 @@ public class PauseScreen : MonoBehaviour {
 				Application.Quit();
 			}
 		}
-
-		//**** COMMENTED OUT UNTIL NEW CONTROLLER SOLUTION IS MADE */
 
 		else if (paused && demoMode) {
 			if (player.GetButtonDown("Continue") || player.GetButtonDown("B")) {

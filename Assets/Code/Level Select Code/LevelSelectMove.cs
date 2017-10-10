@@ -48,7 +48,7 @@ public class LevelSelectMove : MonoBehaviour {
     }
 	void Start () {
 		// pathVertices = new Vector2[path.GetComponent<LineRenderer>().GetPositions().Length;];
-
+		print(IntersceneDataHandler.currentLevel);
 		pathVertices = new Vector3[path.GetComponent<LineRenderer>().positionCount];
 		// print(path.GetComponent<LineRenderer>().positionCount);
 		ClearRelativeNodes();

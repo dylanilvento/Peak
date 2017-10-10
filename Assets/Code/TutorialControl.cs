@@ -38,6 +38,7 @@ public class TutorialControl : MonoBehaviour {
     }
 	
 	void Start () {
+		IntersceneDataHandler.currentLevel = 0;
 		
 		curtain.SwitchPausedGame();
 		foreach (GameObject item in textWindows) {

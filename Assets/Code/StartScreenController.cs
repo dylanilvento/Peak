@@ -19,9 +19,30 @@ public class StartScreenController : MonoBehaviour {
 	//for keyboard
 	public List<GameObject> pauseKeyboardGroup = new List<GameObject>();
 
+	public GameObject menuArrow;
+	public GameObject startMenu, resMenu;
+
 	CharacterMovement charMov;
 	// Use this for initialization
 	bool hasController;
+
+	bool onResOptions = false;
+
+	bool startMenuActive = false;
+	bool switchToMenu = false;
+	int startMenuIndex = 1;
+
+	Vector2[] resolutions = {
+		new Vector2(1366, 768),
+		new Vector2(1920, 1080),
+		new Vector2(1280, 800),
+		new Vector2(1280, 1024),
+		new Vector2(1440, 900),
+		new Vector2(1600, 900)
+	};
+	int resIndex = 0;
+
+	public Text resText;
 
 	public int playerId = 0; // The Rewired player id of this character
 
@@ -48,15 +69,12 @@ public class StartScreenController : MonoBehaviour {
 	void Start () {
 		wardAnim = GameObject.Find("Ward Logo").GetComponent<Animator>();
 		peakAnim = GameObject.Find("Peak Logo").GetComponent<Animator>();
-
-		Time.timeScale = 1f;
-		// print(ReInput.controllers.joystickCount);
-		// ctrlNum = XCI.GetNumPluggedCtrlrs();
-
 		
 
-
-
+		Time.timeScale = 1f;
+		
+		Transparency.SetTransparent(startMenu);
+		Transparency.SetTransparent(resMenu);
 		Transparency.SetTransparent(pauseButtonGroup);
 		Transparency.SetTransparent(pauseKeyboardGroup);
 
@@ -72,12 +90,82 @@ public class StartScreenController : MonoBehaviour {
 	void Update () {
 		// if (Input.GetKeyDown(KeyCode.Return) /*|| XCI.GetButtonDown(XboxButton.Start)*/) {
 		
-		if (player.GetButtonDown("Start")) {
+		if (player.GetButtonDown("Start") && !startMenuActive && !onResOptions) {
+			
+			print("works");
+			
+			Transparency.SetOpacity(startMenu, 1f);
+			switchToMenu = true;
+			startMenuActive = true;
+			Transparency.SetTransparent(pauseButtonGroup);
+			Transparency.SetTransparent(pauseKeyboardGroup);
+		}
+
+		else if ((player.GetButtonDown("Start") || player.GetButtonDown("Continue")) && startMenuActive) {
 		
 		// if (Input.GetKey("space") || Input.GetButtonDown("Start Button")) {
-			Time.timeScale = 1f;
-			// Application.LoadLevel(1);
-			SceneManager.LoadScene("Tutorial");
+			if (startMenuIndex == 1) {
+				Time.timeScale = 1f;
+				// Application.LoadLevel(1);
+				SceneManager.LoadScene("Tutorial");
+			}
+
+			else if (startMenuIndex == 2) {
+				Transparency.SetTransparent(startMenu);
+				Transparency.SetOpacity(resMenu, 1f);
+				startMenuActive = false;
+				onResOptions = true;
+			}
+
+			else if (startMenuIndex == 3) {
+				Application.Quit();
+			}
+			
+		}
+
+		// float horDir = player.GetAxis("Horizontal Movement");
+
+		if ((player.GetButtonDown("Left") || player.GetButtonDown("Right")) && onResOptions) {
+			// if (horDir > 0) {
+			if (player.GetButtonDown("Right")) {
+				if (resIndex >= resolutions.Length - 1) {
+					resIndex = 0;
+				}
+
+				else {
+					resIndex++;
+				}
+			}
+
+			else if (player.GetButtonDown("Left")) {
+				if (resIndex == 0) {
+					resIndex = resolutions.Length - 1;
+				}
+
+				else {
+					resIndex--;
+				}
+			}
+
+			resText.text = resolutions[resIndex].x + " x " + resolutions[resIndex].y;
+		}
+
+		if (player.GetButtonDown("Start") && onResOptions) {
+			Screen.SetResolution((int) resolutions[resIndex].x, (int) resolutions[resIndex].y, true);
+			Transparency.SetTransparent(resMenu);
+			Transparency.SetOpacity(startMenu, 1f);
+			startMenuActive = true;
+			onResOptions = false;
+		}
+
+		if (player.GetButtonDown("Up") && startMenuActive && startMenuIndex > 1) {
+			menuArrow.transform.position = new Vector3(menuArrow.transform.position.x, menuArrow.transform.position.y + 27f, menuArrow.transform.position.z);
+			startMenuIndex--;
+		}
+
+		else if (player.GetButtonDown("Down") && startMenuActive && startMenuIndex < 3) {
+			menuArrow.transform.position = new Vector3(menuArrow.transform.position.x, menuArrow.transform.position.y - 27f, menuArrow.transform.position.z);
+			startMenuIndex++;
 		}
 	
 	}
@@ -91,49 +179,24 @@ public class StartScreenController : MonoBehaviour {
 		
 		yield return new WaitForSeconds(2f);
 
-		if (hasController) {
-			while (pauseButtonGroup[0].GetComponent<Text>().color.a < 1f) {
+		if (IntersceneDataHandler.hasController || hasController) {
+			while (pauseButtonGroup[0].GetComponent<Text>().color.a < 1f && !switchToMenu) {
 				Transparency.SetOpacity(pauseButtonGroup, pauseButtonGroup[0].GetComponent<Text>().color.a + 0.1f);
 				yield return new WaitForSeconds(0.05f);
 			}
 		}
 
 		else {
-			while (pauseKeyboardGroup[0].GetComponent<Text>().color.a < 1f) {
+			while (pauseKeyboardGroup[0].GetComponent<Text>().color.a < 1f && !switchToMenu) {
 				Transparency.SetOpacity(pauseKeyboardGroup, pauseKeyboardGroup[0].GetComponent<Text>().color.a + 0.1f);
 				yield return new WaitForSeconds(0.05f);
 			}
 		}
 
-		
-		// Transparency.UpFade(pauseButtonGroup);
-
-		// if (ctrlNum > 0) {
-		// 	print(ctrlNum);
-		// 	Transparency.UpFade(leftStickGroup);
-			
-		// 	yield return new WaitForSeconds(1f);
-		// 	Transparency.UpFade(rightStickGroup);
-			
-		// 	yield return new WaitForSeconds(1f);
-		// 	Transparency.UpFade(pauseGroup);
-			
-		// 	yield return new WaitForSeconds(1f);
-		// 	Transparency.UpFade(startGroup);
-		// }
-
-		// else {
-		// 	Transparency.UpFade(asGroup);
-			
-		// 	yield return new WaitForSeconds(1f);
-		// 	Transparency.UpFade(klGroup);
-			
-		// 	yield return new WaitForSeconds(1f);
-		// 	Transparency.UpFade(escGroup);
-			
-		// 	yield return new WaitForSeconds(1f);
-		// 	Transparency.UpFade(spaceGroup);
-		// }
+		if (switchToMenu) {
+			Transparency.SetTransparent(pauseButtonGroup);
+			Transparency.SetTransparent(pauseKeyboardGroup);
+		}
 
 	}
 

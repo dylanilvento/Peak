@@ -82,14 +82,19 @@ public class StartScreenController : MonoBehaviour {
 
 		Cursor.visible = false;
 
-		// Screen.SetResolution(1920, 1080, true);
+		Screen.SetResolution(1920, 1080, true);
 		// StartCoroutine("SwitchButtons");
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		// if (Input.GetKeyDown(KeyCode.Return) /*|| XCI.GetButtonDown(XboxButton.Start)*/) {
 		
+		// if (player.GetButtonDown("Start")) {
+		// 	SceneManager.LoadScene("Tutorial");
+		// }
+
+
+		//********** BROKEN  **********//
 		if (player.GetButtonDown("Start") && !startMenuActive && !onResOptions) {
 			
 			print("works");
@@ -159,12 +164,12 @@ public class StartScreenController : MonoBehaviour {
 		}
 
 		if (player.GetButtonDown("Up") && startMenuActive && startMenuIndex > 1) {
-			menuArrow.transform.position = new Vector3(menuArrow.transform.position.x, menuArrow.transform.position.y + 27f, menuArrow.transform.position.z);
+			menuArrow.transform.position = new Vector3(menuArrow.transform.position.x, menuArrow.transform.position.y + (Screen.height / 15), menuArrow.transform.position.z);
 			startMenuIndex--;
 		}
 
 		else if (player.GetButtonDown("Down") && startMenuActive && startMenuIndex < 3) {
-			menuArrow.transform.position = new Vector3(menuArrow.transform.position.x, menuArrow.transform.position.y - 27f, menuArrow.transform.position.z);
+			menuArrow.transform.position = new Vector3(menuArrow.transform.position.x, menuArrow.transform.position.y - (Screen.height / 15), menuArrow.transform.position.z);
 			startMenuIndex++;
 		}
 	

@@ -1355,6 +1355,7 @@ MonoBehaviour:
   - {fileID: 449414391}
   scout: {fileID: 17762477}
   curtain: {fileID: 477274000}
+  playerId: 0
 --- !u!114 &216911153 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114266534806703682, guid: 497ac7293e12c4e4b80aaea0e71422a6,
@@ -5727,7 +5728,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 22.820911, y: 87}
+  m_AnchoredPosition: {x: -0.000017166, y: 87}
   m_SizeDelta: {x: 870, y: 259}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1205262038

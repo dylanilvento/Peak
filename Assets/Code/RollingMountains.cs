@@ -16,7 +16,8 @@ public class RollingMountains : MonoBehaviour {
 		// QualitySettings.vSyncCount = 0;
 		levelControl = GameObject.Find("Game Controller").GetComponent<LevelControl>();
 		player = levelControl.GetPlayer();
-		camera = GameObject.Find("Main Camera");
+		// camera = GameObject.Find("Main Camera");
+		camera = Camera.main.gameObject;
 		relPosY = camera.transform.position.y - transform.position.y;
 		finish = GameObject.Find("Flag Group").GetComponent<Finish>();
 		
@@ -24,17 +25,16 @@ public class RollingMountains : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void FixedUpdate () {
+	void Update () {
 		
 		if (!finish.winActive && levelControl.GetFollow()) {
+			// transform.position = new Vector2 ((player.transform.position.x - relPos.x) * moveMultiplier, camera.transform.position.y - relPosY);
 			transform.position = new Vector2 ((player.transform.position.x - relPos.x) * moveMultiplier, transform.position.y);
 			
-			// transform.position = new Vector2 ((player.transform.position.x - relPos.x) * moveMultiplier, camera.transform.position.y - relPos.y);
 
-			// transform.position = new Vector3 (transform.position.x, camera.transform.position.y - relPos.y, transform.position.z);
-			
-			if (transform.position.y < camera.transform.position.y - relPosY) StartCoroutine("MoveUp");
-			else if (transform.position.y > camera.transform.position.y - relPosY) StartCoroutine("MoveDown");
+			//Commented out for testing
+			// if (transform.position.y < player.transform.position.y - relPos.y) StartCoroutine("MoveUp");
+			// else if (transform.position.y > player.transform.position.y - relPos.y) StartCoroutine("MoveDown");
 			
 		}
 
@@ -43,14 +43,14 @@ public class RollingMountains : MonoBehaviour {
 	IEnumerator MoveUp () {
 		// while (transform.position.y < camera.transform.position.y - relPosY) {
 			transform.position = new Vector2(transform.position.x, transform.position.y + 0.01f);
-			yield return new WaitForSeconds(0.0001f);
+			yield return new WaitForSeconds(Time.deltaTime);
 		// }
 	}
 
 	IEnumerator MoveDown () {
 		// while (transform.position.y < camera.transform.position.y - relPosY) {
 			transform.position = new Vector2(transform.position.x, transform.position.y - 0.01f);
-			yield return new WaitForSeconds(0.0001f);
+			yield return new WaitForSeconds(Time.deltaTime);
 		// }
 	}
 }

@@ -81,14 +81,14 @@ public class CameraFollow : MonoBehaviour {
 	IEnumerator MoveUp () {
 		while (camera.WorldToScreenPoint(player.position).y > Screen.height / upVal && levelControl.GetFollow()) {
 			transform.position = new Vector3(transform.position.x, transform.position.y + 0.01f, transform.position.z);
-			yield return new WaitForSeconds(0.1f);
+			yield return new WaitForSeconds(Time.deltaTime * 2);
 		}
 	}
 
 	IEnumerator MoveDown () {
 		while (camera.WorldToScreenPoint(player.position).y < Screen.height / downVal && levelControl.GetFollow()) {
 			transform.position = new Vector3(transform.position.x, transform.position.y - 0.01f, transform.position.z);
-			yield return new WaitForSeconds(0.1f);
+			yield return new WaitForSeconds(Time.deltaTime * 2);
 		}
 	}
 

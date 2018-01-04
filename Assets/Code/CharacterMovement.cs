@@ -138,6 +138,7 @@ public class CharacterMovement : MonoBehaviour {
 		
 		else if (other.gameObject.GetComponent<GameOverObjectCollider>() != null) {
 			// print("working");
+			
 			coll.enabled = false;
 			Explode();
 			camera.CallCameraShake();

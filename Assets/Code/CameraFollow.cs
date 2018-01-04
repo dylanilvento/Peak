@@ -23,7 +23,7 @@ public class CameraFollow : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void LateUpdate () {
 		if (levelControl.GetFollow()) {
 			transform.position = new Vector3(player.position.x - relPos.x, transform.position.y, transform.position.z);
 			if (camera.WorldToScreenPoint(player.position).y > Screen.height / upVal) StartCoroutine("MoveUp");
@@ -81,14 +81,15 @@ public class CameraFollow : MonoBehaviour {
 	IEnumerator MoveUp () {
 		while (camera.WorldToScreenPoint(player.position).y > Screen.height / upVal && levelControl.GetFollow()) {
 			transform.position = new Vector3(transform.position.x, transform.position.y + 0.01f, transform.position.z);
-			yield return new WaitForSeconds(Time.deltaTime * 2);
+			yield return new WaitForSeconds(Time.fixedDeltaTime);
+			
 		}
 	}
 
 	IEnumerator MoveDown () {
 		while (camera.WorldToScreenPoint(player.position).y < Screen.height / downVal && levelControl.GetFollow()) {
 			transform.position = new Vector3(transform.position.x, transform.position.y - 0.01f, transform.position.z);
-			yield return new WaitForSeconds(Time.deltaTime * 2);
+			yield return new WaitForSeconds(Time.fixedDeltaTime);
 		}
 	}
 

@@ -13,6 +13,7 @@ public class QuadrilateralOutlineRenderer : MonoBehaviour {
 	SpriteRenderer spriteRenderer;
 	// Use this for initialization
 	void Start () {
+		vertices = new Dictionary<QuadrilateralVertex, Vector2>();
 		spriteRenderer = GetComponent<SpriteRenderer>();
 		// lineRenderer = GetComponent<LineRenderer>();
 		spriteVertices = spriteRenderer.sprite.vertices;
@@ -42,6 +43,7 @@ public class QuadrilateralOutlineRenderer : MonoBehaviour {
 				upperRight = vertex;
 			}
 		}
+		print("upperRight: " + upperRight);
 
 		Vector2 lowerRight = new Vector2(0,0);
 		foreach (Vector2 vertex in spriteVertices) {
@@ -50,6 +52,8 @@ public class QuadrilateralOutlineRenderer : MonoBehaviour {
 			}
 		}
 
+		print("lowerRight: " + lowerRight);
+
 		Vector2 upperLeft = new Vector2(0,0);
 		foreach (Vector2 vertex in spriteVertices) {
 			if (vertex.x <= upperLeft.x && vertex.y >= upperLeft.y) {
@@ -57,12 +61,16 @@ public class QuadrilateralOutlineRenderer : MonoBehaviour {
 			}
 		}
 
+		print("upperLeft: " + upperLeft);
+
 		Vector2 lowerLeft = new Vector2(0,0);
 		foreach (Vector2 vertex in spriteVertices) {
 			if (vertex.x <= lowerLeft.x && vertex.y <= lowerLeft.y) {
 				lowerLeft = vertex;
 			}
 		}
+
+		print("lowerLeft: " + lowerLeft);
 
 		vertices.Add(QuadrilateralVertex.UpperRight, upperRight);
 		vertices.Add(QuadrilateralVertex.LowerRight, lowerRight);

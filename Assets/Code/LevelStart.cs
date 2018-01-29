@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class LevelStart : MonoBehaviour {
-
+	public bool freezeScout;
 	public GameObject[] numbers = new GameObject[3];
 	CharacterMovement charMove;
 	LevelControl levelControl;
@@ -40,7 +40,7 @@ public class LevelStart : MonoBehaviour {
 			Destroy(currNum);
 		}
 
-		charMove.movementOff = false;
+		if (!freezeScout) charMove.movementOff = false;
 		levelControl.SetFollow(true);
 		// Time.timeScale = 1f;
 	}

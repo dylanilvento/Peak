@@ -8,19 +8,31 @@ public class QuadrilateralOutlineRenderer : MonoBehaviour {
 	float scrollSpeed = 0.5f;
 
 	Dictionary<QuadrilateralVertex, Vector2> vertices;
+	Dictionary<PolygonSide, List<QuadrilateralVertex>> sides;
+
+	Dictionary<PolygonSide, bool> collisionChecks;
 
 	public LineRenderer lineRenderer1, lineRenderer2;
 	SpriteRenderer spriteRenderer;
 	// Use this for initialization
 	void Start () {
 		vertices = new Dictionary<QuadrilateralVertex, Vector2>();
+		sides = new Dictionary<PolygonSide, List<QuadrilateralVertex>>();
+		collisionChecks = new Dictionary<PolygonSide, bool>();
+
+		sides.Add(PolygonSide.Top, new List<QuadrilateralVertex> {QuadrilateralVertex.UpperLeft, QuadrilateralVertex.UpperRight});
+		sides.Add(PolygonSide.Right, new List<QuadrilateralVertex> {QuadrilateralVertex.UpperRight, QuadrilateralVertex.LowerRight});
+		sides.Add(PolygonSide.Bottom, new List<QuadrilateralVertex> {QuadrilateralVertex.LowerRight, QuadrilateralVertex.LowerLeft});
+		sides.Add(PolygonSide.Left, new List<QuadrilateralVertex> {QuadrilateralVertex.LowerLeft, QuadrilateralVertex.UpperLeft});
+
 		spriteRenderer = GetComponent<SpriteRenderer>();
 		// lineRenderer = GetComponent<LineRenderer>();
 		spriteVertices = spriteRenderer.sprite.vertices;
 
 		// lineRenderer.positionCount = spriteVertices.Length;
 
-		SetLineRendererVertices();
+		CheckCollision();
+		SetVertices();
 		
 		// for (int ii = 0; ii < spriteVertices.Length; ii++) {
 		// 	lineRenderer.SetPosition(ii, (Vector3) spriteVertices[ii]);
@@ -35,7 +47,14 @@ public class QuadrilateralOutlineRenderer : MonoBehaviour {
 		
 	}
 
-	void SetLineRendererVertices() {
+	void CheckCollision() {
+		Debug.DrawRay(new Vector2(transform.position.x, transform.position.y + (transform.localScale.y/3)), Vector2.up/4, Color.green, 100f);
+		RaycastHit2D hit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y + (transform.localScale.y/3)), Vector2.up/4, 1f);
+        if (hit.collider != null) {
+            print(hit.collider.gameObject.name);
+        }
+	}
+	void SetVertices() {
 
 		Vector2 upperRight = new Vector2(0,0);
 		foreach (Vector2 vertex in spriteVertices) {
@@ -77,14 +96,23 @@ public class QuadrilateralOutlineRenderer : MonoBehaviour {
 		vertices.Add(QuadrilateralVertex.LowerLeft, lowerLeft);
 		vertices.Add(QuadrilateralVertex.UpperLeft, upperLeft);
 		
-		lineRenderer1.positionCount = spriteVertices.Length + 1;
+		// lineRenderer1.positionCount = spriteVertices.Length + 1;
+
+
+		
+
+	}
+
+	void SetLineRendererVertices () {
+		
+		lineRenderer1.positionCount = 2;
 
 		Vector3[] lrVertices = {
 			(Vector3) vertices[QuadrilateralVertex.UpperRight],
-			(Vector3) vertices[QuadrilateralVertex.LowerRight],
-			(Vector3) vertices[QuadrilateralVertex.LowerLeft],
-			(Vector3) vertices[QuadrilateralVertex.UpperLeft],
-			(Vector3) vertices[QuadrilateralVertex.UpperRight]
+			(Vector3) vertices[QuadrilateralVertex.LowerRight]//,
+			// (Vector3) vertices[QuadrilateralVertex.LowerLeft],
+			// (Vector3) vertices[QuadrilateralVertex.UpperLeft],
+			// (Vector3) vertices[QuadrilateralVertex.UpperRight]
 		};
 
 		lineRenderer1.SetPositions(lrVertices);

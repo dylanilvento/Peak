@@ -7,9 +7,30 @@ public class QuadrilateralOutlineRenderer : MonoBehaviour {
 	public Vector2[] spriteVertices;
 	float scrollSpeed = 0.5f;
 
+	//top, right, bottom, left
+	bool[,] collisionMatrix = new bool[16,4] {
+		{false, false, false, false},
+		{false, false, false, true},
+		{false, false, true, false},
+		{false, false, true, true},
+		{false, true, false, false},
+		{false, true, false, true},
+		{false, true, true, false},
+		{false, true, true, true},
+		{true, false, false, false},
+		{true, false, false, true},
+		{true, false, true, false},
+		{true, false, true, true},
+		{true, true, false, false},
+		{true, true, false, true},
+		{true, true, true, false},
+		{true, true, true, true}
+	};
+
 	Dictionary<QuadrilateralVertex, Vector2> vertices;
 	Dictionary<PolygonSide, List<QuadrilateralVertex>> sides;
 
+	//true means there's a collider detected
 	Dictionary<PolygonSide, bool> collisionChecks;
 
 	public LineRenderer lineRenderer1, lineRenderer2;
@@ -49,10 +70,45 @@ public class QuadrilateralOutlineRenderer : MonoBehaviour {
 
 	void CheckCollision() {
 		Debug.DrawRay(new Vector2(transform.position.x, transform.position.y + (transform.localScale.y/3)), Vector2.up/4, Color.green, 100f);
-		RaycastHit2D hit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y + (transform.localScale.y/3)), Vector2.up/4, 1f);
-        if (hit.collider != null) {
-            print(hit.collider.gameObject.name);
+		RaycastHit2D topHit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y + (transform.localScale.y/3)), Vector2.up/4, 1f);
+        if (topHit.collider != null) {
+            // print(hit.collider.gameObject.name);
+			collisionChecks.Add(PolygonSide.Top, true);
         }
+		else {
+			collisionChecks.Add(PolygonSide.Top, false);
+		}
+
+		Debug.DrawRay(new Vector2(transform.position.x + (transform.localScale.x/3), transform.position.y), Vector2.right/4, Color.green, 100f);
+		RaycastHit2D rightHit = Physics2D.Raycast(new Vector2(transform.position.x + (transform.localScale.x/3), transform.position.y), Vector2.right/4, 1f);
+        if (rightHit.collider != null) {
+            // print(hit.collider.gameObject.name);
+			collisionChecks.Add(PolygonSide.Right, true);
+        }
+		else {
+			collisionChecks.Add(PolygonSide.Right, false);
+		}
+
+		Debug.DrawRay(new Vector2(transform.position.x, transform.position.y - (transform.localScale.y/3)), Vector2.down/4, Color.green, 100f);
+		RaycastHit2D bottomHit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y - (transform.localScale.y/3)), Vector2.down/4, 1f);
+        if (bottomHit.collider != null) {
+            // print(hit.collider.gameObject.name);
+			collisionChecks.Add(PolygonSide.Bottom, true);
+        }
+		else {
+			collisionChecks.Add(PolygonSide.Bottom, false);
+		}
+
+		Debug.DrawRay(new Vector2(transform.position.x - (transform.localScale.x/3), transform.position.y), Vector2.left/4, Color.green, 100f);
+		RaycastHit2D leftHit = Physics2D.Raycast(new Vector2(transform.position.x - (transform.localScale.x/3), transform.position.y), Vector2.left/4, 1f);
+        if (rightHit.collider != null) {
+            // print(hit.collider.gameObject.name);
+			collisionChecks.Add(PolygonSide.Left, true);
+        }
+		else {
+			collisionChecks.Add(PolygonSide.Left, false);
+		}
+		
 	}
 	void SetVertices() {
 

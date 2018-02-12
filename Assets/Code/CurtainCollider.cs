@@ -50,8 +50,6 @@ public class CurtainCollider : MonoBehaviour {
 			}
 			// print(camera.WorldToScreenPoint(leftCurtain.transform.position).x < -15f);
 			if(Input.GetKey("s") || Input.GetAxis("Horizontal") > 0f || camera.WorldToScreenPoint(leftCurtain.transform.position).x < -15f) {
-                print("Current Distance: " + currDist);
-                print("Smallest Distance: " + smallestDist);
 				if (box.size.x > initialSize) {
                     // sizeChange -= 0.1f;
                     // box.size.x = 1 + sizeChange;

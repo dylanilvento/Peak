@@ -9,22 +9,41 @@ public class QuadrilateralOutlineRenderer : MonoBehaviour {
 
 	//top, right, bottom, left
 	bool[,] collisionMatrix = new bool[16,4] {
-		{false, false, false, false},
-		{false, false, false, true},
-		{false, false, true, false},
-		{false, false, true, true},
-		{false, true, false, false},
-		{false, true, false, true},
-		{false, true, true, false},
-		{false, true, true, true},
-		{true, false, false, false},
-		{true, false, false, true},
-		{true, false, true, false},
-		{true, false, true, true},
-		{true, true, false, false},
-		{true, true, false, true},
-		{true, true, true, false},
-		{true, true, true, true}
+		{false, false, false, false}, //1, if this one, start vertex much be also included at end
+		{false, false, false, true}, //1
+		{false, false, true, false}, //2
+		{false, false, true, true}, //1
+		{false, true, false, false}, //2
+		{false, true, false, true}, //2
+		{false, true, true, false}, //2
+		{false, true, true, true}, //1
+		{true, false, false, false}, //1
+		{true, false, false, true}, //1
+		{true, false, true, false}, //2
+		{true, false, true, true}, //1
+		{true, true, false, false}, //1
+		{true, true, false, true}, //1
+		{true, true, true, false}, //1
+		{true, true, true, true} //0
+	};
+
+	int[] lrPerCollision = new int[16] {
+		1,
+		1,
+		2,
+		1,
+		2,
+		2,
+		2,
+		1,
+		1,
+		1,
+		2,
+		1,
+		1,
+		1,
+		1,
+		0
 	};
 
 	Dictionary<QuadrilateralVertex, Vector2> vertices;
@@ -174,5 +193,23 @@ public class QuadrilateralOutlineRenderer : MonoBehaviour {
 		lineRenderer1.SetPositions(lrVertices);
 		
 
+	}
+
+	bool ArrayComparison (int[] arr1, int[] arr2) {
+		bool arraysAreEqual = true;
+		
+		if (arr1.Length != arr2.Length) {
+			return false;
+		}
+
+		else {
+			for (int ii = 0; ii < arr1.Length && arraysAreEqual; ii++) {
+				if (arr1[ii] != arr2[ii]) {
+					arraysAreEqual = false;
+				}
+			}
+		}
+
+		return arraysAreEqual;
 	}
 }

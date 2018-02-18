@@ -1,27 +1,45 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using XboxCtrlrInput;
+// using XboxCtrlrInput;
 using UnityEngine.SceneManagement;
+using Rewired;
 
 public class DemoEnd : MonoBehaviour {
 
+	bool hasController;
+
+	public int playerId = 0; // The Rewired player id of this character
+
+    private Player player; // The Rewired Player
+	
+	void Awake () {
+		player = ReInput.players.GetPlayer(playerId);
+		
+		
+        // Subscribe to events
+        ReInput.ControllerConnectedEvent += OnControllerConnected;
+
+    }
+
+	void OnControllerConnected(ControllerStatusChangedEventArgs args) {
+        // print("A controller was connected! Name = " + args.name + " Id = " + args.controllerId + " Type = " + args.controllerType);
+		hasController = player.controllers.ContainsController<Joystick>(args.controllerId);
+		// print(hasController);
+    }
+
 	// Use this for initialization
 	void Start () {
-		// Renderer r = GetComponent<Renderer>();
-        // MovieTexture movie = (MovieTexture)r.material.mainTexture;
-        // movie.loop = true;
-        // movie.Play();
-        // Screen.SetResolution(1920, 1080, true);
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (XCI.GetButtonDown(XboxButton.Start) || XCI.GetButtonDown(XboxButton.A)) {
-		// if (Input.GetButtonDown("Start Button")) {
-			// Time.timeScale = 1f;
-			// Application.LoadLevel(0);
+		// if (XCI.GetButtonDown(XboxButton.Start) || XCI.GetButtonDown(XboxButton.A)) {
+		if (player.GetButtonDown("Continue") || player.GetButtonDown("Start")) {
+
 			SceneManager.LoadScene("Start");
+
 		}
 	}
 }

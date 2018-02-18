@@ -3,7 +3,8 @@ using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.Analytics;
 using System.Collections.Generic;
-using XboxCtrlrInput;
+using UnityEngine.SceneManagement;
+// using XboxCtrlrInput;
 
 public class GameOverCollider : MonoBehaviour {
 	GameObject target;
@@ -25,7 +26,7 @@ public class GameOverCollider : MonoBehaviour {
 
 	string goText;
 
-	CharacterMovement2 scoutMvmt;
+	CharacterMovement scoutMvmt;
 
 	bool goActive = false;
 
@@ -46,7 +47,7 @@ public class GameOverCollider : MonoBehaviour {
 		// goScreen = GameObject.Find("Game Over Screen").GetComponent<Image>();
 		camera = GameObject.Find("Main Camera").GetComponent<Camera>();
 		cameraFollow = camera.GetComponent<CameraFollow>();
-		scoutMvmt = target.GetComponent<CharacterMovement2>();
+		scoutMvmt = target.GetComponent<CharacterMovement>();
 
 		
 
@@ -68,10 +69,10 @@ public class GameOverCollider : MonoBehaviour {
 		// if (goActive && (Input.GetKeyDown("space") || XCI.GetButtonUp(XboxButton.A) || XCI.GetButtonUp(XboxButton.Start))) {
 
 		//***********************
-		if (goActive && (Input.GetKeyDown("space") || Input.GetButtonDown("A Button") || Input.GetButtonDown("Start Button"))) {
-			Time.timeScale = 1f;
-			Application.LoadLevel(Application.loadedLevel);
-		}
+		// if (goActive && (Input.GetKeyDown("space") || Input.GetButtonDown("A Button") || Input.GetButtonDown("Start Button"))) {
+		// 	Time.timeScale = 1f;
+		// 	Application.LoadLevel(Application.loadedLevel);
+		// }
 	}
 
 	IEnumerator Move () {
@@ -114,7 +115,8 @@ public class GameOverCollider : MonoBehaviour {
 		// print("restarting level");
 		yield return new WaitForSeconds(0.2f);
 		Time.timeScale = 1f;
-		Application.LoadLevel(Application.loadedLevel);
+		// Application.LoadLevel(Application.loadedLevel);
+		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 	}
 
 	public void SetGOVals (float up, float down) {

@@ -52,6 +52,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43b291ea92dea436fa23b7ebb57d0426, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  music: {fileID: 1133766943473090, guid: dd7101f268ca84fa4983cb6148d772a5, type: 2}
+  canPulse: 1
 --- !u!114 &114844723738972652
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using XboxCtrlrInput;
+// using XboxCtrlrInput;
 using UnityEngine.SceneManagement;
 
 public class PlayDemoReel : MonoBehaviour {
@@ -17,7 +17,8 @@ public class PlayDemoReel : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (XCI.GetButtonDown(XboxButton.Start)) {
+		// if (XCI.GetButtonDown(XboxButton.Start)) {
+		if (Input.GetKeyDown(KeyCode.Return)) {
 		// if (Input.GetButtonDown("Start Button")) {
 			Time.timeScale = 1f;
 			// Application.LoadLevel(0);

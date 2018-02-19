@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestOutline : MonoBehaviour {
+public class OutlineAnimate : MonoBehaviour {
 
 	public Vector2[] spriteVertices;
 	// public GameObject lr;
 	LineRenderer lineRenderer;
 
-	float scrollSpeed = 0.5f;
+	public float scrollSpeed = 0.5f;
 
 	SpriteRenderer spriteRenderer;
 	// Use this for initialization

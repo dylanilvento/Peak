@@ -59,7 +59,7 @@ public class GameOverCollider : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (levelControl.GetFollow()) {
-			transform.position = new Vector3 (player.position.x - relPos, transform.position.y, transform.position.z);
+			transform.position = new Vector3 (player.position.x - (relPos * Time.deltaTime), transform.position.y, transform.position.z);
 			
 			StartCoroutine("Move");
 		}
@@ -78,12 +78,12 @@ public class GameOverCollider : MonoBehaviour {
 	IEnumerator Move () {
 		while ((camera.WorldToScreenPoint(player.position).y > Screen.height / upVal) || ((Mathf.Abs(player.position.y - transform.position.y) > relPosY) && scoutMvmt.grounded)) {
 		// while ((camera.WorldToScreenPoint(player.position).y > Screen.height / 2f) || ((Mathf.Abs(player.position.y - transform.position.y) > relPosY) && !(scoutMvmt.jumped))) {
-			transform.position = new Vector3(transform.position.x, transform.position.y + 0.005f, transform.position.z);
+			transform.position = new Vector3(transform.position.x, transform.position.y + (0.001f * Time.deltaTime), transform.position.z);
 			yield return new WaitForSeconds(0.1f);
 		}
 
 		while (((camera.WorldToScreenPoint(player.position).y < Screen.height / downVal)) && !(scoutMvmt.grounded)) {
-			transform.position = new Vector3(transform.position.x, transform.position.y - 0.005f, transform.position.z);
+			transform.position = new Vector3(transform.position.x, transform.position.y - (0.001f * Time.deltaTime), transform.position.z);
 			yield return new WaitForSeconds(0.1f);
 		}
 	}

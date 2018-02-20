@@ -12,6 +12,7 @@ public class CameraFollow : MonoBehaviour {
 
 	float upVal = 1.4f;
 	float downVal = 4f;
+    float lerpSpeed = 15.0f;
 	// Use this for initialization
 	void Start () {
 		levelControl = GameObject.Find("Game Controller").GetComponent<LevelControl>();
@@ -25,7 +26,7 @@ public class CameraFollow : MonoBehaviour {
 	// Update is called once per frame
 	void LateUpdate () {
 		if (levelControl.GetFollow()) {
-			transform.position = new Vector3(player.position.x - relPos.x, transform.position.y, transform.position.z);
+			transform.position = Vector3.Lerp(transform.position, new Vector3(player.position.x - relPos.x, transform.position.y, transform.position.z),Time.deltaTime * lerpSpeed);
 			if (camera.WorldToScreenPoint(player.position).y > Screen.height / upVal) StartCoroutine("MoveUp");
 			else if (camera.WorldToScreenPoint(player.position).y < Screen.height / downVal) StartCoroutine("MoveDown");
 
@@ -77,18 +78,18 @@ public class CameraFollow : MonoBehaviour {
 		transform.position = originalPos;
 
 	}
-
-	IEnumerator MoveUp () {
+    //We use Vector3.Lerp to move smoothly from the current position to the 'target' position vector (Current position plus/minus offsets) and factor in delta time so it works no matter the frame rate
+    IEnumerator MoveUp () {
 		while (camera.WorldToScreenPoint(player.position).y > Screen.height / upVal && levelControl.GetFollow()) {
-			transform.position = new Vector3(transform.position.x, transform.position.y + 0.01f, transform.position.z);
+			transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, transform.position.y + 0.01f, transform.position.z), Time.deltaTime * lerpSpeed);
 			yield return new WaitForSeconds(Time.fixedDeltaTime);
 			
 		}
 	}
-
+    //We use Vector3.Lerp to move smoothly from the current position to the 'target' position vector (Current position plus/minus offsets) and factor in delta time so it works no matter the frame rate
 	IEnumerator MoveDown () {
 		while (camera.WorldToScreenPoint(player.position).y < Screen.height / downVal && levelControl.GetFollow()) {
-			transform.position = new Vector3(transform.position.x, transform.position.y - 0.01f, transform.position.z);
+			transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, transform.position.y - 0.01f, transform.position.z),Time.deltaTime * lerpSpeed);
 			yield return new WaitForSeconds(Time.fixedDeltaTime);
 		}
 	}

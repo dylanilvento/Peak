@@ -3,7 +3,6 @@ guid: 41291d6e7ef9445de818a7ff76eb9f58
 timeCreated: 1495370362
 licenseType: Free
 VideoClipImporter:
-  externalObjects: {}
   serializedVersion: 2
   useLegacyImporter: 0
   quality: 0.5
@@ -13,7 +12,7 @@ VideoClipImporter:
   frameRange: 0
   startFrame: -1
   endFrame: -1
-  frameCount: 1878
+  frameCount: 1880
   frameRate: 60
   colorSpace: 0
   deinterlace: 0
@@ -22,8 +21,6 @@ VideoClipImporter:
   sourceHasAlpha: 0
   flipVertical: 0
   flipHorizontal: 0
-  pixelAspectRatioNumerator: 1
-  pixelAspectRatioDenominator: 1
   importAudio: 1
   sourceAudioChannelCount: 0200
   sourceAudioSampleRate: 80bb0000
@@ -38,7 +35,7 @@ VideoClipImporter:
       bitrateMode: 2
       spatialQuality: 2
   output:
-    format: 0
+    format: 1
     settings:
       enableTranscoding: 0
       codec: 0
@@ -51,7 +48,7 @@ VideoClipImporter:
     encodedWidth: 2880
     encodedHeight: 1800
     encodedStartFrame: 0
-    encodedEndFrame: 1878
+    encodedEndFrame: 1880
     streamedResource:
       source: 
       offset: 0

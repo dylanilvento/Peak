@@ -239,6 +239,8 @@ public class QuadrilateralOutlineRenderer : MonoBehaviour {
 		}
 
 		else {
+
+			//this will add shared vertices TWICE
 			foreach (PolygonSide side in sideRotationOrder) {
 				print(side);
 				print(collisionChecks[side]);

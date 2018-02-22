@@ -93,8 +93,6 @@ public class StartScreenController : MonoBehaviour {
 		// 	SceneManager.LoadScene("Tutorial");
 		// }
 
-
-		//********** BROKEN  **********//
 		if (player.GetButtonDown("Start") && !startMenuActive && !onResOptions) {
 			
 			print("works");
@@ -171,6 +169,10 @@ public class StartScreenController : MonoBehaviour {
 		else if (player.GetButtonDown("Down") && startMenuActive && startMenuIndex < 3) {
 			menuArrow.transform.position = new Vector3(menuArrow.transform.position.x, menuArrow.transform.position.y - (Screen.height / 15), menuArrow.transform.position.z);
 			startMenuIndex++;
+		}
+
+		if (player.GetButtonDown("Demo Reel Start")) {
+			SceneManager.LoadScene("Demo Reel");
 		}
 	
 	}

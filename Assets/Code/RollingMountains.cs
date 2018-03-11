@@ -28,8 +28,9 @@ public class RollingMountains : MonoBehaviour {
 	void Update () {
 		
 		if (!finish.winActive && levelControl.GetFollow()) {
-			// transform.position = new Vector2 ((player.transform.position.x - relPos.x) * moveMultiplier, camera.transform.position.y - relPosY);
+			
 			transform.position = new Vector2 ((player.transform.position.x - relPos.x) * moveMultiplier, transform.position.y);
+			// transform.position = new Vector2 ((player.transform.position.x - relPos.x) * moveMultiplier, camera.transform.position.y - relPosY);
 			
 
 			//Commented out for testing

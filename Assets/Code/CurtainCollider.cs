@@ -15,6 +15,13 @@ public class CurtainCollider : MonoBehaviour {
 	LevelControl levelControl;
 	bool hasController;
 
+    public int curtainJumpCharges = 0;  //How many charges you have
+    public float curtainJumpDelay = 1f; //The delay in time between when you can use a jump (in seconds)
+    private float curtainJumpLastUsedTime = 0;  //to prevent spamming of curtain jump
+    public bool curtainJumpRecharging = false; //Is jump currently being 'recharged' (To prevent multiple charges from recharging)
+    public float curtainJumpLerpSpeed = 0.1f;
+    public float curtainJumpDistance = 150.0f; //This is basiclly in pixels
+
 	public int playerId = 0; // The Rewired player id of this character
 
     private Player player; // The Rewired Player
@@ -26,7 +33,6 @@ public class CurtainCollider : MonoBehaviour {
         // Subscribe to events
         ReInput.ControllerConnectedEvent += OnControllerConnected;
 
-		
         // ReInput.ControllerDisconnectedEvent += OnControllerDisconnected;
         // ReInput.ControllerPreDisconnectEvent += OnControllerPreDisconnect;
     }
@@ -45,7 +51,9 @@ public class CurtainCollider : MonoBehaviour {
 		leftCurtain = GameObject.Find("Left Curtain");
 		levelControl = GameObject.Find("Game Controller").GetComponent<LevelControl>();
 		smallestDist = Mathf.Abs(rightCurtain.transform.position.x) - Mathf.Abs(leftCurtain.transform.position.x);
-	}
+        curtainJumpCharges = 3;
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -117,7 +125,40 @@ public class CurtainCollider : MonoBehaviour {
 				transform.position = new Vector2 (transform.position.x + 0.05f, transform.position.y);
 			}
 		}
-	}
+        // Curtain Jump
+        if (!paused && levelControl.GetFollow())
+        {
+            if (player.GetButtonDown("Left Curtain Jump") && curtainJumpCharges > 0 && ((curtainJumpLastUsedTime + curtainJumpDelay) < Time.time)) 
+            {
+                // Start left curtain jump corutine which does something similar to the below until it reaches the 'endpoint' 
+                curtainJumpLastUsedTime = Time.time;
+
+                box.size = Vector2.Lerp(box.size, new Vector2(box.size.x + (0.1f * curtainJumpDistance), box.size.y), curtainJumpLerpSpeed);
+                renderCurtain.transform.localScale = Vector2.Lerp(renderCurtain.transform.localScale, new Vector2(renderCurtain.transform.localScale.x + (0.2f * curtainJumpDistance), renderCurtain.transform.localScale.y), curtainJumpLerpSpeed);
+                renderCurtain.transform.localPosition = Vector2.Lerp(renderCurtain.transform.localPosition, new Vector2(renderCurtain.transform.localPosition.x - (0.05f * curtainJumpDistance), renderCurtain.transform.localScale.y), curtainJumpLerpSpeed);
+                leftCurtain.transform.position = Vector2.Lerp(leftCurtain.transform.position, new Vector2(leftCurtain.transform.position.x - (0.1f * curtainJumpDistance), leftCurtain.transform.position.y), curtainJumpLerpSpeed);
+                transform.position = Vector2.Lerp(transform.position, new Vector2(transform.position.x - (0.05f * curtainJumpDistance), transform.position.y), curtainJumpLerpSpeed);
+            }
+
+            if (player.GetButtonDown("Right Curtain Jump") && curtainJumpCharges > 0 && ((curtainJumpLastUsedTime + curtainJumpDelay) < Time.time))
+            {
+                // Start right curtain jump corutine which does something similar to the below until it reaches the 'endpoint' 
+                curtainJumpLastUsedTime = Time.time;
+
+                box.size = Vector2.Lerp(box.size, new Vector2(box.size.x + (0.1f * curtainJumpDistance), box.size.y), curtainJumpLerpSpeed);
+                renderCurtain.transform.localScale = Vector2.Lerp(renderCurtain.transform.localScale, new Vector2(renderCurtain.transform.localScale.x + (0.2f * curtainJumpDistance), renderCurtain.transform.localScale.y), curtainJumpLerpSpeed);
+                renderCurtain.transform.localPosition = Vector2.Lerp(renderCurtain.transform.localPosition, new Vector2(renderCurtain.transform.localPosition.x + (0.05f * curtainJumpDistance), renderCurtain.transform.localScale.y), curtainJumpLerpSpeed);
+                rightCurtain.transform.position = Vector2.Lerp(rightCurtain.transform.position, new Vector2(rightCurtain.transform.position.x + (0.1f * curtainJumpDistance), rightCurtain.transform.position.y), curtainJumpLerpSpeed);
+                transform.position = Vector2.Lerp(transform.position, new Vector2(transform.position.x + (0.05f * curtainJumpDistance), transform.position.y), curtainJumpLerpSpeed);
+            }
+
+            if (curtainJumpCharges < 0 && !curtainJumpRecharging)
+            {
+                //Start recharge corutine
+            }
+        }
+
+    }
 
 	public void SwitchPausedGame () {
 		paused = !paused;

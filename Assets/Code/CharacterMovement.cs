@@ -27,7 +27,12 @@ public class CharacterMovement : MonoBehaviour {
 
 	float lastXPos;
 
-	float walkVelX = 2f, walkVelY = 0f;
+	[Range(0f, 3f)]
+	public float defaultWalkVelX;
+
+	float walkVelX;
+	
+	float walkVelY = 0f;
 
 	float lastTimeGrounded;
 
@@ -123,13 +128,13 @@ public class CharacterMovement : MonoBehaviour {
 
 			GroundType groundType = other.gameObject.GetComponent<GroundTypeContainer>().groundType;
 			if ((groundType == GroundType.Flat) || (groundType == GroundType.Ramp && other.gameObject.transform.localScale.x < 0)) {
-				walkVelX = 2f; walkVelY = 0f;
+				walkVelX = defaultWalkVelX; walkVelY = 0f;
 			}
 
 			else if (groundType == GroundType.Ramp && other.gameObject.transform.localScale.x > 0) {
 				// print("this is working");
 				//THIS MAKES HIM HOP WHEN HE GOES UP
-				walkVelX = 2f; walkVelY = 0f; //walkVelY = 1.4f;
+				walkVelX = defaultWalkVelX; walkVelY = 0f; //walkVelY = 1.4f;
 			}
 
 			grounded = true;

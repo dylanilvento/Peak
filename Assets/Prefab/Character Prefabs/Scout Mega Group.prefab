@@ -1261,7 +1261,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1482202302470636}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.59891665, y: -31.735498, z: 0}
+  m_LocalPosition: {x: 0.268, y: -31.78, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4702898404027456}
@@ -2233,7 +2233,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 9
+  m_SortingOrder: 10
 --- !u!33 &33090820427355048
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -2490,7 +2490,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Length: 0.07000001
+  m_Length: 0.06999998
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4233486780506328}
   m_AttachedIK: {fileID: 0}
@@ -2533,6 +2533,7 @@ MonoBehaviour:
   - {fileID: 1075771550477896, guid: 65ec89a1eff9447e698a364289b15b25, type: 2}
   grounded: 0
   jumped: 0
+  defaultWalkVelX: 1.5
 --- !u!114 &114184124820669598
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2549,7 +2550,7 @@ MonoBehaviour:
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_SortingLayerID: 0
-  m_SortingOrder: 9
+  m_SortingOrder: 10
   m_Bones: []
   m_BoneTransforms: []
 --- !u!114 &114192238332143866
@@ -2889,7 +2890,7 @@ MonoBehaviour:
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_SortingLayerID: 0
-  m_SortingOrder: 7
+  m_SortingOrder: 8
   m_Bones: []
   m_BoneTransforms:
   - {fileID: 4182942273489174}
@@ -2970,7 +2971,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Length: 0.09999896
+  m_Length: 0.09999895
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4477373410288028}
   m_AttachedIK: {fileID: 0}
@@ -3166,7 +3167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Length: 0.09999896
+  m_Length: 0.09999895
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4479653501369898}
   m_AttachedIK: {fileID: 0}
@@ -3250,7 +3251,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Length: 0.07000001
+  m_Length: 0.06999998
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4979433345091038}
   m_AttachedIK: {fileID: 0}
@@ -4329,7 +4330,7 @@ SkinnedMeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 7
+  m_SortingOrder: 8
   serializedVersion: 2
   m_Quality: 0
   m_UpdateWhenOffscreen: 0

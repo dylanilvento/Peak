@@ -10,6 +10,9 @@ public class QuadrilateralOutlineRenderer : MonoBehaviour {
 	//top, right, bottom, left
 	//true means raycast hit another collider
 
+	float raycastScale = 0.5f;
+	float raycastGizmoScale = 5f;
+
 
 	List<bool[]> collisionMatrices = new List <bool[]> {
 		new bool[] {false, false, false, false}, //1, if this one, start vertex much be also included at end
@@ -98,13 +101,17 @@ public class QuadrilateralOutlineRenderer : MonoBehaviour {
 
 		float offset = Time.time * scrollSpeed;
         lineRenderer1.material.SetTextureOffset("_MainTex", new Vector2(offset, 0));
+		lineRenderer2.material.SetTextureOffset("_MainTex", new Vector2(offset, 0));
 		
 	}
 
 	void CheckCollision() {
-		Debug.DrawRay(new Vector2(transform.position.x, transform.position.y + (transform.localScale.y/3)), Vector2.up/4, Color.green, 100f);
-		RaycastHit2D topHit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y + (transform.localScale.y/3)), Vector2.up/4, 1f);
-        if (topHit.collider != null) {
+		Debug.DrawRay(new Vector2(transform.position.x, transform.position.y + (transform.localScale.y/3)), Vector2.up/raycastGizmoScale, Color.green, 100f);
+		
+		// origin, direction, size
+		RaycastHit2D topHit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y + (transform.localScale.y/3)), Vector2.up, raycastScale);
+        
+		if (topHit.collider != null) {
             // print(hit.collider.gameObject.name);
 			collisionChecks.Add(PolygonSide.Top, true);
         }
@@ -112,19 +119,25 @@ public class QuadrilateralOutlineRenderer : MonoBehaviour {
 			collisionChecks.Add(PolygonSide.Top, false);
 		}
 
-		Debug.DrawRay(new Vector2(transform.position.x + (transform.localScale.x/3), transform.position.y), Vector2.right/4, Color.green, 100f);
-		RaycastHit2D rightHit = Physics2D.Raycast(new Vector2(transform.position.x + (transform.localScale.x/3), transform.position.y), Vector2.right/4, 1f);
-        if (rightHit.collider != null) {
-            // print(hit.collider.gameObject.name);
+		Debug.DrawRay(new Vector2(transform.position.x + (transform.localScale.x/3), transform.position.y), Vector2.right/raycastGizmoScale, Color.green, 100f);
+		
+		// origin, direction, size
+		RaycastHit2D rightHit = Physics2D.Raycast(new Vector2(transform.position.x + (transform.localScale.x/3), transform.position.y), Vector2.right, raycastScale);
+
+		if (rightHit.collider != null) {
+            print(gameObject.name + "rightHit: " + rightHit.collider.gameObject.name);
 			collisionChecks.Add(PolygonSide.Right, true);
         }
 		else {
 			collisionChecks.Add(PolygonSide.Right, false);
 		}
 
-		Debug.DrawRay(new Vector2(transform.position.x, transform.position.y - (transform.localScale.y/3)), Vector2.down/4, Color.green, 100f);
-		RaycastHit2D bottomHit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y - (transform.localScale.y/3)), Vector2.down/4, 1f);
-        if (bottomHit.collider != null) {
+		Debug.DrawRay(new Vector2(transform.position.x, transform.position.y - (transform.localScale.y/3)), Vector2.down/raycastGizmoScale, Color.green, 100f);
+		
+		// origin, direction, size
+		RaycastHit2D bottomHit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y - (transform.localScale.y/3)), Vector2.down, raycastScale);
+       
+	    if (bottomHit.collider != null) {
             // print(hit.collider.gameObject.name);
 			collisionChecks.Add(PolygonSide.Bottom, true);
         }
@@ -132,10 +145,13 @@ public class QuadrilateralOutlineRenderer : MonoBehaviour {
 			collisionChecks.Add(PolygonSide.Bottom, false);
 		}
 
-		Debug.DrawRay(new Vector2(transform.position.x - (transform.localScale.x/3), transform.position.y), Vector2.left/4, Color.green, 100f);
-		RaycastHit2D leftHit = Physics2D.Raycast(new Vector2(transform.position.x - (transform.localScale.x/3), transform.position.y), Vector2.left/4, 1f);
-        if (rightHit.collider != null) {
-            // print(hit.collider.gameObject.name);
+		Debug.DrawRay(new Vector2(transform.position.x - (transform.localScale.x/3), transform.position.y), Vector2.left/raycastGizmoScale, Color.green, 100f);
+		
+		// origin, direction, size
+		RaycastHit2D leftHit = Physics2D.Raycast(new Vector2(transform.position.x - (transform.localScale.x/3), transform.position.y), Vector2.left, raycastScale);
+        
+		if (leftHit.collider != null) {
+            print(gameObject.name + " leftHit: " + leftHit.collider.gameObject.name);
 			collisionChecks.Add(PolygonSide.Left, true);
         }
 		else {
@@ -157,7 +173,7 @@ public class QuadrilateralOutlineRenderer : MonoBehaviour {
 				upperRight = vertex;
 			}
 		}
-		// print("upperRight: " + upperRight);
+		print("upperRight: " + upperRight);
 
 		Vector2 lowerRight = new Vector2(0,0);
 		foreach (Vector2 vertex in spriteVertices) {
@@ -166,7 +182,7 @@ public class QuadrilateralOutlineRenderer : MonoBehaviour {
 			}
 		}
 
-		// print("lowerRight: " + lowerRight);
+		print("lowerRight: " + lowerRight);
 
 		Vector2 upperLeft = new Vector2(0,0);
 		foreach (Vector2 vertex in spriteVertices) {
@@ -175,7 +191,7 @@ public class QuadrilateralOutlineRenderer : MonoBehaviour {
 			}
 		}
 
-		// print("upperLeft: " + upperLeft);
+		print("upperLeft: " + upperLeft);
 
 		Vector2 lowerLeft = new Vector2(0,0);
 		foreach (Vector2 vertex in spriteVertices) {
@@ -184,7 +200,7 @@ public class QuadrilateralOutlineRenderer : MonoBehaviour {
 			}
 		}
 
-		// print("lowerLeft: " + lowerLeft);
+		print("lowerLeft: " + lowerLeft);
 
 		vertices.Add(QuadrilateralVertex.UpperRight, upperRight);
 		vertices.Add(QuadrilateralVertex.LowerRight, lowerRight);
@@ -224,12 +240,14 @@ public class QuadrilateralOutlineRenderer : MonoBehaviour {
 			lr2Vertices
 		};
 
+		print("collisionIndex: " + collisionIndex);
+
 		int vertexHolderIndex = 0;
 
 		print("going through sides");
 
 		if (collisionIndex == 0) {
-			lr1Vertices = new List<Vector3> {
+			vertexHolder[0] = new List<Vector3> {
 				vertices[QuadrilateralVertex.UpperRight],
 				vertices[QuadrilateralVertex.LowerRight],
 				vertices[QuadrilateralVertex.LowerLeft],
@@ -261,8 +279,10 @@ public class QuadrilateralOutlineRenderer : MonoBehaviour {
 		print("num of LRs: " + lrPerCollision[collisionIndex]);
 
 		if (lrPerCollision[collisionIndex] == 1) {
+			print("assigning vertices");
 			// lineRenderer1.positionCount = lr1Vertices.Count;
 			// lineRenderer1.SetPositions(lr1Vertices.ToArray());
+			print("vertexHolder[0].Count " + vertexHolder[0].Count);
 			lineRenderer1.positionCount = vertexHolder[0].Count;
 			lineRenderer1.SetPositions(vertexHolder[0].ToArray());
 		}
@@ -270,8 +290,8 @@ public class QuadrilateralOutlineRenderer : MonoBehaviour {
 		if (lrPerCollision[collisionIndex] == 2) {
 			// lineRenderer2.positionCount = lr2Vertices.Count;
 			// lineRenderer2.SetPositions(lr2Vertices.ToArray());
-			lineRenderer1.positionCount = vertexHolder[1].Count;
-			lineRenderer1.SetPositions(vertexHolder[1].ToArray());
+			lineRenderer2.positionCount = vertexHolder[1].Count;
+			lineRenderer2.SetPositions(vertexHolder[1].ToArray());
 		}
 
 		// boxCollider.enabled = false;

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class QuadrilateralOutlineRenderer : MonoBehaviour {
+public class SquareTileOutlineRenderer : MonoBehaviour {
 	// public Material lineMat;
 	public Vector2[] spriteVertices;
 	float scrollSpeed = 0.5f;
@@ -200,154 +200,10 @@ public class QuadrilateralOutlineRenderer : MonoBehaviour {
 		else {
 			leftOutline.enabled = false;
 		}
-	}
-	void SetVertices() {
 
-		Vector2 upperRight = new Vector2(0,0);
-		foreach (Vector2 vertex in spriteVertices) {
-			if (vertex.x >= upperRight.x && vertex.y >= upperRight.y) {
-				upperRight = vertex;
-			}
-		}
-		// print("upperRight: " + upperRight);
-
-		Vector2 lowerRight = new Vector2(0,0);
-		foreach (Vector2 vertex in spriteVertices) {
-			if (vertex.x >= lowerRight.x && vertex.y <= lowerRight.y) {
-				lowerRight = vertex;
-			}
-		}
-
-		// print("lowerRight: " + lowerRight);
-
-		Vector2 upperLeft = new Vector2(0,0);
-		foreach (Vector2 vertex in spriteVertices) {
-			if (vertex.x <= upperLeft.x && vertex.y >= upperLeft.y) {
-				upperLeft = vertex;
-			}
-		}
-
-		// print("upperLeft: " + upperLeft);
-
-		Vector2 lowerLeft = new Vector2(0,0);
-		foreach (Vector2 vertex in spriteVertices) {
-			if (vertex.x <= lowerLeft.x && vertex.y <= lowerLeft.y) {
-				lowerLeft = vertex;
-			}
-		}
-
-		// print("lowerLeft: " + lowerLeft);
-
-		vertices.Add(QuadrilateralVertex.UpperRight, upperRight);
-		vertices.Add(QuadrilateralVertex.LowerRight, lowerRight);
-		vertices.Add(QuadrilateralVertex.LowerLeft, lowerLeft);
-		vertices.Add(QuadrilateralVertex.UpperLeft, upperLeft);
-		
-		// lineRenderer1.positionCount = spriteVertices.Length + 1;
-
+		boxCollider.enabled = false;
 	}
 
-	void SetLineRendererVertices () {
-		int collisionIndex = -1;
-		//create current collision matrix
-		bool[] collisionMatrix = new bool[4] {
-			collisionChecks[PolygonSide.Top],
-			collisionChecks[PolygonSide.Right],
-			collisionChecks[PolygonSide.Bottom],
-			collisionChecks[PolygonSide.Left]
-		};
-
-		foreach (bool[] matrix in collisionMatrices) {
-			if (ArrayComparison(collisionMatrix, matrix)) {
-				collisionIndex = collisionMatrices.IndexOf(matrix);
-				break;
-			}
-		}
-
-		
-		List<Vector3> lr1Vertices = new List<Vector3>();
-		List<Vector3> lr2Vertices = new List<Vector3>();
-
-		List<Vector3>[] vertexHolder = new List<Vector3>[2] {
-			lr1Vertices,
-			lr2Vertices
-		};
-
-		print("collisionIndex: " + collisionIndex);
-
-		int vertexHolderIndex = 0;
-
-		print("going through sides");
-
-		if (collisionIndex == 0) {
-			vertexHolder[0] = new List<Vector3> {
-				vertices[QuadrilateralVertex.UpperRight],
-				vertices[QuadrilateralVertex.LowerRight],
-				vertices[QuadrilateralVertex.LowerLeft],
-				vertices[QuadrilateralVertex.UpperLeft],
-				vertices[QuadrilateralVertex.UpperRight]
-			};
-		}
-
-		else {
-
-			//this will add shared vertices TWICE
-			foreach (PolygonSide side in sideRotationOrder) {
-				print(side);
-				print(collisionChecks[side]);
-				if (collisionChecks[side] == false) {
-					vertexHolder[vertexHolderIndex].Add(vertices[sides[side][0]]);
-				}
-
-				else if (collisionChecks[side] == true && vertexHolderIndex == 0) {
-					vertexHolderIndex++;
-				}
-
-				else if (collisionChecks[side] == true && vertexHolderIndex >= 1) {
-					break;
-				}
-			}
-		}
-
-		print("num of LRs: " + lrPerCollision[collisionIndex]);
-
-		if (lrPerCollision[collisionIndex] == 1) {
-			print("assigning vertices");
-			// lineRenderer1.positionCount = lr1Vertices.Count;
-			// lineRenderer1.SetPositions(lr1Vertices.ToArray());
-			print("vertexHolder[0].Count " + vertexHolder[0].Count);
-
-			// commented out variables at top
-			// lineRenderer1.positionCount = vertexHolder[0].Count;
-			// lineRenderer1.SetPositions(vertexHolder[0].ToArray());
-		}
-
-		if (lrPerCollision[collisionIndex] == 2) {
-			// lineRenderer2.positionCount = lr2Vertices.Count;
-			// lineRenderer2.SetPositions(lr2Vertices.ToArray());
-
-			// commented out variables at top
-			// lineRenderer2.positionCount = vertexHolder[1].Count;
-			// lineRenderer2.SetPositions(vertexHolder[1].ToArray());
-		}
-
-		// boxCollider.enabled = false;
-
-
-		// lineRenderer1.positionCount = 2;
-
-		// Vector3[] lrVertices = {
-		// 	(Vector3) vertices[QuadrilateralVertex.UpperRight],
-		// 	(Vector3) vertices[QuadrilateralVertex.LowerRight]//,
-		// 	// (Vector3) vertices[QuadrilateralVertex.LowerLeft],
-		// 	// (Vector3) vertices[QuadrilateralVertex.UpperLeft],
-		// 	// (Vector3) vertices[QuadrilateralVertex.UpperRight]
-		// };
-
-		// lineRenderer1.SetPositions(lrVertices);
-		
-
-	}
 
 	bool ArrayComparison (int[] arr1, int[] arr2) {
 		bool arraysAreEqual = true;

@@ -69,10 +69,10 @@ public class RampTileOutlineRenderer : MonoBehaviour {
 		
 
 		float offset = Time.time * scrollSpeed;
-        topOutline.material.SetTextureOffset("_MainTex", new Vector2(offset, 0));
-		rightOutline.material.SetTextureOffset("_MainTex", new Vector2(offset, 0));
-		bottomOutline.material.SetTextureOffset("_MainTex", new Vector2(offset, 0));
-		leftOutline.material.SetTextureOffset("_MainTex", new Vector2(offset, 0));
+        // topOutline.material.SetTextureOffset("_MainTex", new Vector2(offset, 0));
+		// rightOutline.material.SetTextureOffset("_MainTex", new Vector2(offset, 0));
+		// bottomOutline.material.SetTextureOffset("_MainTex", new Vector2(offset, 0));
+		// leftOutline.material.SetTextureOffset("_MainTex", new Vector2(offset, 0));
 		
 	}
 

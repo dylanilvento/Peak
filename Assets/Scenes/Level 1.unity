@@ -79500,6 +79500,16 @@ Prefab:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 114161851743720396, guid: da10b8e5cb7e9404898d762b8c7a4ba4,
+        type: 2}
+      propertyPath: movementOff
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114161851743720396, guid: da10b8e5cb7e9404898d762b8c7a4ba4,
+        type: 2}
+      propertyPath: defaultWalkVelX
+      value: 1.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: da10b8e5cb7e9404898d762b8c7a4ba4, type: 2}
   m_IsPrefabParent: 0

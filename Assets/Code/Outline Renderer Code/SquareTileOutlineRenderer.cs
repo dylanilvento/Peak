@@ -14,44 +14,6 @@ public class SquareTileOutlineRenderer : MonoBehaviour {
 	float raycastGizmoScale = 5f;
 
 
-	List<bool[]> collisionMatrices = new List <bool[]> {
-		new bool[] {false, false, false, false}, //1, if this one, start vertex much be also included at end
-		new bool[] {false, false, false, true}, //1
-		new bool[] {false, false, true, false}, //2
-		new bool[] {false, false, true, true}, //1
-		new bool[] {false, true, false, false}, //2
-		new bool[] {false, true, false, true}, //2
-		new bool[] {false, true, true, false}, //2
-		new bool[] {false, true, true, true}, //1
-		new bool[] {true, false, false, false}, //1
-		new bool[] {true, false, false, true}, //1
-		new bool[] {true, false, true, false}, //2
-		new bool[] {true, false, true, true}, //1
-		new bool[] {true, true, false, false}, //1
-		new bool[] {true, true, false, true}, //1
-		new bool[] {true, true, true, false}, //1
-		new bool[] {true, true, true, true} //0
-	};
-
-	int[] lrPerCollision = new int[16] {
-		1,
-		1,
-		2,
-		1,
-		2,
-		2,
-		2,
-		1,
-		1,
-		1,
-		2,
-		1,
-		1,
-		1,
-		1,
-		0
-	};
-
 	PolygonSide[] sideRotationOrder = new PolygonSide[4] {
 		PolygonSide.Top,
 		PolygonSide.Right,
@@ -117,7 +79,7 @@ public class SquareTileOutlineRenderer : MonoBehaviour {
 		// origin, direction, size
 		RaycastHit2D topHit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y + (transform.localScale.y/3)), Vector2.up, raycastScale);
         
-		if (topHit.collider != null) {
+		if (topHit.collider != null && topHit.collider.gameObject.layer == gameObject.layer) {
             // print(hit.collider.gameObject.name);
 			collisionChecks.Add(PolygonSide.Top, true);
         }
@@ -130,7 +92,7 @@ public class SquareTileOutlineRenderer : MonoBehaviour {
 		// origin, direction, size
 		RaycastHit2D rightHit = Physics2D.Raycast(new Vector2(transform.position.x + (transform.localScale.x/3), transform.position.y), Vector2.right, raycastScale);
 
-		if (rightHit.collider != null) {
+		if (rightHit.collider != null && rightHit.collider.gameObject.layer == gameObject.layer) {
             // print(gameObject.name + "rightHit: " + rightHit.collider.gameObject.name);
 			collisionChecks.Add(PolygonSide.Right, true);
         }
@@ -143,7 +105,7 @@ public class SquareTileOutlineRenderer : MonoBehaviour {
 		// origin, direction, size
 		RaycastHit2D bottomHit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y - (transform.localScale.y/3)), Vector2.down, raycastScale);
        
-	    if (bottomHit.collider != null) {
+	    if (bottomHit.collider != null && bottomHit.collider.gameObject.layer == gameObject.layer) {
             // print(hit.collider.gameObject.name);
 			collisionChecks.Add(PolygonSide.Bottom, true);
         }
@@ -156,7 +118,7 @@ public class SquareTileOutlineRenderer : MonoBehaviour {
 		// origin, direction, size
 		RaycastHit2D leftHit = Physics2D.Raycast(new Vector2(transform.position.x - (transform.localScale.x/3), transform.position.y), Vector2.left, raycastScale);
         
-		if (leftHit.collider != null) {
+		if (leftHit.collider != null && leftHit.collider.gameObject.layer == gameObject.layer) {
             // print(gameObject.name + " leftHit: " + leftHit.collider.gameObject.name);
 			collisionChecks.Add(PolygonSide.Left, true);
         }
@@ -164,11 +126,15 @@ public class SquareTileOutlineRenderer : MonoBehaviour {
 			collisionChecks.Add(PolygonSide.Left, false);
 		}
 
-		print(gameObject.name);
-		print("top: " + collisionChecks[PolygonSide.Top]);
-		print("right: " + collisionChecks[PolygonSide.Right]);
-		print("bottom: " + collisionChecks[PolygonSide.Bottom]);
-		print("left: " + collisionChecks[PolygonSide.Left]);
+		if (gameObject.name.Equals("Backworld Plain Block")) {
+			print(gameObject.name);
+			print("top: " + collisionChecks[PolygonSide.Top]);
+			print("right: " + collisionChecks[PolygonSide.Right]);
+			print("bottom: " + collisionChecks[PolygonSide.Bottom]);
+			print("left: " + collisionChecks[PolygonSide.Left]);
+		}
+
+		
 		
 	}
 
@@ -201,6 +167,12 @@ public class SquareTileOutlineRenderer : MonoBehaviour {
 			leftOutline.enabled = false;
 		}
 
+		StartCoroutine("TurnOffCollider");
+
+	}
+
+	IEnumerator TurnOffCollider () {
+		yield return new WaitForSeconds(0.5f);
 		boxCollider.enabled = false;
 	}
 

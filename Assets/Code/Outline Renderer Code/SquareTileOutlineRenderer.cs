@@ -5,7 +5,7 @@ using UnityEngine;
 public class SquareTileOutlineRenderer : MonoBehaviour {
 	// public Material lineMat;
 	public Vector2[] spriteVertices;
-	float scrollSpeed = 0.5f;
+	float scrollSpeed = 0.25f;
 
 	//top, right, bottom, left
 	//true means raycast hit another collider
@@ -66,15 +66,15 @@ public class SquareTileOutlineRenderer : MonoBehaviour {
 	void Update () {
 
 		float offset = Time.time * scrollSpeed;
-        // topOutline.material.SetTextureOffset("_MainTex", new Vector2(offset, 0));
-		// rightOutline.material.SetTextureOffset("_MainTex", new Vector2(offset, 0));
-		// bottomOutline.material.SetTextureOffset("_MainTex", new Vector2(offset, 0));
-		// leftOutline.material.SetTextureOffset("_MainTex", new Vector2(offset, 0));
+        if (topOutline != null) topOutline.material.SetTextureOffset("_MainTex", new Vector2(offset, 0));
+		if (rightOutline != null) rightOutline.material.SetTextureOffset("_MainTex", new Vector2(offset, 0));
+		if (bottomOutline != null) bottomOutline.material.SetTextureOffset("_MainTex", new Vector2(offset, 0));
+		if (leftOutline != null) leftOutline.material.SetTextureOffset("_MainTex", new Vector2(offset, 0));
 		
 	}
 
 	void CheckCollision() {
-		Debug.DrawRay(new Vector2(transform.position.x, transform.position.y + (transform.localScale.y/3)), Vector2.up/raycastGizmoScale, Color.green, 10f);
+		// Debug.DrawRay(new Vector2(transform.position.x, transform.position.y + (transform.localScale.y/3)), Vector2.up/raycastGizmoScale, Color.green, 10f);
 		
 		// origin, direction, size
 		RaycastHit2D topHit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y + (transform.localScale.y/3)), Vector2.up, raycastScale);
@@ -87,7 +87,7 @@ public class SquareTileOutlineRenderer : MonoBehaviour {
 			collisionChecks.Add(PolygonSide.Top, false);
 		}
 
-		Debug.DrawRay(new Vector2(transform.position.x + (transform.localScale.x/3), transform.position.y), Vector2.right/raycastGizmoScale, Color.green, 10f);
+		// Debug.DrawRay(new Vector2(transform.position.x + (transform.localScale.x/3), transform.position.y), Vector2.right/raycastGizmoScale, Color.green, 10f);
 		
 		// origin, direction, size
 		RaycastHit2D rightHit = Physics2D.Raycast(new Vector2(transform.position.x + (transform.localScale.x/3), transform.position.y), Vector2.right, raycastScale);
@@ -100,7 +100,7 @@ public class SquareTileOutlineRenderer : MonoBehaviour {
 			collisionChecks.Add(PolygonSide.Right, false);
 		}
 
-		Debug.DrawRay(new Vector2(transform.position.x, transform.position.y - (transform.localScale.y/3)), Vector2.down/raycastGizmoScale, Color.green, 10f);
+		// Debug.DrawRay(new Vector2(transform.position.x, transform.position.y - (transform.localScale.y/3)), Vector2.down/raycastGizmoScale, Color.green, 10f);
 		
 		// origin, direction, size
 		RaycastHit2D bottomHit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y - (transform.localScale.y/3)), Vector2.down, raycastScale);
@@ -113,7 +113,7 @@ public class SquareTileOutlineRenderer : MonoBehaviour {
 			collisionChecks.Add(PolygonSide.Bottom, false);
 		}
 
-		Debug.DrawRay(new Vector2(transform.position.x - (transform.localScale.x/3), transform.position.y), Vector2.left/raycastGizmoScale, Color.green, 10f);
+		// Debug.DrawRay(new Vector2(transform.position.x - (transform.localScale.x/3), transform.position.y), Vector2.left/raycastGizmoScale, Color.green, 10f);
 		
 		// origin, direction, size
 		RaycastHit2D leftHit = Physics2D.Raycast(new Vector2(transform.position.x - (transform.localScale.x/3), transform.position.y), Vector2.left, raycastScale);
@@ -143,28 +143,32 @@ public class SquareTileOutlineRenderer : MonoBehaviour {
 			topOutline.enabled = true;
 		}
 		else {
-			topOutline.enabled = false;
+			// topOutline.enabled = false;
+			Destroy(topOutline);
 		}
 
 		if (!collisionChecks[PolygonSide.Right]) {
 			rightOutline.enabled = true;
 		}
 		else {
-			rightOutline.enabled = false;
+			// rightOutline.enabled = false;
+			Destroy(rightOutline);
 		}
 
 		if (!collisionChecks[PolygonSide.Bottom]) {
 			bottomOutline.enabled = true;
 		}
 		else {
-			bottomOutline.enabled = false;
+			// bottomOutline.enabled = false;
+			Destroy(bottomOutline);
 		}
 
 		if (!collisionChecks[PolygonSide.Left]) {
 			leftOutline.enabled = true;
 		}
 		else {
-			leftOutline.enabled = false;
+			// leftOutline.enabled = false;
+			Destroy(leftOutline);
 		}
 
 		StartCoroutine("TurnOffCollider");

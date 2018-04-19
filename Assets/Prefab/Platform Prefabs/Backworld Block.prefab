@@ -28,7 +28,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 141422}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.2000003, y: -36.600002, z: 0}
+  m_LocalPosition: {x: 2.4, y: -37.800003, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4907590960356822}
@@ -418,8 +418,8 @@ LineRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 3
   m_Positions:
-  - {x: -0.29, y: 0.3, z: 0}
   - {x: -0.29, y: -0.3, z: 0}
+  - {x: -0.29, y: 0.3, z: 0}
   m_Parameters:
     serializedVersion: 2
     widthMultiplier: 0.3
@@ -594,8 +594,8 @@ LineRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 3
   m_Positions:
-  - {x: -0.3, y: -0.29, z: 0}
   - {x: 0.3, y: -0.29, z: 0}
+  - {x: -0.3, y: -0.29, z: 0}
   m_Parameters:
     serializedVersion: 2
     widthMultiplier: 0.3

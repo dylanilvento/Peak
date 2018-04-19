@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RampTileOutlineRenderer : MonoBehaviour {
+public class GeyserTileOutlineRenderer : MonoBehaviour {
 	// public Material lineMat;
 	public Vector2[] spriteVertices;
 	float scrollSpeed = 0.25f;
@@ -12,6 +12,7 @@ public class RampTileOutlineRenderer : MonoBehaviour {
 
 	float raycastScale = 0.5f;
 	float raycastGizmoScale = 5f;
+
 
 	PolygonSide[] sideRotationOrder = new PolygonSide[4] {
 		PolygonSide.Top,
@@ -30,7 +31,9 @@ public class RampTileOutlineRenderer : MonoBehaviour {
 
 	// public LineRenderer lineRenderer1, lineRenderer2;
 
-	public LineRenderer topOutline, rightOutline, bottomOutline, leftOutline;
+	public LineRenderer rightOutline, bottomOutline, leftOutline;
+
+	public LineRenderer[] topOutlines = new LineRenderer[4];
 	SpriteRenderer spriteRenderer;
 	// Use this for initialization
 	void Start () {
@@ -48,8 +51,6 @@ public class RampTileOutlineRenderer : MonoBehaviour {
 		// lineRenderer = GetComponent<LineRenderer>();
 		spriteVertices = spriteRenderer.sprite.vertices;
 
-		if (transform.localScale.x < 0) scrollSpeed = scrollSpeed * -1;
-
 		// lineRenderer.positionCount = spriteVertices.Length;
 
 		CheckCollision();
@@ -66,10 +67,13 @@ public class RampTileOutlineRenderer : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		
-
 		float offset = Time.time * scrollSpeed;
-        if (topOutline != null) topOutline.material.SetTextureOffset("_MainTex", new Vector2(offset, 0));
+        // if (topOutline != null) topOutline.material.SetTextureOffset("_MainTex", new Vector2(offset, 0));
+		if (topOutlines[0] != null) {
+			foreach (LineRenderer line in topOutlines) {
+				line.material.SetTextureOffset("_MainTex", new Vector2(offset, 0));
+			}
+		}
 		if (rightOutline != null) rightOutline.material.SetTextureOffset("_MainTex", new Vector2(offset, 0));
 		if (bottomOutline != null) bottomOutline.material.SetTextureOffset("_MainTex", new Vector2(offset, 0));
 		if (leftOutline != null) leftOutline.material.SetTextureOffset("_MainTex", new Vector2(offset, 0));
@@ -90,10 +94,10 @@ public class RampTileOutlineRenderer : MonoBehaviour {
 		// 	collisionChecks.Add(PolygonSide.Top, false);
 		// }
 
-		Debug.DrawRay(new Vector2(transform.position.x + transform.localScale.x, transform.position.y), Vector2.right/raycastGizmoScale, Color.green, 100f);
+		Debug.DrawRay(new Vector2(transform.position.x + (transform.localScale.x/3), transform.position.y), Vector2.right/raycastGizmoScale, Color.green, 10f);
 		
 		// origin, direction, size
-		RaycastHit2D rightHit = Physics2D.Raycast(new Vector2(transform.position.x + transform.localScale.x, transform.position.y), Vector2.right, raycastScale);
+		RaycastHit2D rightHit = Physics2D.Raycast(new Vector2(transform.position.x + (transform.localScale.x/3), transform.position.y), Vector2.right, raycastScale);
 
 		if (rightHit.collider != null && rightHit.collider.gameObject.layer == gameObject.layer) {
             // print(gameObject.name + "rightHit: " + rightHit.collider.gameObject.name);
@@ -103,10 +107,10 @@ public class RampTileOutlineRenderer : MonoBehaviour {
 			collisionChecks.Add(PolygonSide.Right, false);
 		}
 
-		Debug.DrawRay(new Vector2(transform.position.x, transform.position.y - transform.localScale.y), Vector2.down/raycastGizmoScale, Color.green, 100f);
+		Debug.DrawRay(new Vector2(transform.position.x, transform.position.y - (transform.localScale.y/3)), Vector2.down/raycastGizmoScale, Color.green, 10f);
 		
 		// origin, direction, size
-		RaycastHit2D bottomHit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y - transform.localScale.y), Vector2.down, raycastScale);
+		RaycastHit2D bottomHit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y - (transform.localScale.y/3)), Vector2.down, raycastScale);
        
 	    if (bottomHit.collider != null && bottomHit.collider.gameObject.layer == gameObject.layer) {
             // print(hit.collider.gameObject.name);
@@ -116,10 +120,10 @@ public class RampTileOutlineRenderer : MonoBehaviour {
 			collisionChecks.Add(PolygonSide.Bottom, false);
 		}
 
-		Debug.DrawRay(new Vector2(transform.position.x - transform.localScale.x, transform.position.y), Vector2.left/raycastGizmoScale, Color.green, 100f);
+		Debug.DrawRay(new Vector2(transform.position.x - (transform.localScale.x/3), transform.position.y), Vector2.left/raycastGizmoScale, Color.green, 10f);
 		
 		// origin, direction, size
-		RaycastHit2D leftHit = Physics2D.Raycast(new Vector2(transform.position.x - transform.localScale.y, transform.position.y), Vector2.left, raycastScale);
+		RaycastHit2D leftHit = Physics2D.Raycast(new Vector2(transform.position.x - (transform.localScale.x/3), transform.position.y), Vector2.left, raycastScale);
         
 		if (leftHit.collider != null && leftHit.collider.gameObject.layer == gameObject.layer) {
             // print(gameObject.name + " leftHit: " + leftHit.collider.gameObject.name);
@@ -143,10 +147,15 @@ public class RampTileOutlineRenderer : MonoBehaviour {
 
 	void ActivateOutlines () {
 		// if (!collisionChecks[PolygonSide.Top]) {
-		// 	topOutline.enabled = true;
+		// 	foreach (LineRenderer line in topOutlines) {
+		// 		line.enabled = true;
+		// 	}
 		// }
 		// else {
-		// 	topOutline.enabled = false;
+		// 	// topOutline.enabled = false;
+		// 	foreach (LineRenderer line in topOutlines) {
+		// 		line.material.SetTextureOffset("_MainTex", new Vector2(offset, 0));
+		// 	}
 		// }
 
 		if (!collisionChecks[PolygonSide.Right]) {
@@ -173,7 +182,6 @@ public class RampTileOutlineRenderer : MonoBehaviour {
 			Destroy(leftOutline);
 		}
 
-		// boxCollider.enabled = false;
 		StartCoroutine("TurnOffCollider");
 
 	}
@@ -182,6 +190,7 @@ public class RampTileOutlineRenderer : MonoBehaviour {
 		yield return new WaitForSeconds(0.5f);
 		polygonCollider.enabled = false;
 	}
+
 
 	bool ArrayComparison (int[] arr1, int[] arr2) {
 		bool arraysAreEqual = true;

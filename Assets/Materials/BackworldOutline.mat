@@ -88,4 +88,4 @@ Material:
     - _MainColor: {r: 1, g: 1, b: 1, a: 1}
     - _Offset: {r: -0, g: 0, b: 0, a: 0}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
-    - _TintColor: {r: 0.5764706, g: 0.21176471, b: 0.047058824, a: 1}
+    - _TintColor: {r: 0.28235295, g: 0.46666667, b: 0.45490196, a: 1}

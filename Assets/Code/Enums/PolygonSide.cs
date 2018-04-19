@@ -4,5 +4,6 @@ public enum PolygonSide {
 	Top,
 	Bottom,
 	Left,
-	Right
+	Right,
+	Hypotenuse
 }

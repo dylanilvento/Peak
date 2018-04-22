@@ -69,13 +69,15 @@ public class CornerTileOutlineRenderer : MonoBehaviour {
 
 	void CheckCollision() {
 
+		int layerMask = 1 << gameObject.layer;
+
 		Vector2[] topVectors = GetTopOutlineVector();
 
 
 		Debug.DrawRay(topVectors[0], topVectors[1]/raycastGizmoScale, Color.blue, 100f);
 		
 		// origin, direction, size
-		RaycastHit2D topHit = Physics2D.Raycast(topVectors[0], topVectors[1], raycastScale);
+		RaycastHit2D topHit = Physics2D.Raycast(topVectors[0], topVectors[1], raycastScale, layerMask);
         
 		if (topHit.collider != null && topHit.collider.gameObject.layer == gameObject.layer) {
             // print(hit.collider.gameObject.name);
@@ -116,7 +118,7 @@ public class CornerTileOutlineRenderer : MonoBehaviour {
 		Debug.DrawRay(leftVectors[0], leftVectors[1]/raycastGizmoScale, Color.green, 100f);
 		
 		// origin, direction, size
-		RaycastHit2D leftHit = Physics2D.Raycast(leftVectors[0], leftVectors[1], raycastScale);
+		RaycastHit2D leftHit = Physics2D.Raycast(leftVectors[0], leftVectors[1], raycastScale, layerMask);
         
 		if (leftHit.collider != null && leftHit.collider.gameObject.layer == gameObject.layer) {
             // print(gameObject.name + " leftHit: " + leftHit.collider.gameObject.name);

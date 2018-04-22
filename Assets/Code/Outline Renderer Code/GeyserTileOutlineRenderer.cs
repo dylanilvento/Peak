@@ -94,10 +94,12 @@ public class GeyserTileOutlineRenderer : MonoBehaviour {
 		// 	collisionChecks.Add(PolygonSide.Top, false);
 		// }
 
+		int layerMask = 1 << gameObject.layer;
+
 		Debug.DrawRay(new Vector2(transform.position.x + (transform.localScale.x/3), transform.position.y), Vector2.right/raycastGizmoScale, Color.green, 10f);
 		
 		// origin, direction, size
-		RaycastHit2D rightHit = Physics2D.Raycast(new Vector2(transform.position.x + (transform.localScale.x/3), transform.position.y), Vector2.right, raycastScale);
+		RaycastHit2D rightHit = Physics2D.Raycast(new Vector2(transform.position.x + (transform.localScale.x/3), transform.position.y), Vector2.right, raycastScale, layerMask);
 
 		if (rightHit.collider != null && rightHit.collider.gameObject.layer == gameObject.layer) {
             // print(gameObject.name + "rightHit: " + rightHit.collider.gameObject.name);
@@ -110,7 +112,7 @@ public class GeyserTileOutlineRenderer : MonoBehaviour {
 		Debug.DrawRay(new Vector2(transform.position.x, transform.position.y - (transform.localScale.y/3)), Vector2.down/raycastGizmoScale, Color.green, 10f);
 		
 		// origin, direction, size
-		RaycastHit2D bottomHit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y - (transform.localScale.y/3)), Vector2.down, raycastScale);
+		RaycastHit2D bottomHit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y - (transform.localScale.y/3)), Vector2.down, raycastScale, layerMask);
        
 	    if (bottomHit.collider != null && bottomHit.collider.gameObject.layer == gameObject.layer) {
             // print(hit.collider.gameObject.name);
@@ -123,7 +125,7 @@ public class GeyserTileOutlineRenderer : MonoBehaviour {
 		Debug.DrawRay(new Vector2(transform.position.x - (transform.localScale.x/3), transform.position.y), Vector2.left/raycastGizmoScale, Color.green, 10f);
 		
 		// origin, direction, size
-		RaycastHit2D leftHit = Physics2D.Raycast(new Vector2(transform.position.x - (transform.localScale.x/3), transform.position.y), Vector2.left, raycastScale);
+		RaycastHit2D leftHit = Physics2D.Raycast(new Vector2(transform.position.x - (transform.localScale.x/3), transform.position.y), Vector2.left, raycastScale, layerMask);
         
 		if (leftHit.collider != null && leftHit.collider.gameObject.layer == gameObject.layer) {
             // print(gameObject.name + " leftHit: " + leftHit.collider.gameObject.name);

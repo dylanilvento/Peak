@@ -108,6 +108,48 @@ NavMeshSettings:
     tileSize: 256
     accuratePlacement: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &67799708
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4784151613721936, guid: d359dd2529d7b4bf79657690d227eec8, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4784151613721936, guid: d359dd2529d7b4bf79657690d227eec8, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4784151613721936, guid: d359dd2529d7b4bf79657690d227eec8, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4784151613721936, guid: d359dd2529d7b4bf79657690d227eec8, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4784151613721936, guid: d359dd2529d7b4bf79657690d227eec8, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4784151613721936, guid: d359dd2529d7b4bf79657690d227eec8, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4784151613721936, guid: d359dd2529d7b4bf79657690d227eec8, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4784151613721936, guid: d359dd2529d7b4bf79657690d227eec8, type: 2}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: d359dd2529d7b4bf79657690d227eec8, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &245582889
 GameObject:
   m_ObjectHideFlags: 0
@@ -228,11 +270,11 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: a0c1b5cd478904c8f9cacaa2fa313be9, type: 3}
+    m_Font: {fileID: 12800000, guid: a4de1229df972456baadc5a6ff15d81d, type: 3}
     m_FontSize: 84
     m_FontStyle: 1
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 8
     m_MaxSize: 135
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -364,7 +406,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 72, y: 0.000008046627}
-  m_SizeDelta: {x: 2556, y: 900}
+  m_SizeDelta: {x: 2556, y: 1200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1193563407
 MonoBehaviour:
@@ -533,6 +575,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c23fa4e0f69de4b388588e6081aa8bf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerId: 0
 --- !u!4 &1691688435
 Transform:
   m_ObjectHideFlags: 0

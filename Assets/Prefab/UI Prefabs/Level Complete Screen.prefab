@@ -227,11 +227,11 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: a0c1b5cd478904c8f9cacaa2fa313be9, type: 3}
+    m_Font: {fileID: 12800000, guid: a4de1229df972456baadc5a6ff15d81d, type: 3}
     m_FontSize: 99
     m_FontStyle: 1
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 9
     m_MaxSize: 135
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -302,11 +302,11 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: a0c1b5cd478904c8f9cacaa2fa313be9, type: 3}
+    m_Font: {fileID: 12800000, guid: a4de1229df972456baadc5a6ff15d81d, type: 3}
     m_FontSize: 135
     m_FontStyle: 1
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 1
     m_MaxSize: 135
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -436,6 +436,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isGamepadUI: 1
   isKeyboardUI: 0
+  playerId: 0
 --- !u!114 &114888358192578004
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -449,6 +450,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isGamepadUI: 0
   isKeyboardUI: 1
+  playerId: 0
 --- !u!222 &222095619662910342
 CanvasRenderer:
   m_ObjectHideFlags: 1

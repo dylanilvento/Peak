@@ -8,9 +8,18 @@ public class LevelControl : MonoBehaviour {
 	bool follow = true;
 	bool levelOver = false;
 
+	public GameObject music;
+
+	// public static bool demoMode;
+
 	public bool canPulse = true;
 	// Use this for initialization
 	void Start () {
+		if (GameObject.Find("Background Music") == null) {
+			GameObject musicSpawn = Instantiate(music);
+			musicSpawn.name = "Background Music";
+			DontDestroyOnLoad(musicSpawn);
+		}
 		
 	}
 	

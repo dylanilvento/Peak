@@ -2,20 +2,41 @@
 using System.Collections;
 using UnityEngine.Analytics;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class CharacterMovement : MonoBehaviour {
 	Rigidbody2D rb;
-	Animator anim;
+	// Animator anim;
+	CircleCollider2D coll;
+
+	CameraFollow camera;
 
 	public bool movementOff = false;
 
-	bool grounded = true;
-	bool jumped = false;
+	GameObject xSpeedText, ySpeedText, groundedText, jumpedText;
+
+	public GameObject scoutForeObject, scoutBackObject;
+	public GameObject[] scoutSprites = new GameObject[6];
+	// public SpriteRenderer[] scoutBackSprites = new SpriteRenderer[6];
+
+	public bool grounded = true;
+	public bool jumped = false;
 	bool paused = false;
 	static bool started = false;
 	bool foreWorld = true;
 
+	float lastXPos;
+
+	[Range(0f, 3f)]
+	public float defaultWalkVelX;
+
+	float walkVelX;
+	
+	float walkVelY = 0f;
+
 	float lastTimeGrounded;
+
+	bool rollingBack = false;
 
 	GameObject collidedWith;
 	SpriteRenderer sr;
@@ -23,89 +44,152 @@ public class CharacterMovement : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		rb = gameObject.GetComponent<Rigidbody2D>();
-		anim = GetComponent<Animator>();
+		// anim = GetComponent<Animator>();
+		coll = gameObject.GetComponent<CircleCollider2D>();
 		sr = GetComponent<SpriteRenderer>();
 		
 		if (movementOff) {
-			rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY;
+			rb.velocity = new Vector2(0f, 0f);
 		}
-		// if (!started) {
-		// 	Analytics.CustomEvent("report", new Dictionary<string, object>
-		// 	{
-		// 		{"operatingSystem", SystemInfo.operatingSystem}
-		// 	});
-
-		// 	started = true;
-		// }
-
-		// print("started");
 
 		grounded = true;
 		jumped = false;
 		paused = false;
-		//anim.SetBool("Walk", true);
-		//print(SystemInfo.operatingSystem);
+
+		lastXPos = transform.position.x - 0.5f; //Prevents Scout from launching in the air
+
+		camera = GameObject.Find("Main Camera").GetComponent<CameraFollow>();
+
+		xSpeedText = GameObject.Find("X Debug");
+		ySpeedText = GameObject.Find("Y Debug");
+		groundedText = GameObject.Find("Grounded Text");
+		jumpedText = GameObject.Find("Jumped Text");
+	
+	}
+
+	void Update () {
+		if (lastXPos > transform.position.x + 0.08f) {
+			walkVelY += 0.5f;
+			walkVelX += 0.5f;
+			// print("lastXPos:" + lastXPos);
+			// print("current pos:" + transform.position.x);
+			// rollingBack = true;
+
+			rb.velocity = new Vector2(walkVelX, walkVelY);
+		}
+
+		lastXPos = transform.position.x;
+
+
+		if (xSpeedText != null) xSpeedText.GetComponent<Text>().text = "x vel: " + walkVelX;
+		if (ySpeedText != null) ySpeedText.GetComponent<Text>().text = "y vel: " + walkVelY;
+
+		if (groundedText != null) {
+			if (grounded) groundedText.GetComponent<Text>().text = "Grounded? Yes";
+			else groundedText.GetComponent<Text>().text = "Grounded? No";
+		}
+		
+		if (jumpedText != null) {
+			if (jumped) jumpedText.GetComponent<Text>().text = "Jumped? Yes";
+			else jumpedText.GetComponent<Text>().text = "Jumped? No";
+		}
+		
 	}
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-		//if (Time.realtimeSinceStartup - lastTimeGrounded > 0.01f) {
+
+
+
 		if (grounded && !movementOff) {
 
-			anim.SetBool("Walk", true);
-			rb.velocity = new Vector2(2f, 1.25f);
+			//WILL NEED TO LOOK AT THIS
+			// anim.SetBool("Walk", true);
+			// print("test");
+			
+			rb.velocity = new Vector2(walkVelX, walkVelY);
 
-			// rb.gravityScale = 1f;
 		}
-		
-		// else {
-		// 	//rb.velocity = new Vector2(0f, 0f);
-			
-		// 	//rb.gravityScale = 2f;
-			
-		// 	//anim.SetBool("Walk", false);
+
+		// else if (!grounded && rollingBack) {
+		// 	rb.velocity = new Vector2(walkVelX, walkVelY);
+		// 	rollingBack = false;
 		// }
+
+		else if (movementOff) {
+			rb.velocity = new Vector2(0f, 0f);
+		}
 	
 	}
 
 	void OnCollisionEnter2D (Collision2D other) {
-		//print(other.gameObject.name);
-		/*if (other.gameObject.name.Contains("Fore Rock") || other.gameObject.name.Contains("Back Rock") && !jumped) {
-			// rb.velocity = new Vector2(2f, 0f);
-			//print("rock enter");
-			grounded = true;
-		}*/
-		grounded = true;
-		//lastTimeGrounded = Time.realtimeSinceStartup;
 
-	}
+		if (other.gameObject.GetComponent<GroundTypeContainer>() != null && !jumped) {
 
+			GroundType groundType = other.gameObject.GetComponent<GroundTypeContainer>().groundType;
+			if ((groundType == GroundType.Flat) || (groundType == GroundType.Ramp && other.gameObject.transform.localScale.x < 0)) {
+				walkVelX = defaultWalkVelX; walkVelY = 0f;
+			}
 
-	//TEST TO SEE IF GROUNDED IS CAUSE
-	/*void OnCollisionStay2D (Collision2D other) {
-		//print(other.gameObject.name);
-		if (other.gameObject.name.Contains("Rock") || other.gameObject.name.Contains("Rock") && !jumped) {
-			// rb.velocity = new Vector2(2f, 0f);
-			//print("rock enter");
+			else if (groundType == GroundType.Ramp && other.gameObject.transform.localScale.x > 0) {
+				// print("this is working");
+				//THIS MAKES HIM HOP WHEN HE GOES UP
+				walkVelX = defaultWalkVelX; walkVelY = 0f; //walkVelY = 1.4f;
+			}
+
 			grounded = true;
 		}
 
-	}*/
+		
+		else if (other.gameObject.GetComponent<GameOverObjectCollider>() != null) {
+			// print("working");
+			
+			coll.enabled = false;
+			Explode();
+			camera.CallCameraShake();
+
+		}
+
+		// else {
+		// 	grounded = true;
+		// }
+		
+	
+
+	}
+
+	void OnCollisionStay2D (Collision2D other) {
+		if (other.gameObject.GetComponent<GroundTypeContainer>() != null && !jumped) {
+			grounded = true;
+		}
+	}
 
 	void OnCollisionExit2D (Collision2D other) {
 		//print(other.gameObject.name);
 		
 		//if (other.gameObject.name.Contains("Fore Rock") || other.gameObject.name.Contains("Back Rock")) {
+			
+			//LET'S SEE IF THIS WORKS
 			grounded = false;
+
+
+
+
+
 		//}
 	}
 
 	void OnTriggerEnter2D (Collider2D other) {
 		collidedWith = other.gameObject;
+		// print("Entered trigger");
 
 		if (collidedWith.name.Equals("Right Curtain") || collidedWith.name.Equals("Left Curtain")) {
-			print("Entered curtain");
+			// print("Entered curtain");
 			SwitchWorlds();
+
+			if (movementOff) {
+				movementOff = false;
+			}
 			// sr.color = new Color(1f, 1f, 1f, 0f);
 			//gameObject.layer = 9;
 			//sr.sortingOrder = 0;
@@ -150,31 +234,74 @@ public class CharacterMovement : MonoBehaviour {
 
 	}
 
+	void Explode() {
+		// Destroy(scoutForeSprites[0].gameObject.transform.parent.GetComponent<Animator>());
+		// Destroy(scoutBackSprites[0].gameObject.transform.parent.GetComponent<Animator>());
+		// Handheld.Vibrate();
+		Destroy(scoutForeObject);
+		Destroy(scoutBackObject);
+		movementOff = true;
+
+		for (int ii = 0; ii < scoutSprites.Length; ii++) {
+			// print("Exploding");
+			float xVel = Random.Range(-15f, 15f), yVel = Random.Range(0f, 15f);
+			GameObject bodyPartFore = Instantiate (scoutSprites[ii], transform.position, Quaternion.identity);
+			GameObject bodyPartBack = Instantiate (scoutSprites[ii], transform.position, Quaternion.identity);
+
+			bodyPartFore.GetComponent<SpriteRenderer>().sortingOrder = 5;
+			bodyPartBack.GetComponent<SpriteRenderer>().sortingOrder = -5;
+
+			bodyPartFore.GetComponent<Rigidbody2D>().velocity = new Vector2(xVel, yVel);
+			bodyPartBack.GetComponent<Rigidbody2D>().velocity = new Vector2(xVel, yVel);
+			// scoutBackSprites[ii].gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(xVel, yVel);
+		}
+	}
+
+	//void SwitchWorlds and SetFore/Backworld do the same thing. Simplify.
+
 	void SwitchWorlds () {
 		if (!foreWorld) {
 			gameObject.layer = 8;
-			sr.sortingOrder = 4;
+			// sr.sortingOrder = 4;
+
+			// SetSortingOrder(4);
+
 			foreWorld = true;
 		}
 		else {
 			gameObject.layer = 9;
-			sr.sortingOrder = 0;
+			// SetSortingOrder(-4);
+			// sr.sortingOrder = 0;
 			foreWorld = false;
 		}
 	}
 
 	void SetForeWorld () {
 		gameObject.layer = 8;
-		sr.sortingOrder = 4;
+		// sr.sortingOrder = 4;
+		// SetSortingOrder(4);
 		foreWorld = true;
 		//sr.color = Color.white;
 	}
 
 	void SetBackWorld () {
 		gameObject.layer = 9;
-		sr.sortingOrder = 0;
+		// sr.sortingOrder = 0;
+		// SetSortingOrder(-4);
 		foreWorld = false;
 		//sr.color = Color.red;
+	}
+
+	void SetSortingOrder (int layerDiff) {
+		// foreach (SpriteRenderer scoutSprite in scoutSR) {
+		// 	scoutSprite.sortingOrder += layerDiff;
+		// }
+	}
+
+	public void SetMovementOff (bool val) {
+		// print("setting movement");
+		movementOff = val;
+
 	}
 
 	IEnumerator Jump () {
@@ -187,7 +314,7 @@ public class CharacterMovement : MonoBehaviour {
 
 		//collidedWith = null;
 
-		yield return new WaitForSeconds(0.5f); //not this
+		yield return new WaitForSeconds(1f); //not this
 		jumped = false;
 
 		if (collidedWith.name.Contains("Back")) {

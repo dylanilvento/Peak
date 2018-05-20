@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 11444692}
   - component: {fileID: 114603572688516570}
   - component: {fileID: 61520748449200230}
+  - component: {fileID: 50528268763292496}
   m_Layer: 9
   m_Name: Backworld Plain Block
   m_TagString: Untagged
@@ -223,6 +224,26 @@ Transform:
   m_Father: {fileID: 474958}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &50528268763292496
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 125882}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!61 &61520748449200230
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -260,6 +281,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteVertices: []
+  transitionBlock: {fileID: 21300000, guid: aff5b0b88e4c44c18b41c52f00c87b79, type: 3}
   topOutline: {fileID: 120374330663957332}
   rightOutline: {fileID: 120945762836315364}
   bottomOutline: {fileID: 120271812596679080}

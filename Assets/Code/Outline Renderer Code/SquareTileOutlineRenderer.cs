@@ -7,8 +7,7 @@ public class SquareTileOutlineRenderer : MonoBehaviour {
 	public Vector2[] spriteVertices;
 	float scrollSpeed = 0.25f;
 
-	//top, right, bottom, left
-	//true means raycast hit another collider
+	public Sprite transitionBlock;
 
 	float raycastScale = 0.5f;
 	float raycastGizmoScale = 5f;
@@ -29,13 +28,18 @@ public class SquareTileOutlineRenderer : MonoBehaviour {
 
 	BoxCollider2D boxCollider;
 
+	Rigidbody2D rigidbody;
+
 	// public LineRenderer lineRenderer1, lineRenderer2;
 
 	public LineRenderer topOutline, rightOutline, bottomOutline, leftOutline;
 	SpriteRenderer spriteRenderer;
 	// Use this for initialization
 	void Start () {
-		boxCollider = gameObject.GetComponent<BoxCollider2D>();
+
+		boxCollider = GetComponent<BoxCollider2D>();
+		rigidbody = GetComponent<Rigidbody2D>();
+
 		vertices = new Dictionary<QuadrilateralVertex, Vector2>();
 		sides = new Dictionary<PolygonSide, List<QuadrilateralVertex>>();
 		collisionChecks = new Dictionary<PolygonSide, bool>();
@@ -51,15 +55,14 @@ public class SquareTileOutlineRenderer : MonoBehaviour {
 
 		// lineRenderer.positionCount = spriteVertices.Length;
 
+		CheckMatchingTile();
+
 		CheckCollision();
 		// SetVertices();
 		// SetLineRendererVertices();
 
 		ActivateOutlines();
 		
-		// for (int ii = 0; ii < spriteVertices.Length; ii++) {
-		// 	lineRenderer.SetPosition(ii, (Vector3) spriteVertices[ii]);
-		// }
 	}
 	
 	// Update is called once per frame
@@ -70,7 +73,33 @@ public class SquareTileOutlineRenderer : MonoBehaviour {
 		if (rightOutline != null) rightOutline.material.SetTextureOffset("_MainTex", new Vector2(offset, 0));
 		if (bottomOutline != null) bottomOutline.material.SetTextureOffset("_MainTex", new Vector2(offset, 0));
 		if (leftOutline != null) leftOutline.material.SetTextureOffset("_MainTex", new Vector2(offset, 0));
+	
 		
+	}
+
+	void CheckMatchingTile() {
+		int otherCollisionLayer = gameObject.layer == 8 ? 9 : 8;
+
+		int layerMask = 1 << otherCollisionLayer;
+
+		ContactFilter2D contactFilter = new ContactFilter2D();
+
+		contactFilter.layerMask = layerMask;
+
+		RaycastHit2D[] results = new RaycastHit2D[10];
+
+		GetComponent<Collider2D>().Cast(Vector2.zero, contactFilter, results, 1f);
+
+		foreach (RaycastHit2D result in results) {
+			// print(result.collider.gameObject.name);
+			if (result.collider != null && result.collider.gameObject.layer == otherCollisionLayer) {
+				GetComponent<SpriteRenderer>().sprite = transitionBlock;
+				break;
+			}
+		}
+
+		Destroy(rigidbody);
+
 	}
 
 	void CheckCollision() {

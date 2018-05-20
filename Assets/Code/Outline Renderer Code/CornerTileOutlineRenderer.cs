@@ -128,13 +128,13 @@ public class CornerTileOutlineRenderer : MonoBehaviour {
 			collisionChecks.Add(PolygonSide.Left, false);
 		}
 
-		if (gameObject.name.Equals("Backworld Plain Block")) {
-			print(gameObject.name);
-			print("top: " + collisionChecks[PolygonSide.Top]);
-			print("right: " + collisionChecks[PolygonSide.Right]);
-			print("bottom: " + collisionChecks[PolygonSide.Bottom]);
-			print("left: " + collisionChecks[PolygonSide.Left]);
-		}
+		// if (gameObject.name.Equals("Backworld Plain Block")) {
+		// 	print(gameObject.name);
+		// 	print("top: " + collisionChecks[PolygonSide.Top]);
+		// 	print("right: " + collisionChecks[PolygonSide.Right]);
+		// 	print("bottom: " + collisionChecks[PolygonSide.Bottom]);
+		// 	print("left: " + collisionChecks[PolygonSide.Left]);
+		// }
 
 		
 		
@@ -167,12 +167,12 @@ public class CornerTileOutlineRenderer : MonoBehaviour {
 
 		if (!collisionChecks[PolygonSide.Left]) {
 			leftOutline.enabled = true;
-			print("left outline true");
+			// print("left outline true");
 		}
 		else {
 			// leftOutline.enabled = false;
 			Destroy(leftOutline);
-			print("left outline false");
+			// print("left outline false");
 		}
 
 		StartCoroutine("TurnOffCollider");
@@ -185,11 +185,11 @@ public class CornerTileOutlineRenderer : MonoBehaviour {
 
 		float rotationZ = transform.eulerAngles.z;
 
-		print("rotationZ: " + rotationZ);
+		// print("rotationZ: " + rotationZ);
 
 		int rotationZRemainder = (int) (rotationZ / 90.0) % 4;
 
-		print("rotationZRemainder: " + rotationZRemainder);
+		// print("rotationZRemainder: " + rotationZRemainder);
 		
 		//top
 		if (rotationZRemainder == 0) {

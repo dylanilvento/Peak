@@ -6,7 +6,9 @@ public class RollingMountains : MonoBehaviour {
 	GameObject camera, player;
 	float relPosY;
 	public float moveMultiplier;
+    public float lerp_speed = 0.5f;
 	Finish finish;
+    
 
 	LevelControl levelControl;
 
@@ -27,7 +29,7 @@ public class RollingMountains : MonoBehaviour {
 	void FixedUpdate () {
 		
 		if (!finish.winActive && levelControl.GetFollow()) {
-			transform.position = new Vector2 ((player.transform.position.x - relPos.x) * moveMultiplier, transform.position.y);
+			transform.position = Vector2.Lerp(transform.position,(new Vector2 ((player.transform.position.x - relPos.x) * moveMultiplier, transform.position.y)),lerp_speed);
 			
 			// transform.position = new Vector2 ((player.transform.position.x - relPos.x) * moveMultiplier, camera.transform.position.y - relPos.y);
 

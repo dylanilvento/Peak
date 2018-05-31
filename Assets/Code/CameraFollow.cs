@@ -27,11 +27,13 @@ public class CameraFollow : MonoBehaviour
     }
 
     // Update is called once per frame
-    void LateUpdate()
+    
+    //putting CameraFollow on update and ParallaxLayer on fixedupdate seems to fix the problem
+    void Update() 
     {
         if (levelControl.GetFollow())
         {
-            transform.position = Vector3.Lerp(transform.position, new Vector3(player.position.x - relPos.x, transform.position.y, transform.position.z), Time.deltaTime * xAxisLerpSpeed);
+            transform.position = new Vector3(player.position.x - relPos.x, transform.position.y, transform.position.z);
             if (camera.WorldToScreenPoint(player.position).y > Screen.height / upVal) StartCoroutine("MoveUp");
             else if (camera.WorldToScreenPoint(player.position).y < Screen.height / downVal) StartCoroutine("MoveDown");
 
@@ -91,7 +93,7 @@ public class CameraFollow : MonoBehaviour
     {
         while (camera.WorldToScreenPoint(player.position).y > Screen.height / upVal && levelControl.GetFollow())
         {
-            transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, transform.position.y + 0.01f, transform.position.z), Time.deltaTime * yAxisLerpSpeed);
+            transform.position = new Vector3(transform.position.x, transform.position.y + 0.01f, transform.position.z);
             yield return new WaitForSeconds(Time.fixedDeltaTime);
 
         }
@@ -101,7 +103,7 @@ public class CameraFollow : MonoBehaviour
     {
         while (camera.WorldToScreenPoint(player.position).y < Screen.height / downVal && levelControl.GetFollow())
         {
-            transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, transform.position.y - 0.01f, transform.position.z), Time.deltaTime * yAxisLerpSpeed);
+            transform.position = new Vector3(transform.position.x, transform.position.y - 0.01f, transform.position.z);
             yield return new WaitForSeconds(Time.fixedDeltaTime);
         }
     }

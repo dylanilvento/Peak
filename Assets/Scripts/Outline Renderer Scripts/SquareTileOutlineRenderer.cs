@@ -12,6 +12,8 @@ public class SquareTileOutlineRenderer : MonoBehaviour {
 	float raycastScale = 0.5f;
 	float raycastGizmoScale = 5f;
 
+	public SpriteLayerLayout spriteLayerLayout;
+
 
 	PolygonSide[] sideRotationOrder = new PolygonSide[4] {
 		PolygonSide.Top,
@@ -50,12 +52,37 @@ public class SquareTileOutlineRenderer : MonoBehaviour {
 		sides.Add(PolygonSide.Left, new List<QuadrilateralVertex> {QuadrilateralVertex.LowerLeft, QuadrilateralVertex.UpperLeft});
 
 		spriteRenderer = GetComponent<SpriteRenderer>();
+		// spriteRenderer.sortingLayerID = gameObject.layer == 8 ? spriteLayerLayout.foreworldPlatforms : spriteLayerLayout.backworldPlatforms;
+
+		// if (gameObject.layer == 8) { //foreworld
+		// 	spriteRenderer.sortingOrder = spriteLayerLayout.foreworldPlatforms;
+
+		// 	topOutline.sortingOrder = spriteLayerLayout.foreworldOutlines;
+		// 	rightOutline.sortingOrder = spriteLayerLayout.foreworldOutlines;
+		// 	bottomOutline.sortingOrder = spriteLayerLayout.foreworldOutlines;
+		// 	leftOutline.sortingOrder = spriteLayerLayout.foreworldOutlines;
+		// }
+
+		// if (gameObject.layer == 9) { //backworld
+		// 	spriteRenderer.sortingOrder = spriteLayerLayout.backworldPlatforms;
+
+		// 	topOutline.sortingOrder = spriteLayerLayout.backworldOutlines;
+		// 	rightOutline.sortingOrder = spriteLayerLayout.backworldOutlines;
+		// 	bottomOutline.sortingOrder = spriteLayerLayout.backworldOutlines;
+		// 	leftOutline.sortingOrder = spriteLayerLayout.backworldOutlines;
+		// }
+
 		// lineRenderer = GetComponent<LineRenderer>();
 		spriteVertices = spriteRenderer.sprite.vertices;
 
 		// lineRenderer.positionCount = spriteVertices.Length;
 
-		CheckMatchingTile();
+		/** THIS IS FOR TRANSITION BLOCK
+			TO REENABLE TRANSITION BLOCKS, YOU MUST READD RIGIDBODY2D
+			AND FREEZE ROTATION / POSITION
+		 */
+		// CheckMatchingTile();
+
 
 		CheckCollision();
 		// SetVertices();

@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 61671180310278306}
   - component: {fileID: 6806154}
   - component: {fileID: 114621440243123522}
-  - component: {fileID: 50579701082753150}
   m_Layer: 8
   m_Name: Foreworld Block
   m_TagString: Untagged
@@ -243,26 +242,6 @@ Transform:
   m_Father: {fileID: 421886}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &50579701082753150
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 140442}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 7
 --- !u!61 &61671180310278306
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -350,7 +329,7 @@ LineRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -3
+  m_SortingOrder: -8
   m_Positions:
   - {x: -0.3, y: 0.29, z: 0}
   - {x: 0.3, y: 0.29, z: 0}
@@ -438,7 +417,7 @@ LineRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -3
+  m_SortingOrder: -8
   m_Positions:
   - {x: 0.29, y: 0.3, z: 0}
   - {x: 0.29, y: -0.3, z: 0}
@@ -526,7 +505,7 @@ LineRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -3
+  m_SortingOrder: -8
   m_Positions:
   - {x: -0.29, y: -0.3, z: 0}
   - {x: -0.29, y: 0.3, z: 0}
@@ -614,7 +593,7 @@ LineRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -3
+  m_SortingOrder: -8
   m_Positions:
   - {x: 0.3, y: -0.29, z: 0}
   - {x: -0.3, y: -0.29, z: 0}

@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 162cf891d1ed348cfa9224f828bf747b, type: 3}
+  m_Name: Default Sprite Layer Layout
+  m_EditorClassIdentifier: 
+  backworldEffects: -10
+  backworldPlatforms: -9
+  foreworldOutlines: -8
+  scoutBackworldRightFoot: -7
+  scoutBackworldRightHand: -7
+  scoutBackworldBody: -6
+  scoutBackworldSash: -5
+  scoutBackworldNeckerchief: -5
+  scoutBackworldHat: -4
+  scoutBackworldLeftHand: -3
+  scoutBackworldNeckerchiefTassleTwo: -4
+  scoutBackworldLeftFoot: -3
+  scoutBackworldNeckerchiefTassle: -3
+  scoutBackworldNeckerchiefTassleKnot: -2
+  foreworldEffects: 3
+  foreworldPlatforms: 4
+  backworldOutlines: 5
+  scoutForeworldRightFoot: 5
+  scoutForeworldRightHand: 5
+  scoutForeworldBody: 6
+  scoutForeworldSash: 7
+  scoutForeworldNeckerchief: 7
+  scoutForeworldHat: 8
+  scoutForeworldLeftHand: 8
+  scoutForeworldNeckerchiefTassleTwo: 0
+  scoutForeworldLeftFoot: 8
+  scoutForeworldNeckerchiefTassle: 8
+  scoutForeworldNeckerchiefTassleKnot: 10

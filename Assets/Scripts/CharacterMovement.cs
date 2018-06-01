@@ -13,10 +13,18 @@ public class CharacterMovement : MonoBehaviour {
 
 	public bool movementOff = false;
 
+	public SpriteLayerLayout spriteLayerLayout;
+
 	GameObject xSpeedText, ySpeedText, groundedText, jumpedText;
 
 	public GameObject scoutForeObject, scoutBackObject;
-	public GameObject[] scoutSprites = new GameObject[6];
+
+	public Anima2D.SpriteMeshInstance foreRightFoot, foreRightHand, foreBody, foreSash, foreNeckerchief, foreLeftHand, foreNeckerchiefTassleTwo, foreLeftFoot, foreNeckerchiefTassle, foreNeckerchiefTassleKnot;
+	public Anima2D.SpriteMeshInstance backRightFoot, backRightHand, backBody, backSash, backNeckerchief, backLeftHand, backNeckerchiefTassleTwo, backLeftFoot, backNeckerchiefTassle, backNeckerchiefTassleKnot;
+
+	public SpriteRenderer foreHat, backHat;
+
+	public GameObject[] scoutSpawningSprites = new GameObject[6];
 	// public SpriteRenderer[] scoutBackSprites = new SpriteRenderer[6];
 
 	public bool grounded = true;
@@ -52,6 +60,8 @@ public class CharacterMovement : MonoBehaviour {
 		paused = false;
 
 		lastXPos = transform.position.x - 0.5f; //Prevents Scout from launching in the air
+
+		// AssignSpriteLayers();
 
 		camera = GameObject.Find("Main Camera").GetComponent<CameraFollow>();
 
@@ -94,8 +104,6 @@ public class CharacterMovement : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () {
 
-
-
 		if (grounded && !movementOff) {
 
 			//WILL NEED TO LOOK AT THIS
@@ -115,6 +123,33 @@ public class CharacterMovement : MonoBehaviour {
 			rb.velocity = new Vector2(0f, 0f);
 		}
 	
+	}
+
+	void AssignSpriteLayers() {
+		foreRightFoot.sortingOrder = spriteLayerLayout.scoutForeworldRightFoot;
+		foreRightHand.sortingOrder = spriteLayerLayout.scoutForeworldRightHand;
+		foreBody.sortingOrder = spriteLayerLayout.scoutForeworldBody; 
+		foreSash.sortingOrder = spriteLayerLayout.scoutForeworldSash;
+		foreNeckerchief.sortingOrder = spriteLayerLayout.scoutForeworldNeckerchief;
+		foreHat.sortingOrder = spriteLayerLayout.scoutForeworldHat;
+		foreLeftHand.sortingOrder = spriteLayerLayout.scoutForeworldLeftHand;
+		foreNeckerchiefTassleTwo.sortingOrder = spriteLayerLayout.scoutForeworldNeckerchiefTassleTwo;
+		foreLeftFoot.sortingOrder = spriteLayerLayout.scoutForeworldLeftFoot;
+		foreNeckerchiefTassle.sortingOrder = spriteLayerLayout.scoutForeworldNeckerchiefTassle;
+		foreNeckerchiefTassleKnot.sortingOrder = spriteLayerLayout.scoutForeworldNeckerchiefTassleKnot;
+
+
+		backRightFoot.sortingOrder = spriteLayerLayout.scoutBackworldRightFoot;
+		backRightHand.sortingOrder = spriteLayerLayout.scoutBackworldRightHand;
+		backBody.sortingOrder = spriteLayerLayout.scoutBackworldBody; 
+		backSash.sortingOrder = spriteLayerLayout.scoutBackworldSash;
+		backNeckerchief.sortingOrder = spriteLayerLayout.scoutBackworldNeckerchief;
+		backHat.sortingOrder = spriteLayerLayout.scoutBackworldHat;
+		backLeftHand.sortingOrder = spriteLayerLayout.scoutBackworldLeftHand;
+		backNeckerchiefTassleTwo.sortingOrder = spriteLayerLayout.scoutBackworldNeckerchiefTassleTwo;
+		backLeftFoot.sortingOrder = spriteLayerLayout.scoutBackworldLeftFoot;
+		backNeckerchiefTassle.sortingOrder = spriteLayerLayout.scoutBackworldNeckerchiefTassle;
+		backNeckerchiefTassleKnot.sortingOrder = spriteLayerLayout.scoutBackworldNeckerchiefTassleKnot;
 	}
 
 	void OnCollisionEnter2D (Collision2D other) {
@@ -237,11 +272,11 @@ public class CharacterMovement : MonoBehaviour {
 		Destroy(scoutBackObject);
 		movementOff = true;
 
-		for (int ii = 0; ii < scoutSprites.Length; ii++) {
+		for (int ii = 0; ii < scoutSpawningSprites.Length; ii++) {
 			// print("Exploding");
 			float xVel = Random.Range(-15f, 15f), yVel = Random.Range(0f, 15f);
-			GameObject bodyPartFore = Instantiate (scoutSprites[ii], transform.position, Quaternion.identity);
-			GameObject bodyPartBack = Instantiate (scoutSprites[ii], transform.position, Quaternion.identity);
+			GameObject bodyPartFore = Instantiate (scoutSpawningSprites[ii], transform.position, Quaternion.identity);
+			GameObject bodyPartBack = Instantiate (scoutSpawningSprites[ii], transform.position, Quaternion.identity);
 
 			bodyPartFore.GetComponent<SpriteRenderer>().sortingOrder = 5;
 			bodyPartBack.GetComponent<SpriteRenderer>().sortingOrder = -5;

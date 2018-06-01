@@ -270,7 +270,7 @@ LineRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -3
+  m_SortingOrder: -8
   m_Positions:
   - {x: -0.3, y: 0.29, z: 0}
   - {x: 0.3, y: 0.29, z: 0}
@@ -358,7 +358,7 @@ LineRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -3
+  m_SortingOrder: -8
   m_Positions:
   - {x: -0.29, y: -0.3, z: 0}
   - {x: -0.29, y: 0.3, z: 0}
@@ -446,7 +446,7 @@ LineRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -3
+  m_SortingOrder: -8
   m_Positions:
   - {x: 0.29, y: 0.29, z: 0}
   - {x: -0.29, y: -0.29, z: 0}

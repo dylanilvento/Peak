@@ -34,8 +34,8 @@ public class CameraFollow : MonoBehaviour
         if (levelControl.GetFollow())
         {
             transform.position = new Vector3(player.position.x - relPos.x, transform.position.y, transform.position.z);
-            if (camera.WorldToScreenPoint(player.position).y > Screen.height / upVal) StartCoroutine("MoveUp");
-            else if (camera.WorldToScreenPoint(player.position).y < Screen.height / downVal) StartCoroutine("MoveDown");
+            // if (camera.WorldToScreenPoint(player.position).y > Screen.height / upVal) StartCoroutine("MoveUp");
+            // else if (camera.WorldToScreenPoint(player.position).y < Screen.height / downVal) StartCoroutine("MoveDown");
 
         }
 
@@ -43,6 +43,19 @@ public class CameraFollow : MonoBehaviour
         // 	transform.position = new Vector3(player.position.x - relPos.x, transform.position.y, transform.position.z);
         // }
 
+
+    }
+
+    //vertical follow moves better in LateUpdate
+     void LateUpdate() 
+    {
+        if (levelControl.GetFollow())
+        {
+            // transform.position = new Vector3(player.position.x - relPos.x, transform.position.y, transform.position.z);
+            if (camera.WorldToScreenPoint(player.position).y > Screen.height / upVal) StartCoroutine("MoveUp");
+            else if (camera.WorldToScreenPoint(player.position).y < Screen.height / downVal) StartCoroutine("MoveDown");
+
+        }
 
     }
 

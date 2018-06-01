@@ -261,6 +261,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteVertices: []
   transitionBlock: {fileID: 21300000, guid: aff5b0b88e4c44c18b41c52f00c87b79, type: 3}
+  spriteLayerLayout: {fileID: 11400000, guid: 8e09bae0577a247f4a0e3f01dfed6ec3, type: 2}
   topOutline: {fileID: 120374330663957332}
   rightOutline: {fileID: 120945762836315364}
   bottomOutline: {fileID: 120271812596679080}

@@ -13,6 +13,7 @@ public class GeyserTileOutlineRenderer : MonoBehaviour {
 	float raycastScale = 0.5f;
 	float raycastGizmoScale = 5f;
 
+	public SpriteLayerLayout spriteLayerLayout;
 
 	PolygonSide[] sideRotationOrder = new PolygonSide[4] {
 		PolygonSide.Top,
@@ -52,6 +53,30 @@ public class GeyserTileOutlineRenderer : MonoBehaviour {
 		spriteVertices = spriteRenderer.sprite.vertices;
 
 		// lineRenderer.positionCount = spriteVertices.Length;
+
+		if (gameObject.layer == 8) { //foreworld
+			spriteRenderer.sortingOrder = spriteLayerLayout.foreworldPlatforms;
+
+			foreach (LineRenderer line in topOutlines) {
+				line.sortingOrder = spriteLayerLayout.foreworldOutlines;
+			}
+
+			rightOutline.sortingOrder = spriteLayerLayout.foreworldOutlines;
+			bottomOutline.sortingOrder = spriteLayerLayout.foreworldOutlines;
+			leftOutline.sortingOrder = spriteLayerLayout.foreworldOutlines;
+		}
+
+		if (gameObject.layer == 9) { //backworld
+			spriteRenderer.sortingOrder = spriteLayerLayout.backworldPlatforms;
+
+			foreach (LineRenderer line in topOutlines) {
+				line.sortingOrder = spriteLayerLayout.backworldOutlines;
+			}
+
+			rightOutline.sortingOrder = spriteLayerLayout.backworldOutlines;
+			bottomOutline.sortingOrder = spriteLayerLayout.backworldOutlines;
+			leftOutline.sortingOrder = spriteLayerLayout.backworldOutlines;
+		}
 
 		CheckCollision();
 		// SetVertices();

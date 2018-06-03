@@ -314,6 +314,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteVertices: []
+  spriteLayerLayout: {fileID: 11400000, guid: 8e09bae0577a247f4a0e3f01dfed6ec3, type: 2}
   topOutline: {fileID: 120320090016181072}
   rightOutline: {fileID: 120391318761588374}
   bottomOutline: {fileID: 120929729213224620}

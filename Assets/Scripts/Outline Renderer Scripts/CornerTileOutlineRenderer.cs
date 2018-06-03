@@ -13,16 +13,10 @@ public class CornerTileOutlineRenderer : MonoBehaviour {
 	float raycastScale = 0.5f;
 	float raycastGizmoScale = 5f;
 
-
-	// PolygonSide[] sideRotationOrder = new PolygonSide[4] {
-	// 	PolygonSide.Top,
-	// 	PolygonSide.Right,
-	// 	PolygonSide.Bottom,
-	// 	PolygonSide.Left
-	// };
-
 	Dictionary<QuadrilateralVertex, Vector2> vertices;
 	Dictionary<PolygonSide, List<QuadrilateralVertex>> sides;
+
+	public SpriteLayerLayout spriteLayerLayout;	
 
 	//true means there's a collider detected
 	Dictionary<PolygonSide, bool> collisionChecks;
@@ -44,8 +38,27 @@ public class CornerTileOutlineRenderer : MonoBehaviour {
 		// sides.Add(PolygonSide.Right, new List<QuadrilateralVertex> {QuadrilateralVertex.UpperRight, QuadrilateralVertex.LowerRight});
 		// sides.Add(PolygonSide.Bottom, new List<QuadrilateralVertex> {QuadrilateralVertex.LowerRight, QuadrilateralVertex.LowerLeft});
 		// sides.Add(PolygonSide.Left, new List<QuadrilateralVertex> {QuadrilateralVertex.LowerLeft, QuadrilateralVertex.UpperLeft});
-
 		spriteRenderer = GetComponent<SpriteRenderer>();
+		
+		if (gameObject.layer == 8) { //foreworld
+			spriteRenderer.sortingOrder = spriteLayerLayout.foreworldPlatforms;
+
+			topOutline.sortingOrder = spriteLayerLayout.foreworldOutlines;
+			leftOutline.sortingOrder = spriteLayerLayout.foreworldOutlines;
+			hypotenuseOutline.sortingOrder = spriteLayerLayout.foreworldOutlines;
+			// leftOutline.sortingOrder = spriteLayerLayout.foreworldOutlines;
+		}
+
+		if (gameObject.layer == 9) { //backworld
+			spriteRenderer.sortingOrder = spriteLayerLayout.backworldPlatforms;
+
+			topOutline.sortingOrder = spriteLayerLayout.backworldOutlines;
+			leftOutline.sortingOrder = spriteLayerLayout.backworldOutlines;
+			hypotenuseOutline.sortingOrder = spriteLayerLayout.backworldOutlines;
+			// leftOutline.sortingOrder = spriteLayerLayout.backworldOutlines;
+		}
+
+		
 		// lineRenderer = GetComponent<LineRenderer>();
 		spriteVertices = spriteRenderer.sprite.vertices;
 

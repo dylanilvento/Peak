@@ -6816,19 +6816,19 @@ Prefab:
       propertyPath: m_RootOrder
       value: 75
       objectReference: {fileID: 0}
-    - target: {fileID: 6183286, guid: 8dd4641a59ecc42ffb1009d29b1b89b1, type: 2}
+    - target: {fileID: 0}
       propertyPath: m_Offset.x
       value: -0.045935486
       objectReference: {fileID: 0}
-    - target: {fileID: 6183286, guid: 8dd4641a59ecc42ffb1009d29b1b89b1, type: 2}
+    - target: {fileID: 0}
       propertyPath: m_Offset.y
       value: -0.0000004897746
       objectReference: {fileID: 0}
-    - target: {fileID: 6183286, guid: 8dd4641a59ecc42ffb1009d29b1b89b1, type: 2}
+    - target: {fileID: 0}
       propertyPath: m_Size.x
       value: 0.45535278
       objectReference: {fileID: 0}
-    - target: {fileID: 21227676, guid: 8dd4641a59ecc42ffb1009d29b1b89b1, type: 2}
+    - target: {fileID: 0}
       propertyPath: m_SortingOrder
       value: -6
       objectReference: {fileID: 0}
@@ -44864,23 +44864,23 @@ Prefab:
       propertyPath: m_Name
       value: Peak_Foreground_VentBlock (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 6183286, guid: 8dd4641a59ecc42ffb1009d29b1b89b1, type: 2}
+    - target: {fileID: 0}
       propertyPath: m_Offset.y
       value: 0.16
       objectReference: {fileID: 0}
-    - target: {fileID: 6183286, guid: 8dd4641a59ecc42ffb1009d29b1b89b1, type: 2}
+    - target: {fileID: 0}
       propertyPath: m_Size.y
       value: 0.5631415
       objectReference: {fileID: 0}
-    - target: {fileID: 6183286, guid: 8dd4641a59ecc42ffb1009d29b1b89b1, type: 2}
+    - target: {fileID: 0}
       propertyPath: m_Offset.x
       value: -0.00732312
       objectReference: {fileID: 0}
-    - target: {fileID: 6183286, guid: 8dd4641a59ecc42ffb1009d29b1b89b1, type: 2}
+    - target: {fileID: 0}
       propertyPath: m_Size.x
       value: 0.5212555
       objectReference: {fileID: 0}
-    - target: {fileID: 21227676, guid: 8dd4641a59ecc42ffb1009d29b1b89b1, type: 2}
+    - target: {fileID: 0}
       propertyPath: m_SortingOrder
       value: -6
       objectReference: {fileID: 0}

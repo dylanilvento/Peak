@@ -31,13 +31,8 @@ public class CornerTileOutlineRenderer : MonoBehaviour {
 	void Start () {
 		polygonCollider = gameObject.GetComponent<PolygonCollider2D>();
 		vertices = new Dictionary<QuadrilateralVertex, Vector2>();
-		// sides = new Dictionary<PolygonSide, List<QuadrilateralVertex>>();
 		collisionChecks = new Dictionary<PolygonSide, bool>();
 
-		// sides.Add(PolygonSide.Top, new List<QuadrilateralVertex> {QuadrilateralVertex.UpperLeft, QuadrilateralVertex.UpperRight});
-		// sides.Add(PolygonSide.Right, new List<QuadrilateralVertex> {QuadrilateralVertex.UpperRight, QuadrilateralVertex.LowerRight});
-		// sides.Add(PolygonSide.Bottom, new List<QuadrilateralVertex> {QuadrilateralVertex.LowerRight, QuadrilateralVertex.LowerLeft});
-		// sides.Add(PolygonSide.Left, new List<QuadrilateralVertex> {QuadrilateralVertex.LowerLeft, QuadrilateralVertex.UpperLeft});
 		spriteRenderer = GetComponent<SpriteRenderer>();
 		
 		if (gameObject.layer == 8) { //foreworld
@@ -87,7 +82,7 @@ public class CornerTileOutlineRenderer : MonoBehaviour {
 		Vector2[] topVectors = GetTopOutlineVector();
 
 
-		Debug.DrawRay(topVectors[0], topVectors[1]/raycastGizmoScale, Color.blue, 100f);
+		Debug.DrawRay(topVectors[0], topVectors[1]/raycastGizmoScale, Color.red, 1000f);
 		
 		// origin, direction, size
 		RaycastHit2D topHit = Physics2D.Raycast(topVectors[0], topVectors[1], raycastScale, layerMask);
@@ -100,35 +95,9 @@ public class CornerTileOutlineRenderer : MonoBehaviour {
 			collisionChecks.Add(PolygonSide.Top, false);
 		}
 
-		// Debug.DrawRay(new Vector2(transform.position.x + (transform.localScale.x/3), transform.position.y), Vector2.right/raycastGizmoScale, Color.green, 10f);
-		
-		// // origin, direction, size
-		// RaycastHit2D rightHit = Physics2D.Raycast(new Vector2(transform.position.x + (transform.localScale.x/3), transform.position.y), Vector2.right, raycastScale);
-
-		// if (rightHit.collider != null && rightHit.collider.gameObject.layer == gameObject.layer) {
-        //     // print(gameObject.name + "rightHit: " + rightHit.collider.gameObject.name);
-		// 	collisionChecks.Add(PolygonSide.Right, true);
-        // }
-		// else {
-		// 	collisionChecks.Add(PolygonSide.Right, false);
-		// }
-
-		// Debug.DrawRay(new Vector2(transform.position.x, transform.position.y - (transform.localScale.y/3)), Vector2.down/raycastGizmoScale, Color.green, 10f);
-		
-		// // origin, direction, size
-		// RaycastHit2D bottomHit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y - (transform.localScale.y/3)), Vector2.down, raycastScale);
-       
-	    // if (bottomHit.collider != null && bottomHit.collider.gameObject.layer == gameObject.layer) {
-        //     // print(hit.collider.gameObject.name);
-		// 	collisionChecks.Add(PolygonSide.Bottom, true);
-        // }
-		// else {
-		// 	collisionChecks.Add(PolygonSide.Bottom, false);
-		// }
-
 		Vector2[] leftVectors = GetLeftOutlineVector();
 
-		Debug.DrawRay(leftVectors[0], leftVectors[1]/raycastGizmoScale, Color.green, 100f);
+		Debug.DrawRay(leftVectors[0], leftVectors[1]/raycastGizmoScale, Color.black, 1000f);
 		
 		// origin, direction, size
 		RaycastHit2D leftHit = Physics2D.Raycast(leftVectors[0], leftVectors[1], raycastScale, layerMask);
@@ -140,15 +109,6 @@ public class CornerTileOutlineRenderer : MonoBehaviour {
 		else {
 			collisionChecks.Add(PolygonSide.Left, false);
 		}
-
-		// if (gameObject.name.Equals("Backworld Plain Block")) {
-		// 	print(gameObject.name);
-		// 	print("top: " + collisionChecks[PolygonSide.Top]);
-		// 	print("right: " + collisionChecks[PolygonSide.Right]);
-		// 	print("bottom: " + collisionChecks[PolygonSide.Bottom]);
-		// 	print("left: " + collisionChecks[PolygonSide.Left]);
-		// }
-
 		
 		
 	}
@@ -264,9 +224,15 @@ public class CornerTileOutlineRenderer : MonoBehaviour {
 
 	Vector2[] GetLeftOutlineVector () {
 		Vector2[] returnVectors = new Vector2[2];
-		float rotationZ = transform.rotation.z;
+		float rotationZ = transform.eulerAngles.z;
 
 		int rotationZRemainder = (int) (rotationZ / 90.0) % 4;
+
+
+		if (gameObject.name.Equals("Backworld Plain Angled Block (a)")) {
+			print("Rotation: " +rotationZ);
+			print("rotationZRemainder for left vector: " + rotationZRemainder);
+		}
 		
 		//left
 		if (rotationZRemainder == 0) {
@@ -305,8 +271,8 @@ public class CornerTileOutlineRenderer : MonoBehaviour {
 		}
 		//right
 		else if (rotationZRemainder == -2) {
-			returnVectors[0] = new Vector2(transform.position.x + (transform.localScale.x/3), transform.position.y);
-			returnVectors[1] = new Vector2(1, 0);
+			returnVectors[0] = new Vector2(transform.position.x - (transform.localScale.x/3), transform.position.y);
+			returnVectors[1] = new Vector2(-1, 0);
 
 			return returnVectors;
 		}

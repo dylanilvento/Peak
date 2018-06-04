@@ -1261,7 +1261,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1482202302470636}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.59891665, y: -31.609, z: 0}
+  m_LocalPosition: {x: -0.59891665, y: -31.735498, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4702898404027456}
@@ -2522,31 +2522,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementOff: 1
-  spriteLayerLayout: {fileID: 0}
+  spriteLayerLayout: {fileID: 11400000, guid: 8e09bae0577a247f4a0e3f01dfed6ec3, type: 2}
   scoutForeObject: {fileID: 1208466265408320}
   scoutBackObject: {fileID: 1770384742034072}
-  foreRightFoot: {fileID: 0}
-  foreRightHand: {fileID: 0}
-  foreBody: {fileID: 0}
-  foreSash: {fileID: 0}
-  foreNeckerchief: {fileID: 0}
-  foreLeftHand: {fileID: 0}
-  foreNeckerchiefTassleTwo: {fileID: 0}
-  foreLeftFoot: {fileID: 0}
-  foreNeckerchiefTassle: {fileID: 0}
-  foreNeckerchiefTassleKnot: {fileID: 0}
-  backRightFoot: {fileID: 0}
-  backRightHand: {fileID: 0}
-  backBody: {fileID: 0}
-  backSash: {fileID: 0}
-  backNeckerchief: {fileID: 0}
-  backLeftHand: {fileID: 0}
-  backNeckerchiefTassleTwo: {fileID: 0}
-  backLeftFoot: {fileID: 0}
-  backNeckerchiefTassle: {fileID: 0}
-  backNeckerchiefTassleKnot: {fileID: 0}
-  foreHat: {fileID: 0}
-  backHat: {fileID: 0}
+  foreRightFoot: {fileID: 114514296941898768}
+  foreRightHand: {fileID: 114208888658047224}
+  foreBody: {fileID: 114645590846518100}
+  foreSash: {fileID: 114552510652890840}
+  foreNeckerchief: {fileID: 114537494826256726}
+  foreLeftHand: {fileID: 114038544240910132}
+  foreNeckerchiefTassleTwo: {fileID: 114885695823466454}
+  foreLeftFoot: {fileID: 114192238332143866}
+  foreNeckerchiefTassle: {fileID: 114852784950162666}
+  foreNeckerchiefTassleKnot: {fileID: 114184124820669598}
+  backRightFoot: {fileID: 114741606933617346}
+  backRightHand: {fileID: 114432290578460432}
+  backBody: {fileID: 114991382289528212}
+  backSash: {fileID: 114677184697303554}
+  backNeckerchief: {fileID: 114937585011991200}
+  backLeftHand: {fileID: 114897541065157134}
+  backNeckerchiefTassleTwo: {fileID: 114684381300021644}
+  backLeftFoot: {fileID: 114405131900355528}
+  backNeckerchiefTassle: {fileID: 114879054935667974}
+  backNeckerchiefTassleKnot: {fileID: 114578506188144344}
+  foreHat: {fileID: 212297293212513586}
+  backHat: {fileID: 212352489527571482}
   scoutSpawningSprites:
   - {fileID: 0}
   - {fileID: 0}
@@ -2556,6 +2556,7 @@ MonoBehaviour:
   - {fileID: 0}
   grounded: 0
   jumped: 0
+  defaultWalkVelX: 1.5
 --- !u!114 &114184124820669598
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2993,7 +2994,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Length: 0.10000065
+  m_Length: 0.09999896
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4477373410288028}
   m_AttachedIK: {fileID: 0}
@@ -3189,7 +3190,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Length: 0.10000065
+  m_Length: 0.09999896
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4479653501369898}
   m_AttachedIK: {fileID: 0}

@@ -11,7 +11,7 @@ public class ShowGamepadOrKeyBoardUI : MonoBehaviour {
 
 	bool hasController;
 
-	public int playerId = 0; // The Rewired player id of this character
+	int playerId = 0; // The Rewired player id of this character
 
     private Player player; // The Rewired Player
 
@@ -30,7 +30,7 @@ public class ShowGamepadOrKeyBoardUI : MonoBehaviour {
 	void OnControllerConnected(ControllerStatusChangedEventArgs args) {
         // print("A controller was connected! Name = " + args.name + " Id = " + args.controllerId + " Type = " + args.controllerType);
 		hasController = player.controllers.ContainsController<Joystick>(args.controllerId);
-		// print("haz controller? " + hasController);
+		print("haz controller? " + hasController);
 
 
 		//checks to see if any controllers are plugged in
@@ -39,11 +39,25 @@ public class ShowGamepadOrKeyBoardUI : MonoBehaviour {
     }
 	void Start () {
 
-		if (IntersceneDataHandler.hasController && isKeyboardUI) {
+		// player = ReInput.players.GetPlayer(playerId);
+		
+		
+        // // Subscribe to events
+        // ReInput.ControllerConnectedEvent += OnControllerConnected;
+
+		// Controller currController = player.controllers.GetController(ControllerType.Joystick, 1);
+
+		// // if (currController. is Rewired.Controller) {
+		// 	print("check");
+		// 	hasController = player.controllers.GetController(ControllerType.Joystick, 1).isConnected;
+		// // }
+
+		if (hasController && isGamepadUI) {
+			print("wrong way");
 			gameObject.SetActive(false);
 		}
 
-		else if (!IntersceneDataHandler.hasController && isGamepadUI) {
+		else if (!hasController && isKeyboardUI) {
 			gameObject.SetActive(false);
 		}
 		

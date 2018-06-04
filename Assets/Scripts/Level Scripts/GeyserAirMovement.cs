@@ -3,9 +3,13 @@ using System.Collections;
 
 public class GeyserAirMovement : MonoBehaviour {
 
+	public SpriteLayerLayout spriteLayerLayout;
+
 	// Use this for initialization
 	void Start () {
+		GetComponent<SpriteRenderer>().sortingOrder = (gameObject.layer == 8) ? spriteLayerLayout.foreworldEffects : spriteLayerLayout.backworldEffects;
 		StartCoroutine("WaitAndDestroy");
+		
 	}
 	
 	// Update is called once per frame

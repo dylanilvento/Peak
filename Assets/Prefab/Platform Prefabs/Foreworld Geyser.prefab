@@ -27,8 +27,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 144372}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 21, y: -36.600002, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 35.300003, y: 4.299999, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4223523903962508}
@@ -266,12 +266,12 @@ GameObject:
   m_Component:
   - component: {fileID: 4223523903962508}
   - component: {fileID: 212548276391628542}
-  - component: {fileID: 114678966947788682}
   - component: {fileID: 61263776676012270}
   - component: {fileID: 50991228084835602}
   - component: {fileID: 114223668514626624}
+  - component: {fileID: 114173787706973726}
   m_Layer: 8
-  m_Name: Back Boost Trigger
+  m_Name: Fore Boost Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -481,6 +481,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.37069392, y: 0.43}
   m_EdgeRadius: 0
+--- !u!114 &114173787706973726
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1918222661444998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 781751e1e3b3a46bb9552b608e5abb73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114223668514626624
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -526,17 +537,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vertices: []
---- !u!114 &114678966947788682
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1918222661444998}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 546b980f892f14dd3a47fd65512a2ff3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!120 &120105142256062850
 LineRenderer:
   m_ObjectHideFlags: 1

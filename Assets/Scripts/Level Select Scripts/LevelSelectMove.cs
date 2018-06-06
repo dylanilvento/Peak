@@ -11,7 +11,7 @@ public class LevelSelectMove : MonoBehaviour {
 
 	public static LevelSelectMove instance;
 
-	public GameObject path, circle, worldText, levelText;
+	public GameObject path, circle, worldText, levelText, hr;
 	public Vector3[] pathVertices;
 
 	public string levelsJson;
@@ -173,6 +173,7 @@ public class LevelSelectMove : MonoBehaviour {
 	IEnumerator Shrink () {
 		float scaleDiff = 1f;
 		Destroy(worldText);
+		Destroy(hr);
 		Destroy(levelText);
 		while (circle.transform.localScale.x > 0) {
 			circle.transform.localScale = new Vector3(circle.transform.localScale.x - scaleDiff, circle.transform.localScale.y - scaleDiff, circle.transform.localScale.z);

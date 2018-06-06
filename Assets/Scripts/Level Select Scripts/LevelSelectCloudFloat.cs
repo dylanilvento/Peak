@@ -11,6 +11,7 @@ public class LevelSelectCloudFloat : MonoBehaviour {
 	float startTime, journeyLength, speed;
 	// Use this for initialization
 	void Start () {
+
 		leftSide = new Vector3(leftSide.x, transform.position.y, leftSide.z);
 		rightSide = new Vector3(rightSide.x, transform.position.y, rightSide.z);
 		// leftSide = new Vector3(-8.95f, transform.position.y, 0f);

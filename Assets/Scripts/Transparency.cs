@@ -185,6 +185,16 @@ public class Transparency : MonoBehaviour {
 		}
 	}
 
+	public static void DownFade (Text text) {
+		if (instance == null) {
+			Debug.Log("error");
+		}
+
+		else {
+			instance.StartCoroutine("FadeDown", text.color);
+		}
+	}
+
 	// public static void DownFade (Color color) {
 	// 	// if (instance == null) {
 	// 	// 	Debug.Log("error");

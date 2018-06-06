@@ -990,6 +990,11 @@ Prefab:
       propertyPath: worldText
       value: 
       objectReference: {fileID: 1268142863}
+    - target: {fileID: 114911938693954702, guid: 87edc9f5184714c33bf25274f56ad8d2,
+        type: 2}
+      propertyPath: levelText
+      value: 
+      objectReference: {fileID: 1046426876}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 87edc9f5184714c33bf25274f56ad8d2, type: 2}
   m_IsPrefabParent: 0

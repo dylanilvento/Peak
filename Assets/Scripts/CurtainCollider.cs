@@ -74,59 +74,49 @@ public class CurtainCollider : MonoBehaviour {
 		}
 
 		if (!paused && levelControl.GetFollow()) {
-			// if(Input.GetKey("a") || Input.GetAxis("Horizontal") < 0f || camera.WorldToScreenPoint(leftCurtain.transform.position).x > Screen.width + 10) {
+			
 			if(player.GetAxis("Left Curtain Movement") < 0f || camera.WorldToScreenPoint(leftCurtain.transform.position).x > Screen.width + 10) {
-				// sizeChange += 0.1f;
-				// box.size.x = 1 + sizeChange;
+				
 				box.size = new Vector2 (box.size.x + 0.1f, box.size.y);
 				renderCurtain.transform.localScale = new Vector2 (renderCurtain.transform.localScale.x + 0.2f, renderCurtain.transform.localScale.y);
 				renderCurtain.transform.localPosition = new Vector2 (renderCurtain.transform.localPosition.x - 0.05f, renderCurtain.transform.localPosition.y);
-				// transform.localPosition.x -= 0.05f;
-				// transform.localPosition = new Vector2 (transform.localPosition.x - 0.05f, transform.localPosition.y);
+				
 				leftCurtain.transform.position = new Vector2 (leftCurtain.transform.position.x - 0.1f, leftCurtain.transform.position.y);
 				transform.position = new Vector2 (transform.position.x - 0.05f, transform.position.y);
 			}
-			// print(camera.WorldToScreenPoint(leftCurtain.transform.position).x < -15f);
-			// if(Input.GetKey("s") || Input.GetAxis("Horizontal") > 0f || camera.WorldToScreenPoint(leftCurtain.transform.position).x < -15f) {
+			
 			if(player.GetAxis("Left Curtain Movement") > 0f || camera.WorldToScreenPoint(leftCurtain.transform.position).x < -15f) {
 				if (box.size.x > initialSize) {
-					// sizeChange -= 0.1f;
-					// box.size.x = 1 + sizeChange;
+					
 					box.size = new Vector2 (box.size.x - 0.1f, box.size.y);
 					renderCurtain.transform.localScale = new Vector2 (renderCurtain.transform.localScale.x - 0.2f, renderCurtain.transform.localScale.y);
 					renderCurtain.transform.localPosition = new Vector2 (renderCurtain.transform.localPosition.x + 0.05f, renderCurtain.transform.localPosition.y);
-					// transform.localPosition.x += 0.05;
+					
 					leftCurtain.transform.position = new Vector2 (leftCurtain.transform.position.x + 0.1f, leftCurtain.transform.position.y);
 					transform.position = new Vector2 (transform.position.x + 0.05f, transform.position.y);
 				}
 			}
 
-			//************ COMMENTED OUT DUE TO CTRLR ERROR
-			// if(Input.GetKey("k") /*|| XCI.GetAxis(XboxAxis.RightStickX) < 0f*/ || camera.WorldToScreenPoint(rightCurtain.transform.position).x > Screen.width + 10) {
+			
 			if(player.GetAxis("Right Curtain Movement") < 0f || camera.WorldToScreenPoint(rightCurtain.transform.position).x > Screen.width + 10) {
 				if (box.size.x > initialSize) {
-					// sizeChange -= 0.01f;
-					// box.size.x = 1 + sizeChange;
+					
 					box.size = new Vector2 (box.size.x - 0.1f, box.size.y);
 					renderCurtain.transform.localScale = new Vector2 (renderCurtain.transform.localScale.x - 0.2f, renderCurtain.transform.localScale.y);
 					renderCurtain.transform.localPosition = new Vector2 (renderCurtain.transform.localPosition.x - 0.05f, renderCurtain.transform.localPosition.y);
-					// transform.localPosition.x -= 0.05;
+					
 					rightCurtain.transform.position = new Vector2 (rightCurtain.transform.position.x - 0.1f, rightCurtain.transform.position.y);
 					transform.position = new Vector2 (transform.position.x - 0.05f, transform.position.y);
 				}
 				
 			}
 
-			//************ COMMENTED OUT DUE TO CTRLR ERROR
+			
 			if(player.GetAxis("Right Curtain Movement") > 0f || camera.WorldToScreenPoint(rightCurtain.transform.position).x < -15f) {
 			
-			// if(Input.GetKey("l") || Input.GetAxis("Mouse X") > 0f || camera.WorldToScreenPoint(rightCurtain.transform.position).x < -15f) {
-				// sizeChange += 0.01f;
-				// box.size.x = 1 + sizeChange;
 				box.size = new Vector2 (box.size.x + 0.1f, box.size.y);
 				renderCurtain.transform.localScale = new Vector2 (renderCurtain.transform.localScale.x + 0.2f, renderCurtain.transform.localScale.y);
 				renderCurtain.transform.localPosition = new Vector2 (renderCurtain.transform.localPosition.x + 0.05f, renderCurtain.transform.localPosition.y);
-				// transform.localPosition.x += 0.05;
 				rightCurtain.transform.position = new Vector2 (rightCurtain.transform.position.x + 0.1f, rightCurtain.transform.position.y);
 				transform.position = new Vector2 (transform.position.x + 0.05f, transform.position.y);
 			}
@@ -139,7 +129,7 @@ public class CurtainCollider : MonoBehaviour {
                 // Start left curtain jump corutine which does something similar to the below until it reaches the 'endpoint' 
                 StartCoroutine("CurtainJumpLeft");
             }
-            //&& ((curtainJumpLastUsedTime + curtainJumpDelay) < Time.time)
+            
             if (player.GetButtonDown("Right Curtain Jump") && curtainJumpCharges > 0)
             {
                 // Start right curtain jump corutine which does something similar to the below until it reaches the 'endpoint' 

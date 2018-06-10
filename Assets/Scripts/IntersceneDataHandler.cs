@@ -14,6 +14,8 @@ public class IntersceneDataHandler : MonoBehaviour {
 
 	static public bool hasController;
 
+	static public CurtainOptions curtainOption;
+
 	static public int currentLevel = 0;
 	static public int currentWorld = 0;
 	void Awake () {

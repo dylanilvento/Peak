@@ -72,6 +72,7 @@ GameObject:
   - component: {fileID: 114044211324079210}
   - component: {fileID: 61686673086976490}
   - component: {fileID: 68734121229348236}
+  - component: {fileID: 114331012716544370}
   m_Layer: 8
   m_Name: Foreworld Foothills Block
   m_TagString: Untagged
@@ -141,7 +142,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1778138923413096}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -33.1, y: -5.300001, z: 0}
+  m_LocalPosition: {x: -31.3, y: -5.300001, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4667168307206844}
@@ -236,6 +237,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   snapValue: 0.6
+--- !u!114 &114331012716544370
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1778138923413096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fceb9ec18fe2045c69717e46dae85002, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundType: 0
 --- !u!120 &120366837391370068
 LineRenderer:
   m_ObjectHideFlags: 1

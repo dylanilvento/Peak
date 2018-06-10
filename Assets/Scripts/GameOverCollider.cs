@@ -22,8 +22,10 @@ public class GameOverCollider : MonoBehaviour
 
     int ctrlNum;
 
-    float upVal = 1.4f;
-    float downVal = 4f;
+    [Range(0,5)]
+   public  float upVal = 1.4f;
+   [Range(0,10)]
+    public float downVal = 4f;
 
     string goText;
 

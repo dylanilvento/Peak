@@ -20,4 +20,11 @@ public class Levels {
 public class LevelData {
 	public string index;
 	public string name;
+
+	public LevelOptions[] options;
+}
+
+[System.Serializable]
+public class LevelOptions {
+	public CurtainOptions curtainOption;
 }

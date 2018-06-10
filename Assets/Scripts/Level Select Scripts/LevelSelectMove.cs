@@ -67,7 +67,7 @@ public class LevelSelectMove : MonoBehaviour {
 		levelsObject = JsonUtility.FromJson<Levels>(levelsJson);
 
 		print("Levels");
-		print(levelsObject.levels[0].index);
+		print(levelsObject.levels[0].options[0].curtainOption);
 
 		for (int ii = 0; ii < levelsObject.levels.Length; ii++) 
 		{

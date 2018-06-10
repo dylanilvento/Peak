@@ -2,15 +2,24 @@
     "levels": [
         {
             "index": "0_0",
-            "name": "Base"
+            "name": "Beginnings",
+            "options": [
+                {"curtainOption": "CurtainOptions.Left"}
+            ]
         }, 
         {
             "index": "0_1",
-            "name": "Middle"
+            "name": "Middle",
+            "options": [
+                {"curtainOption": "CurtainOptions.Both"}
+            ]
         },
         {
             "index": "0_2",
-            "name": "Top"
+            "name": "Top",
+            "options": [
+                {"curtainOption": "CurtainOptions.Both"}
+            ]
         }
     ]
 }

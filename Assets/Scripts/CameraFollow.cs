@@ -9,12 +9,14 @@ public class CameraFollow : MonoBehaviour
     Vector2 relPos;
     Camera camera;
     public bool canMove = true;
-    public float yAxisLerpSpeed = 15.0f;
-    public float xAxisLerpSpeed = 5.0f;
+    // public float yAxisLerpSpeed = 15.0f;
+    // public float xAxisLerpSpeed = 5.0f;
     LevelControl levelControl;
 
-    float upVal = 1.4f;
-    float downVal = 4f;
+    [Range(0, 5)]
+    public float upVal = 1.4f;
+    [Range(0, 8)]
+    public float downVal = 4f;
     // Use this for initialization
     void Start()
     {
@@ -53,7 +55,14 @@ public class CameraFollow : MonoBehaviour
         {
             // transform.position = new Vector3(player.position.x - relPos.x, transform.position.y, transform.position.z);
             if (camera.WorldToScreenPoint(player.position).y > Screen.height / upVal) StartCoroutine("MoveUp");
-            else if (camera.WorldToScreenPoint(player.position).y < Screen.height / downVal) StartCoroutine("MoveDown");
+            else if (camera.WorldToScreenPoint(player.position).y < Screen.height / downVal) {
+                // StartCoroutine("MoveDown");
+
+                transform.position = Vector3.Lerp(new Vector3(transform.position.x, transform.position.y, transform.position.z), new Vector3(transform.position.x, player.position.y - relPos.y, transform.position.z), 3f * Time.deltaTime);
+
+
+
+            }
 
         }
 
@@ -107,7 +116,7 @@ public class CameraFollow : MonoBehaviour
         while (camera.WorldToScreenPoint(player.position).y > Screen.height / upVal && levelControl.GetFollow())
         {
             transform.position = new Vector3(transform.position.x, transform.position.y + 0.01f, transform.position.z);
-            yield return new WaitForSeconds(Time.fixedDeltaTime);
+            yield return new WaitForSeconds(Time.deltaTime); //changed this from fixedDeltaTime
 
         }
     }
@@ -116,8 +125,8 @@ public class CameraFollow : MonoBehaviour
     {
         while (camera.WorldToScreenPoint(player.position).y < Screen.height / downVal && levelControl.GetFollow())
         {
-            transform.position = new Vector3(transform.position.x, transform.position.y - 0.01f, transform.position.z);
-            yield return new WaitForSeconds(Time.fixedDeltaTime);
+            transform.position = new Vector3(transform.position.x, transform.position.y - 0.0005f, transform.position.z);
+            yield return new WaitForSeconds(Time.deltaTime); //changed this from fixedDeltaTime
         }
     }
 

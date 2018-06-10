@@ -74,6 +74,8 @@ public class CharacterMovement : MonoBehaviour {
 		ySpeedText = GameObject.Find("Y Debug");
 		groundedText = GameObject.Find("Grounded Text");
 		jumpedText = GameObject.Find("Jumped Text");
+
+		walkVelX = defaultWalkVelX;
 	
 	}
 
@@ -113,7 +115,7 @@ public class CharacterMovement : MonoBehaviour {
 
 			//WILL NEED TO LOOK AT THIS
 			// anim.SetBool("Walk", true);
-			// print("test");
+			print("test");
 			
 			rb.velocity = new Vector2(walkVelX, walkVelY);
 

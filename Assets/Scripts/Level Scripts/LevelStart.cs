@@ -40,7 +40,7 @@ public class LevelStart : MonoBehaviour {
 			Destroy(currNum);
 		}
 
-		if (!freezeScout) charMove.movementOff = false;
+		if (!freezeScout) charMove.movementOff = false; charMove.grounded = true;
 		levelControl.SetFollow(true);
 		// Time.timeScale = 1f;
 	}

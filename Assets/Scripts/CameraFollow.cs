@@ -54,7 +54,12 @@ public class CameraFollow : MonoBehaviour
         if (levelControl.GetFollow())
         {
             // transform.position = new Vector3(player.position.x - relPos.x, transform.position.y, transform.position.z);
-            if (camera.WorldToScreenPoint(player.position).y > Screen.height / upVal) StartCoroutine("MoveUp");
+            if (camera.WorldToScreenPoint(player.position).y > Screen.height / upVal) {
+                print("moving up");
+                StartCoroutine("MoveUp");
+            
+            }
+
             else if (camera.WorldToScreenPoint(player.position).y < Screen.height / downVal) {
                 // StartCoroutine("MoveDown");
 

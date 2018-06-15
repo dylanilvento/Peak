@@ -14248,8 +14248,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canMove: 1
-  yAxisLerpSpeed: 15
-  xAxisLerpSpeed: 5
+  upVal: 1.89
+  downVal: 4
 --- !u!114 &318097445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -82494,6 +82494,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   relPosY: 0
+  upVal: 1.4
+  downVal: 4
   statusScreen: {fileID: 1392297711}
 --- !u!1001 &1896601263
 Prefab:

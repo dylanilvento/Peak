@@ -14,7 +14,7 @@ public class IntersceneDataHandler : MonoBehaviour {
 
 	static public bool hasController;
 
-	static public CurtainOptions curtainOption;
+	static public CurtainOptions curtainOption = CurtainOptions.Both;
 
 	static public int currentLevel = 0;
 	static public int currentWorld = 0;

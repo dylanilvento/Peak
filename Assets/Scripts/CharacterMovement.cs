@@ -115,7 +115,7 @@ public class CharacterMovement : MonoBehaviour {
 
 			//WILL NEED TO LOOK AT THIS
 			// anim.SetBool("Walk", true);
-			print("test");
+			// print("test");
 			
 			rb.velocity = new Vector2(walkVelX, walkVelY);
 

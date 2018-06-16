@@ -16077,8 +16077,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canMove: 1
-  upVal: 1.4
-  downVal: 5.5
+  upVal: 1
+  downVal: 2
 --- !u!114 &318097445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -88176,12 +88176,12 @@ Prefab:
     - target: {fileID: 114748960594874394, guid: a9e439a4085cd4f3fb5f36147b0c3a3a,
         type: 2}
       propertyPath: upVal
-      value: 3.26
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114748960594874394, guid: a9e439a4085cd4f3fb5f36147b0c3a3a,
         type: 2}
       propertyPath: downVal
-      value: 2.75
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a9e439a4085cd4f3fb5f36147b0c3a3a, type: 2}

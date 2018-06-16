@@ -21,7 +21,7 @@ public class PauseScreen : MonoBehaviour {
 
 	float menuDist = 23f;
 
-	static bool demoMode = false;
+	static bool demoMode = true;
 
 	bool hasController;
 

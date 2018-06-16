@@ -6,9 +6,9 @@ public class CameraMover : MonoBehaviour {
 
 	CameraFollow cam;
 	GameOverCollider goCollider;
-	[Range(0f, 5f)]
+	[Range(-10f, 10f)]
 	public float upVal;
-	[Range(0f, 5f)]
+	[Range(-10f, 10f)]
 	public float downVal;
 	// Use this for initialization
 	void Start () {
@@ -26,7 +26,7 @@ public class CameraMover : MonoBehaviour {
 		if (other.gameObject.name.Equals("Scout Mega Group")) {
 			print("working 2");
 			cam.SetCameraVals(upVal, downVal);
-			goCollider.SetGOVals(upVal, downVal);
+			// goCollider.SetGOVals(upVal, downVal);
 
 		}
 	}

@@ -139,26 +139,26 @@ public class CurtainCollider : MonoBehaviour {
 			}
 		}
         // Curtain Jump
-        if (!paused && levelControl.GetFollow())
-        {
-            if (player.GetButtonDown("Left Curtain Jump") && curtainJumpCharges > 0) 
-            {
-                // Start left curtain jump corutine which does something similar to the below until it reaches the 'endpoint' 
-                StartCoroutine("CurtainJumpLeft");
-            }
+        // if (!paused && levelControl.GetFollow())
+        // {
+        //     if (player.GetButtonDown("Left Curtain Jump") && curtainJumpCharges > 0) 
+        //     {
+        //         // Start left curtain jump corutine which does something similar to the below until it reaches the 'endpoint' 
+        //         StartCoroutine("CurtainJumpLeft");
+        //     }
             
-            if (player.GetButtonDown("Right Curtain Jump") && curtainJumpCharges > 0)
-            {
-                // Start right curtain jump corutine which does something similar to the below until it reaches the 'endpoint' 
-                StartCoroutine("CurtainJumpRight");
-            }
+        //     if (player.GetButtonDown("Right Curtain Jump") && curtainJumpCharges > 0)
+        //     {
+        //         // Start right curtain jump corutine which does something similar to the below until it reaches the 'endpoint' 
+        //         StartCoroutine("CurtainJumpRight");
+        //     }
 
-            if (curtainJumpCharges < curtainJumpMaxCharges && !curtainJumpRecharging)
-            {
-                //Start recharge corutine
-                StartCoroutine("CurtainRecharge");
-            }
-        }
+        //     if (curtainJumpCharges < curtainJumpMaxCharges && !curtainJumpRecharging)
+        //     {
+        //         //Start recharge corutine
+        //         StartCoroutine("CurtainRecharge");
+        //     }
+        // }
 
     }
 

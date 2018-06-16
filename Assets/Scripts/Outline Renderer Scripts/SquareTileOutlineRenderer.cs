@@ -136,7 +136,7 @@ public class SquareTileOutlineRenderer : MonoBehaviour {
 		// origin, direction, size
 		RaycastHit2D topHit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y + (transform.localScale.y/3)), Vector2.up, raycastScale, layerMask);
         
-		if (topHit.collider != null && topHit.collider.gameObject.layer == gameObject.layer && !(topHit.collider.gameObject.tag.Equals("Player"))) {
+		if (topHit.collider != null && topHit.collider.gameObject.layer == gameObject.layer && !(topHit.collider.gameObject.tag.Equals("Player") || topHit.collider.gameObject.name.Contains("Boulder"))) {
             // print(hit.collider.gameObject.name);
 			collisionChecks.Add(PolygonSide.Top, true);
         }

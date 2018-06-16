@@ -1261,7 +1261,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1482202302470636}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.59891665, y: -31.735498, z: 0}
+  m_LocalPosition: {x: 0.262, y: -31.593, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4702898404027456}
@@ -2548,12 +2548,12 @@ MonoBehaviour:
   foreHat: {fileID: 212297293212513586}
   backHat: {fileID: 212352489527571482}
   scoutSpawningSprites:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1447856587621918, guid: f077e3f36482b4b6e96c8a50b9317e33, type: 2}
+  - {fileID: 1075771550477896, guid: 65ec89a1eff9447e698a364289b15b25, type: 2}
+  - {fileID: 1586552509570522, guid: 63aad0fe239114964ba9bce0f0fbfd29, type: 2}
+  - {fileID: 1586552509570522, guid: 63aad0fe239114964ba9bce0f0fbfd29, type: 2}
+  - {fileID: 1946098839002914, guid: 9a4b90366ff93436a8facc2d4d461915, type: 2}
+  - {fileID: 1946098839002914, guid: 9a4b90366ff93436a8facc2d4d461915, type: 2}
   grounded: 0
   jumped: 0
   defaultWalkVelX: 1.5

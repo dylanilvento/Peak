@@ -285,8 +285,8 @@ public class CharacterMovement : MonoBehaviour {
 			GameObject bodyPartFore = Instantiate (scoutSpawningSprites[ii], transform.position, Quaternion.identity);
 			GameObject bodyPartBack = Instantiate (scoutSpawningSprites[ii], transform.position, Quaternion.identity);
 
-			bodyPartFore.GetComponent<SpriteRenderer>().sortingOrder = 5;
-			bodyPartBack.GetComponent<SpriteRenderer>().sortingOrder = -5;
+			bodyPartFore.GetComponent<SpriteRenderer>().sortingOrder = spriteLayerLayout.scoutForeworldBody;
+			bodyPartBack.GetComponent<SpriteRenderer>().sortingOrder = spriteLayerLayout.scoutBackworldBody;
 
 			bodyPartFore.GetComponent<Rigidbody2D>().velocity = new Vector2(xVel, yVel);
 			bodyPartBack.GetComponent<Rigidbody2D>().velocity = new Vector2(xVel, yVel);

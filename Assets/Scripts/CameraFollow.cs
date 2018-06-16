@@ -65,18 +65,18 @@ public class CameraFollow : MonoBehaviour
             
             // if (camera.WorldToScreenPoint(player.position).y > Screen.height / upVal) {
             if (distanceToPlayer * direction < upVal) {
-                print("test");
+                // print("test");
             
-                transform.position = Vector3.Lerp(new Vector3(transform.position.x, transform.position.y, transform.position.z), new Vector3(transform.position.x, player.position.y - relPos.y, transform.position.z), 0.5f * Time.deltaTime);
+                transform.position = Vector3.Lerp(new Vector3(transform.position.x, transform.position.y, transform.position.z), new Vector3(transform.position.x, player.position.y + upVal, transform.position.z), 0.5f * Time.deltaTime);
             
             }
 
             else if (distanceToPlayer * direction > downVal) {
                 // StartCoroutine("MoveDown");
 
-                print("downVal: " + downVal);
+                // print("downVal: " + downVal);
 
-                transform.position = Vector3.Lerp(new Vector3(transform.position.x, transform.position.y, transform.position.z), new Vector3(transform.position.x, player.position.y - relPos.y, transform.position.z), 3f * Time.deltaTime);
+                transform.position = Vector3.Lerp(new Vector3(transform.position.x, transform.position.y, transform.position.z), new Vector3(transform.position.x, player.position.y + downVal, transform.position.z), 3f * Time.deltaTime);
 
 
 

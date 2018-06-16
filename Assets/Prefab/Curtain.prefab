@@ -94,6 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 22421762}
   - component: {fileID: 21233540}
+  - component: {fileID: 114169711216266664}
   m_Layer: 0
   m_Name: Curtain Renderer
   m_TagString: Untagged
@@ -411,6 +412,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camera: {fileID: 0}
+  curtainJumpMaxCharges: 0
+  curtainJumpCharges: 0
+  curtainJumpDelay: 0
+  curtainJumpRecharging: 0
+  curtainJumpLerpSpeed: 0
+  curtainJumpDistance: 0
+  curtainJumpRechargeTime: 0
+  curtainRightLockRelPos: {x: 0, y: 0}
   playerId: 0
 --- !u!114 &11479346
 MonoBehaviour:
@@ -755,7 +764,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 173744}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.07000065, y: 0.15999985, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 5, z: 1}
   m_Children: []
   m_Father: {fileID: 452300}
@@ -777,3 +786,15 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 183664}
   m_IsPrefabParent: 1
+--- !u!114 &114169711216266664
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 173744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fed6eaf0112b946e5ad5053d0aa09fba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteLayerLayout: {fileID: 11400000, guid: 8e09bae0577a247f4a0e3f01dfed6ec3, type: 2}

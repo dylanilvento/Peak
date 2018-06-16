@@ -6,7 +6,7 @@ public class CameraMover : MonoBehaviour {
 
 	CameraFollow cam;
 	GameOverCollider goCollider;
-	[Range(0f, 2f)]
+	[Range(0f, 5f)]
 	public float upVal;
 	[Range(0f, 5f)]
 	public float downVal;

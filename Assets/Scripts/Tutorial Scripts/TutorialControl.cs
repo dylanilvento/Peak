@@ -92,7 +92,7 @@ public class TutorialControl : MonoBehaviour {
 	}
 
 	void ActivateTutorial () {
-		print("this one");
+		// print("this one");
 		StartCoroutine("NextScreen", 2);
 		curtain.SwitchPausedGame();
 	}

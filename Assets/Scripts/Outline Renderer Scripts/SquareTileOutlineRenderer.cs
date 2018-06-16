@@ -183,13 +183,13 @@ public class SquareTileOutlineRenderer : MonoBehaviour {
 			collisionChecks.Add(PolygonSide.Left, false);
 		}
 
-		if (gameObject.name.Equals("Backworld Plain Block")) {
-			print(gameObject.name);
-			print("top: " + collisionChecks[PolygonSide.Top]);
-			print("right: " + collisionChecks[PolygonSide.Right]);
-			print("bottom: " + collisionChecks[PolygonSide.Bottom]);
-			print("left: " + collisionChecks[PolygonSide.Left]);
-		}
+		// if (gameObject.name.Equals("Backworld Plain Block")) {
+		// 	print(gameObject.name);
+		// 	print("top: " + collisionChecks[PolygonSide.Top]);
+		// 	print("right: " + collisionChecks[PolygonSide.Right]);
+		// 	print("bottom: " + collisionChecks[PolygonSide.Bottom]);
+		// 	print("left: " + collisionChecks[PolygonSide.Left]);
+		// }
 
 		
 		

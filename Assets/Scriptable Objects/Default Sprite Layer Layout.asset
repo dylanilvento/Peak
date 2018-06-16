@@ -11,6 +11,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 162cf891d1ed348cfa9224f828bf747b, type: 3}
   m_Name: Default Sprite Layer Layout
   m_EditorClassIdentifier: 
+  backworldBackground: -15
+  backworldBackgroundObjectsLowerBound: -14
+  backworldBackgroundObjectsUpperBound: -11
   backworldEffects: -10
   backworldPlatforms: -9
   foreworldOutlines: -8
@@ -25,6 +28,10 @@ MonoBehaviour:
   scoutBackworldLeftFoot: -3
   scoutBackworldNeckerchiefTassle: -3
   scoutBackworldNeckerchiefTassleKnot: -2
+  curtain: -1
+  foreworldBackground: 0
+  foreworldBackgroundObjectsLowerBound: 1
+  foreworldBackgroundObjectsUpperBound: 2
   foreworldEffects: 3
   foreworldPlatforms: 4
   backworldOutlines: 5
@@ -35,7 +42,7 @@ MonoBehaviour:
   scoutForeworldNeckerchief: 7
   scoutForeworldHat: 8
   scoutForeworldLeftHand: 8
-  scoutForeworldNeckerchiefTassleTwo: 0
+  scoutForeworldNeckerchiefTassleTwo: 9
   scoutForeworldLeftFoot: 8
   scoutForeworldNeckerchiefTassle: 8
   scoutForeworldNeckerchiefTassleKnot: 10

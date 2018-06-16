@@ -9,7 +9,7 @@ public class ShowGamepadOrKeyBoardUI : MonoBehaviour {
 	public bool isKeyboardUI;
 	// Use this for initialization
 
-	bool hasController;
+	bool hasController = false;
 
 	int playerId = 0; // The Rewired player id of this character
 
@@ -51,13 +51,14 @@ public class ShowGamepadOrKeyBoardUI : MonoBehaviour {
 		// 	print("check");
 		// 	hasController = player.controllers.GetController(ControllerType.Joystick, 1).isConnected;
 		// // }
+		print("haz controller? " + hasController);
 
-		if (hasController && isGamepadUI) {
+		if (!hasController && isGamepadUI) {
 			print("wrong way");
 			gameObject.SetActive(false);
 		}
 
-		else if (!hasController && isKeyboardUI) {
+		else if (hasController && isKeyboardUI) {
 			gameObject.SetActive(false);
 		}
 		

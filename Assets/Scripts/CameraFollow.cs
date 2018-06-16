@@ -13,9 +13,9 @@ public class CameraFollow : MonoBehaviour
     // public float xAxisLerpSpeed = 5.0f;
     LevelControl levelControl;
 
-    [Range(0, 5)]
+    [Range(-5, 5)]
     public float upVal = 1.4f;
-    [Range(0, 8)]
+    [Range(-8, 8)]
     public float downVal = 4f;
     // Use this for initialization
     void Start()
@@ -53,15 +53,28 @@ public class CameraFollow : MonoBehaviour
     {
         if (levelControl.GetFollow())
         {
-            // transform.position = new Vector3(player.position.x - relPos.x, transform.position.y, transform.position.z);
-            if (camera.WorldToScreenPoint(player.position).y > Screen.height / upVal) {
-                print("moving up");
-                StartCoroutine("MoveUp");
+            Vector2 vectorToPlayer = new Vector2(0f, player.transform.position.y - transform.position.y);
+            float distanceToPlayer = vectorToPlayer.magnitude;
+
+            //normalized direction, invert sign
+            //below camera is positive, above camera is negative
+            float direction = (vectorToPlayer.y / distanceToPlayer) * -1; 
+
+            print("dist: " + distanceToPlayer);
+            print("direction: " + direction);
+            
+            // if (camera.WorldToScreenPoint(player.position).y > Screen.height / upVal) {
+            if (distanceToPlayer * direction < upVal) {
+                print("test");
+            
+                transform.position = Vector3.Lerp(new Vector3(transform.position.x, transform.position.y, transform.position.z), new Vector3(transform.position.x, player.position.y - relPos.y, transform.position.z), 0.5f * Time.deltaTime);
             
             }
 
-            else if (camera.WorldToScreenPoint(player.position).y < Screen.height / downVal) {
+            else if (distanceToPlayer * direction > downVal) {
                 // StartCoroutine("MoveDown");
+
+                print("downVal: " + downVal);
 
                 transform.position = Vector3.Lerp(new Vector3(transform.position.x, transform.position.y, transform.position.z), new Vector3(transform.position.x, player.position.y - relPos.y, transform.position.z), 3f * Time.deltaTime);
 
@@ -116,24 +129,24 @@ public class CameraFollow : MonoBehaviour
 
     }
 
-    IEnumerator MoveUp()
-    {
-        while (camera.WorldToScreenPoint(player.position).y > Screen.height / upVal && levelControl.GetFollow())
-        {
-            transform.position = new Vector3(transform.position.x, transform.position.y + 0.01f, transform.position.z);
-            yield return new WaitForSeconds(Time.deltaTime); //changed this from fixedDeltaTime
+    // IEnumerator MoveUp()
+    // {
+    //     while (camera.WorldToScreenPoint(player.position).y > Screen.height / upVal && levelControl.GetFollow())
+    //     {
+    //         transform.position = new Vector3(transform.position.x, transform.position.y + 0.01f, transform.position.z);
+    //         yield return new WaitForSeconds(Time.deltaTime); //changed this from fixedDeltaTime
 
-        }
-    }
+    //     }
+    // }
 
-    IEnumerator MoveDown()
-    {
-        while (camera.WorldToScreenPoint(player.position).y < Screen.height / downVal && levelControl.GetFollow())
-        {
-            transform.position = new Vector3(transform.position.x, transform.position.y - 0.0005f, transform.position.z);
-            yield return new WaitForSeconds(Time.deltaTime); //changed this from fixedDeltaTime
-        }
-    }
+    // IEnumerator MoveDown()
+    // {
+    //     while (camera.WorldToScreenPoint(player.position).y < Screen.height / downVal && levelControl.GetFollow())
+    //     {
+    //         transform.position = new Vector3(transform.position.x, transform.position.y - 0.0005f, transform.position.z);
+    //         yield return new WaitForSeconds(Time.deltaTime); //changed this from fixedDeltaTime
+    //     }
+    // }
 
     public void SetCameraVals(float up, float down)
     {

@@ -16,7 +16,7 @@ public class TutorialActivationCollider : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D (Collider2D other) {
-		print("test");
+		// print("test");
 		if (other.gameObject.name.Equals("Left Curtain") && gameObject.name.Equals("Left Activation Collider")) {
 			tutorial.SetCreatedBridge(0, true);
 		}

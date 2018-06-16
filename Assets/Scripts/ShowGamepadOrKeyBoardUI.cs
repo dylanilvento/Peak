@@ -9,7 +9,7 @@ public class ShowGamepadOrKeyBoardUI : MonoBehaviour {
 	public bool isKeyboardUI;
 	// Use this for initialization
 
-	bool hasController = false;
+	// static bool hasController = false;
 
 	int playerId = 0; // The Rewired player id of this character
 
@@ -21,6 +21,7 @@ public class ShowGamepadOrKeyBoardUI : MonoBehaviour {
 		
         // Subscribe to events
         ReInput.ControllerConnectedEvent += OnControllerConnected;
+		ReInput.ControllerDisconnectedEvent += OnControllerDisconnected;
 
 		
         // ReInput.ControllerDisconnectedEvent += OnControllerDisconnected;
@@ -29,8 +30,53 @@ public class ShowGamepadOrKeyBoardUI : MonoBehaviour {
 
 	void OnControllerConnected(ControllerStatusChangedEventArgs args) {
         // print("A controller was connected! Name = " + args.name + " Id = " + args.controllerId + " Type = " + args.controllerType);
-		hasController = player.controllers.ContainsController<Joystick>(args.controllerId);
-		print("haz controller? " + hasController);
+		IntersceneDataHandler.hasController = player.controllers.ContainsController<Joystick>(args.controllerId);
+		print("haz controller? " + IntersceneDataHandler.hasController);
+
+		if (!IntersceneDataHandler.hasController && isGamepadUI) {
+			// print("wrong way");
+			gameObject.SetActive(false);
+		}
+
+		else if (IntersceneDataHandler.hasController && isKeyboardUI) {
+			gameObject.SetActive(false);
+		}
+
+		if (IntersceneDataHandler.hasController && isGamepadUI) {
+			gameObject.SetActive(true);
+		}
+
+		else if (!IntersceneDataHandler.hasController && isKeyboardUI) {
+			gameObject.SetActive(true);
+		}
+
+
+		//checks to see if any controllers are plugged in
+		//if there aren't and it's the gamepad UI, then the gamepad UI is turned off
+		
+    }
+
+	void OnControllerDisconnected(ControllerStatusChangedEventArgs args) {
+        // print("A controller was connected! Name = " + args.name + " Id = " + args.controllerId + " Type = " + args.controllerType);
+		IntersceneDataHandler.hasController = player.controllers.ContainsController<Joystick>(args.controllerId);
+		print("haz controller? " + IntersceneDataHandler.hasController);
+
+		if (!IntersceneDataHandler.hasController && isGamepadUI) {
+			// print("wrong way");
+			gameObject.SetActive(false);
+		}
+
+		else if (IntersceneDataHandler.hasController && isKeyboardUI) {
+			gameObject.SetActive(false);
+		}
+
+		if (IntersceneDataHandler.hasController && isGamepadUI) {
+			gameObject.SetActive(true);
+		}
+
+		else if (!IntersceneDataHandler.hasController && isKeyboardUI) {
+			gameObject.SetActive(true);
+		}
 
 
 		//checks to see if any controllers are plugged in
@@ -39,28 +85,24 @@ public class ShowGamepadOrKeyBoardUI : MonoBehaviour {
     }
 	void Start () {
 
-		// player = ReInput.players.GetPlayer(playerId);
-		
-		
-        // // Subscribe to events
-        // ReInput.ControllerConnectedEvent += OnControllerConnected;
-
-		// Controller currController = player.controllers.GetController(ControllerType.Joystick, 1);
-
-		// // if (currController. is Rewired.Controller) {
-		// 	print("check");
-		// 	hasController = player.controllers.GetController(ControllerType.Joystick, 1).isConnected;
-		// // }
-		print("haz controller? " + hasController);
-
-		if (!hasController && isGamepadUI) {
-			print("wrong way");
+		if (!IntersceneDataHandler.hasController && isGamepadUI) {
+			// print("wrong way");
 			gameObject.SetActive(false);
 		}
 
-		else if (hasController && isKeyboardUI) {
+		else if (IntersceneDataHandler.hasController && isKeyboardUI) {
 			gameObject.SetActive(false);
 		}
+
+		if (IntersceneDataHandler.hasController && isGamepadUI) {
+			gameObject.SetActive(true);
+		}
+
+		else if (!IntersceneDataHandler.hasController && isKeyboardUI) {
+			gameObject.SetActive(true);
+		}
+
+		
 		
 	}
 	

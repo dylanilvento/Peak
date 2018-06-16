@@ -2,21 +2,21 @@
     "levels": [
         {
             "index": "0_0",
-            "name": "Beginnings",
+            "name": "Foothills",
             "options": [
-                {"curtainOption": "CurtainOptions.Left"}
+                {"curtainOption": "CurtainOptions.Both"}
             ]
         }, 
         {
             "index": "0_1",
-            "name": "Middle",
+            "name": "Landslide",
             "options": [
                 {"curtainOption": "CurtainOptions.Both"}
             ]
         },
         {
             "index": "0_2",
-            "name": "Top",
+            "name": "Summit",
             "options": [
                 {"curtainOption": "CurtainOptions.Both"}
             ]

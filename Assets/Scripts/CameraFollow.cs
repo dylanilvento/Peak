@@ -60,8 +60,8 @@ public class CameraFollow : MonoBehaviour
             //below camera is positive, above camera is negative
             float direction = (vectorToPlayer.y / distanceToPlayer) * -1; 
 
-            print("dist: " + distanceToPlayer);
-            print("direction: " + direction);
+            // print("dist: " + distanceToPlayer);
+            // print("direction: " + direction);
             
             // if (camera.WorldToScreenPoint(player.position).y > Screen.height / upVal) {
             if (distanceToPlayer * direction < upVal) {

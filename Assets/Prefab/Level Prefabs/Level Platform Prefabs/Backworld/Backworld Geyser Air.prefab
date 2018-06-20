@@ -10,6 +10,7 @@ GameObject:
   - component: {fileID: 475986}
   - component: {fileID: 21230444}
   - component: {fileID: 11464916}
+  - component: {fileID: 114744813277763012}
   m_Layer: 9
   m_Name: Backworld Geyser Air
   m_TagString: Untagged
@@ -101,3 +102,16 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 109166}
   m_IsPrefabParent: 1
+--- !u!114 &114744813277763012
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 109166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 791004ab1bcd84a5aab2c689c4782426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteLayerLayout: {fileID: 11400000, guid: 8e09bae0577a247f4a0e3f01dfed6ec3, type: 2}
+  layer: 2

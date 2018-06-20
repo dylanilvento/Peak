@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 114231937523605598}
   - component: {fileID: 114625490994810498}
   - component: {fileID: 60739208968932224}
+  - component: {fileID: 114013894087628556}
   m_Layer: 9
   m_Name: Backworld Ramp without Landing
   m_TagString: Untagged
@@ -136,6 +137,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4041813893980764}
   - component: {fileID: 120929729213224620}
+  - component: {fileID: 114539004664130774}
   m_Layer: 9
   m_Name: Bottom Outline
   m_TagString: Untagged
@@ -152,6 +154,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4258863032187264}
   - component: {fileID: 120391318761588374}
+  - component: {fileID: 114165888420286950}
   m_Layer: 9
   m_Name: Right Outline
   m_TagString: Untagged
@@ -168,6 +171,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4492725163397428}
   - component: {fileID: 120049458661498790}
+  - component: {fileID: 114307010085616814}
   m_Layer: 9
   m_Name: Left Outline
   m_TagString: Untagged
@@ -184,6 +188,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4648369442342034}
   - component: {fileID: 120320090016181072}
+  - component: {fileID: 114942394085268516}
   m_Layer: 9
   m_Name: Top Outline
   m_TagString: Untagged
@@ -290,6 +295,32 @@ PolygonCollider2D:
       - {x: -0.90000004, y: -0.90000004}
       - {x: 0.90000004, y: -0.90000004}
       - {x: 0.90000004, y: 0.90000004}
+--- !u!114 &114013894087628556
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 139194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 791004ab1bcd84a5aab2c689c4782426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteLayerLayout: {fileID: 11400000, guid: 8e09bae0577a247f4a0e3f01dfed6ec3, type: 2}
+  layer: 3
+--- !u!114 &114165888420286950
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1650236319131886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 791004ab1bcd84a5aab2c689c4782426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteLayerLayout: {fileID: 11400000, guid: 8e09bae0577a247f4a0e3f01dfed6ec3, type: 2}
+  layer: 21
 --- !u!114 &114231937523605598
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -302,6 +333,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vertices: []
+--- !u!114 &114307010085616814
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1808666785558994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 791004ab1bcd84a5aab2c689c4782426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteLayerLayout: {fileID: 11400000, guid: 8e09bae0577a247f4a0e3f01dfed6ec3, type: 2}
+  layer: 21
+--- !u!114 &114539004664130774
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1120004699088172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 791004ab1bcd84a5aab2c689c4782426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteLayerLayout: {fileID: 11400000, guid: 8e09bae0577a247f4a0e3f01dfed6ec3, type: 2}
+  layer: 21
 --- !u!114 &114625490994810498
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -314,7 +371,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteVertices: []
-  spriteLayerLayout: {fileID: 11400000, guid: 8e09bae0577a247f4a0e3f01dfed6ec3, type: 2}
   topOutline: {fileID: 120320090016181072}
   rightOutline: {fileID: 120391318761588374}
   bottomOutline: {fileID: 120929729213224620}
@@ -331,6 +387,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   groundType: 1
+--- !u!114 &114942394085268516
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1996212497696456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 791004ab1bcd84a5aab2c689c4782426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteLayerLayout: {fileID: 11400000, guid: 8e09bae0577a247f4a0e3f01dfed6ec3, type: 2}
+  layer: 21
 --- !u!120 &120049458661498790
 LineRenderer:
   m_ObjectHideFlags: 1

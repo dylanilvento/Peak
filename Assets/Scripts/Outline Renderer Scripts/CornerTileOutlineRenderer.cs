@@ -16,7 +16,7 @@ public class CornerTileOutlineRenderer : MonoBehaviour {
 	Dictionary<QuadrilateralVertex, Vector2> vertices;
 	Dictionary<PolygonSide, List<QuadrilateralVertex>> sides;
 
-	public SpriteLayerLayout spriteLayerLayout;	
+	// public SpriteLayerLayout spriteLayerLayout;	
 
 	//true means there's a collider detected
 	Dictionary<PolygonSide, bool> collisionChecks;
@@ -35,23 +35,23 @@ public class CornerTileOutlineRenderer : MonoBehaviour {
 
 		spriteRenderer = GetComponent<SpriteRenderer>();
 		
-		if (gameObject.layer == 8) { //foreworld
-			spriteRenderer.sortingOrder = spriteLayerLayout.foreworldPlatforms;
+		// if (gameObject.layer == 8) { //foreworld
+		// 	spriteRenderer.sortingOrder = spriteLayerLayout.foreworldPlatforms;
 
-			topOutline.sortingOrder = spriteLayerLayout.foreworldOutlines;
-			leftOutline.sortingOrder = spriteLayerLayout.foreworldOutlines;
-			hypotenuseOutline.sortingOrder = spriteLayerLayout.foreworldOutlines;
-			// leftOutline.sortingOrder = spriteLayerLayout.foreworldOutlines;
-		}
+		// 	topOutline.sortingOrder = spriteLayerLayout.foreworldOutlines;
+		// 	leftOutline.sortingOrder = spriteLayerLayout.foreworldOutlines;
+		// 	hypotenuseOutline.sortingOrder = spriteLayerLayout.foreworldOutlines;
+		// 	// leftOutline.sortingOrder = spriteLayerLayout.foreworldOutlines;
+		// }
 
-		if (gameObject.layer == 9) { //backworld
-			spriteRenderer.sortingOrder = spriteLayerLayout.backworldPlatforms;
+		// if (gameObject.layer == 9) { //backworld
+		// 	spriteRenderer.sortingOrder = spriteLayerLayout.backworldPlatforms;
 
-			topOutline.sortingOrder = spriteLayerLayout.backworldOutlines;
-			leftOutline.sortingOrder = spriteLayerLayout.backworldOutlines;
-			hypotenuseOutline.sortingOrder = spriteLayerLayout.backworldOutlines;
-			// leftOutline.sortingOrder = spriteLayerLayout.backworldOutlines;
-		}
+		// 	topOutline.sortingOrder = spriteLayerLayout.backworldOutlines;
+		// 	leftOutline.sortingOrder = spriteLayerLayout.backworldOutlines;
+		// 	hypotenuseOutline.sortingOrder = spriteLayerLayout.backworldOutlines;
+		// 	// leftOutline.sortingOrder = spriteLayerLayout.backworldOutlines;
+		// }
 
 		
 		// lineRenderer = GetComponent<LineRenderer>();

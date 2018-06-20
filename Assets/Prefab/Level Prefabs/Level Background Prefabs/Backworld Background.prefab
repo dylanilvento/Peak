@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4137530220918942}
   - component: {fileID: 212460092948444036}
   - component: {fileID: 114634421656865794}
+  - component: {fileID: 114989282420231058}
   m_Layer: 0
   m_Name: Backworld Background
   m_TagString: Untagged
@@ -52,6 +53,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 173dbd8c8c90a44e3968e3a750e983eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114989282420231058
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1216609807574226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 791004ab1bcd84a5aab2c689c4782426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteLayerLayout: {fileID: 11400000, guid: 8e09bae0577a247f4a0e3f01dfed6ec3, type: 2}
+  layer: 0
 --- !u!212 &212460092948444036
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -13,7 +13,7 @@ public class RampTileOutlineRenderer : MonoBehaviour {
 	float raycastScale = 0.5f;
 	float raycastGizmoScale = 5f;
 
-	public SpriteLayerLayout spriteLayerLayout;
+	// public SpriteLayerLayout spriteLayerLayout;
 
 	PolygonSide[] sideRotationOrder = new PolygonSide[4] {
 		PolygonSide.Top,
@@ -48,23 +48,23 @@ public class RampTileOutlineRenderer : MonoBehaviour {
 
 		spriteRenderer = GetComponent<SpriteRenderer>();
 		
-		if (gameObject.layer == 8) { //foreworld
-			spriteRenderer.sortingOrder = spriteLayerLayout.foreworldPlatforms;
+		// if (gameObject.layer == 8) { //foreworld
+		// 	spriteRenderer.sortingOrder = spriteLayerLayout.foreworldPlatforms;
 
-			topOutline.sortingOrder = spriteLayerLayout.foreworldOutlines;
-			rightOutline.sortingOrder = spriteLayerLayout.foreworldOutlines;
-			bottomOutline.sortingOrder = spriteLayerLayout.foreworldOutlines;
-			leftOutline.sortingOrder = spriteLayerLayout.foreworldOutlines;
-		}
+		// 	topOutline.sortingOrder = spriteLayerLayout.foreworldOutlines;
+		// 	rightOutline.sortingOrder = spriteLayerLayout.foreworldOutlines;
+		// 	bottomOutline.sortingOrder = spriteLayerLayout.foreworldOutlines;
+		// 	leftOutline.sortingOrder = spriteLayerLayout.foreworldOutlines;
+		// }
 
-		if (gameObject.layer == 9) { //backworld
-			spriteRenderer.sortingOrder = spriteLayerLayout.backworldPlatforms;
+		// if (gameObject.layer == 9) { //backworld
+		// 	spriteRenderer.sortingOrder = spriteLayerLayout.backworldPlatforms;
 
-			topOutline.sortingOrder = spriteLayerLayout.backworldOutlines;
-			rightOutline.sortingOrder = spriteLayerLayout.backworldOutlines;
-			bottomOutline.sortingOrder = spriteLayerLayout.backworldOutlines;
-			leftOutline.sortingOrder = spriteLayerLayout.backworldOutlines;
-		}
+		// 	topOutline.sortingOrder = spriteLayerLayout.backworldOutlines;
+		// 	rightOutline.sortingOrder = spriteLayerLayout.backworldOutlines;
+		// 	bottomOutline.sortingOrder = spriteLayerLayout.backworldOutlines;
+		// 	leftOutline.sortingOrder = spriteLayerLayout.backworldOutlines;
+		// }
 
 
 		spriteVertices = spriteRenderer.sprite.vertices;

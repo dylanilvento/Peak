@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 13bc7cbd52efa4cbd9c20c2c03a77daa
+timeCreated: 1529510254
+licenseType: Free
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - spriteLayerLayout: {fileID: 11400000, guid: 8e09bae0577a247f4a0e3f01dfed6ec3,
+      type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

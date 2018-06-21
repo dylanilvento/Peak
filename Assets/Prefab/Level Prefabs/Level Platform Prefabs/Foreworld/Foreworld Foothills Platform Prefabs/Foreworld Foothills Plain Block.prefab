@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4105195888980372}
   - component: {fileID: 120464652035704232}
+  - component: {fileID: 114006987326905700}
   m_Layer: 8
   m_Name: Left Outline
   m_TagString: Untagged
@@ -36,6 +37,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4415631680565784}
   - component: {fileID: 120549005626178202}
+  - component: {fileID: 114319447214838952}
   m_Layer: 8
   m_Name: Bottom Outline
   m_TagString: Untagged
@@ -52,6 +54,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4881473163698438}
   - component: {fileID: 120373206546449764}
+  - component: {fileID: 114002669578426622}
   m_Layer: 8
   m_Name: Top Outline
   m_TagString: Untagged
@@ -68,6 +71,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4723018805795654}
   - component: {fileID: 120217117879972304}
+  - component: {fileID: 114427408118728126}
   m_Layer: 8
   m_Name: Right Outline
   m_TagString: Untagged
@@ -87,6 +91,7 @@ GameObject:
   - component: {fileID: 114750922578955978}
   - component: {fileID: 114594785868759968}
   - component: {fileID: 61252715253501760}
+  - component: {fileID: 114727767422603826}
   m_Layer: 8
   m_Name: Foreworld Foothills Plain Block
   m_TagString: Untagged
@@ -188,6 +193,58 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.6, y: 0.6}
   m_EdgeRadius: 0
+--- !u!114 &114002669578426622
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1576082459731776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 791004ab1bcd84a5aab2c689c4782426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteLayerLayout: {fileID: 11400000, guid: 8e09bae0577a247f4a0e3f01dfed6ec3, type: 2}
+  layer: 4
+--- !u!114 &114006987326905700
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1244006338195052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 791004ab1bcd84a5aab2c689c4782426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteLayerLayout: {fileID: 11400000, guid: 8e09bae0577a247f4a0e3f01dfed6ec3, type: 2}
+  layer: 4
+--- !u!114 &114319447214838952
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1521900788994492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 791004ab1bcd84a5aab2c689c4782426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteLayerLayout: {fileID: 11400000, guid: 8e09bae0577a247f4a0e3f01dfed6ec3, type: 2}
+  layer: 4
+--- !u!114 &114427408118728126
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1720769049704890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 791004ab1bcd84a5aab2c689c4782426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteLayerLayout: {fileID: 11400000, guid: 8e09bae0577a247f4a0e3f01dfed6ec3, type: 2}
+  layer: 4
 --- !u!114 &114594785868759968
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -201,11 +258,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteVertices: []
   transitionBlock: {fileID: 21300000, guid: 92f0381345ca7479f9e513ec3ec06690, type: 3}
-  spriteLayerLayout: {fileID: 11400000, guid: 8e09bae0577a247f4a0e3f01dfed6ec3, type: 2}
   topOutline: {fileID: 120373206546449764}
   rightOutline: {fileID: 120217117879972304}
   bottomOutline: {fileID: 120549005626178202}
   leftOutline: {fileID: 120464652035704232}
+--- !u!114 &114727767422603826
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1767509932338790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 791004ab1bcd84a5aab2c689c4782426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteLayerLayout: {fileID: 11400000, guid: 8e09bae0577a247f4a0e3f01dfed6ec3, type: 2}
+  layer: 20
 --- !u!114 &114750922578955978
 MonoBehaviour:
   m_ObjectHideFlags: 1

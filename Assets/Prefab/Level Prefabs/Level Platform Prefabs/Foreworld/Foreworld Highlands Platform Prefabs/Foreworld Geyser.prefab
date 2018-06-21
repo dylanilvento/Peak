@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 114595145974563418}
   - component: {fileID: 60859946680963446}
   - component: {fileID: 114280267488425376}
+  - component: {fileID: 114515725377480122}
   m_Layer: 8
   m_Name: Foreworld Geyser
   m_TagString: Untagged
@@ -28,7 +29,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 144372}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 35.300003, y: 4.299999, z: 0}
+  m_LocalPosition: {x: 4.8, y: -38.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4223523903962508}
@@ -139,6 +140,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4668874363894198}
   - component: {fileID: 120129791695259380}
+  - component: {fileID: 114035280532509984}
   m_Layer: 8
   m_Name: Top Outline 1
   m_TagString: Untagged
@@ -155,6 +157,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4150736025643048}
   - component: {fileID: 120510949570122026}
+  - component: {fileID: 114346484871643416}
   m_Layer: 8
   m_Name: Top Outline 2
   m_TagString: Untagged
@@ -171,6 +174,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4859149261894728}
   - component: {fileID: 120166752141174134}
+  - component: {fileID: 114754679692304316}
   m_Layer: 8
   m_Name: Top Outline 4
   m_TagString: Untagged
@@ -187,6 +191,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4832854496275196}
   - component: {fileID: 120406943957801566}
+  - component: {fileID: 114680633888395396}
   m_Layer: 8
   m_Name: Left Outline
   m_TagString: Untagged
@@ -203,6 +208,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4069058175071110}
   - component: {fileID: 120403309412589292}
+  - component: {fileID: 114947570304452686}
   m_Layer: 8
   m_Name: Right Outline
   m_TagString: Untagged
@@ -234,6 +240,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4512164451288480}
   - component: {fileID: 120568285566541610}
+  - component: {fileID: 114267928570018370}
   m_Layer: 8
   m_Name: Bottom Outline
   m_TagString: Untagged
@@ -250,6 +257,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4843559500433154}
   - component: {fileID: 120105142256062850}
+  - component: {fileID: 114513343429082558}
   m_Layer: 8
   m_Name: Top Outline 3
   m_TagString: Untagged
@@ -481,6 +489,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.37069392, y: 0.43}
   m_EdgeRadius: 0
+--- !u!114 &114035280532509984
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1037590676668594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 791004ab1bcd84a5aab2c689c4782426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteLayerLayout: {fileID: 11400000, guid: 8e09bae0577a247f4a0e3f01dfed6ec3, type: 2}
+  layer: 4
 --- !u!114 &114173787706973726
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -504,6 +525,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   air: {fileID: 109166, guid: 829346d7fe1cb48d28245a060857b37c, type: 2}
+--- !u!114 &114267928570018370
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1658964818498906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 791004ab1bcd84a5aab2c689c4782426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteLayerLayout: {fileID: 11400000, guid: 8e09bae0577a247f4a0e3f01dfed6ec3, type: 2}
+  layer: 4
 --- !u!114 &114280267488425376
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -516,7 +550,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteVertices: []
-  spriteLayerLayout: {fileID: 11400000, guid: 8e09bae0577a247f4a0e3f01dfed6ec3, type: 2}
   rightOutline: {fileID: 120403309412589292}
   bottomOutline: {fileID: 120568285566541610}
   leftOutline: {fileID: 120406943957801566}
@@ -525,6 +558,45 @@ MonoBehaviour:
   - {fileID: 120510949570122026}
   - {fileID: 120105142256062850}
   - {fileID: 120166752141174134}
+--- !u!114 &114346484871643416
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1162902145931414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 791004ab1bcd84a5aab2c689c4782426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteLayerLayout: {fileID: 11400000, guid: 8e09bae0577a247f4a0e3f01dfed6ec3, type: 2}
+  layer: 4
+--- !u!114 &114513343429082558
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1878542051811170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 791004ab1bcd84a5aab2c689c4782426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteLayerLayout: {fileID: 11400000, guid: 8e09bae0577a247f4a0e3f01dfed6ec3, type: 2}
+  layer: 4
+--- !u!114 &114515725377480122
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 144372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 791004ab1bcd84a5aab2c689c4782426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteLayerLayout: {fileID: 11400000, guid: 8e09bae0577a247f4a0e3f01dfed6ec3, type: 2}
+  layer: 20
 --- !u!114 &114595145974563418
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -537,6 +609,45 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vertices: []
+--- !u!114 &114680633888395396
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1383653290536178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 791004ab1bcd84a5aab2c689c4782426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteLayerLayout: {fileID: 11400000, guid: 8e09bae0577a247f4a0e3f01dfed6ec3, type: 2}
+  layer: 4
+--- !u!114 &114754679692304316
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1359647128771194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 791004ab1bcd84a5aab2c689c4782426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteLayerLayout: {fileID: 11400000, guid: 8e09bae0577a247f4a0e3f01dfed6ec3, type: 2}
+  layer: 4
+--- !u!114 &114947570304452686
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1434294422315086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 791004ab1bcd84a5aab2c689c4782426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteLayerLayout: {fileID: 11400000, guid: 8e09bae0577a247f4a0e3f01dfed6ec3, type: 2}
+  layer: 4
 --- !u!120 &120105142256062850
 LineRenderer:
   m_ObjectHideFlags: 1

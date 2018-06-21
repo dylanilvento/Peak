@@ -4,5 +4,6 @@
 public enum CurtainOptions {
 	Left,
 	Right,
-	Both
+	Both,
+	None
 }

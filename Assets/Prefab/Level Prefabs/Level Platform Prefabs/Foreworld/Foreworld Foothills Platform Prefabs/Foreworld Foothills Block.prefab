@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4173271422676478}
   - component: {fileID: 120798934816137780}
+  - component: {fileID: 114099093612568094}
   m_Layer: 8
   m_Name: Bottom Outline
   m_TagString: Untagged
@@ -36,6 +37,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4372806486780254}
   - component: {fileID: 120366837391370068}
+  - component: {fileID: 114876244283036506}
   m_Layer: 8
   m_Name: Left Outline
   m_TagString: Untagged
@@ -52,6 +54,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4667168307206844}
   - component: {fileID: 120777762349321932}
+  - component: {fileID: 114824401097082180}
   m_Layer: 8
   m_Name: Top Outline
   m_TagString: Untagged
@@ -73,6 +76,7 @@ GameObject:
   - component: {fileID: 61686673086976490}
   - component: {fileID: 68734121229348236}
   - component: {fileID: 114331012716544370}
+  - component: {fileID: 114908196558393076}
   m_Layer: 8
   m_Name: Foreworld Foothills Block
   m_TagString: Untagged
@@ -89,6 +93,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4832328909601724}
   - component: {fileID: 120894553755966998}
+  - component: {fileID: 114157957015269216}
   m_Layer: 8
   m_Name: Right Outline
   m_TagString: Untagged
@@ -220,11 +225,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteVertices: []
   transitionBlock: {fileID: 21300000, guid: 92f0381345ca7479f9e513ec3ec06690, type: 3}
-  spriteLayerLayout: {fileID: 11400000, guid: 8e09bae0577a247f4a0e3f01dfed6ec3, type: 2}
   topOutline: {fileID: 120777762349321932}
   rightOutline: {fileID: 120894553755966998}
   bottomOutline: {fileID: 120798934816137780}
   leftOutline: {fileID: 120366837391370068}
+--- !u!114 &114099093612568094
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1196758110665984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 791004ab1bcd84a5aab2c689c4782426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteLayerLayout: {fileID: 11400000, guid: 8e09bae0577a247f4a0e3f01dfed6ec3, type: 2}
+  layer: 4
+--- !u!114 &114157957015269216
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1997413916927110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 791004ab1bcd84a5aab2c689c4782426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteLayerLayout: {fileID: 11400000, guid: 8e09bae0577a247f4a0e3f01dfed6ec3, type: 2}
+  layer: 4
 --- !u!114 &114267525157731968
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -249,6 +279,45 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   groundType: 0
+--- !u!114 &114824401097082180
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1616315101693812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 791004ab1bcd84a5aab2c689c4782426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteLayerLayout: {fileID: 11400000, guid: 8e09bae0577a247f4a0e3f01dfed6ec3, type: 2}
+  layer: 4
+--- !u!114 &114876244283036506
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1223334147507082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 791004ab1bcd84a5aab2c689c4782426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteLayerLayout: {fileID: 11400000, guid: 8e09bae0577a247f4a0e3f01dfed6ec3, type: 2}
+  layer: 4
+--- !u!114 &114908196558393076
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1778138923413096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 791004ab1bcd84a5aab2c689c4782426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteLayerLayout: {fileID: 11400000, guid: 8e09bae0577a247f4a0e3f01dfed6ec3, type: 2}
+  layer: 20
 --- !u!120 &120366837391370068
 LineRenderer:
   m_ObjectHideFlags: 1

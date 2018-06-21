@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 11419162}
   - component: {fileID: 60413274203232350}
   - component: {fileID: 114419305173110432}
+  - component: {fileID: 114147494877210024}
   m_Layer: 8
   m_Name: Foreworld Plain Angled Block
   m_TagString: Untagged
@@ -115,6 +116,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4810370288379818}
   - component: {fileID: 120983263597059368}
+  - component: {fileID: 114342874474885848}
   m_Layer: 8
   m_Name: Hypotenuse Outline
   m_TagString: Untagged
@@ -131,6 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4986730113069136}
   - component: {fileID: 120244316071383936}
+  - component: {fileID: 114500730492802196}
   m_Layer: 8
   m_Name: Top Collider
   m_TagString: Untagged
@@ -147,6 +150,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4336486604321050}
   - component: {fileID: 120561499019957438}
+  - component: {fileID: 114011794280854226}
   m_Layer: 8
   m_Name: Left Outline
   m_TagString: Untagged
@@ -222,6 +226,45 @@ PolygonCollider2D:
       - {x: -0.29200003, y: -0.3}
       - {x: 0.3, y: 0.294}
       - {x: 0.3, y: 0.3}
+--- !u!114 &114011794280854226
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1788214978237162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 791004ab1bcd84a5aab2c689c4782426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteLayerLayout: {fileID: 11400000, guid: 8e09bae0577a247f4a0e3f01dfed6ec3, type: 2}
+  layer: 4
+--- !u!114 &114147494877210024
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 181820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 791004ab1bcd84a5aab2c689c4782426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteLayerLayout: {fileID: 11400000, guid: 8e09bae0577a247f4a0e3f01dfed6ec3, type: 2}
+  layer: 20
+--- !u!114 &114342874474885848
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1270098796497578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 791004ab1bcd84a5aab2c689c4782426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteLayerLayout: {fileID: 11400000, guid: 8e09bae0577a247f4a0e3f01dfed6ec3, type: 2}
+  layer: 4
 --- !u!114 &114419305173110432
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -234,10 +277,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteVertices: []
-  spriteLayerLayout: {fileID: 11400000, guid: 8e09bae0577a247f4a0e3f01dfed6ec3, type: 2}
   topOutline: {fileID: 120244316071383936}
   leftOutline: {fileID: 120561499019957438}
   hypotenuseOutline: {fileID: 120983263597059368}
+--- !u!114 &114500730492802196
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1484904000669880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 791004ab1bcd84a5aab2c689c4782426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteLayerLayout: {fileID: 11400000, guid: 8e09bae0577a247f4a0e3f01dfed6ec3, type: 2}
+  layer: 4
 --- !u!120 &120244316071383936
 LineRenderer:
   m_ObjectHideFlags: 1

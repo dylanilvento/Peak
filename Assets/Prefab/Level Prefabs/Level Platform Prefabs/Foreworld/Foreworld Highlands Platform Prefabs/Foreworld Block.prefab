@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 61671180310278306}
   - component: {fileID: 6806154}
   - component: {fileID: 114621440243123522}
+  - component: {fileID: 114033376835930014}
   m_Layer: 8
   m_Name: Foreworld Block
   m_TagString: Untagged
@@ -135,6 +136,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4024327467466918}
   - component: {fileID: 120060443585475846}
+  - component: {fileID: 114226230794637222}
   m_Layer: 8
   m_Name: Right Outline
   m_TagString: Untagged
@@ -151,6 +153,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4013979443977614}
   - component: {fileID: 120494477064322826}
+  - component: {fileID: 114465792987806500}
   m_Layer: 8
   m_Name: Left Outline
   m_TagString: Untagged
@@ -167,6 +170,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4784490156793580}
   - component: {fileID: 120005794106064838}
+  - component: {fileID: 114728921600802268}
   m_Layer: 8
   m_Name: Top Outline
   m_TagString: Untagged
@@ -183,6 +187,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4872758685643238}
   - component: {fileID: 120539338079521766}
+  - component: {fileID: 114648189345518712}
   m_Layer: 8
   m_Name: Bottom Outline
   m_TagString: Untagged
@@ -267,6 +272,32 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.6, y: 0.6}
   m_EdgeRadius: 0
+--- !u!114 &114033376835930014
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 140442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 791004ab1bcd84a5aab2c689c4782426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteLayerLayout: {fileID: 11400000, guid: 8e09bae0577a247f4a0e3f01dfed6ec3, type: 2}
+  layer: 20
+--- !u!114 &114226230794637222
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1361146709188248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 791004ab1bcd84a5aab2c689c4782426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteLayerLayout: {fileID: 11400000, guid: 8e09bae0577a247f4a0e3f01dfed6ec3, type: 2}
+  layer: 4
 --- !u!114 &114293462427642930
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -280,11 +311,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteVertices: []
   transitionBlock: {fileID: 21300000, guid: 937f6b238b4da4af3a5b404259375003, type: 3}
-  spriteLayerLayout: {fileID: 11400000, guid: 8e09bae0577a247f4a0e3f01dfed6ec3, type: 2}
   topOutline: {fileID: 120005794106064838}
   rightOutline: {fileID: 120060443585475846}
   bottomOutline: {fileID: 120539338079521766}
   leftOutline: {fileID: 120494477064322826}
+--- !u!114 &114465792987806500
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1518079610295286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 791004ab1bcd84a5aab2c689c4782426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteLayerLayout: {fileID: 11400000, guid: 8e09bae0577a247f4a0e3f01dfed6ec3, type: 2}
+  layer: 4
 --- !u!114 &114621440243123522
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -297,6 +340,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   groundType: 0
+--- !u!114 &114648189345518712
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1640940781742376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 791004ab1bcd84a5aab2c689c4782426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteLayerLayout: {fileID: 11400000, guid: 8e09bae0577a247f4a0e3f01dfed6ec3, type: 2}
+  layer: 4
+--- !u!114 &114728921600802268
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1531585387554562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 791004ab1bcd84a5aab2c689c4782426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteLayerLayout: {fileID: 11400000, guid: 8e09bae0577a247f4a0e3f01dfed6ec3, type: 2}
+  layer: 4
 --- !u!120 &120005794106064838
 LineRenderer:
   m_ObjectHideFlags: 1

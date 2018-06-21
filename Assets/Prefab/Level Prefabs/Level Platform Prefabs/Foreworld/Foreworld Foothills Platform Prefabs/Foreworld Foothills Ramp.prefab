@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 114802102904527402}
   - component: {fileID: 114894233811868194}
   - component: {fileID: 60904607604695272}
+  - component: {fileID: 114178024221889390}
   m_Layer: 8
   m_Name: Foreworld Foothills Ramp
   m_TagString: Untagged
@@ -136,6 +137,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4298775763551514}
   - component: {fileID: 120268718222197286}
+  - component: {fileID: 114280533301825078}
   m_Layer: 8
   m_Name: Bottom Outline
   m_TagString: Untagged
@@ -152,6 +154,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4211462793598988}
   - component: {fileID: 120075768827488022}
+  - component: {fileID: 114372758863970928}
   m_Layer: 8
   m_Name: Right Outline
   m_TagString: Untagged
@@ -168,6 +171,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4868127624214950}
   - component: {fileID: 120761616834229414}
+  - component: {fileID: 114028055654185402}
   m_Layer: 8
   m_Name: Left Outline
   m_TagString: Untagged
@@ -184,6 +188,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4211210893517968}
   - component: {fileID: 120827119796215800}
+  - component: {fileID: 114525829221998082}
   m_Layer: 8
   m_Name: Top Outline
   m_TagString: Untagged
@@ -290,6 +295,32 @@ PolygonCollider2D:
       - {x: -0.90000004, y: -0.90000004}
       - {x: 0.90000004, y: -0.90000004}
       - {x: 0.90000004, y: 0.90000004}
+--- !u!114 &114028055654185402
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1562084743985606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 791004ab1bcd84a5aab2c689c4782426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteLayerLayout: {fileID: 11400000, guid: 8e09bae0577a247f4a0e3f01dfed6ec3, type: 2}
+  layer: 4
+--- !u!114 &114178024221889390
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 116860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 791004ab1bcd84a5aab2c689c4782426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteLayerLayout: {fileID: 11400000, guid: 8e09bae0577a247f4a0e3f01dfed6ec3, type: 2}
+  layer: 20
 --- !u!114 &114180126234800618
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -302,6 +333,45 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   groundType: 1
+--- !u!114 &114280533301825078
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1293762991433164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 791004ab1bcd84a5aab2c689c4782426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteLayerLayout: {fileID: 11400000, guid: 8e09bae0577a247f4a0e3f01dfed6ec3, type: 2}
+  layer: 4
+--- !u!114 &114372758863970928
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1352287444448972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 791004ab1bcd84a5aab2c689c4782426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteLayerLayout: {fileID: 11400000, guid: 8e09bae0577a247f4a0e3f01dfed6ec3, type: 2}
+  layer: 4
+--- !u!114 &114525829221998082
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1995168289918066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 791004ab1bcd84a5aab2c689c4782426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteLayerLayout: {fileID: 11400000, guid: 8e09bae0577a247f4a0e3f01dfed6ec3, type: 2}
+  layer: 4
 --- !u!114 &114802102904527402
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -326,7 +396,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteVertices: []
-  spriteLayerLayout: {fileID: 11400000, guid: 8e09bae0577a247f4a0e3f01dfed6ec3, type: 2}
   topOutline: {fileID: 120827119796215800}
   rightOutline: {fileID: 120075768827488022}
   bottomOutline: {fileID: 120268718222197286}

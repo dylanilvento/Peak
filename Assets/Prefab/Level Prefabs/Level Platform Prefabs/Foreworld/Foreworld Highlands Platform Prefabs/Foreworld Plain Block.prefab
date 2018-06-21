@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 11402688}
   - component: {fileID: 114398797418370622}
   - component: {fileID: 61664997686907002}
+  - component: {fileID: 114073439484928376}
   m_Layer: 8
   m_Name: Foreworld Plain Block
   m_TagString: Untagged
@@ -116,6 +117,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4429435784131944}
   - component: {fileID: 120135423643261282}
+  - component: {fileID: 114009358528093290}
   m_Layer: 8
   m_Name: Top Outline
   m_TagString: Untagged
@@ -132,6 +134,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4375569128315778}
   - component: {fileID: 120496797410740996}
+  - component: {fileID: 114002121773352022}
   m_Layer: 8
   m_Name: Right Outline
   m_TagString: Untagged
@@ -148,6 +151,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4658604752480836}
   - component: {fileID: 120758197052351684}
+  - component: {fileID: 114921812784009578}
   m_Layer: 8
   m_Name: Left Outline
   m_TagString: Untagged
@@ -164,6 +168,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4594498079295320}
   - component: {fileID: 120137166613532700}
+  - component: {fileID: 114100152276909122}
   m_Layer: 8
   m_Name: Bottom Outline
   m_TagString: Untagged
@@ -248,6 +253,58 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.6, y: 0.6}
   m_EdgeRadius: 0
+--- !u!114 &114002121773352022
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1318988119865034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 791004ab1bcd84a5aab2c689c4782426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteLayerLayout: {fileID: 11400000, guid: 8e09bae0577a247f4a0e3f01dfed6ec3, type: 2}
+  layer: 4
+--- !u!114 &114009358528093290
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1210845426123300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 791004ab1bcd84a5aab2c689c4782426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteLayerLayout: {fileID: 11400000, guid: 8e09bae0577a247f4a0e3f01dfed6ec3, type: 2}
+  layer: 4
+--- !u!114 &114073439484928376
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 124174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 791004ab1bcd84a5aab2c689c4782426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteLayerLayout: {fileID: 11400000, guid: 8e09bae0577a247f4a0e3f01dfed6ec3, type: 2}
+  layer: 20
+--- !u!114 &114100152276909122
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1950531737139174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 791004ab1bcd84a5aab2c689c4782426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteLayerLayout: {fileID: 11400000, guid: 8e09bae0577a247f4a0e3f01dfed6ec3, type: 2}
+  layer: 4
 --- !u!114 &114398797418370622
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -261,11 +318,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteVertices: []
   transitionBlock: {fileID: 21300000, guid: 937f6b238b4da4af3a5b404259375003, type: 3}
-  spriteLayerLayout: {fileID: 11400000, guid: 8e09bae0577a247f4a0e3f01dfed6ec3, type: 2}
   topOutline: {fileID: 120135423643261282}
   rightOutline: {fileID: 120496797410740996}
   bottomOutline: {fileID: 120137166613532700}
   leftOutline: {fileID: 120758197052351684}
+--- !u!114 &114921812784009578
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1809079049370682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 791004ab1bcd84a5aab2c689c4782426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteLayerLayout: {fileID: 11400000, guid: 8e09bae0577a247f4a0e3f01dfed6ec3, type: 2}
+  layer: 4
 --- !u!120 &120135423643261282
 LineRenderer:
   m_ObjectHideFlags: 1

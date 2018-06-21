@@ -218,27 +218,43 @@ public class CharacterMovement : MonoBehaviour {
 
 	void OnTriggerEnter2D (Collider2D other) {
 		collidedWith = other.gameObject;
-		// print("Entered trigger");
 
 		if (collidedWith.name.Equals("Right Curtain") || collidedWith.name.Equals("Left Curtain")) {
-			// print("Entered curtain");
+			
 			SwitchWorlds();
 
 			if (movementOff) {
 				movementOff = false;
 			}
-			// sr.color = new Color(1f, 1f, 1f, 0f);
-			//gameObject.layer = 9;
-			//sr.sortingOrder = 0;
+		
 		}
 
 		if (collidedWith.name.Contains("Boost")) {
-			//print(collidedWith.name);
-			//print(collidedWith.name.Contains("Back"));
+		
 			StartCoroutine("Jump");
 			
 		}
 
+	}
+
+	void OnTriggerStay2D(Collider2D other) {
+		if (collidedWith.name.Equals("Left Curtain")) {
+			if (transform.position.x >= collidedWith.transform.position.x) {
+				SetBackWorld();
+			}
+			else {
+				SetForeWorld();
+			}
+		}
+
+		else if (collidedWith.name.Equals("Right Curtain")) {
+			if (transform.position.x <= collidedWith.transform.position.x) {
+				SetBackWorld();
+			}
+			else {
+				SetForeWorld();
+			}
+		}
 	}
 
 	void OnTriggerExit2D (Collider2D other) {
@@ -342,7 +358,7 @@ public class CharacterMovement : MonoBehaviour {
 	}
 
 	IEnumerator Jump () {
-		print("Got to jump");
+		// print("Got to jump");
 		grounded = false;
 		//print("Grounded is " + grounded);
 

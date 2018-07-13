@@ -16,6 +16,8 @@ public class IntersceneDataHandler : MonoBehaviour {
 
 	static public CurtainOptions curtainOption = CurtainOptions.Left;
 
+	static public bool startWithCurtainFrozen = true;
+
 	static public int currentLevel = 0;
 	static public int currentWorld = 0;
 	void Awake () {

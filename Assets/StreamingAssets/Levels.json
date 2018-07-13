@@ -4,21 +4,30 @@
             "index": "0_0",
             "name": "Foothills",
             "options": [
-                {"curtainOption": "CurtainOptions.Both"}
+                {
+                    "curtainOption": "CurtainOptions.Both",
+                    "startWithCurtainFrozen": "true"
+                }
             ]
         }, 
         {
             "index": "0_1",
             "name": "Landslide",
             "options": [
-                {"curtainOption": "CurtainOptions.Both"}
+                {
+                    "curtainOption": "CurtainOptions.Both",
+                    "startWithCurtainFrozen": "false"
+                }
             ]
         },
         {
             "index": "0_2",
             "name": "Summit",
             "options": [
-                {"curtainOption": "CurtainOptions.Both"}
+                {
+                    "curtainOption": "CurtainOptions.Both",
+                    "startWithCurtainFrozen": "false"
+                }
             ]
         }
     ]

@@ -27,4 +27,5 @@ public class LevelData {
 [System.Serializable]
 public class LevelOptions {
 	public CurtainOptions curtainOption;
+	public bool startWithCurtainFrozen;
 }
